@@ -1,6 +1,5 @@
 package tactician.relics;
 
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
@@ -15,7 +14,7 @@ public class AsheraIcon extends BaseRelic {
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.UNCOMMON;
     private static final LandingSound SOUND = LandingSound.CLINK;
-    private static final int MOOLAH = 200;;
+    private static final int MOOLAH = 200;
 
     public AsheraIcon() {
         super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);

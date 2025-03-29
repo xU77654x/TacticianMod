@@ -1,14 +1,9 @@
 package tactician.cards.Uncommon;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.unique.VampireDamageAction; // If this card should heal HP instead of granting Temp HP.
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 import tactician.actions.NosferatuAction;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
@@ -43,4 +38,3 @@ public class Nosferatu extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new Nosferatu(); }
 }
-

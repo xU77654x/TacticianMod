@@ -1,17 +1,14 @@
 package tactician.cards.Common;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.*;
 import tactician.actions.ArmsthriftAction;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
 import tactician.cards.Weapons.*;
 import tactician.character.MyCharacter;
-import tactician.powers.LoseFocusPower;
 import tactician.util.CardStats;
 
 import java.util.ArrayList;
@@ -47,4 +44,3 @@ public class Armsthrift extends BaseCard {
         return new Armsthrift();
     }
 }
-

@@ -1,7 +1,6 @@
 package tactician.cards.Common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -41,4 +40,3 @@ public class Shove extends BaseCard {
         return new Shove();
     }
 }
-

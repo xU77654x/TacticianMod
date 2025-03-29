@@ -1,6 +1,5 @@
 package tactician.cards.Uncommon;
 
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -64,4 +63,3 @@ public class GrimasTruth extends BaseCard {
         }
     }
 }
-

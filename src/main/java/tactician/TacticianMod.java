@@ -3,7 +3,6 @@ package tactician;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.potions.BasePotion;

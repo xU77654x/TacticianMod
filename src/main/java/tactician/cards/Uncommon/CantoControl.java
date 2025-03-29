@@ -1,6 +1,5 @@
 package tactician.cards.Uncommon;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -36,4 +35,3 @@ public class CantoControl extends BaseCard {
         return new CantoControl();
     }
 }
-

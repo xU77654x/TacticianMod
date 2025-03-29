@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
-import tactician.TacticianMod;
 
 public class Veteran extends BaseCard {
     public static final String ID = makeID(Veteran.class.getSimpleName());
@@ -60,4 +59,3 @@ public class Veteran extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new Veteran(); }
 }
-
