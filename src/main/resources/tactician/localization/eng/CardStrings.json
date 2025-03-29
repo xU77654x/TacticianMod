@@ -193,7 +193,7 @@
   },
   "${modID}:OutdoorFighter": {
     "NAME": "Outdoor Fighter",
-    "DESCRIPTION": "Draw !M! cards. NL For each drawn card, gain !B! Block if it was a Skill or Power, or !${modID}:magicVigor! ${modID}:Vigor otherwise."
+    "DESCRIPTION": "{@@}Draw !${modID}:magicDraw! card{!M!|1=|@=s}. NL For each drawn card, gain !B! Block if it was a Skill or Power, or !M! ${modID}:Vigor otherwise."
   },
   "${modID}:IndoorFighter": {
     "NAME": "Indoor Fighter",
