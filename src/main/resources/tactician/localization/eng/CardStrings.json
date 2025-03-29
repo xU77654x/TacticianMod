@@ -139,7 +139,7 @@
   },
   "${modID}:Elwind": {
     "NAME": "Elwind",
-    "DESCRIPTION": "${modID}:Wind. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Next turn, draw !M! card{!M!|1=|@=s}.",
+    "DESCRIPTION": "${modID}:Wind. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Draw !M! card{!M!|1=|@=s} next turn.",
     "EXTENDED_DESCRIPTION": ["Elwind!"]
   },
   "${modID}:Arcfire": {
@@ -193,7 +193,7 @@
   },
   "${modID}:OutdoorFighter": {
     "NAME": "Outdoor Fighter",
-    "DESCRIPTION": "Draw !M! cards. NL For each drawn card, gain !B! Block if it was a Skill or Power, or !${modID}:magicVigor! ${modID}:Vigor otherwise. ${modID}:Vigor."
+    "DESCRIPTION": "Draw !M! cards. NL For each drawn card, gain !B! Block if it was a Skill or Power, or !${modID}:magicVigor! ${modID}:Vigor otherwise."
   },
   "${modID}:IndoorFighter": {
     "NAME": "Indoor Fighter",
