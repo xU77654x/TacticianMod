@@ -1,0 +1,138 @@
+[
+  {
+    "ID": "",
+    "PROPER_NAME": "Multiword Keyword",
+    "NAMES": [
+      "multiword keyword",
+      "multiword_keyword",
+      "multiword_keywords"
+    ],
+    "DESCRIPTION": "Make sure the first element in NAMES has no underscores. The rest should use _ in the place of spaces. In card text, you'll use the underscore versions."
+  },
+
+  {
+    "ID": "sword_weapon",
+    "PROPER_NAME": "Sword",
+    "NAMES": ["Sword"],
+    "DESCRIPTION": "Set your weapon to #rSword. NL Strong to: #gAxe, #pDark. NL Weak to: #bLance, [#FC63C6]Bow. NL Attacks calculate Strength."
+  },
+
+  {
+    "ID": "lance_weapon",
+    "PROPER_NAME": "Lance",
+    "NAMES": ["Lance"],
+    "DESCRIPTION": "Set your weapon to #bLance. NL Strong to: #rSword, #pDark. NL Weak to: #gAxe, [#FC63C6]Bow. NL Attacks calculate Strength."
+  },
+
+  {
+    "ID": "axe_weapon",
+    "PROPER_NAME": "Axe",
+    "NAMES": ["Axe"],
+    "DESCRIPTION": "Set your weapon to #gAxe. NL Strong to: #bLance, #pDark. NL Weak to: #rSword, [#FC63C6]Bow. NL Attacks calculate Strength."
+  },
+
+  {
+    "ID": "bow_weapon",
+    "PROPER_NAME": "Bow",
+    "NAMES": ["Bow"],
+    "DESCRIPTION": "Set your weapon to [#FC63C6]Bow. NL Strong to: #rSword, #bLance, #gAxe. NL Weak to: [#00EE88]Wind, [#FF9933]Fire, #yThunder. NL Attacks calculate Strength."
+  },
+
+  {
+    "ID": "wind_weapon",
+    "PROPER_NAME": "Wind",
+    "NAMES": ["Wind"],
+    "DESCRIPTION": "Set your weapon to [#00EE88]Wind. NL Strong to: #yThunder, [#FC63C6]Bow. NL Weak to: [#FF9933]Fire, #pDark. NL Attacks calculate Focus."
+  },
+
+  {
+    "ID": "fire_weapon",
+    "PROPER_NAME": "Fire",
+    "NAMES": ["Fire"],
+    "DESCRIPTION": "Set your weapon to [#FF9933]Fire. NL Strong to: [#00EE88]Wind, [#FC63C6]Bow. NL Weak to: #yThunder, #pDark. NL Attacks calculate Focus."
+  },
+
+  {
+    "ID": "thunder_weapon",
+    "PROPER_NAME": "Thunder",
+    "NAMES": ["Thunder"],
+    "DESCRIPTION": "Set your weapon to #yThunder. NL Strong to: [#FF9933]Fire, [#FC63C6]Bow. NL Weak to: [#00EE88]Wind, #pDark. NL Attacks calculate Focus."
+  },
+
+  {
+    "ID": "dark_weapon",
+    "PROPER_NAME": "Dark",
+    "NAMES": ["Dark"],
+    "DESCRIPTION": "Set your weapon to #pDark. NL Strong to: [#00EE88]Wind, [#FF9933]Fire, #yThunder NL Weak to: #rSword, #bLance, #gAxe. NL Attacks calculate Focus."
+  },
+
+  {
+    "ID": "combat_art",
+    "PROPER_NAME": "Combat Art",
+    "NAMES":[
+      "combat art",
+      "combat_art",
+      "combat_arts"
+    ],
+    "DESCRIPTION": "This card activates effects that relate to Combat Arts."
+  },
+
+  {
+    "ID": "copy_weapon",
+    "PROPER_NAME": "Copy Weapon",
+    "NAMES":[
+      "copy weapon",
+      "copy_weapon"
+    ],
+    "DESCRIPTION": "This card uses your current weapon as its type, boosting or nerfing its effects based on weapon-triangle effects. Auto-applies Magic to appropriate weapon types."
+  },
+
+  {
+    "ID": "favor",
+    "PROPER_NAME": "Favor",
+    "NAMES":["favor", "favored"],
+    "DESCRIPTION": "This costs 1 less if the weapon used matches that on the card. Otherwise, set your weapon to a type stated on the card."
+  },
+
+  {
+    "ID": "deflect",
+    "PROPER_NAME": "Deflect",
+    "NAMES": ["Deflect"],
+    "DESCRIPTION": "The next time you take Attack damage, deal X damage back. NL A weapon-weak Attack only halves your Deflect."
+  },
+
+  {
+    "ID": "vigor",
+    "PROPER_NAME": "Vigor",
+    "NAMES": ["Vigor", "Vigor"],
+    "DESCRIPTION": "Your next Attack deals X more damage. A weapon-strong Attack only halves your Vigor."
+  },
+
+  {
+    "ID": "arm",
+    "PROPER_NAME": "Arm",
+    "NAMES": ["Arm"],
+    "DESCRIPTION": "A shorthand for the weapons NL #rSword, #bLance, #gAxe, [#FC63C6]Bow."
+  },
+
+  {
+    "ID": "tome",
+    "PROPER_NAME": "Tome",
+    "NAMES": ["Tome"],
+    "DESCRIPTION": "A shorthand for the weapons NL [#00EE88]Wind, [#FF9933]Fire, #yThunder, #pDark."
+  },
+
+  {
+    "ID": "strength",
+    "PROPER_NAME": "Strength",
+    "NAMES":["Strength"],
+    "DESCRIPTION": "Strength adds damage to your physical attacks."
+  },
+
+  {
+    "ID": "focus",
+    "PROPER_NAME": "Focus",
+    "NAMES":["Focus"],
+    "DESCRIPTION": "Focus adds damage to your magic attacks and increases effectiveness of Orbs."
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "${modID}:Tactician": {
+    "NAMES": [
+      "The Tactician",
+      "the Tactician"
+    ],
+    "TEXT": [
+      "The legendary tactician to the king of Ylisse. NL Has a dark past tied to a sacrificial cult.",
+      "You call upon Chrom for a Dual Strike!",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~destined~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+    ]
+  }
+}

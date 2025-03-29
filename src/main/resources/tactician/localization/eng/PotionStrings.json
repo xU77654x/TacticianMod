@@ -1,0 +1,24 @@
+{
+  "${modID}:PotionID": {
+    "NAME": "Some Kind of Potion",
+    "DESCRIPTIONS": [
+      "Little",
+      " pieces ",
+      "that get put together",
+      " into a description.",
+      " Exactly how depends on the potion, and you can set it up however you want."]
+  },
+  "${modID}:FocusPotionT": {
+    "NAME": "Focus Potion",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " #yFocus."]
+  },
+  "${modID}:SagePotion": {
+    "NAME": "Sage Potion",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " #yFocus. At the end of your turn, lose #b",
+      " #yFocus."]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "${modID}:RelicID": {
+    "NAME": "Good Relic",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": ["Gain [E] at the start of your turn. [E] is an energy icon."]
+  },
+  "${modID}:SecretBook": {
+    "NAME": "Secret Book",
+    "FLAVOR": "\"I reviewed some historical battle texts. One can glean many tactics from the past.\"",
+    "DESCRIPTIONS": ["Once per turn on right-click, consume #b",
+      " #y${modID}:Vigor to Channel 1 #yLightning, and #b",
+      " #y${modID}:Deflect to Channel 1 #yFrost.",
+    "I can't channel Orbs without gaining Vigor or Deflect first.",
+    "I already activated my Secret Book earlier this turn."]
+  },
+  "${modID}:SpiritDust": {
+    "NAME": "Spirit Dust",
+    "FLAVOR": "\"Er, is that it?\"",
+    "DESCRIPTIONS": ["Start each combat with #b",
+      " #y${modID}:Focus."]
+  },
+  "${modID}:Speedwing": {
+    "NAME": "Speedwing",
+    "FLAVOR": "\"Even I couldn't have seen this coming!\"",
+    "DESCRIPTIONS": ["At the start of your 2nd turn, gain [E] and #b",
+      " #y${modID}:Vigor."]
+  },
+  "${modID}:SeraphRobe": {
+    "NAME": "Seraph Robe",
+    "FLAVOR": "\"Believe it or not, I'm considered a pretty good tactician.\"",
+    "DESCRIPTIONS": ["When you obtain a relic, gain #b",
+      " Max HP and heal #b",
+      " HP."]
+  },
+  "${modID}:AsheraIcon": {
+    "NAME": "Ashera Icon",
+    "FLAVOR": "\"Hmm, I don't feel very different...\"",
+    "DESCRIPTIONS": ["Gain #b",
+      " Gold. If your Maw Bank is disabled, re-activate it."]
+  },
+  "${modID}:Dracoshield": {
+    "NAME": "Dracoshield",
+    "FLAVOR": "\"The key to victory lies within.\"",
+    "DESCRIPTIONS": ["Every time you play #b",
+      " Attacks in 1 turn, gain #b",
+      " #yBlur."]
+  },
+  "${modID}:DragonFeather": {
+    "NAME": "Dragon Feather",
+    "FLAVOR": "\"...I AM...GRIMA... I AM...DESPAIR...\"",
+    "DESCRIPTIONS": ["Once per turn on right-click, #yExhaust a held card. Gain #y${modID}:Vigor and #y${modID}:Deflect equal to twice its cost."]
+  },
+  "${modID}:EnergyDrop": {
+    "NAME": "Energy Drop",
+    "FLAVOR": "\"I can tell I've gotten stronger.\"",
+    "DESCRIPTIONS": ["At the start of your turn, draw 1 additional card. At the end of your turn, #yExhaust 1 card."]
+  },
+  "${modID}:Talisman": {
+    "NAME": "Talisman",
+    "FLAVOR": "\"We're not pawns of some scripted fate. I believe we're more. Much more...\"",
+    "DESCRIPTIONS": ["Whenever you #yExhaust a card, gain #b",
+      " Temporary HP."]
+  },
+  "${modID}:Thantophage": {
+    "NAME": "Thantophage",
+    "FLAVOR": "\"YOU CANNOT SLAY... WHAT MAY NEVER DIE...\"",
+    "DESCRIPTIONS": ["When you would die, heal to 25% of your Max HP; NL next turn, gain [E] [E] and draw ",
+      " cards. Works once."]
+  },
+  "${modID}:LotteryWheel": {
+    "NAME": "Lottery Wheel",
+    "FLAVOR": "\"Maybe I should learn some new skills...\"",
+    "DESCRIPTIONS": ["Select one of three random Common relics to gain."]
+  },
+  "${modID}:NagasTear": {
+    "NAME": "Naga's Tear",
+    "FLAVOR": "\"Our bonds give me strength!\"",
+    "DESCRIPTIONS": ["Upon pickup, raise your Max HP by #b",
+      ". At the start of combat, gain #b",
+      " #y${modID}:Strength, #y${modID}:Focus, and #yDexterity."]
+  }
+}

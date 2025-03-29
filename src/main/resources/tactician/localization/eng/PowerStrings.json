@@ -1,0 +1,22 @@
+{
+  "${modID}:VigorPower": {
+    "NAME": "Vigor",
+    "DESCRIPTIONS": ["Your next Attack deals ",
+      " more damage. NL A weapon-strong Attack only halves your Vigor."]
+  },
+  "${modID}:DeflectPower": {
+    "NAME": "Deflect",
+    "DESCRIPTIONS": ["The next time you take Attack damage, deal ",
+      " damage back. NL A weapon-weak Attack only halves your Deflect."]
+  },
+  "${modID}:LoseFocusPower": {
+    "NAME": "Focus Down",
+    "DESCRIPTIONS": ["At the start of your next turn, lose #b",
+      " #yFocus."]
+  },
+  "${modID}:PatiencePower": {
+    "NAME": "Patience",
+    "DESCRIPTIONS": ["At the start of your next turn, gain #b",
+      " #yDeflect."]
+  }
+}

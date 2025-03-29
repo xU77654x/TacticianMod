@@ -1,0 +1,46 @@
+package tactician.cards.Uncommon;
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.unique.VampireDamageAction; // If this card should heal HP instead of granting Temp HP.
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
+import tactician.actions.NosferatuAction;
+import tactician.cards.BaseCard;
+import tactician.character.MyCharacter;
+import tactician.util.CardStats;
+import tactician.util.CustomTags;
+
+public class Nosferatu extends BaseCard {
+    public static final String ID = makeID(Nosferatu.class.getSimpleName());
+    private static final CardStats info = new CardStats(
+            MyCharacter.Meta.CARD_COLOR,
+            CardType.ATTACK,
+            CardRarity.UNCOMMON,
+            CardTarget.ENEMY,
+            1
+    );
+
+    public Nosferatu() {
+        super(ID, info);
+        setDamage(4, 2);
+        tags.add(CustomTags.DARK);
+        tags.add(CustomTags.COMBAT_ART);
+        this.exhaust = true;
+    }
+
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        // addToBot(new VFXAction(new OrbFlareEffect(Dark, OrbFlareEffect.OrbFlareColor.DARK), 0.6F));
+        // TODO: Dark attack effect.
+        addToBot(new NosferatuAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL)));
+    }
+
+    @Override
+    public AbstractCard makeCopy() { return new Nosferatu(); }
+}
+
