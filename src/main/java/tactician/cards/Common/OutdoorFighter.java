@@ -1,15 +1,16 @@
 package tactician.cards.Common;
 
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
-import tactician.actions.DrawAndLogCardsAction;
-import tactician.actions.OutdoorGainAction;
+import tactician.actions.OutdoorFollowUpAction;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
@@ -29,17 +30,17 @@ public class OutdoorFighter extends BaseCard {
         setBlock(2, 0);
         setMagic(2, 0);
         setCustomVar("magicDraw", 2, 1);
+        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
+        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // addToBot(new DrawCardAction(this.magicNumber, new OutdoorFighterAction(this.block, customVar("magicVigor"))));
-
-        addToBot(new DrawAndLogCardsAction(p, customVar("magicDraw")));
-        addToBot(new WaitAction(0.3F));
-        addToBot(new OutdoorGainAction(this, this.block, this.magicNumber));
+        addToBot(new DrawCardAction(customVar("magicDraw"), (new OutdoorFollowUpAction(customVar("magicDraw"), this.block, this.magicNumber))));
+        // TODO: Make OutdoorGainAction not be hard-coded, such that gained Block can scale with Dexterity.
     }
 
+    /*
     public void gainBlock(int blockGain) {
         AbstractPlayer p = AbstractDungeon.player;
         this.baseBlock = this.block = blockGain;
@@ -55,7 +56,7 @@ public class OutdoorFighter extends BaseCard {
         applyPowers();
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new VigorPower(p, this.magicNumber), this.magicNumber));
         baseMagicNumber = realMagic;
-    }
+    } */
 
     @Override
     public AbstractCard makeCopy() {

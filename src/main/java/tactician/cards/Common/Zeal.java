@@ -5,15 +5,11 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
-import tactician.cards.Weapons.*;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
-import java.util.ArrayList;
 
 public class Zeal extends BaseCard {
     public static final String ID = makeID(Zeal.class.getSimpleName());
@@ -32,21 +28,9 @@ public class Zeal extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(p, this.magicNumber)); // Draw 2 > 3.
-        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, this.magicNumber), this.magicNumber));
-
-        ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-        easyCardList.add(new Weapon1Sword(() -> addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1))));
-        easyCardList.add(new Weapon2Lance(() -> addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1))));
-        easyCardList.add(new Weapon3Axe(() -> addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1))));
-        easyCardList.add(new Weapon4Bow(() -> addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1))));
-        easyCardList.add(new Weapon5Wind(() -> addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1))));
-        easyCardList.add(new Weapon6Fire(() -> addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1))));
-        easyCardList.add(new Weapon7Thunder( () -> addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1))));
-        easyCardList.add(new Weapon8Dark(() -> addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1))));
-        addToBot(new EasyModalChoiceAction(easyCardList));
-        // TODO: Each weapon card sets your weapon type.
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));
+        // TODO: ZealPower; your next !M! Attacks this turn don't consume Vigor.
     }
 
     @Override

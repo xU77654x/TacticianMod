@@ -125,13 +125,13 @@
   },
   "${modID}:TempestLance": {
     "NAME": "Tempest Lance",
-    "DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and cures !M! turn{!M!|1=|@=s} of it on use.",
-    "UPGRADE_DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and cures it fully NL on use."
+    "DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL Ignores your negative ${modID}:Strength; cure it by !M!.",
+    "UPGRADE_DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. Ignores your negative ${modID}:Strength; cure it fully."
   },
   "${modID}:Smash": {
     "NAME": "Smash",
-    "DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. NL Ignores your negative ${modID}:Strength and cures !M! of it on use.",
-    "UPGRADE_DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. Ignores your negative ${modID}:Strength and cures it fully on use."
+    "DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and reduce it by !M!.",
+    "UPGRADE_DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and cures it fully."
   },
   "${modID}:CurvedShot": {
     "NAME": "Curved Shot",
@@ -168,12 +168,11 @@
   },
   "${modID}:Discipline": {
     "NAME": "Discipline",
-    "DESCRIPTION": "Gain !B! Block. {@@} NL Draw !M! card{!M!|1=|@=s} of your weapon type. NL It gets Retain this turn.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. {@@} NL Put !M! card{!M!|1=|@=s} of your weapon type from your draw pile to your hand. NL It gets Retain this turn."
+    "DESCRIPTION": "Gain !B! Block. NL Select a weapon type to equip now and at the end of your turn."
   },
   "${modID}:Zeal": {
     "NAME": "Zeal",
-    "DESCRIPTION": "{@@}Draw !M! card{!M!|1=|@=s}. NL Gain !M! temp. Dexterity. Select a weapon type to equip now and at the end of your turn."
+    "DESCRIPTION": "NL Gain !M! temp. ${modID}:Strength. NL Your next !M! Attacks this turn don't consume Vigor."
   },
   "${modID}:AlertStance": {
     "NAME": "Alert Stance",
@@ -185,7 +184,7 @@
   },
   "${modID}:Tantivy": {
     "NAME": "Tantivy",
-    "DESCRIPTION": "Scry !M!. NL Draw 1 card. NL Gain !${modID}:magicTempStr! temp. ${modID}:Strength."
+    "DESCRIPTION": "Scry !M!. NL Draw 1 card. NL Gain !${modID}:magicTempDex! temp. Dexterity."
   },
   "${modID}:Blossom": {
     "NAME": "Blossom",
@@ -193,7 +192,8 @@
   },
   "${modID}:OutdoorFighter": {
     "NAME": "Outdoor Fighter",
-    "DESCRIPTION": "{@@}Draw !${modID}:magicDraw! card{!M!|1=|@=s}. NL For each drawn card, gain !B! Block if it was a Skill or Power, or !M! ${modID}:Vigor otherwise."
+    "DESCRIPTION": "{@@}Draw !${modID}:magicDraw! card{!M!|1=|@=s}. NL For each drawn card, gain !B! Block if it was a Skill or Power, or !M! ${modID}:Vigor otherwise.",
+    "FLAVOR": "If your hand is full, gain both bonuses for each failed draw."
   },
   "${modID}:IndoorFighter": {
     "NAME": "Indoor Fighter",
@@ -214,7 +214,7 @@
   },
   "${modID}:WaningShot": {
     "NAME": "Waning Shot",
-    "DESCRIPTION": "${modID}:Bow. ${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Weak. NL Consume 3 ${modID}:Deflect to apply 1 Weak."
+    "DESCRIPTION": "${modID}:Bow. ${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Weak. NL Consume 6 ${modID}:Deflect to apply -1 Strength."
   },
   "${modID}:CuttingGale": {
     "NAME": "Cutting Gale",
@@ -305,7 +305,7 @@
   "${modID}:SealAtk4": {
     "NAME": "Seal Atk 4",
     "DESCRIPTION": "Gain !B! Block. NL EVERYONE loses NL !M! ${modID}:Strength for 3 turns.",
-    "FLAVOR": "Gain 1 Strength if you use Smash while Seal Atk is active and your Strength isn't negative."
+    "FLAVOR": "Gain 1 Strength if you use Tempest Lance while Seal Atk is active. You don't gain this power while you have Shove."
   },
   "${modID}:Renewal": {
     "NAME": "Renewal",

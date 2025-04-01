@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.actions.utility.ScryAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
@@ -25,15 +25,15 @@ public class Tantivy extends BaseCard {
     public Tantivy() {
         super(ID, info);
         setMagic(4, 3); // magicNumber is used for Scry; the customVar is used for Strength and Strength Down.
-        setCustomVar("magicTempStr", 2, 1); // TempStr 2 > 3
+        setCustomVar("magicTempDex", 2, 1); // TempStr 2 > 3
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster M) {
         addToBot(new ScryAction(this.magicNumber)); // Scry 3 > 6
         addToBot(new DrawCardAction(p, 1)); // Draw 1.
-        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, customVar("magicTempStr")), customVar("magicTempStr"))); // Gain 2 > 3 Strength
-        addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, customVar("magicTempStr")), customVar("magicTempStr"))); // Gain 2 > 3 Str Down
+        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, customVar("magicTempDex")), customVar("magicTempDex"))); // Gain 2 > 3 Dexterity
+        addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, customVar("magicTempDex")), customVar("magicTempDex"))); // Gain 2 > 3 Dex Down
     }
 
     @Override

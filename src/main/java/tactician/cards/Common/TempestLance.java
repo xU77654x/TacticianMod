@@ -1,15 +1,14 @@
 package tactician.cards.Common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
@@ -36,33 +35,40 @@ public class TempestLance extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(WeakPower.POWER_ID), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
+    // TODO: Damage ignores your negative Strength.
+    // TODO: If your Strength is negative: [gain 1 Strength / clear your StrengthPower.]
     }
 
     @Override
     public void applyPowers() {
-        AbstractPower weak = AbstractDungeon.player.getPower(WeakPower.POWER_ID);
-        int index = AbstractDungeon.player.powers.indexOf(weak);
-        AbstractDungeon.player.powers.remove(weak);
+        int realDamage = baseDamage;
+        magicNumber = baseMagicNumber;
+        if (AbstractDungeon.player.hasPower("Strength") && (AbstractDungeon.player.getPower("Strength")).amount < 0) {
+            baseDamage -= AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
+            if (this.upgraded) { magicNumber -= AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount; }
+            else { magicNumber += 1; } }
         super.applyPowers();
-        if (weak != null) {
-            AbstractDungeon.player.powers.add(index, weak);
-        }
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
+        // Credit to Downfall: Slime Boss for the measuring of a negative power.
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {
-        AbstractPower weak = AbstractDungeon.player.getPower(WeakPower.POWER_ID);
-        int index = AbstractDungeon.player.powers.indexOf(weak);
-        AbstractDungeon.player.powers.remove(weak);
+        int realDamage = baseDamage;
+        magicNumber = baseMagicNumber;
+        if (AbstractDungeon.player.hasPower("Strength") && (AbstractDungeon.player.getPower("Strength")).amount < 0) {
+            baseDamage -= AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
+            if (this.upgraded) { magicNumber -= AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount; }
+            else { magicNumber += 1; } }
         super.calculateCardDamage(m);
-        if (weak != null) {
-            AbstractDungeon.player.powers.add(index, weak);
-        }
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new TempestLance();
-    }
+    return new TempestLance();
+}
 }
