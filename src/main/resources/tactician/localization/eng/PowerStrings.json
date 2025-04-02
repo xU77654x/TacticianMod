@@ -11,12 +11,21 @@
   },
   "${modID}:LoseFocusPower": {
     "NAME": "Focus Down",
-    "DESCRIPTIONS": ["At the start of your next turn, lose #b",
+    "DESCRIPTIONS": ["At the end of your turn, lose #b",
       " #yFocus."]
+  },
+  "${modID}:ShovePower": {
+    "NAME": "Boon",
+    "DESCRIPTIONS": ["You cannot lose Strength, Dexterity, or Focus this turn."]
   },
   "${modID}:PatiencePower": {
     "NAME": "Patience",
-    "DESCRIPTIONS": ["At the start of your next turn, gain #b",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
       " #yDeflect."]
+  },
+  "${modID}:PresciencePower": {
+    "NAME": "Prescience",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
+      " #yVigor."]
   }
 }

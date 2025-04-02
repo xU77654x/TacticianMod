@@ -1,13 +1,16 @@
 package tactician.cards.Common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.ShovePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 
@@ -32,7 +35,7 @@ public class Shove extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAllEnemiesAction(p, this.multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        // TODO: Apply 1 of the Shove power to the user. Create the Shove power. Shove power should prevent removal of Str, Dex, and Foc. View StSLib's OnReceivePowerPower, which triggers on receiving ANY power. You will check to see if the power is negative Str/Dex/Foc or Str/Dex/Foc Down and then perform the desired action.
+        addToBot(new ApplyPowerAction(p, p, new ShovePower(this.magicNumber), this.magicNumber));
     }
 
     @Override

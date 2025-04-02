@@ -154,8 +154,7 @@
   },
   "${modID}:Flux": {
     "NAME": "Flux",
-    "DESCRIPTION": "${modID}:Dark. ${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage.",
-    "EXTENDED_DESCRIPTION": ["???"]
+    "DESCRIPTION": "${modID}:Dark. ${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage."
   },
   "${modID}:Shove": {
     "NAME": "Shove",
@@ -172,7 +171,8 @@
   },
   "${modID}:Zeal": {
     "NAME": "Zeal",
-    "DESCRIPTION": "NL Gain !M! temp. ${modID}:Strength. NL Your next !M! Attacks this turn don't consume Vigor."
+    "DESCRIPTION": "Gain !M! temp. ${modID}:Strength. NL All of your cards are weapon-strong this turn.",
+    "UPGRADE_DESCRIPTION": "Gain !M! temp. ${modID}:Strength. NL All of your cards are weapon-strong for 2 turns."
   },
   "${modID}:AlertStance": {
     "NAME": "Alert Stance",

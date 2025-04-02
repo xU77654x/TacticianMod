@@ -37,11 +37,7 @@ public class PresciencePower extends AbstractPower implements CloneablePowerInte
         addToBot(new ApplyPowerAction(this.owner, this.owner, new VigorPower(this.owner, this.amount), this.amount));
     }
 
-    public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-    }
+    public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
-    public AbstractPower makeCopy() {
-        return new PresciencePower(this.amount);
-    }
+    public AbstractPower makeCopy() { return new PresciencePower(this.amount); }
 }
