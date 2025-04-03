@@ -33,7 +33,7 @@ public class SecretBook extends BaseRelic implements ClickableRelic {
     @Override
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + CONSUMEVIGOR + this.DESCRIPTIONS[1] + CONSUMEDEFLECT + this.DESCRIPTIONS[2]; }
 
-    private String setDescription(AbstractPlayer.PlayerClass c) { return this.DESCRIPTIONS[2] + this.DESCRIPTIONS[0] + '\006' + this.DESCRIPTIONS[1]; }
+    // private String setDescription(AbstractPlayer.PlayerClass c) { return this.DESCRIPTIONS[2] + this.DESCRIPTIONS[0] + '\006' + this.DESCRIPTIONS[1]; }
 
     @Override
     public void atTurnStart() {

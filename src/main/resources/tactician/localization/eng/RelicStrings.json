@@ -48,10 +48,10 @@
       " Attacks in 1 turn, gain #b",
       " #yBlur."]
   },
-  "${modID}:DragonFeather": {
-    "NAME": "Dragon Feather",
-    "FLAVOR": "\"...I AM...GRIMA... I AM...DESPAIR...\"",
-    "DESCRIPTIONS": ["Once per turn on right-click, #yExhaust a held card. Gain #y${modID}:Vigor and #y${modID}:Deflect equal to twice its cost."]
+  "${modID}:StatueFragment": {
+    "NAME": "Statue Fragment",
+    "FLAVOR": "\"Not even the finest treasures is worth getting a comrade killed...\"",
+    "DESCRIPTIONS": ["Increase your maximum hand size by "]
   },
   "${modID}:EnergyDrop": {
     "NAME": "Energy Drop",
