@@ -33,6 +33,7 @@ public class EvenOddRhythm extends BaseCard {
         // addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         // TODO: Obtain the current turn number. Put that into an if statement to apply the correct power.
         // TODO: If possible, change the card art between Panne and Nowi based on the turn number. Stone Calendar may not be the way.
+        // GameActionManager.turn
     }
 
     @Override
@@ -40,4 +41,3 @@ public class EvenOddRhythm extends BaseCard {
         return new EvenOddRhythm();
     }
 }
-

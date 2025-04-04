@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.FocusPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
@@ -38,8 +40,8 @@ public class FrozenLance extends BaseCard {
 
     @Override
     public void applyPowers() {
-        AbstractPower strength = AbstractDungeon.player.getPower("Strength");
-        AbstractPower focus = AbstractDungeon.player.getPower("Focus");
+        AbstractPower strength = AbstractDungeon.player.getPower(StrengthPower.POWER_ID);
+        AbstractPower focus = AbstractDungeon.player.getPower(FocusPower.POWER_ID);
         if (strength != null)
             strength.amount *= this.magicNumber;
         if (focus != null)
@@ -52,8 +54,8 @@ public class FrozenLance extends BaseCard {
     }
 
     public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower strength = AbstractDungeon.player.getPower("Strength");
-        AbstractPower focus = AbstractDungeon.player.getPower("Focus");
+        AbstractPower strength = AbstractDungeon.player.getPower(StrengthPower.POWER_ID);
+        AbstractPower focus = AbstractDungeon.player.getPower(FocusPower.POWER_ID);
         if (strength != null)
             strength.amount *= this.magicNumber;
         if (focus != null)
@@ -66,8 +68,5 @@ public class FrozenLance extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new FrozenLance();
-    }
+    public AbstractCard makeCopy() { return new FrozenLance(); }
 }
-

@@ -399,8 +399,8 @@
   },
   "${modID}:Ignis": {
     "NAME": "Ignis",
-    "DESCRIPTION": "Gain ${modID}:Strength equal to your current ${modID}:Focus. NL Gain ${modID}:Focus equal to your previous ${modID}:Strength.",
-    "UPGRADE_DESCRIPTION": "Retain. Reshuffle. NL Gain ${modID}:Strength equal to your current ${modID}:Focus. Gain ${modID}:Focus equal to your previous ${modID}:Strength."
+    "DESCRIPTION": "Gain ${modID}:Strength equal to your current ${modID}:Focus. NL Gain ${modID}:Focus equal to your prior ${modID}:Strength. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain ${modID}:Strength equal to your current ${modID}:Focus. Gain ${modID}:Focus equal to your prior ${modID}:Strength. NL Exhaustive !stslib:ex!."
   },
   "${modID}:Pass": {
     "NAME": "Pass",

@@ -1,8 +1,10 @@
 package tactician.cards.Rare;
 
+import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -19,24 +21,35 @@ public class Ignis extends BaseCard {
             CardTarget.SELF,
             1
     );
+    public AbstractPlayer p;
 
     public Ignis() {
         super(ID, info);
-        setMagic(1, 0);
-        setSelfRetain(false, true);
-        if (this.upgraded) { this.shuffleBackIntoDrawPile = true; }
+        setExhaust(true, false);
+        setMagic(0, 5);
+        this.p = AbstractDungeon.player;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
-        // TODO: You'll have to create an IgnisPower to save the current Strength and Focus values.
+        int oldStrength = 0;
+        int oldFocus = 0;
+
+        if (this.p.hasPower(StrengthPower.POWER_ID)) { oldStrength = this.p.getPower(StrengthPower.POWER_ID).amount; }
+        if (this.p.hasPower(FocusPower.POWER_ID)) { oldFocus = this.p.getPower(FocusPower.POWER_ID).amount; }
+        
+        if (this.p.hasPower(StrengthPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new FocusPower(p, oldStrength), oldStrength)); }
+        if (this.p.hasPower(FocusPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, oldFocus), oldFocus)); }
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new Ignis();
+    public void upgrade() {
+        super.upgrade();
+        ExhaustiveVariable.setBaseValue(this, this.magicNumber);
+        this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+        initializeDescription();
     }
-}
 
+    @Override
+    public AbstractCard makeCopy() { return new Ignis(); }
+}
