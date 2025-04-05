@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,6 +16,7 @@ import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
+import tactician.cards.Common.Thunder;
 import tactician.cards.Weapons.Weapon1Sword;
 import tactician.cards.Weapons.Weapon7Thunder;
 import tactician.character.MyCharacter;
@@ -55,6 +57,11 @@ public class LevinSword extends BaseCard {
     }
 
     @Override
+    public void triggerOnExhaust() {
+        addToBot(new MakeTempCardInHandAction(new Sunder()));
+        addToBot(new MakeTempCardInHandAction(new Bolting()));
+    }
+
+    @Override
     public AbstractCard makeCopy() { return new LevinSword(); }
 }
-

@@ -26,8 +26,7 @@ public class Bolting extends BaseCard {
 
     public Bolting() {
         super(ID, info);
-        setDamage(18, 6);
-        setMagic(0, 2);
+        setDamage(16, 6);
         tags.add(CustomTags.THUNDER);
         tags.add(CustomTags.COMBAT_ART);
         this.isInnate = true;
@@ -43,4 +42,3 @@ public class Bolting extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new Bolting(); }
 }
-

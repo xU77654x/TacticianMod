@@ -227,7 +227,7 @@
   },
   "${modID}:Bolting": {
     "NAME": "Bolting",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Innate. NL Deal !D! damage. NL Your Lightning Orbs target ALL enemies. Exhaust."
+    "DESCRIPTION": "${modID}:Combat_Art. Innate. NL Deal !D! damage. NL Your Lightning Orbs target ALL enemies. Exhaust."
   },
   "${modID}:Nosferatu": {
     "NAME": "Nosferatu",
@@ -237,22 +237,22 @@
   "${modID}:LevinSword": {
     "NAME": "Levin Sword",
     "DESCRIPTION": "Select one of NL ${modID}:Sword or ${modID}:Thunder. NL Deal !D! damage.",
-    "FLAVOR": "On Exhaust, add a Sunder and Thunder to your hand."
+    "FLAVOR": "On Exhaust, add a Sunder and Bolting to your hand."
   },
   "${modID}:FlameLance": {
     "NAME": "Flame Lance",
     "DESCRIPTION": "Select one of NL ${modID}:Lance or ${modID}:Fire. N: Deal !D! damage.",
-    "FLAVOR": "On Exhaust, add a Dying Blaze and Tempest Lance to your hand."
+    "FLAVOR": "On Exhaust, add a Lance Jab and Dying Blaze to your hand."
   },
   "${modID}:HurricaneAxe": {
     "NAME": "Hurricane Axe",
     "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage.",
-    "FLAVOR": "On Exhaust, add an Elwind and Wild Abandon to your hand."
+    "FLAVOR": "On Exhaust, add Wild Abandon and Cutting Gale to your hand."
   },
   "${modID}:BeguilingBow": {
     "NAME": "Beguiling Bow",
     "DESCRIPTION": "Select one of NL ${modID}:Bow or ${modID}:Dark. NL Deal !D! damage.",
-    "FLAVOR": "On Exhaust, add a Waning Shot and Flux to your hand."
+    "FLAVOR": "On Exhaust, add a Waning Shot and Nosferatu to your hand."
   },
   "${modID}:FlashSparrow": {
     "NAME": "Flash Sparrow",

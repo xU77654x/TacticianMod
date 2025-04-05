@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
+import tactician.cards.Common.Flux;
 import tactician.cards.Weapons.Weapon4Bow;
 import tactician.cards.Weapons.Weapon8Dark;
 import tactician.character.MyCharacter;
@@ -52,8 +54,13 @@ public class BeguilingBow extends BaseCard {
     }
 
     @Override
+    public void triggerOnExhaust() {
+        addToBot(new MakeTempCardInHandAction(new WaningShot()));
+        addToBot(new MakeTempCardInHandAction(new Nosferatu()));
+    }
+
+    @Override
     public AbstractCard makeCopy() {
         return new BeguilingBow();
     }
 }
-

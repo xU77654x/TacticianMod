@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -52,8 +53,13 @@ public class HurricaneAxe extends BaseCard {
     }
 
     @Override
+    public void triggerOnExhaust() {
+        addToBot(new MakeTempCardInHandAction(new WildAbandon()));
+        addToBot(new MakeTempCardInHandAction(new CuttingGale()));
+    }
+
+    @Override
     public AbstractCard makeCopy() {
         return new HurricaneAxe();
     }
 }
-
