@@ -1,6 +1,7 @@
 package tactician.cards.Common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,6 +10,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
@@ -27,8 +30,8 @@ public class Smash extends BaseCard {
 
     public Smash() {
         super(ID, info);
-        setDamage(9, 3);
-        setMagic(1, 998);
+        setDamage(8, 2);
+        setMagic(2, 1);
         tags.add(CustomTags.AXE);
         tags.add(CustomTags.COMBAT_ART);
     }
@@ -36,29 +39,8 @@ public class Smash extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(WeakPower.POWER_ID), magicNumber));
-    }
-
-    @Override
-    public void applyPowers() {
-        AbstractPower weak = AbstractDungeon.player.getPower(WeakPower.POWER_ID);
-        int index = AbstractDungeon.player.powers.indexOf(weak);
-        AbstractDungeon.player.powers.remove(weak);
-        super.applyPowers();
-        if (weak != null) {
-            AbstractDungeon.player.powers.add(index, weak);
-        }
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster m) {
-        AbstractPower weak = AbstractDungeon.player.getPower(WeakPower.POWER_ID);
-        int index = AbstractDungeon.player.powers.indexOf(weak);
-        AbstractDungeon.player.powers.remove(weak);
-        super.calculateCardDamage(m);
-        if (weak != null) {
-            AbstractDungeon.player.powers.add(index, weak);
-        }
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));
     }
 
     @Override

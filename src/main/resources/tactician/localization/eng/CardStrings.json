@@ -125,13 +125,13 @@
   },
   "${modID}:TempestLance": {
     "NAME": "Tempest Lance",
-    "DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL Ignores your negative ${modID}:Strength; cure it by !M!.",
-    "UPGRADE_DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. Ignores your negative ${modID}:Strength; cure it fully."
+    "DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and reduce it by !M!.",
+    "UPGRADE_DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and cures it fully."
   },
   "${modID}:Smash": {
     "NAME": "Smash",
-    "DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and reduce it by !M!.",
-    "UPGRADE_DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and cures it fully."
+    "DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. ${modID}:Strength.",
+    "UPGRADE_DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. ${modID}:Strength."
   },
   "${modID}:CurvedShot": {
     "NAME": "Curved Shot",
@@ -171,8 +171,8 @@
   },
   "${modID}:Zeal": {
     "NAME": "Zeal",
-    "DESCRIPTION": "Gain !M! temp. ${modID}:Strength. NL All of your cards are weapon-strong this turn.",
-    "UPGRADE_DESCRIPTION": "Gain !M! temp. ${modID}:Strength. NL All of your cards are weapon-strong for 2 turns."
+    "DESCRIPTION": "This turn, you are weapon-strong. NL Cure your negative ${modID}:Strength, ${modID}:Focus, NL and Dexterity.",
+    "UPGRADE_DESCRIPTION": "{@@}For !M! turn{!M!|1=|@=s}, you are weapon-strong. NL Cure your negative ${modID}:Strength, ${modID}:Focus, NL and Dexterity."
   },
   "${modID}:AlertStance": {
     "NAME": "Alert Stance",
