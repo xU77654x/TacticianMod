@@ -29,7 +29,9 @@ public class Zeal extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));
-        // TODO: ZealPower; your next !M! Attacks this turn don't consume Vigor.
+
+        // TODO: If you have negative Strength, Focus, or Dexterity, cure it.
+        // TODO: ZealPower; your cards are weapon-strong for X turns.
     }
 
     @Override
