@@ -1,8 +1,8 @@
 package tactician.cards.Uncommon;
 
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
@@ -24,20 +24,17 @@ public class EvenOddRhythm extends BaseCard {
     public EvenOddRhythm() {
         super(ID, info);
         setMagic(12,3);
-        setCustomVar("magicDeflect", 16, 4);
+        setCustomVar("magicDeflect", 18, 5);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new VigorPower(p, this.magicNumber), this.magicNumber));
-        // addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
-        // TODO: Obtain the current turn number. Put that into an if statement to apply the correct power.
+        if (GameActionManager.turn % 2 == 0) { addToBot(new ApplyPowerAction(p, p, new VigorPower(p, this.magicNumber), this.magicNumber)); }
+        else { addToBot(new ApplyPowerAction(p, p, new DeflectPower(customVar("magicDeflect")), customVar("magicDeflect"))); }
         // TODO: If possible, change the card art between Panne and Nowi based on the turn number. Stone Calendar may not be the way.
         // GameActionManager.turn
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new EvenOddRhythm();
-    }
+    public AbstractCard makeCopy() { return new EvenOddRhythm(); }
 }

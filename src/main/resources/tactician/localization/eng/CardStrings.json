@@ -43,6 +43,18 @@
     "NAME": "Rally Defense",
     "DESCRIPTION": "Gain temp. Dexterity. NL Gain temp. ${modID}:Strength. NL Gain temp. ${modID}:Focus."
   },
+  "${modID}:TempStrength": {
+    "NAME": "Death Blow",
+    "DESCRIPTION": "Gain temp. ${modID}:Strength."
+  },
+  "${modID}:TempFocus": {
+    "NAME": "Fiendish Blow",
+    "DESCRIPTION": "Gain temp. ${modID}:Focus."
+  },
+  "${modID}:TempDexterity": {
+    "NAME": "Armored Blow",
+    "DESCRIPTION": "Gain temp. Dexterity."
+  },
   "${modID}:UpgradeAttacks": {
     "NAME": "Upgrade Attacks",
     "DESCRIPTION": "Upgrade your hand's Attacks for the rest of combat."
@@ -302,10 +314,10 @@
       "Gain temp. ${modID}:Focus.",
       "Gain temp. Dexterity."]
   },
-  "${modID}:SealAtk4": {
-    "NAME": "Seal Atk 4",
-    "DESCRIPTION": "Gain !B! Block. NL EVERYONE loses NL !M! ${modID}:Strength for 3 turns.",
-    "FLAVOR": "Gain 1 Strength if you use Tempest Lance while Seal Atk is active. You don't gain this power while you have Shove."
+  "${modID}:SecondSeal": {
+    "NAME": "Second Seal",
+    "DESCRIPTION": "Choose one: NL !M! temp. ${modID}:Strength, NL !M! temp. ${modID}:Focus, or NL !M! temp. Dexterity.",
+    "UPGRADE_DESCRIPTION": "Retain. Choose one: NL !M! temp. ${modID}:Strength, NL !M! temp. ${modID}:Focus, or NL !M! temp. Dexterity."
   },
   "${modID}:Renewal": {
     "NAME": "Renewal",
@@ -406,10 +418,10 @@
     "NAME": "Pass",
     "DESCRIPTION": "Unplayable. NL When you draw this card, draw !M! more cards and discard NL this card."
   },
-  "${modID}:SecondSeal": {
-    "NAME": "Second Seal",
-    "DESCRIPTION": "Add any off-class card to your hand. NL You cannot pick the same color twice in the same run. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Add any upgraded off-class card to your hand. NL You cannot pick the same color twice in the same run. Exhaust."
+  "${modID}:SealAtk4": {
+    "NAME": "Seal Atk 4",
+    "DESCRIPTION": "Gain !B! Block. NL EVERYONE loses NL !M! ${modID}:Strength for 3 turns.",
+    "FLAVOR": "If you use Zeal, you regain your Strength immediately."
   },
   "${modID}:MasterSeal": {
     "NAME": "Master Seal",
