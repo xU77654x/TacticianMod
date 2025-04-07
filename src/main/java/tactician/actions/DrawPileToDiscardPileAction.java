@@ -36,10 +36,10 @@ public class DrawPileToDiscardPileAction extends AbstractGameAction {
                     this.isDone = true;
                     return;
                 }
-                AbstractDungeon.gridSelectScreen.open(tmp, this.amount, "Select one card to add to your discard pile.", false);
+                AbstractDungeon.gridSelectScreen.open(tmp, this.amount, false, "Select " + this.amount + " card(s) to add to your discard pile.");
                 tickDuration();
             } else {
-                AbstractDungeon.gridSelectScreen.open(tmp, this.amount, true, "Select up to one card to add to your discard pile.");
+                AbstractDungeon.gridSelectScreen.open(tmp, this.amount, true, "Select up to " + this.amount + " card(s) to add to your discard pile.");
                 tickDuration();
             }
         } else if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {

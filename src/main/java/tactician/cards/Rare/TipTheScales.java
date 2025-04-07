@@ -1,8 +1,10 @@
 package tactician.cards.Rare;
 
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import tactician.cards.BaseCard;
@@ -16,24 +18,32 @@ public class TipTheScales extends BaseCard {
             CardType.POWER,
             CardRarity.RARE,
             CardTarget.SELF,
-            3
+            -2
     );
 
     public TipTheScales() {
         super(ID, info);
-        setMagic(5, 3);
+        setMagic(99, 0);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ArtifactPower(p, this.magicNumber), this.magicNumber));
     }
 
-    // TODO: On Exhaust, gain 99 Artifact. This doesn't work if you try to reference AbstractPlayer in the usual manner. Because Java.
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
+        return false;
+    }
+
+    @Override
+    public void triggerOnExhaust() {
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, this.magicNumber), this.magicNumber));
+    }
 
     @Override
     public AbstractCard makeCopy() {
         return new TipTheScales();
     }
 }
-

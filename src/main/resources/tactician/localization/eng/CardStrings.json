@@ -213,8 +213,8 @@
   },
   "${modID}:Sunder": {
     "NAME": "Sunder",
-    "DESCRIPTION": "${modID}:Sword. ${modID}:Combat_Art. NL Deal !D! damage. NL Put up to 1 card from your draw pile into your discard pile.",
-    "UPGRADE_DESCRIPTION": "${modID}:Sword. ${modID}:Combat_Art. NL Deal !D! damage. NL Put up to 1 card from your draw pile into your discard pile. Strike."
+    "DESCRIPTION": "${modID}:Sword. ${modID}:Combat_Art. NL Deal !D! damage twice. {@@} NL Put up to !M! card{!M!|1=|@=s} from your draw pile into your discard pile.",
+    "UPGRADE_DESCRIPTION": "${modID}:Sword. ${modID}:Combat_Art. Strike. NL Deal !D! damage twice. {@@} NL Put up to !M! card{!M!|1=|@=s} from your draw pile into your discard pile."
   },
   "${modID}:LanceJab": {
     "NAME": "Lance Jab",
@@ -284,7 +284,7 @@
   },
   "${modID}:Charm": {
     "NAME": "Charm",
-    "DESCRIPTION": "Gain !B! Block twice. NL If this card is Exhausted, gain [E] and add a copy to your draw pile."
+    "DESCRIPTION": "Gain !B! Block twice. NL When Exhausted, gain [E] and add a copy to your draw pile."
   },
   "${modID}:Miracle": {
     "NAME": "Miracle",
@@ -321,7 +321,7 @@
   },
   "${modID}:Renewal": {
     "NAME": "Renewal",
-    "DESCRIPTION": "Select a debuff of yours to reduce !M!X+1 times. If this card is Exhausted, reduce ALL your debuffs by !M!."
+    "DESCRIPTION": "Select a debuff of yours to reduce !M!X+1 times. When Exhausted, reduce ALL your debuffs by !M!."
   },
   "${modID}:Underdog": {
     "NAME": "Underdog",
@@ -442,8 +442,10 @@
   },
   "${modID}:TipTheScales": {
     "NAME": "Tip the Scales!",
-    "DESCRIPTION": "Gain !M! Artifact. NL If this card is Exhausted, gain 99 Artifact.",
-    "EXTENDED_DESCRIPTION": ["Time to tip the scales!"]
+    "DESCRIPTION": "Unplayable. NL On Exhaust, gain NL !M! Artifact.",
+    "UPGRADE_DESCRIPTION": "Unplayable. Retain. NL On Exhaust, gain NL !M! Artifact.",
+    "EXTENDED_DESCRIPTION": ["Time to tip the scales!",
+    "I have to Exhaust this card to gain its effect."]
   },
   "${modID}:GrandmasterForm": {
     "NAME": "Grandmaster Form",

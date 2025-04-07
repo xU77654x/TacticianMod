@@ -24,15 +24,16 @@ public class Sunder extends BaseCard {
 
     public Sunder() {
         super(ID, info);
-        setDamage(10, 3);
-        // setMagic(2, 3); If DrawPileToDiscardPileAction can let the user choose to not move cards, then !M! should increase to make this card better.
+        setDamage(5, 2);
+        setMagic(1, 1);
         tags.add(CustomTags.SWORD);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new DrawPileToDiscardPileAction(p, true, 1));
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new DrawPileToDiscardPileAction(p, true, this.magicNumber));
     }
 
     @Override
@@ -40,6 +41,7 @@ public class Sunder extends BaseCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(damageUpgrade);
+            upgradeMagicNumber(magicUpgrade);
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
             tags.add(CardTags.STRIKE);
@@ -51,4 +53,3 @@ public class Sunder extends BaseCard {
         return new Sunder();
     }
 }
-
