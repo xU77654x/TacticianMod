@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DoubleTapPower; // Testing only.
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.LunaPower;
 import tactician.util.CardStats;
 
 public class Luna extends BaseCard {
@@ -22,25 +23,14 @@ public class Luna extends BaseCard {
     public Luna() {
         super(ID, info);
         setMagic(1, 0);
+        setCostUpgrade(0);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DoubleTapPower(p, this.magicNumber), this.magicNumber));
-        // TODO: Power: Luna.
-    }
-
-    @Override
-    public void upgrade() {
-        if (!this.upgraded) {
-            upgradeName();
-            upgradeBaseCost(0);
-        }
-    }
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new LunaPower(this.magicNumber), this.magicNumber)); }
 
     @Override
     public AbstractCard makeCopy() {
         return new Luna();
     }
 }
-

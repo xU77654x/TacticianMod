@@ -21,7 +21,8 @@ public class Acrobat extends BaseCard {
 
     public Acrobat() {
         super(ID, info);
-        setMagic(2, 1);
+        setMagic(1, 0);
+        setInnate(false, true);
     }
 
     @Override
@@ -35,4 +36,3 @@ public class Acrobat extends BaseCard {
         return new Acrobat();
     }
 }
-

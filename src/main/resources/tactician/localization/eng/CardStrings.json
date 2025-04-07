@@ -438,7 +438,8 @@
   },
   "${modID}:Acrobat": {
     "NAME": "Acrobat",
-    "DESCRIPTION": "Whenever you play a ${modID}:Combat_Art, gain !M! ${modID}:Vigor and !M! ${modID}:Deflect."
+    "DESCRIPTION": "Whenever you play a ${modID}:Combat_Art, gain !M! ${modID}:Vigor and !M! ${modID}:Deflect.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you play a ${modID}:Combat_Art, gain !M! ${modID}:Vigor and !M! ${modID}:Deflect."
   },
   "${modID}:TipTheScales": {
     "NAME": "Tip the Scales!",

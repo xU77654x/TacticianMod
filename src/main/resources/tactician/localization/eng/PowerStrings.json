@@ -27,5 +27,12 @@
     "NAME": "Prescience",
     "DESCRIPTIONS": ["At the start of your turn, gain #b",
       " #yVigor."]
+  },
+  "${modID}:LunaPower": {
+    "NAME": "Luna",
+    "DESCRIPTIONS": [
+      "Your next ",
+      " Combat Arts play twice.",
+      "Your next Combat Art plays twice."]
   }
 }
