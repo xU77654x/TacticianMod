@@ -30,9 +30,14 @@
   },
   "${modID}:LunaPower": {
     "NAME": "Luna",
-    "DESCRIPTIONS": [
-      "Your next ",
+    "DESCRIPTIONS": ["Your next ",
       " Combat Arts play twice.",
       "Your next Combat Art plays twice."]
+  },
+  "${modID}:AcrobatPower": {
+    "NAME": "Acrobat",
+    "DESCRIPTIONS": ["When you play a Combat Art, NL gain ",
+      " Vigor and ",
+      " Deflect."]
   }
 }

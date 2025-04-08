@@ -27,6 +27,7 @@ public class Sunder extends BaseCard {
         setDamage(5, 2);
         setMagic(1, 1);
         tags.add(CustomTags.SWORD);
+        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

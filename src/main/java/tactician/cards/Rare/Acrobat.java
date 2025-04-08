@@ -4,9 +4,9 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.BrutalityPower; // For testing purposes.
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.AcrobatPower;
 import tactician.util.CardStats;
 
 public class Acrobat extends BaseCard {
@@ -26,10 +26,7 @@ public class Acrobat extends BaseCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new BrutalityPower(p, this.magicNumber), this.magicNumber));
-        // TODO: AcrobatPower. Also, all Combat Art cards must be tagged.
-    }
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new AcrobatPower(this.magicNumber), this.magicNumber)); }
 
     @Override
     public AbstractCard makeCopy() {

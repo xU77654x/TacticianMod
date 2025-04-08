@@ -32,6 +32,7 @@ public class WaningShot extends BaseCard {
         setDamage(7, 2);
         setMagic(1, 1);
         tags.add(CustomTags.BOW);
+        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override
