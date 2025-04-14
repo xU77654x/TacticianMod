@@ -34,6 +34,13 @@
       " Combat Arts play twice.",
       "Your next Combat Art plays twice."]
   },
+  "${modID}:SealAtkPower": {
+    "NAME": "Seal Attack",
+    "DESCRIPTIONS": ["In ",
+      " turn, gain ",
+      " turns, gain ",
+      " Strength."]
+  },
   "${modID}:AcrobatPower": {
     "NAME": "Acrobat",
     "DESCRIPTIONS": ["When you play a Combat Art, NL gain ",

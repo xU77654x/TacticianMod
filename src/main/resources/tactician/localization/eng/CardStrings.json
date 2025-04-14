@@ -226,7 +226,7 @@
   },
   "${modID}:WaningShot": {
     "NAME": "Waning Shot",
-    "DESCRIPTION": "${modID}:Bow. ${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Weak. NL Consume 6 ${modID}:Deflect to apply -1 Strength."
+    "DESCRIPTION": "${modID}:Bow. ${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Weak. NL Consume 3 ${modID}:Deflect to apply -1 Strength."
   },
   "${modID}:CuttingGale": {
     "NAME": "Cutting Gale",
@@ -451,13 +451,12 @@
   "${modID}:GrandmasterForm": {
     "NAME": "Grandmaster Form",
     "DESCRIPTION": "Exhaust your hand. NL Gain [E] and add random ${modID}:Combat_Arts to your hand for each card Exhausted.",
-    "UPGRADE_DESCRIPTION": "Exhaust your hand. NL Gain [E] and add random upgraded ${modID}:Combat_Arts to your hand for each card Exhausted.",
     "EXTENDED_DESCRIPTION": ["Strategy in motion!"]
   },
   "${modID}:Expiration": {
     "NAME": "Expiration",
-    "DESCRIPTION": "Gain !B! Block. Lose !M! NL HP. Deal !D! damage. NL Choose to shuffle a #yWound or an #yInjury to your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. Lose !M! NL HP. Deal !D! damage. NL Choose to shuffle a #yWound or an #yInjury to your draw pile."
+    "DESCRIPTION": "Gain !B! Block. Lose !M! NL HP. Deal !D! damage. NL Choose to shuffle a Wound or an Injury to your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. Lose !M! NL HP. Deal !D! damage. NL Choose to shuffle a Wound or an Injury to your draw pile."
   },
   "${modID}:SoftReset": {
     "NAME": "Soft Reset",

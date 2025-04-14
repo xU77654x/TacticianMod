@@ -18,11 +18,16 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
+import tactician.cards.BaseCard;
+import tactician.character.MyCharacter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
 
 public class Wiz {
     public static AbstractPlayer adp() {
@@ -77,15 +82,15 @@ public class Wiz {
             return arrayList;
         }
         ArrayList<AbstractCard> cardsList = new ArrayList<>();
-        for (AbstractCard c : AbstractDungeon.srcCommonCardPool.group) {
+        for (AbstractCard c : srcCommonCardPool.group) {
             if (pred.test(c))
                 cardsList.add(c.makeStatEquivalentCopy());
         }
-        for (AbstractCard c : AbstractDungeon.srcUncommonCardPool.group) {
+        for (AbstractCard c : srcUncommonCardPool.group) {
             if (pred.test(c))
                 cardsList.add(c.makeStatEquivalentCopy());
         }
-        for (AbstractCard c : AbstractDungeon.srcRareCardPool.group) {
+        for (AbstractCard c : srcRareCardPool.group) {
             if (pred.test(c))
                 cardsList.add(c.makeStatEquivalentCopy());
         }
@@ -226,4 +231,38 @@ public class Wiz {
         AbstractDungeon.player.exhaustPile.addToTop(c);
         AbstractDungeon.player.onCardDrawOrDiscard();
     }
+
+
+    // TODO: This lets cards be filtered by card tag, but fails if used off-class.
+    public static AbstractCard randomCombatArt(boolean upg) {
+        ArrayList<AbstractCard> list = new ArrayList<>();
+        for (AbstractCard c : srcCommonCardPool.group) {
+            if (c.hasTag(CustomTags.COMBAT_ART)) {
+                list.add(c);
+            }
+        }
+        for (AbstractCard d : srcUncommonCardPool.group) {
+            if (d.hasTag(CustomTags.COMBAT_ART)) {
+                list.add(d);
+            }
+        }
+        for (AbstractCard e : srcRareCardPool.group) {
+            if (e.hasTag(CustomTags.COMBAT_ART)) {
+                list.add(e);
+            }
+        }
+        return list.get(cardRandomRng.random(list.size() - 1));
+    }
+
+    /*
+    // TODO: This lets off-class characters pull from Robin's cards, but cannot filter by card tag.
+    public static AbstractCard randomCombatArt(boolean upg) {
+        ArrayList<String> tmp = new ArrayList<>();
+
+        for (Map.Entry<String, AbstractCard> c : CardLibrary.cards.entrySet()) {
+            if ((c.getValue()).color == MyCharacter.Meta.CARD_COLOR) { tmp.add(c.getKey()); }
+        }
+        return CardLibrary.cards.get(tmp.get(cardRandomRng.random(0, tmp.size() - 1)));
+    }
+    */
 }

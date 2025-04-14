@@ -1,9 +1,11 @@
 package tactician.cards.Rare;
 
 import basemod.helpers.BaseModCardTags;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.GrandmasterFormAction;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
@@ -15,22 +17,20 @@ public class GrandmasterForm extends BaseCard {
             CardType.POWER,
             CardRarity.RARE,
             CardTarget.SELF,
-            2
+            3
     );
 
     public GrandmasterForm() {
         super(ID, info);
+        setCostUpgrade(2);
         tags.add(BaseModCardTags.FORM);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // TODO: Apply GrandmasterFormAction, mirroring FiendFireAction but granting Combat Arts (upgraded if upgraded) and Energy per card.
-    }
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+        addToBot(new GrandmasterFormAction(this.upgraded)); }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new GrandmasterForm();
-    }
+    public AbstractCard makeCopy() { return new GrandmasterForm(); }
 }
-

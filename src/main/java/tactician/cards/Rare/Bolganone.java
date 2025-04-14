@@ -1,6 +1,7 @@
 package tactician.cards.Rare;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -36,6 +37,7 @@ public class Bolganone extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int finalDamage = damage;
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new DamageAction(m, new DamageInfo(p, finalDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
     }
@@ -65,4 +67,3 @@ public class Bolganone extends BaseCard {
         return new Bolganone();
     }
 }
-

@@ -16,6 +16,7 @@ public class VigorPatch {
                 __instance.flash();
                 return SpireReturn.Return(null);
             }
+            // If you are weapon-strong, return a "half-value" somehow.
             return SpireReturn.Continue();
             // Credit to Downfall: Champ for this code.
         }

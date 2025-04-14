@@ -35,19 +35,16 @@ public class Thoron extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+        addToBot(new DamageAllEnemiesAction(p, this.multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             for (AbstractMonster monster : (AbstractDungeon.getMonsters()).monsters) {
                 addToBot(new RemoveAllBlockAction(monster, p));
                 if (this.upgraded){ addToBot(new RemoveSpecificPowerAction(monster, monster, BarricadePower.POWER_ID)); }
             }
         }
-        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        addToBot(new DamageAllEnemiesAction(p, this.multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new Thoron();
-    }
+    public AbstractCard makeCopy() { return new Thoron(); }
 }
-

@@ -33,7 +33,7 @@ public class AcrobatPower extends AbstractPower {
 		this.isTurnBased = true;
 		this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
 		this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-		updateDescription();
+		this.updateDescription();
 	}
 
 	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2]; }
