@@ -31,9 +31,10 @@
   "${modID}:SeraphRobe": {
     "NAME": "Seraph Robe",
     "FLAVOR": "\"Believe it or not, I'm considered a pretty good tactician.\"",
-    "DESCRIPTIONS": ["When you obtain a relic, gain #b",
-      " Max HP and heal #b",
-      " HP."]
+    "DESCRIPTIONS": ["Upon pickup, raise your Max HP by #b",
+      ". Once on right-click, heal #b",
+      " HP.",
+      "I have already used this relic's healing."]
   },
   "${modID}:AsheraIcon": {
     "NAME": "Ashera Icon",
