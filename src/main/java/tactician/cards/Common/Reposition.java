@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
-// TODO: Import current Energy value.
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;

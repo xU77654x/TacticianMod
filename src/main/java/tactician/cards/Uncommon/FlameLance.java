@@ -15,8 +15,6 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
-import tactician.cards.Common.TempestLance;
-import tactician.cards.Common.Thunder;
 import tactician.cards.Weapons.Weapon2Lance;
 import tactician.cards.Weapons.Weapon6Fire;
 import tactician.character.MyCharacter;
