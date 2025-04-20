@@ -1,13 +1,13 @@
 package tactician.cards.Uncommon;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ConfusionPower;
-import com.megacrit.cardcrawl.powers.DrawPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.MastersTacticsPower;
 import tactician.util.CardStats;
 
 public class MastersTactics extends BaseCard {
@@ -22,13 +22,13 @@ public class MastersTactics extends BaseCard {
 
     public MastersTactics() {
         super(ID, info);
-        setMagic(1, 1);
+        setMagic(2, 1);
 
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ConfusionPower(p)));
-        addToBot(new ApplyPowerAction(p, p, new DrawPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new MastersTacticsPower(this.magicNumber), this.magicNumber));
+        addToBot(new DrawCardAction(this.magicNumber));
     }
 
     @Override
@@ -36,4 +36,3 @@ public class MastersTactics extends BaseCard {
         return new MastersTactics();
     }
 }
-

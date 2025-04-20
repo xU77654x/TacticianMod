@@ -8,13 +8,11 @@
     "NAME": "Secret Book",
     "FLAVOR": "\"I reviewed some historical battle texts. One can glean many tactics from the past.\"",
     "DESCRIPTIONS": ["Once per turn on right-click, consume #b",
-      " #y${modID}:Vigor to Channel 1 #yLightning, and #b",
       " #y${modID}:Deflect to Channel 1 #yFrost.",
-      "I can't channel Orbs without gaining Vigor or Deflect first.",
       "I already activated my Secret Book earlier this turn.",
-      "I need at least ",
-      " Vigor or ",
-      " Deflect to channel an Orb."]
+      "I can't channel Orbs without gaining Deflect first.",
+      "I need at least NL ",
+      " Deflect to NL channel an Orb."]
   },
   "${modID}:SpiritDust": {
     "NAME": "Spirit Dust",
@@ -26,7 +24,7 @@
     "NAME": "Speedwing",
     "FLAVOR": "\"Even I couldn't have seen this coming!\"",
     "DESCRIPTIONS": ["At the start of your 2nd turn, gain [E] and #b",
-      " #y${modID}:Vigor."]
+      " #y${modID}:Deflect."]
   },
   "${modID}:SeraphRobe": {
     "NAME": "Seraph Robe",

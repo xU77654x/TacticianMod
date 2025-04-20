@@ -5,11 +5,13 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.powers.BarricadePower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
@@ -23,12 +25,12 @@ public class Thoron extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ALL_ENEMY,
-            3
+            2
     );
 
     public Thoron() {
         super(ID, info);
-        setDamage(25, 7);
+        setDamage(16, 6);
         tags.add(CustomTags.THUNDER);
         tags.add(CustomTags.COMBAT_ART);
     }
@@ -40,9 +42,10 @@ public class Thoron extends BaseCard {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             for (AbstractMonster monster : (AbstractDungeon.getMonsters()).monsters) {
                 addToBot(new RemoveAllBlockAction(monster, p));
-                if (this.upgraded){ addToBot(new RemoveSpecificPowerAction(monster, monster, BarricadePower.POWER_ID)); }
+                if (this.upgraded) { addToBot(new RemoveSpecificPowerAction(monster, monster, BarricadePower.POWER_ID)); }
             }
         }
+        addToBot(new ChannelAction(new Lightning()));
     }
 
     @Override

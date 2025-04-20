@@ -1,9 +1,4 @@
 {
-  "${modID}:VigorPower": {
-    "NAME": "Vigor",
-    "DESCRIPTIONS": ["Your next Attack deals ",
-      " more damage. NL A weapon-strong Attack only halves your Vigor."]
-  },
   "${modID}:DeflectPower": {
     "NAME": "Deflect",
     "DESCRIPTIONS": ["The next time you take Attack damage, deal ",
@@ -16,17 +11,33 @@
   },
   "${modID}:ShovePower": {
     "NAME": "Boon",
-    "DESCRIPTIONS": ["You cannot lose Strength, Dexterity, or Focus this turn."]
+    "DESCRIPTIONS": ["You cannot lose #yStrength, #yFocus, or #yDexterity ",
+      "this turn.",
+    " for #b",
+    " turns."]
+  },
+  "${modID}:PresciencePower": {
+    "NAME": "Prescience",
+    "DESCRIPTIONS": [
+      " If the first card you play in a turn is an Attack, Channel #b",
+      " #yLightning."]
   },
   "${modID}:PatiencePower": {
     "NAME": "Patience",
     "DESCRIPTIONS": ["At the start of your turn, gain #b",
       " #yDeflect."]
   },
-  "${modID}:PresciencePower": {
-    "NAME": "Prescience",
-    "DESCRIPTIONS": ["At the start of your turn, gain #b",
-      " #yVigor."]
+  "${modID}:CreationPulsePower": {
+    "NAME": "Creation Pulse",
+    "DESCRIPTIONS": ["If you gain a Stat Down, apply to ALL enemies: NL Strength: #b",
+      " #yVulnerable. NL Dexterity: #b",
+      " #yWeak. NL Focus: #b",
+      " #yLock-On."]
+  },
+  "${modID}:MastersTacticsPower": {
+    "NAME": "Master's Tactics",
+    "DESCRIPTIONS": ["Increase your hand size by #b",
+      "."]
   },
   "${modID}:LunaPower": {
     "NAME": "Luna",
@@ -34,17 +45,14 @@
       " Combat Arts play twice.",
       "Your next Combat Art plays twice."]
   },
-  "${modID}:SealAtkPower": {
-    "NAME": "Seal Attack",
-    "DESCRIPTIONS": ["In ",
-      " turn, gain ",
-      " turns, gain ",
-      " Strength."]
-  },
   "${modID}:AcrobatPower": {
     "NAME": "Acrobat",
-    "DESCRIPTIONS": ["When you play a Combat Art, NL gain ",
-      " Vigor and ",
-      " Deflect."]
+    "DESCRIPTIONS": ["When you lose #yDeflect from an enemy attack, lose #b",
+      " less."]
+  },
+  "${modID}:GrandmasterFormPower": {
+    "NAME": "Grandmaster Form",
+    "DESCRIPTIONS": ["When you #uExhaust a card, Channel #b",
+      " #yLightning."]
   }
 }

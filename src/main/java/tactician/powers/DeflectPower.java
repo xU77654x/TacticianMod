@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -37,17 +39,22 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
             flash();
-            addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-            addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+            if (this.owner.hasPower(AcrobatPower.POWER_ID)) {
+                int acrobat = this.owner.getPower(AcrobatPower.POWER_ID).amount;
+                int deflect = this.amount;
+                if (deflect > acrobat) { addToTop(new ReducePowerAction(this.owner, this.owner, this, deflect - acrobat)); }
+                addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+            }
+            else {
+                addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+                addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+            }
+
         }
         return damageAmount;
     }
 
-    public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-    }
+    public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
-    public AbstractPower makeCopy() {
-        return new DeflectPower(this.amount);
-    }
+    public AbstractPower makeCopy() { return new DeflectPower(this.amount); }
 }

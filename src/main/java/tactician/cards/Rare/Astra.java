@@ -18,12 +18,12 @@ public class Astra extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            3
+            2
     );
 
     public Astra() {
         super(ID, info);
-        setDamage(4, 1);
+        setDamage(3, 1);
         tags.add(CustomTags.SWORD);
         tags.add(CustomTags.COMBAT_ART);
     }
@@ -42,4 +42,3 @@ public class Astra extends BaseCard {
         return new Astra();
     }
 }
-

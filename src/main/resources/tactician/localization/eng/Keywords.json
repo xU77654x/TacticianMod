@@ -102,13 +102,6 @@
   },
 
   {
-    "ID": "vigor",
-    "PROPER_NAME": "Vigor",
-    "NAMES": ["Vigor", "Vigor"],
-    "DESCRIPTION": "Your next Attack deals X more damage. A weapon-strong Attack only halves your Vigor."
-  },
-
-  {
     "ID": "arm",
     "PROPER_NAME": "Arm",
     "NAMES": ["Arm"],
@@ -120,19 +113,5 @@
     "PROPER_NAME": "Tome",
     "NAMES": ["Tome"],
     "DESCRIPTION": "A shorthand for the weapons NL [#00EE88]Wind, [#FF9933]Fire, #yThunder, #pDark."
-  },
-
-  {
-    "ID": "strength",
-    "PROPER_NAME": "Strength",
-    "NAMES":["Strength"],
-    "DESCRIPTION": "Strength adds damage to your physical attacks."
-  },
-
-  {
-    "ID": "focus",
-    "PROPER_NAME": "Focus",
-    "NAMES":["Focus"],
-    "DESCRIPTION": "Focus adds damage to your magic attacks and increases effectiveness of Orbs."
   }
 ]

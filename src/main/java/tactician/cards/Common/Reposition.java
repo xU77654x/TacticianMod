@@ -28,7 +28,7 @@ public class Reposition extends BaseCard {
 
     public Reposition() {
         super(ID, info);
-        setBlock(3, 1);
+        setBlock(4, 1);
         tags.add(CustomTags.COPY);
     }
 
@@ -39,8 +39,6 @@ public class Reposition extends BaseCard {
             finalBlock += AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
         if (AbstractDungeon.player.hasPower(FocusPower.POWER_ID))
             finalBlock += AbstractDungeon.player.getPower(FocusPower.POWER_ID).amount;
-        if (AbstractDungeon.player.hasPower(VigorPower.POWER_ID))
-            finalBlock += AbstractDungeon.player.getPower(VigorPower.POWER_ID).amount;
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
             finalBlock += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
         if (this.upgraded)
@@ -55,8 +53,6 @@ public class Reposition extends BaseCard {
             baseBlock += AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
         if (AbstractDungeon.player.hasPower(FocusPower.POWER_ID))
             baseBlock += AbstractDungeon.player.getPower(FocusPower.POWER_ID).amount;
-        if (AbstractDungeon.player.hasPower(VigorPower.POWER_ID))
-            baseBlock += AbstractDungeon.player.getPower(VigorPower.POWER_ID).amount;
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
             baseBlock += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
         if (this.upgraded)
@@ -67,7 +63,5 @@ public class Reposition extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() {return new Reposition();}
+    public AbstractCard makeCopy() { return new Reposition(); }
 }
-
-

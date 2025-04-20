@@ -25,7 +25,7 @@ public class Armsthrift extends BaseCard {
 
     public Armsthrift() {
         super(ID, info);
-        setBlock(5, 3);
+        setBlock(4, 4);
     }
 
     @Override

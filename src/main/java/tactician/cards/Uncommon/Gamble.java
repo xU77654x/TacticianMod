@@ -2,6 +2,7 @@ package tactician.cards.Uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
+import tactician.util.Wiz;
 
 public class Gamble extends BaseCard {
     public static final String ID = makeID(Gamble.class.getSimpleName());
@@ -17,18 +19,23 @@ public class Gamble extends BaseCard {
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.NONE,
-            0
+            1
     );
 
     public Gamble() {
         super(ID, info);
-        this.isEthereal = true;
+        this.selfRetain = true;
+        this.exhaust = true;
+        setCostUpgrade(0);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ExhaustAction(1, false));
-        // TODO: Create a GambleAction, similar to DualWieldAction.
+    public void use(AbstractPlayer p, AbstractMonster m) {}
+
+    @Override
+    public void triggerOnExhaust() {
+        AbstractCard c = Wiz.randomCombatArt(true);
+        addToBot(new MakeTempCardInHandAction(c));
     }
 
     @Override
@@ -36,4 +43,3 @@ public class Gamble extends BaseCard {
         return new Gamble();
     }
 }
-

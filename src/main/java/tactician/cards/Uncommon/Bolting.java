@@ -26,7 +26,7 @@ public class Bolting extends BaseCard {
 
     public Bolting() {
         super(ID, info);
-        setDamage(16, 6);
+        setDamage(15, 5);
         tags.add(CustomTags.THUNDER);
         tags.add(CustomTags.COMBAT_ART);
         this.isInnate = true;

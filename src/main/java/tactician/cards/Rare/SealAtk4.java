@@ -1,9 +1,8 @@
 package tactician.cards.Rare;
 
-import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,24 +17,20 @@ public class SealAtk4 extends BaseCard {
             MyCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.RARE,
-            CardTarget.ALL,
+            CardTarget.ENEMY,
             1
     );
     public SealAtk4() {
         super(ID, info);
-        setBlock(4, 0);
         setMagic(4, 0);
         setCostUpgrade(0);
-        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
-        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
+        setSelfRetain(true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, this.block));
-        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
-        addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, this.magicNumber), this.magicNumber));
-        // TODO: Create SealAtkPower which restores Strength after 3 turns.
+        addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, -1), -1));
     }
 
     @Override

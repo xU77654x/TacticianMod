@@ -8,13 +8,13 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.curses.Clumsy;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
-import tactician.cards.Common.Flux;
 import tactician.cards.Weapons.Weapon4Bow;
 import tactician.cards.Weapons.Weapon8Dark;
 import tactician.character.MyCharacter;
@@ -35,6 +35,7 @@ public class BeguilingBow extends BaseCard {
     public BeguilingBow() {
         super(ID, info);
         setDamage(16, 4);
+        setMagic(2, 0);
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
         FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
@@ -51,6 +52,7 @@ public class BeguilingBow extends BaseCard {
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SHIELD));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
+        addToBot(new MakeTempCardInHandAction(new Clumsy(), 2));
     }
 
     @Override
@@ -60,7 +62,5 @@ public class BeguilingBow extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new BeguilingBow();
-    }
+    public AbstractCard makeCopy() { return new BeguilingBow(); }
 }

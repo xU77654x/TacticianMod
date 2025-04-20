@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.powers.BarricadePower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.CreationPulsePower;
 import tactician.util.CardStats;
 
 public class CreationPulse extends BaseCard {
@@ -27,10 +28,9 @@ public class CreationPulse extends BaseCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new VigorPower(p, this.magicNumber), this.magicNumber)); }
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new CreationPulsePower(this.magicNumber), this.magicNumber)); }
     // TODO: CreationPulsePower
 
     @Override
     public AbstractCard makeCopy() { return new CreationPulse(); }
 }
-

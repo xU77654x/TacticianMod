@@ -25,7 +25,7 @@ public class FrozenLance extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            3
+            2
     );
 
     public FrozenLance() {
@@ -39,10 +39,33 @@ public class FrozenLance extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new BlizzardEffect((damage / 5), AbstractDungeon.getMonsters().shouldFlipVfx()), 0.2F));
+        addToBot(new VFXAction(new BlizzardEffect((damage / 4), AbstractDungeon.getMonsters().shouldFlipVfx()), 0.2F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
     }
 
+    @Override
+    public void applyPowers() {
+        int focus = 0;
+        if (this.p.hasPower(FocusPower.POWER_ID)) { focus = (this.p.getPower(FocusPower.POWER_ID)).amount; }
+        int realBaseDamage = this.baseDamage;
+        this.baseDamage += (this.magicNumber * focus);
+        super.applyPowers();
+        this.baseDamage = realBaseDamage;
+        this.isDamageModified = (this.damage != this.baseDamage);
+    }
+
+    public void calculateCardDamage(AbstractMonster m) {
+        int focus = 0;
+        if (this.p.hasPower(FocusPower.POWER_ID)) { focus = (this.p.getPower(FocusPower.POWER_ID)).amount; }
+        int realBaseDamage = this.baseDamage;
+        this.baseDamage += (this.magicNumber * focus);
+        super.calculateCardDamage(m);
+        this.baseDamage = realBaseDamage;
+        this.isDamageModified = (this.damage != this.baseDamage);
+    }
+
+    /*
+    This can be used to factor Strength and Focus together.
     @Override
     public void applyPowers() {
         AbstractPower strength = AbstractDungeon.player.getPower(StrengthPower.POWER_ID);
@@ -69,6 +92,7 @@ public class FrozenLance extends BaseCard {
         this.baseDamage = realBaseDamage;
         this.isDamageModified = (this.damage != this.baseDamage);
     }
+     */
 
     @Override
     public AbstractCard makeCopy() { return new FrozenLance(); }

@@ -2,12 +2,12 @@ package tactician.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import tactician.TacticianMod;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.imagePath;
@@ -34,7 +34,7 @@ public class PresciencePower extends AbstractPower implements CloneablePowerInte
 
     public void atStartOfTurnPostDraw() {
         flash();
-        addToBot(new ApplyPowerAction(this.owner, this.owner, new VigorPower(this.owner, this.amount), this.amount));
+        addToBot(new ChannelAction(new Lightning()));
     }
 
     public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }

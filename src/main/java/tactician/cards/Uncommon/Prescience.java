@@ -17,22 +17,20 @@ public class Prescience extends BaseCard {
             CardType.POWER,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            1
+            0
     );
 
     public Prescience() {
         super(ID, info);
-        setMagic(3, 1);
+        setMagic(1, 0);
+        setInnate(false, true);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new PresciencePower(this.magicNumber), this.magicNumber));
-    }
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new PresciencePower(this.magicNumber), this.magicNumber)); }
 
     @Override
     public AbstractCard makeCopy() {
         return new Prescience();
     }
 }
-

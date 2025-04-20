@@ -17,12 +17,12 @@ public class HuntersVolley extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            3
+            2
     );
 
     public HuntersVolley() {
         super(ID, info);
-        setDamage(15, 3);
+        setDamage(10, 3);
         tags.add(CustomTags.BOW);
         tags.add(CustomTags.COMBAT_ART);
     }

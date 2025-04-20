@@ -23,7 +23,7 @@ public class Nosferatu extends BaseCard {
 
     public Nosferatu() {
         super(ID, info);
-        setDamage(4, 2);
+        setDamage(5, 2);
         tags.add(CustomTags.DARK);
         tags.add(CustomTags.COMBAT_ART);
         this.exhaust = true;

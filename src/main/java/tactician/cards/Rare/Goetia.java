@@ -19,13 +19,13 @@ public class Goetia extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            3
+            2
     );
 
     public Goetia() {
         super(ID, info);
-        setDamage(12, 3);
-        setBlock(22, 3);
+        setDamage(10, 1);
+        setBlock(15, 5);
         tags.add(CustomTags.DARK);
         tags.add(CustomTags.COMBAT_ART);
     }
@@ -41,4 +41,3 @@ public class Goetia extends BaseCard {
         return new Goetia();
     }
 }
-

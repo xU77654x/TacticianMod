@@ -24,7 +24,7 @@ public class WildAbandon extends BaseCard {
 
     public WildAbandon() {
         super(ID, info);
-        setDamage(10, 3);
+        setDamage(9, 3);
         tags.add(CustomTags.AXE);
         this.isMultiDamage = true;
     }
@@ -40,4 +40,3 @@ public class WildAbandon extends BaseCard {
         return new WildAbandon();
     }
 }
-

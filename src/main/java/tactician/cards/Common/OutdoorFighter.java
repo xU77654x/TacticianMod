@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.OutdoorFollowUpAction;
+import tactician.actions.OutdoorFighterAction;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
@@ -31,7 +31,7 @@ public class OutdoorFighter extends BaseCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new DrawCardAction(customVar("magicDraw"), (new OutdoorFollowUpAction(customVar("magicDraw"), this.block, this.magicNumber)))); }
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new DrawCardAction(customVar("magicDraw"), (new OutdoorFighterAction(customVar("magicDraw"), this.block, this.magicNumber)))); }
 
     @Override
     public AbstractCard makeCopy() { return new OutdoorFighter(); }

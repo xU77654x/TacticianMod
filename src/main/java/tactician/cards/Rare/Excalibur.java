@@ -22,12 +22,12 @@ public class Excalibur extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            3
+            2
     );
 
     public Excalibur() {
         super(ID, info);
-        setDamage(20, 5);
+        setDamage(10, 1);
         setMagic(0, 1);
         tags.add(CustomTags.WIND);
         tags.add(CustomTags.COMBAT_ART);
@@ -46,4 +46,3 @@ public class Excalibur extends BaseCard {
         return new Excalibur();
     }
 }
-

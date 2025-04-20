@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
@@ -35,12 +34,7 @@ public class LanceJab extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int finalBlock = block;
-        if (p.hasPower(StrengthPower.POWER_ID))
-            finalBlock += p.getPower(StrengthPower.POWER_ID).amount;
-        if (p.hasPower(VigorPower.POWER_ID))
-            finalBlock += p.getPower(VigorPower.POWER_ID).amount;
-        addToBot(new GainBlockAction(p, p, finalBlock));
+        addToBot(new GainBlockAction(p, p, block));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
     }
@@ -50,8 +44,8 @@ public class LanceJab extends BaseCard {
         int realBlock = baseBlock;
         if (AbstractDungeon.player.hasPower(StrengthPower.POWER_ID))
             baseBlock += AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
-        if (AbstractDungeon.player.hasPower(VigorPower.POWER_ID))
-            baseBlock += AbstractDungeon.player.getPower(VigorPower.POWER_ID).amount;
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
+            baseBlock += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
         super.applyPowers();
         baseBlock = realBlock;
         this.isBlockModified = (block != baseBlock);
@@ -62,8 +56,8 @@ public class LanceJab extends BaseCard {
         int realBlock = baseBlock;
         if (AbstractDungeon.player.hasPower(StrengthPower.POWER_ID))
             baseBlock += AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
-        if (AbstractDungeon.player.hasPower(VigorPower.POWER_ID))
-            baseBlock += AbstractDungeon.player.getPower(VigorPower.POWER_ID).amount;
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
+            baseBlock += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
         super.calculateCardDamage(m);
         baseBlock = realBlock;
         this.isBlockModified = (block != baseBlock);
@@ -73,4 +67,3 @@ public class LanceJab extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new LanceJab(); }
 }
-

@@ -4,13 +4,13 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.RetainCardPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.AcrobatPower;
 import tactician.util.CardStats;
 
-public class SturdyStance extends BaseCard {
-    public static final String ID = makeID(SturdyStance.class.getSimpleName());
+public class Acrobat extends BaseCard {
+    public static final String ID = makeID(Acrobat.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.POWER,
@@ -19,15 +19,16 @@ public class SturdyStance extends BaseCard {
             1
     );
 
-    public SturdyStance() {
+    public Acrobat() {
         super(ID, info);
-        setMagic(1, 1);
+        setMagic(3, 2);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new RetainCardPower(p, this.magicNumber), this.magicNumber)); }
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new AcrobatPower(this.magicNumber), this.magicNumber)); }
 
     @Override
-    public AbstractCard makeCopy() { return new SturdyStance(); }
+    public AbstractCard makeCopy() {
+        return new Acrobat();
+    }
 }
-

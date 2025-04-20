@@ -7,16 +7,17 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
-import tactician.cards.Common.Thunder;
 import tactician.cards.Weapons.Weapon1Sword;
 import tactician.cards.Weapons.Weapon7Thunder;
 import tactician.character.MyCharacter;
@@ -36,7 +37,7 @@ public class LevinSword extends BaseCard {
 
     public LevinSword() {
         super(ID, info);
-        setDamage(16, 4);
+        setDamage(13, 4);
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
         FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
@@ -54,6 +55,7 @@ public class LevinSword extends BaseCard {
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
+        addToBot(new ChannelAction(new Lightning()));
     }
 
     @Override

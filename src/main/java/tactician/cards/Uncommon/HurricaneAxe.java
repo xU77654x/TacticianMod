@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
+import tactician.actions.DiscardAllAction;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
 import tactician.cards.Weapons.Weapon3Axe;
@@ -33,7 +34,7 @@ public class HurricaneAxe extends BaseCard {
 
     public HurricaneAxe() {
         super(ID, info);
-        setDamage(16, 4);
+        setDamage(17, 4);
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
         FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
@@ -50,6 +51,7 @@ public class HurricaneAxe extends BaseCard {
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
+        addToBot(new DiscardAllAction(p));
     }
 
     @Override

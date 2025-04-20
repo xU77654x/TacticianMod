@@ -23,13 +23,13 @@ public class Bolganone extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            3
+            2
     );
 
     public Bolganone() {
         super(ID, info);
-        setDamage(22, 3);
-        setMagic(1, 1);
+        setDamage(10, 1);
+        setMagic(2, 1);
         tags.add(CustomTags.FIRE);
         tags.add(CustomTags.COMBAT_ART);
     }
@@ -38,32 +38,13 @@ public class Bolganone extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         int finalDamage = damage;
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        addToBot(new DamageAction(m, new DamageInfo(p, finalDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new DamageAction(m, new DamageInfo(p, finalDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) {
+            int deflect = AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount * (this.magicNumber - 1);
+            addToBot(new ApplyPowerAction(p, p, new DeflectPower(deflect), deflect));
+        }
     }
 
     @Override
-    public void applyPowers() {
-        int realDamage = baseDamage;
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
-            baseDamage += 2 * AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
-        super.applyPowers();
-        baseDamage = realDamage;
-        this.isDamageModified = (damage != baseDamage);
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster m) {
-        int realDamage = baseDamage;
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
-            baseDamage += 2 * AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
-        super.calculateCardDamage(m);
-        baseDamage = realDamage;
-        this.isDamageModified = (damage != baseDamage);
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Bolganone();
-    }
+    public AbstractCard makeCopy() { return new Bolganone(); }
 }

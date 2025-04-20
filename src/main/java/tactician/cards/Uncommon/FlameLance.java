@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.defect.EvokeAllOrbsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -35,7 +36,7 @@ public class FlameLance extends BaseCard {
 
     public FlameLance() {
         super(ID, info);
-        setDamage(16, 4);
+        setDamage(15, 4);
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
         FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
@@ -43,15 +44,16 @@ public class FlameLance extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-        easyCardList.add(new Weapon2Lance(() ->  {
+        easyCardList.add(new Weapon2Lance(() -> {
             addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber)); // TODO: Set your weapon to Lance.
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }));
-        easyCardList.add(new Weapon6Fire(() ->  {
+        easyCardList.add(new Weapon6Fire(() -> {
             addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber)); // TODO: Set your weapon to Fire.
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
+        addToBot(new EvokeAllOrbsAction());
     }
 
     @Override

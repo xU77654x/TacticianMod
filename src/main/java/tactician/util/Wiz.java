@@ -234,21 +234,30 @@ public class Wiz {
 
 
     // TODO: This lets cards be filtered by card tag, but fails if used off-class.
-    public static AbstractCard randomCombatArt(boolean upg) {
+    public static AbstractCard randomCombatArt(boolean costZero) {
         ArrayList<AbstractCard> list = new ArrayList<>();
         for (AbstractCard c : srcCommonCardPool.group) {
             if (c.hasTag(CustomTags.COMBAT_ART)) {
                 list.add(c);
+                if (costZero) {
+                    c.setCostForTurn(0);
+                }
             }
         }
         for (AbstractCard d : srcUncommonCardPool.group) {
             if (d.hasTag(CustomTags.COMBAT_ART)) {
                 list.add(d);
+                if (costZero) {
+                    d.setCostForTurn(0);
+                }
             }
         }
         for (AbstractCard e : srcRareCardPool.group) {
             if (e.hasTag(CustomTags.COMBAT_ART)) {
                 list.add(e);
+                if (costZero) {
+                    e.setCostForTurn(0);
+                }
             }
         }
         return list.get(cardRandomRng.random(list.size() - 1));

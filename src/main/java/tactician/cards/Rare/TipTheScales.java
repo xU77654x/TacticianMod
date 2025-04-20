@@ -15,7 +15,7 @@ public class TipTheScales extends BaseCard {
     public static final String ID = makeID(TipTheScales.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
-            CardType.POWER,
+            CardType.SKILL,
             CardRarity.RARE,
             CardTarget.SELF,
             -2
@@ -27,8 +27,7 @@ public class TipTheScales extends BaseCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-    }
+    public void use(AbstractPlayer p, AbstractMonster m) {}
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {

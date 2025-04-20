@@ -7,22 +7,15 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
-import tactician.character.MyCharacter;
 import tactician.util.Wiz;
 
 import java.util.ArrayList;
-import java.util.Map;
 
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
-
-public class GrandmasterFormAction extends AbstractGameAction {
-	private boolean upg;
+public class QuickBurnAction extends AbstractGameAction {
 	public static ArrayList<String> cache = new ArrayList<>();
 
-	public GrandmasterFormAction(boolean upg) {
+	public QuickBurnAction() {
 		this.actionType = AbstractGameAction.ActionType.WAIT;
-		this.upg = upg;
 	}
 
 	/*
@@ -51,8 +44,7 @@ public class GrandmasterFormAction extends AbstractGameAction {
 		for (i = 0; i < count; i++) { addToTop(new ExhaustAction(1, true, true, false, Settings.ACTION_DUR_XFAST)); }
 		for (i = 0; i < count; i++) {
 			addToTop(new GainEnergyAction(1));
-			AbstractCard c = Wiz.randomCombatArt(this.upg);
-			// TODO: Second use of unupgraded card makes upgraded cards.
+			AbstractCard c = Wiz.randomCombatArt(false);
 			addToBot(new MakeTempCardInHandAction(c));
 		}
 		this.isDone = true;
