@@ -18,7 +18,7 @@
     "NAME": "Spirit Dust",
     "FLAVOR": "\"Er, is that it?\"",
     "DESCRIPTIONS": ["Start each combat with #b",
-      " #y${modID}:Focus."]
+      " #yFocus."]
   },
   "${modID}:Speedwing": {
     "NAME": "Speedwing",
@@ -79,6 +79,6 @@
     "FLAVOR": "\"Our bonds give me strength!\"",
     "DESCRIPTIONS": ["Upon pickup, raise your Max HP by #b",
       ". At the start of combat, gain #b",
-      " #y${modID}:Strength, #y${modID}:Focus, and #yDexterity."]
+      " #yStrength, #yFocus, and #yDexterity."]
   }
 }
