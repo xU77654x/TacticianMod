@@ -1,9 +1,4 @@
 {
-  "${modID}:RelicID": {
-    "NAME": "Good Relic",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
-    "DESCRIPTIONS": ["Gain [E] at the start of your turn. [E] is an energy icon."]
-  },
   "${modID}:SecretBook": {
     "NAME": "Secret Book",
     "FLAVOR": "\"I reviewed some historical battle texts. One can glean many tactics from the past.\"",
