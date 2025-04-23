@@ -319,8 +319,8 @@
   },
   "${modID}:CantoControl": {
     "NAME": "Canto Control",
-    "DESCRIPTION": "Gain X+1 [E].",
-    "UPGRADE_DESCRIPTION": "Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}."
+    "DESCRIPTION": "Ethereal. NL Gain X+1 [E].",
+    "UPGRADE_DESCRIPTION": "Ethereal. NL Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}."
   },
   "${modID}:Prescience": {
     "NAME": "Prescience",

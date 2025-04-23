@@ -23,6 +23,7 @@ public class CantoControl extends BaseCard {
     public CantoControl() {
         super(ID, info);
         setMagic(0, 1);
+        this.isEthereal = true;
     }
 
     @Override
