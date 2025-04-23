@@ -315,12 +315,13 @@
   },
   "${modID}:Renewal": {
     "NAME": "Renewal",
-    "DESCRIPTION": "Select a debuff of yours to reduce !M!X+1 times. On Exhaust, reduce ALL your debuffs by !M!."
+    "DESCRIPTION": "Reduce ALL of your NL debuffs by X. NL On Exhaust, NL gain 1 Frail.",
+    "UPGRADE_DESCRIPTION": "Reduce ALL of your NL debuffs by X+1. NL On Exhaust, NL gain 1 Frail."
   },
   "${modID}:CantoControl": {
     "NAME": "Canto Control",
-    "DESCRIPTION": "Ethereal. NL Gain X+1 [E].",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}."
+    "DESCRIPTION": "Ethereal. NL Gain X+1 [E]. NL On Exhaust, NL gain 1 Weak.",
+    "UPGRADE_DESCRIPTION": "Ethereal. NL Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}. NL On Exhaust, NL gain 1 Weak."
   },
   "${modID}:Prescience": {
     "NAME": "Prescience",

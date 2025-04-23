@@ -35,4 +35,3 @@ public class DefendWind extends BaseCard {
         return new DefendWind();
     }
 }
-

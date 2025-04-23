@@ -46,4 +46,3 @@ public class PartOfThePlan extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new PartOfThePlan(); }
 }
-

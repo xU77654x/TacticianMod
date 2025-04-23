@@ -35,4 +35,3 @@ public class Aegis extends BaseCard {
         return new Aegis();
     }
 }
-

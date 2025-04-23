@@ -37,4 +37,3 @@ public class FlashSparrow extends BaseCard {
         return new FlashSparrow();
     }
 }
-

@@ -36,4 +36,3 @@ public class SurpriseAttack extends BaseCard {
         return new SurpriseAttack();
     }
 }
-

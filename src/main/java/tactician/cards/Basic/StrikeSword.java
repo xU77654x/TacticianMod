@@ -38,4 +38,3 @@ public class StrikeSword extends BaseCard {
         return new StrikeSword();
     }
 }
-

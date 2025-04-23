@@ -39,4 +39,3 @@ public class Flux extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new Flux(); }
 }
-

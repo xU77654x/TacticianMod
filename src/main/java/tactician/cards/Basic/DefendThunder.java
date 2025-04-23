@@ -35,4 +35,3 @@ public class DefendThunder extends BaseCard {
         return new DefendThunder();
     }
 }
-

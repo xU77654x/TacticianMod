@@ -38,4 +38,3 @@ public class StrikeAxe extends BaseCard {
         return new StrikeAxe();
     }
 }
-

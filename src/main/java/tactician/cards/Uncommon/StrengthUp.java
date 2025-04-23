@@ -57,4 +57,3 @@ public class StrengthUp extends BaseCard {
         return new StrengthUp(this.timesUpgraded);
     }
 }
-

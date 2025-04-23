@@ -18,7 +18,7 @@ public class WildAbandon extends BaseCard {
             MyCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.UNCOMMON,
-            CardTarget.ENEMY,
+            CardTarget.ALL_ENEMY,
             1
     );
 

@@ -35,4 +35,3 @@ public class Pavise extends BaseCard {
         return new Pavise();
     }
 }
-

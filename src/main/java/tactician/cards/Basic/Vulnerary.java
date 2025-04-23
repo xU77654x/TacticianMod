@@ -69,4 +69,3 @@ public class Vulnerary extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new Vulnerary(); }
 }
-

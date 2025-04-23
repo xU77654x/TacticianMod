@@ -32,4 +32,3 @@ public class Patience extends BaseCard {
         return new Patience();
     }
 }
-

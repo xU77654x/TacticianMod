@@ -56,4 +56,3 @@ public class FocusUp extends BaseCard {
         return new FocusUp(this.timesUpgraded);
     }
 }
-

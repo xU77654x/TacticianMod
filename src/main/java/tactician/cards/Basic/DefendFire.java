@@ -35,4 +35,3 @@ public class DefendFire extends BaseCard {
         return new DefendFire();
     }
 }
-

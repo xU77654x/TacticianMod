@@ -1,10 +1,13 @@
 package tactician.cards.Uncommon;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import tactician.actions.EasyXCostAction;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
@@ -33,6 +36,11 @@ public class CantoControl extends BaseCard {
             return true;
         }));
         if (this.upgraded) { addToBot(new DrawCardAction(this.magicNumber)); }
+    }
+
+    @Override
+    public void triggerOnExhaust() {
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new WeakPower(AbstractDungeon.player, 1, false), 1));
     }
 
     @Override

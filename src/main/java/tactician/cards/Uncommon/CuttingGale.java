@@ -40,4 +40,3 @@ public class CuttingGale extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new CuttingGale(); }
 }
-

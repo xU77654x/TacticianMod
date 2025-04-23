@@ -56,4 +56,3 @@ public class DexterityUp extends BaseCard {
         return new DexterityUp(this.timesUpgraded);
     }
 }
-

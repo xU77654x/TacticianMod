@@ -38,4 +38,3 @@ public class StrikeBow extends BaseCard {
         return new StrikeBow();
     }
 }
-

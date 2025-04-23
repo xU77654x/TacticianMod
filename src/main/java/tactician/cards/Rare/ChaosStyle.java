@@ -35,4 +35,3 @@ public class ChaosStyle extends BaseCard {
         return new ChaosStyle();
     }
 }
-

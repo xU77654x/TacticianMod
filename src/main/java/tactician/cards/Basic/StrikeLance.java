@@ -38,4 +38,3 @@ public class StrikeLance extends BaseCard {
         return new StrikeLance();
     }
 }
-

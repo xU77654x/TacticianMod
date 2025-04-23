@@ -41,4 +41,3 @@ public class Charm extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new Charm(); }
 }
-

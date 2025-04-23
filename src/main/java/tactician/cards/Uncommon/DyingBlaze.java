@@ -2,8 +2,6 @@ package tactician.cards.Uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -75,4 +73,3 @@ public class DyingBlaze extends BaseCard {
     @Override
     public AbstractCard makeCopy() { return new DyingBlaze(); }
 }
-

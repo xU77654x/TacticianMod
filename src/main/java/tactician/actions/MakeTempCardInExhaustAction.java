@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import tactician.effects.ExhaustCopyEffect;
 
 public class MakeTempCardInExhaustAction extends AbstractGameAction {
     private AbstractCard c;
@@ -33,7 +34,7 @@ public class MakeTempCardInExhaustAction extends AbstractGameAction {
         if (this.duration == this.startDuration) {
             if (this.numCards < 6)
                 for (int i = 0; i < this.numCards; i++)
-                    AbstractDungeon.effectList.add(new ShowCardAndAddToExhaustEffect(makeNewCard()));
+                    AbstractDungeon.effectList.add(new ExhaustCopyEffect(makeNewCard()));
             this.duration -= Gdx.graphics.getDeltaTime();
         }
         tickDuration();

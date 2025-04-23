@@ -43,4 +43,3 @@ public class MasterSeal extends BaseCard {
         return new MasterSeal();
     }
 }
-

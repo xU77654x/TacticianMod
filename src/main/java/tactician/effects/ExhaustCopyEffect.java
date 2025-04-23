@@ -1,4 +1,4 @@
-package tactician.actions;
+package tactician.effects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,12 +12,12 @@ import com.megacrit.cardcrawl.vfx.ExhaustBlurEffect;
 import com.megacrit.cardcrawl.vfx.ExhaustEmberEffect;
 import com.megacrit.cardcrawl.vfx.combat.CardPoofEffect;
 
-public class ShowCardAndAddToExhaustEffect extends AbstractGameEffect {
+public class ExhaustCopyEffect extends AbstractGameEffect {
     private static final float EFFECT_DUR = 1.5F;
     private AbstractCard card;
     private static final float PADDING = 30.0F * Settings.scale;
 
-    public ShowCardAndAddToExhaustEffect(AbstractCard srcCard, float x, float y) {
+    public ExhaustCopyEffect(AbstractCard srcCard, float x, float y) {
         this.card = srcCard.makeStatEquivalentCopy();
         this.duration = 1.5F;
         this.card.target_x = x;
@@ -32,7 +32,7 @@ public class ShowCardAndAddToExhaustEffect extends AbstractGameEffect {
         AbstractDungeon.player.exhaustPile.addToTop(srcCard); // Changed to Exhaust pile.
     }
 
-    public ShowCardAndAddToExhaustEffect(AbstractCard card) {
+    public ExhaustCopyEffect(AbstractCard card) {
         this.card = card;
         this.duration = 1.5F;
         identifySpawnLocation(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F);
@@ -48,7 +48,7 @@ public class ShowCardAndAddToExhaustEffect extends AbstractGameEffect {
     private void identifySpawnLocation(float x, float y) {
         int effectCount = 0;
         for (AbstractGameEffect e : AbstractDungeon.effectList) {
-            if (e instanceof ShowCardAndAddToExhaustEffect)
+            if (e instanceof ExhaustCopyEffect)
                 effectCount++;
         }
         this.card.target_y = Settings.HEIGHT * 0.5F;

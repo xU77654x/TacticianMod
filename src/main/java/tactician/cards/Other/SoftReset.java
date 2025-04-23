@@ -33,4 +33,3 @@ public class SoftReset extends BaseCard {
         return new SoftReset();
     }
 }
-

@@ -35,4 +35,3 @@ public class DefendDark extends BaseCard {
         return new DefendDark();
     }
 }
-

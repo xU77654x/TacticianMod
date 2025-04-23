@@ -37,4 +37,3 @@ public class Blossom extends BaseCard {
         return new Blossom();
     }
 }
-
