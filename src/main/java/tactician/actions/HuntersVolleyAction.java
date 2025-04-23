@@ -1,6 +1,7 @@
 package tactician.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -27,6 +28,7 @@ public class HuntersVolleyAction extends AbstractGameAction {
             this.target.damage(this.info);
             this.target.damage(this.info);
             if (((this.target).isDying || this.target.currentHealth <= 0) && !this.target.halfDead) {
+                // addToBot(new TalkAction(true, "Now that's strategy!", 1.0F, 2.0F));
                 addToBot(new GainEnergyAction(1));
                 addToBot(new DrawCardAction(1));
             }

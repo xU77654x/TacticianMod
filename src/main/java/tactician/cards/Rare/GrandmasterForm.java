@@ -32,7 +32,7 @@ public class GrandmasterForm extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new ApplyPowerAction(p, p, new GrandmasterFormPower(1), 1));
     }
 

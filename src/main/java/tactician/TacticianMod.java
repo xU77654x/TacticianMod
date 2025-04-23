@@ -98,7 +98,7 @@ public class TacticianMod implements
     }
 
     public static void registerPotions() {
-        new AutoAdd(modID) //Loads files from this mod
+        new AutoAdd(modID) // Loads files from this mod
                 .packageFilter(BasePotion.class) // In the same package as this class.
                 .any(BasePotion.class, (info, potion) -> { // Run this code for any classes that extend this class.
                     // These three null parameters are colors. If they're not null, they'll overwrite the color set in the potions themselves.

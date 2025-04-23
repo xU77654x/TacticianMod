@@ -37,10 +37,20 @@
   },
   "${modID}:Dracoshield": {
     "NAME": "Dracoshield",
-    "FLAVOR": "\"The key to victory lies within.\"",
+    "FLAVOR": "\"All right! I managed to sneak some practice in.\"",
     "DESCRIPTIONS": ["Every time you play #b",
       " Attacks in 1 turn, gain #b",
       " #yBlur."]
+  },
+  "${modID}:BookOfNaga": {
+    "NAME": "Book of Naga",
+    "FLAVOR": "\"What's this? Hmm... Perhaps we could use it...\"",
+    "DESCRIPTIONS": ["Once per turn on right-click, consume #b",
+      " #y${modID}:Deflect to Channel 1 #yLightning.",
+      "I already activated my Book of Naga earlier this turn.",
+      "I can't channel Orbs without gaining Deflect first.",
+      "I need at least NL ",
+      " Deflect to NL channel an Orb."]
   },
   "${modID}:StatueFragment": {
     "NAME": "Statue Fragment",

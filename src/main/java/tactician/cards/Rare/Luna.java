@@ -1,5 +1,6 @@
 package tactician.cards.Rare;
 
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -26,7 +27,10 @@ public class Luna extends BaseCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new LunaPower(this.magicNumber), this.magicNumber)); }
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p, p, new LunaPower(this.magicNumber), this.magicNumber));
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+    }
 
     @Override
     public AbstractCard makeCopy() {

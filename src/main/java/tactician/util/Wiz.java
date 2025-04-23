@@ -216,19 +216,6 @@ public class Wiz {
         return (int)c.powers.stream().filter(pow -> (pow.type == AbstractPower.PowerType.BUFF)).count();
     }
 
-    public void moveToExhaustPile(AbstractCard c) {
-        for (AbstractRelic r : AbstractDungeon.player.relics)
-            r.onExhaust(c);
-        for (AbstractPower p : AbstractDungeon.player.powers)
-            p.onExhaust(c);
-        c.triggerOnExhaust();
-        // resetCardBeforeMoving(c);
-        AbstractDungeon.effectList.add(new ExhaustCardEffect(c));
-        AbstractDungeon.player.exhaustPile.addToTop(c);
-        AbstractDungeon.player.onCardDrawOrDiscard();
-    }
-
-
     // TODO: This lets cards be filtered by card tag, but fails if used off-class.
     public static AbstractCard randomCombatArt(boolean costZero) {
         ArrayList<AbstractCard> list = new ArrayList<>();

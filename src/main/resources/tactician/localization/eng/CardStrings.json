@@ -200,7 +200,7 @@
   },
   "${modID}:IndoorFighter": {
     "NAME": "Indoor Fighter",
-    "DESCRIPTION": "Discard 1 card. NL If it's a Skill or Power, gain !B! Block. Otherwise, gain !M! ${modID}:Deflect."
+    "DESCRIPTION": "Discard 1 card. NL If it's a Skill or Power, gain !B! Block. Otherwise, gain NL !M! ${modID}:Deflect."
   },
   "${modID}:Sunder": {
     "NAME": "Sunder",
@@ -320,7 +320,7 @@
   "${modID}:CantoControl": {
     "NAME": "Canto Control",
     "DESCRIPTION": "Gain X+1 [E].",
-    "UPGRADE_DESCRIPTION": "Gain X+1 [E]. NL Draw 1 card."
+    "UPGRADE_DESCRIPTION": "Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}."
   },
   "${modID}:Prescience": {
     "NAME": "Prescience",
@@ -399,7 +399,8 @@
   },
   "${modID}:Luna": {
     "NAME": "Luna",
-    "DESCRIPTION": "Your next ${modID}:Combat_Art NL is played twice."
+    "DESCRIPTION": "Your next ${modID}:Combat_Art NL is played twice.",
+    "EXTENDED_DESCRIPTION": ["Here's how it's done!"]
   },
   "${modID}:Ignis": {
     "NAME": "Ignis",
@@ -443,6 +444,7 @@
     "NAME": "Grandmaster Form",
     "DESCRIPTION": "Retain. Whenever you Exhaust a card, NL Channel 1 Lightning.",
     "UPGRADE_DESCRIPTION": "Innate. Retain. NL Whenever you Exhaust a card, NL Channel 1 Lightning.",
+    "EXTENDED_DESCRIPTION": ["The key to victory NL lies within."],
     "FLAVOR": "Exhausted copies, such as NL Dying Blaze, don't trigger this."
   },
 
