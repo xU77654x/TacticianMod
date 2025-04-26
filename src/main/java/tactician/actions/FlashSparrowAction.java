@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class FlashSparrowAction extends AbstractGameAction {
 	private final DamageInfo info;
@@ -18,11 +17,11 @@ public class FlashSparrowAction extends AbstractGameAction {
 	}
 
 	public void update() {
+		addToTop(new DamageAction(this.target, this.info, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 		if (false) {
 			addToTop(new DrawCardAction(1));
 			addToTop(new GainEnergyAction(1));
 		} // TODO: Weapon types.
-		addToTop(new DamageAction(this.target, this.info, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 		this.isDone = true;
 	}
 }
