@@ -24,7 +24,10 @@ public class Zeal extends BaseCard {
 
     public Zeal() {
         super(ID, info);
-        setMagic(1, 1);
+        setMagic(1, 0);
+        setCostUpgrade(0);
+        this.selfRetain = true;
+        this.exhaust = true;
         this.p = AbstractDungeon.player;
     }
 
@@ -32,7 +35,6 @@ public class Zeal extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new FeelNoPainPower(p, magicNumber), magicNumber));
         // TODO: ZealPower
-        addToBot(new DrawCardAction(1));
 
         // Unused code on how to cure a stat completely.
         // if (this.p.hasPower(StrengthPower.POWER_ID) && (this.p.getPower(StrengthPower.POWER_ID)).amount < 0) { this.p.powers.remove(this.p.getPower(StrengthPower.POWER_ID)); }

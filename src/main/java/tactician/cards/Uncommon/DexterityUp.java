@@ -21,12 +21,14 @@ public class DexterityUp extends BaseCard {
 
     public DexterityUp(){
         this(0);
-        this.name = cardStrings.NAME + " +" + 2;
+        int upgradeCount = this.timesUpgraded + 2;
+        this.name = cardStrings.EXTENDED_DESCRIPTION[0] + upgradeCount;
+        cardStrings.NAME = this.name;
     }
 
     public DexterityUp(int upgradeCount) {
         super(ID, info);
-        this.baseMagicNumber= 2;
+        this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
         this.timesUpgraded = upgradeCount;
     }
@@ -41,7 +43,7 @@ public class DexterityUp extends BaseCard {
         this.timesUpgraded++;
         this.upgraded = true;
         int upgradeCount = this.timesUpgraded + 2;
-        this.name = cardStrings.NAME + " +" + upgradeCount;
+        this.name = cardStrings.EXTENDED_DESCRIPTION[0] + upgradeCount;
         initializeTitle();
     }
 
@@ -52,7 +54,7 @@ public class DexterityUp extends BaseCard {
     @Override
     public AbstractCard makeCopy() {
         int upgradeCount = this.timesUpgraded + 2;
-        this.name = cardStrings.NAME + " +" + upgradeCount;
+        this.name = cardStrings.EXTENDED_DESCRIPTION[0] + upgradeCount;
         return new DexterityUp(this.timesUpgraded);
     }
 }

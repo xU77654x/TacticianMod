@@ -2,6 +2,8 @@ package tactician.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -25,13 +27,11 @@ public class AcrobatPower extends AbstractPower {
 		this.owner = AbstractDungeon.player;
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.BUFF;
-		this.isTurnBased = true;
+		this.isTurnBased = false;
 		this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
 		this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 		this.updateDescription();
 	}
 
 	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
-
-	// Acrobat applies its effect within DeflectPower.java, not in here.
 }

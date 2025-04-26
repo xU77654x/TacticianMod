@@ -21,12 +21,14 @@ public class FocusUp extends BaseCard {
 
     public FocusUp(){
         this(0);
-        this.name = cardStrings.NAME + " +" + 2;
+        int upgradeCount = this.timesUpgraded + 2;
+        this.name = cardStrings.EXTENDED_DESCRIPTION[0] + upgradeCount;
+        cardStrings.NAME = this.name;
     }
 
     public FocusUp(int upgradeCount) {
         super(ID, info);
-        this.baseMagicNumber= 2;
+        this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
         this.timesUpgraded = upgradeCount;
     }
@@ -41,18 +43,16 @@ public class FocusUp extends BaseCard {
         this.timesUpgraded++;
         this.upgraded = true;
         int upgradeCount = this.timesUpgraded + 2;
-        this.name = cardStrings.NAME + " +" + upgradeCount;
+        this.name = cardStrings.EXTENDED_DESCRIPTION[0] + upgradeCount;
         initializeTitle();
     }
 
-    public boolean canUpgrade() {
-        return true;
-    }
+    public boolean canUpgrade() { return true; }
 
     @Override
     public AbstractCard makeCopy() {
         int upgradeCount = this.timesUpgraded + 2;
-        this.name = cardStrings.NAME + " +" + upgradeCount;
+        this.name = cardStrings.EXTENDED_DESCRIPTION[0] + upgradeCount;
         return new FocusUp(this.timesUpgraded);
     }
 }

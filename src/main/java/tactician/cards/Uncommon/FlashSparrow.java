@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.FlashSparrowAction;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
@@ -28,8 +29,8 @@ public class FlashSparrow extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        // TODO: Change DamageAction into a new FlashSparrowAction, which copies DropkickAction but replaces Vulnerable with the enemy being weapon-weak.
+        addToBot(new FlashSparrowAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
+        // TODO: FlashSparrowAction needs weapon types.
     }
 
     @Override

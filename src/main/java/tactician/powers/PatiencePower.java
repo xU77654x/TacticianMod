@@ -25,7 +25,7 @@ public class PatiencePower extends AbstractPower implements CloneablePowerInterf
         this.owner = AbstractDungeon.player;
         this.amount = amount;
         this.type = AbstractPower.PowerType.BUFF;
-        this.isTurnBased = true;
+        this.isTurnBased = false;
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
         updateDescription();

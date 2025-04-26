@@ -3,6 +3,7 @@ package tactician.relics;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.Frost;
@@ -38,21 +39,24 @@ public class SecretBook extends BaseRelic implements ClickableRelic {
 
 	@Override
 	public void onRightClick() {
-		if (this.used) { addToBot(new TalkAction(true, this.DESCRIPTIONS[2], 1.0F, 2.0F)); }
-		if (!this.used && (!AbstractDungeon.getCurrRoom().isBattleOver && AbstractDungeon.getCurrRoom().monsters != null && AbstractDungeon.getCurrRoom().monsters.monsters != null && !AbstractDungeon.getCurrRoom().monsters.monsters.isEmpty() && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())) {
+		if (Boolean.TRUE.equals(this.used)) { addToBot(new TalkAction(true, this.DESCRIPTIONS[2], 1.0F, 2.0F)); }
+		addToBot(new WaitAction(0.1F));
+		if (Boolean.TRUE.equals(!this.used) && (!AbstractDungeon.getCurrRoom().isBattleOver && AbstractDungeon.getCurrRoom().monsters != null && AbstractDungeon.getCurrRoom().monsters.monsters != null && !AbstractDungeon.getCurrRoom().monsters.monsters.isEmpty() && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())) {
 			flash();
-			if (!this.p.hasPower(DeflectPower.POWER_ID)) { addToBot(new TalkAction(true, this.DESCRIPTIONS[3], 1.0F, 2.0F)); }
-			else if (this.p.hasPower(DeflectPower.POWER_ID) && (this.p.getPower(DeflectPower.POWER_ID).amount < CONSUMEDEFLECT)) {
+			if (Boolean.TRUE.equals(!this.p.hasPower(DeflectPower.POWER_ID))) { addToBot(new TalkAction(true, this.DESCRIPTIONS[3], 1.0F, 2.0F)); }
+			else if (Boolean.TRUE.equals(this.p.hasPower(DeflectPower.POWER_ID)) && (this.p.getPower(DeflectPower.POWER_ID).amount < CONSUMEDEFLECT)) {
 				addToBot(new TalkAction(true, this.DESCRIPTIONS[4] + CONSUMEDEFLECT + this.DESCRIPTIONS[5], 1.0F, 2.0F));
 			}
-			else {
+			else if (Boolean.TRUE.equals(this.p.hasPower(DeflectPower.POWER_ID)) && (this.p.getPower(DeflectPower.POWER_ID).amount >= CONSUMEDEFLECT)) {
 				this.used = true;
 				flash();
 				stopPulse();
 				addToBot(new ReducePowerAction(this.p, this.p, this.p.getPower(DeflectPower.POWER_ID), CONSUMEDEFLECT));
 				this.p.channelOrb(new Frost());
 			}
+			else { addToBot(new TalkAction(true, "Let me think for NL another moment...", 1.0F, 2.0F)); }
 		}
+
 	} // Credit to Balls: Rubber Bouncy Ball for the code to determine if the room has living monsters as a check for right-click relics.
 
 	@Override

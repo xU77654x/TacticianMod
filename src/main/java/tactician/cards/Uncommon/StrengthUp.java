@@ -21,7 +21,9 @@ public class StrengthUp extends BaseCard {
 
     public StrengthUp(){
         this(0);
-        this.name = cardStrings.NAME + " +" + 2;
+        int upgradeCount = this.timesUpgraded + 2;
+        this.name = cardStrings.EXTENDED_DESCRIPTION[0] + upgradeCount;
+        cardStrings.NAME = this.name;
     }
 
 
@@ -42,7 +44,7 @@ public class StrengthUp extends BaseCard {
         this.timesUpgraded++;
         this.upgraded = true;
         int upgradeCount = this.timesUpgraded + 2;
-        this.name = cardStrings.NAME + " +" + upgradeCount;
+        this.name = cardStrings.EXTENDED_DESCRIPTION[0] + upgradeCount;
         initializeTitle();
     }
 
@@ -53,7 +55,7 @@ public class StrengthUp extends BaseCard {
     @Override
     public AbstractCard makeCopy() {
         int upgradeCount = this.timesUpgraded + 2;
-        this.name = cardStrings.NAME + " +" + upgradeCount;
+        this.name = cardStrings.EXTENDED_DESCRIPTION[0] + upgradeCount;
         return new StrengthUp(this.timesUpgraded);
     }
 }

@@ -174,8 +174,7 @@
   },
   "${modID}:Zeal": {
     "NAME": "Zeal",
-    "DESCRIPTION": "This turn, you are weapon-strong. NL Draw 1 card.",
-    "UPGRADE_DESCRIPTION": "{@@}For !M! turn{!M!|1=|@=s}, you are weapon-strong. NL Draw 1 card."
+    "DESCRIPTION": "Retain. NL This turn, you NL are weapon-strong. NL Exhaust."
   },
   "${modID}:AlertStance": {
     "NAME": "Alert Stance",
@@ -295,7 +294,7 @@
   },
   "${modID}:Underdog": {
     "NAME": "Underdog",
-    "DESCRIPTION": "Draw !M! cards. NL If played in an Elite NL or Boss combat, permanently increase this card's draw by 1."
+    "DESCRIPTION": "{@@}Draw !M! card{!M!|1=|@=s}. NL If played in an Elite NL or Boss combat, increase this card's draw by 1. Exhaust."
   },
   "${modID}:Gamble": {
     "NAME": "Gamble",
@@ -350,16 +349,19 @@
     "UPGRADE_DESCRIPTION": "Exhaust a card. Add an upgraded Expiration to your hand. Gain [E] if you Exhaust a Curse."
   },
   "${modID}:StrengthUp": {
-    "NAME": "Strength",
-    "DESCRIPTION": "Gain !M! Strength. NL Can be upgraded any number of times."
+    "NAME": "Strength Up",
+    "DESCRIPTION": "Gain !M! Strength. NL Can be upgraded any number of times.",
+    "EXTENDED_DESCRIPTION": ["Strength +"]
   },
   "${modID}:FocusUp": {
-    "NAME": "Magic",
-    "DESCRIPTION": "Gain !M! Focus. NL Can be upgraded any number of times."
+    "NAME": "Magic Up",
+    "DESCRIPTION": "Gain !M! Focus. NL Can be upgraded any number of times.",
+    "EXTENDED_DESCRIPTION": ["Magic +"]
   },
   "${modID}:DexterityUp": {
-    "NAME": "Defense",
-    "DESCRIPTION": "Gain !M! Dexterity. NL Can be upgraded any number of times."
+    "NAME": "Defense Up",
+    "DESCRIPTION": "Gain !M! Dexterity. NL Can be upgraded any number of times.",
+    "EXTENDED_DESCRIPTION": ["Defense +"]
   },
   "${modID}:Astra": {
     "NAME": "Astra",
