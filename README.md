@@ -3,25 +3,23 @@
 Robin, known as Fire Emblem's best tactician from Ylisse, enters Slay the Spire as an unofficial, modded character.
 
 Use weapon types to turn the tides of battle. With weapon advantage, you can deal more damage, gain more Block, and
-halve consumption of usable powers.  Enemy actions are tied to a weapon type. Can you ascend the Spire with your wits?
+halve consumption of your consumable counter-attack power.  Enemy actions are tied to a weapon type. Can you ascend the Spire with your wits?
 
 ---
 
 # Features
 
 This mod is still in development, but once complete this character will feature:
-- A full set of 75+ cards.
-- 12 relics, 8 of which are global.
+- A full set of 75 non-Strike/Defend cards.
+- 13 relics, 8 of which are global.
 - 4 potions, 2 of which are global.
 
 ---
 
 # Progress
 
-Not all cards and relics are ready just yet, but a majority of them are done...save for the weapon type functionality and
-card art. For card art, I plan to use Fire Emblem Awakening screenshots for most of them, with others sources from
-Three Houses, Heroes, and Super Smash Bros. Ultimate.
-
+Almost every card is working as intended, but the implementation of weapon types is complicated.
+Card art will consist of screenshots mostly from Fire Emblem Awakening, as well as Three Houses, Heroes, and Super Smash Bros. Ultimate.
 If you have any interest in helping with this project, reach out to U77654 on Discord.
 
 # Legal Notice
