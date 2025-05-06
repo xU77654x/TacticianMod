@@ -18,7 +18,7 @@ public class UpgradeAttacks extends BaseCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public UpgradeAttacks(Runnable onUseOrChosen) {
         super(ID, info);

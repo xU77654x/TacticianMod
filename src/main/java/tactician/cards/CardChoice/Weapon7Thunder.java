@@ -18,7 +18,7 @@ public class Weapon7Thunder extends BaseCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public Weapon7Thunder(Runnable onUseOrChosen) {
         super(ID, info);

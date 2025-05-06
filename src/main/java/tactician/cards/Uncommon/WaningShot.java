@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
-import tactician.powers.weaponscurrent.Weapon1SwordPower;
 import tactician.powers.weaponscurrent.Weapon4BowPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;

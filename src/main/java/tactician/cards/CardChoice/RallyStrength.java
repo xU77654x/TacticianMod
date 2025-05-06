@@ -18,7 +18,7 @@ public class RallyStrength extends BaseCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public RallyStrength(Runnable onUseOrChosen) {
         super(ID, info);

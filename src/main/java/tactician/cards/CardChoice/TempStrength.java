@@ -18,7 +18,7 @@ public class TempStrength extends BaseCard {
 			CardTarget.NONE,
 			-2
 	);
-	private Runnable onUseOrChosen;
+	private final Runnable onUseOrChosen;
 
 	public TempStrength(Runnable onUseOrChosen) {
 		super(ID, info);

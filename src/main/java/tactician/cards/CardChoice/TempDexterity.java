@@ -18,7 +18,7 @@ public class TempDexterity extends BaseCard {
 			CardTarget.NONE,
 			-2
 	);
-	private Runnable onUseOrChosen;
+	private final Runnable onUseOrChosen;
 
 	public TempDexterity(Runnable onUseOrChosen) {
 		super(ID, info);
