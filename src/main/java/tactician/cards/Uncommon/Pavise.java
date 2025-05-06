@@ -20,7 +20,7 @@ public class Pavise extends BaseCard {
 
     public Pavise() {
         super(ID, info);
-        setBlock(6, 2);
+        setBlock(5, 2);
     }
 
     @Override

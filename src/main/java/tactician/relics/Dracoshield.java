@@ -24,14 +24,10 @@ public class Dracoshield extends BaseRelic {
     }
 
     @Override
-    public String getUpdatedDescription() {
-        return this.DESCRIPTIONS[0] + CARDS + this.DESCRIPTIONS[1] + BLUR + this.DESCRIPTIONS[2];
-    }
+    public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + CARDS + this.DESCRIPTIONS[1] + BLUR + this.DESCRIPTIONS[2]; }
 
     @Override
-    public void atTurnStart() {
-        this.counter = 0;
-    }
+    public void atTurnStart() { this.counter = 0; }
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
@@ -47,12 +43,8 @@ public class Dracoshield extends BaseRelic {
     }
 
     @Override
-    public void onVictory() {
-        this.counter = -1;
-    }
+    public void onVictory() { this.counter = -1; }
 
     @Override
-    public AbstractRelic makeCopy() {
-        return new Dracoshield();
-    }
+    public AbstractRelic makeCopy() { return new Dracoshield(); }
 }

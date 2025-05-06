@@ -23,7 +23,7 @@ public class Solidarity extends BaseCard {
 
     public Solidarity() {
         super(ID, info);
-        setMagic(10, 6);
+        setMagic(9, 6);
         setSelfRetain(true);
     }
 

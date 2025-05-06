@@ -15,10 +15,13 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
-import tactician.cards.Weapons.Weapon4Bow;
-import tactician.cards.Weapons.Weapon8Dark;
+import tactician.cards.CardChoice.Weapon4Bow;
+import tactician.cards.CardChoice.Weapon8Dark;
 import tactician.character.MyCharacter;
+import tactician.powers.weaponscurrent.Weapon4BowPower;
+import tactician.powers.weaponscurrent.Weapon8DarkPower;
 import tactician.util.CardStats;
+import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,7 @@ public class BeguilingBow extends BaseCard {
             CardTarget.ENEMY,
             2
     );
+    public int weapon;
 
     public BeguilingBow() {
         super(ID, info);
@@ -42,17 +46,31 @@ public class BeguilingBow extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        weapon = 0;
         ArrayList<AbstractCard> easyCardList = new ArrayList<>();
         easyCardList.add(new Weapon4Bow(() ->  {
-            addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber)); // TODO: Set your weapon to Bow.
+            weapon = 4;
+            addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p)));
+            calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }));
         easyCardList.add(new Weapon8Dark(() ->  {
-            addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber)); // TODO: Set your weapon to Dark.
+            weapon = 8;
+            addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p)));
+            calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SHIELD));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
         addToBot(new MakeTempCardInHandAction(new Clumsy(), 2));
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        int realDamage = baseDamage;
+        baseDamage += Wiz.playerWeaponCalc(m, weapon);
+        super.calculateCardDamage(m);
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
     }
 
     @Override

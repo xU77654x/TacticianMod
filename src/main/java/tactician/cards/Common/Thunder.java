@@ -11,12 +11,13 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.weaponscurrent.Weapon7ThunderPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
+import tactician.util.Wiz;
 
 public class Thunder extends BaseCard {
     public static final String ID = makeID(Thunder.class.getSimpleName());
-    // private static final CardStrings cardStrings = this.DESCRIPTIONS
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
@@ -36,9 +37,20 @@ public class Thunder extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p)));
+        calculateCardDamage(m);
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        int realDamage = baseDamage;
+        baseDamage += Wiz.playerWeaponCalc(m, 7);
+        super.calculateCardDamage(m);
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
     }
 
     @Override

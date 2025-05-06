@@ -9,12 +9,13 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
-// TODO: Import and create LoseFocusPower.
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.LoseFocusPower;
+import tactician.powers.weaponscurrent.Weapon6FirePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
+import tactician.util.Wiz;
 
 public class Arcfire extends BaseCard {
     public static final String ID = makeID(Arcfire.class.getSimpleName());
@@ -36,10 +37,21 @@ public class Arcfire extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p)));
+        calculateCardDamage(m);
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new LoseFocusPower(this.magicNumber), this.magicNumber));
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        int realDamage = baseDamage;
+        baseDamage += Wiz.playerWeaponCalc(m, 6);
+        super.calculateCardDamage(m);
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
     }
 
     @Override

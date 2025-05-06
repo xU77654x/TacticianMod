@@ -1,4 +1,37 @@
 {
+  "${modID}:Weapon1SwordPower": {
+    "NAME": "Weapon: Sword",
+    "DESCRIPTIONS": ["Strong to: #gAxe, #pDark. NL Weak to: #bLance, [#FC63C6]Bow."]
+  },
+  "${modID}:Weapon2LancePower": {
+    "NAME": "Weapon: Lance",
+    "DESCRIPTIONS": ["Strong to: #rSword, #pDark. NL Weak to: #gAxe, [#FC63C6]Bow."]
+  },
+  "${modID}:Weapon3AxePower": {
+    "NAME": "Weapon: Axe",
+    "DESCRIPTIONS": ["Strong to: #bLance, #pDark. NL Weak to: #rSword, [#FC63C6]Bow."]
+  },
+  "${modID}:Weapon4BowPower": {
+    "NAME": "Weapon: Bow",
+    "DESCRIPTIONS": ["Strong to: #rSword, #bLance, #gAxe. NL Weak to: [#00EE88]Wind, [#FF9933]Fire, #yThunder."]
+  },
+  "${modID}:Weapon5WindPower": {
+    "NAME": "Weapon: Wind",
+    "DESCRIPTIONS": ["Strong to: #yThunder, [#FC63C6]Bow. NL Weak to: [#FF9933]Fire, #pDark."]
+  },
+  "${modID}:Weapon6FirePower": {
+    "NAME": "Weapon: Fire",
+    "DESCRIPTIONS": ["Strong to: [#00EE88]Wind, [#FC63C6]Bow. NL Weak to: #yThunder, #pDark."]
+  },
+  "${modID}:Weapon7ThunderPower": {
+    "NAME": "Weapon: Thunder",
+    "DESCRIPTIONS": ["Strong to: [#FF9933]Fire, [#FC63C6]Bow. NL Weak to: [#00EE88]Wind, #pDark."]
+  },
+  "${modID}:Weapon8DarkPower": {
+    "NAME": "Weapon: Dark",
+    "DESCRIPTIONS": ["Strong to: [#00EE88]Wind, [#FF9933]Fire, #yThunder NL Weak to: #rSword, #bLance, #gAxe."]
+  },
+
   "${modID}:DeflectPower": {
     "NAME": "Deflect",
     "DESCRIPTIONS": ["The next time you take Attack damage, deal ",

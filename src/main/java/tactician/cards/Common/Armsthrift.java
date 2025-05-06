@@ -1,5 +1,6 @@
 package tactician.cards.Common;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -7,8 +8,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.ArmsthriftAction;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
-import tactician.cards.Weapons.*;
+import tactician.cards.CardChoice.*;
 import tactician.character.MyCharacter;
+import tactician.powers.DeflectPower;
 import tactician.util.CardStats;
 
 import java.util.ArrayList;
@@ -25,12 +27,12 @@ public class Armsthrift extends BaseCard {
 
     public Armsthrift() {
         super(ID, info);
-        setBlock(4, 4);
+        setMagic(3, 3);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, this.block));
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
 
         ArrayList<AbstractCard> easyCardList = new ArrayList<>();
         easyCardList.add(new UpgradeAttacks(() -> addToBot(new ArmsthriftAction(0))));

@@ -1,6 +1,7 @@
 package tactician.cards.Uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,8 +11,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.MakeTempCardInExhaustAction;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.weaponscurrent.Weapon6FirePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
+import tactician.util.Wiz;
 
 public class DyingBlaze extends BaseCard {
     public static final String ID = makeID(DyingBlaze.class.getSimpleName());
@@ -37,6 +40,8 @@ public class DyingBlaze extends BaseCard {
         for (int i = this.magicNumber; i > 0; i--) {
             addToBot(new MakeTempCardInExhaustAction(makeStatEquivalentCopy(), 1));
         }
+        addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p)));
+        calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
 
         /*
@@ -65,6 +70,7 @@ public class DyingBlaze extends BaseCard {
     public void calculateCardDamage(AbstractMonster m) {
         int realDamage = baseDamage;
         baseDamage += AbstractDungeon.player.exhaustPile.size() + this.magicNumber;
+        baseDamage += Wiz.playerWeaponCalc(m, 6);
         super.calculateCardDamage(m);
         baseDamage = realDamage;
         this.isDamageModified = (damage != baseDamage);

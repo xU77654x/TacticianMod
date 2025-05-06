@@ -11,8 +11,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
+import tactician.powers.ZealPower;
+import tactician.powers.weaponscurrent.*;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
+import tactician.util.Wiz;
 
 public class WrathStrike extends BaseCard {
     public static final String ID = makeID(WrathStrike.class.getSimpleName());
@@ -35,6 +38,8 @@ public class WrathStrike extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p)));
+        calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
     }
@@ -52,6 +57,8 @@ public class WrathStrike extends BaseCard {
     @Override
     public void calculateCardDamage(AbstractMonster m) {
         int realDamage = baseDamage;
+        baseDamage += Wiz.playerWeaponCalc(m, 1);
+
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
             baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
         super.calculateCardDamage(m);
@@ -60,7 +67,5 @@ public class WrathStrike extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new WrathStrike();
-    }
+    public AbstractCard makeCopy() { return new WrathStrike(); }
 }

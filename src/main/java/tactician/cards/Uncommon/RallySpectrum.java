@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
-import tactician.cards.Weapons.*;
+import tactician.cards.CardChoice.*;
 import tactician.character.MyCharacter;
 import tactician.powers.LoseFocusPower;
 import tactician.util.CardStats;

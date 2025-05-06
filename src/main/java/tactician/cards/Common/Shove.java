@@ -1,17 +1,19 @@
 package tactician.cards.Common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.BarricadePower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.ShovePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
+import tactician.util.Wiz;
 
 public class Shove extends BaseCard {
     public static final String ID = makeID(Shove.class.getSimpleName());
@@ -33,12 +35,26 @@ public class Shove extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAllEnemiesAction(p, this.multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
+                calculateCardDamage(mo);
+                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            }
+        }
         addToBot(new ApplyPowerAction(p, p, new ShovePower(this.magicNumber), this.magicNumber));
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new Shove();
+    public void calculateCardDamage(AbstractMonster m) {
+        if (m != null) {
+            int realDamage = baseDamage;
+            baseDamage += Wiz.playerWeaponCalc(m, 9);
+            super.calculateCardDamage(m);
+            baseDamage = realDamage;
+            this.isDamageModified = (damage != baseDamage);
+        }
     }
+
+    @Override
+    public AbstractCard makeCopy() { return new Shove(); }
 }

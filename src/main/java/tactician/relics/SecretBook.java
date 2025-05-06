@@ -38,6 +38,7 @@ public class SecretBook extends BaseRelic implements ClickableRelic {
 	}
 
 	@Override
+	// TODO: Play a sound effect indicating this relic'
 	public void onRightClick() {
 		if (Boolean.TRUE.equals(this.used)) { addToBot(new TalkAction(true, this.DESCRIPTIONS[2], 1.0F, 2.0F)); }
 		addToBot(new WaitAction(0.1F));

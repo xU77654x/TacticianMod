@@ -16,12 +16,12 @@ public class Patience extends BaseCard {
             CardType.POWER,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            1
+            2
     );
 
     public Patience() {
         super(ID, info);
-        setMagic(4, 1);
+        setMagic(6, 2);
     }
 
     @Override

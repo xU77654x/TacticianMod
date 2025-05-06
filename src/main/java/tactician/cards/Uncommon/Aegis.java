@@ -20,7 +20,7 @@ public class Aegis extends BaseCard {
 
     public Aegis() {
         super(ID, info);
-        setBlock(6, 2);
+        setBlock(5, 2);
     }
 
     @Override

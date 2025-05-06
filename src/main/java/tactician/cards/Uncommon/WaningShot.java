@@ -14,8 +14,11 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
+import tactician.powers.weaponscurrent.Weapon1SwordPower;
+import tactician.powers.weaponscurrent.Weapon4BowPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
+import tactician.util.Wiz;
 
 public class WaningShot extends BaseCard {
     public static final String ID = makeID(WaningShot.class.getSimpleName());
@@ -37,12 +40,23 @@ public class WaningShot extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p)));
+        calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), this.magicNumber));
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= 3)) {
             addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), 3));
             addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -1), -1));
         }
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        int realDamage = baseDamage;
+        baseDamage += Wiz.playerWeaponCalc(m, 4);
+        super.calculateCardDamage(m);
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
     }
 
     @Override

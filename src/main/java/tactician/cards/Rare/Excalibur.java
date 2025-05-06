@@ -11,8 +11,10 @@ import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.DrawPower;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.weaponscurrent.Weapon5WindPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
+import tactician.util.Wiz;
 
 public class Excalibur extends BaseCard {
     public static final String ID = makeID(Excalibur.class.getSimpleName());
@@ -34,14 +36,22 @@ public class Excalibur extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p)));
+        calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(p, p, new DrawPower(p, 1), 1));
-        if (this.upgraded)
-            addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber));
+        if (this.upgraded) { addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber)); }
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new Excalibur();
+    public void calculateCardDamage(AbstractMonster m) {
+        int realDamage = baseDamage;
+        baseDamage += Wiz.playerWeaponCalc(m, 5);
+        super.calculateCardDamage(m);
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
     }
+
+    @Override
+    public AbstractCard makeCopy() { return new Excalibur(); }
 }

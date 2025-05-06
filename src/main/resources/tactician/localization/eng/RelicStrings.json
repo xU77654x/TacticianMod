@@ -9,6 +9,12 @@
       "I need at least NL ",
       " Deflect to NL channel an Orb."]
   },
+  "${modID}:ReekingBox": {
+    "NAME": "Reeking Box",
+    "FLAVOR": "\"This is all part of the plan.\"",
+    "DESCRIPTIONS": ["Once per combat on right-click, permanently transform your Strikes into Defends, and Defends into Strikes.",
+      "I already opened the NL Reeking Box during NL this fight."]
+  },
   "${modID}:SpiritDust": {
     "NAME": "Spirit Dust",
     "FLAVOR": "\"Er, is that it?\"",

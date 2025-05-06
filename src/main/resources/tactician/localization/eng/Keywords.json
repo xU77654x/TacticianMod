@@ -14,56 +14,56 @@
     "ID": "sword_weapon",
     "PROPER_NAME": "Sword",
     "NAMES": ["Sword"],
-    "DESCRIPTION": "Set your weapon to #rSword. NL Strong to: #gAxe, #pDark. NL Weak to: #bLance, [#FC63C6]Bow. NL Attacks calculate Strength."
+    "DESCRIPTION": "Set your weapon to #rSword. NL Strong to: #gAxe, #pDark. NL Weak to: #bLance, [#FC63C6]Bow."
   },
 
   {
     "ID": "lance_weapon",
     "PROPER_NAME": "Lance",
     "NAMES": ["Lance"],
-    "DESCRIPTION": "Set your weapon to #bLance. NL Strong to: #rSword, #pDark. NL Weak to: #gAxe, [#FC63C6]Bow. NL Attacks calculate Strength."
+    "DESCRIPTION": "Set your weapon to #bLance. NL Strong to: #rSword, #pDark. NL Weak to: #gAxe, [#FC63C6]Bow."
   },
 
   {
     "ID": "axe_weapon",
     "PROPER_NAME": "Axe",
     "NAMES": ["Axe"],
-    "DESCRIPTION": "Set your weapon to #gAxe. NL Strong to: #bLance, #pDark. NL Weak to: #rSword, [#FC63C6]Bow. NL Attacks calculate Strength."
+    "DESCRIPTION": "Set your weapon to #gAxe. NL Strong to: #bLance, #pDark. NL Weak to: #rSword, [#FC63C6]Bow."
   },
 
   {
     "ID": "bow_weapon",
     "PROPER_NAME": "Bow",
     "NAMES": ["Bow"],
-    "DESCRIPTION": "Set your weapon to [#FC63C6]Bow. NL Strong to: #rSword, #bLance, #gAxe. NL Weak to: [#00EE88]Wind, [#FF9933]Fire, #yThunder. NL Attacks calculate Strength."
+    "DESCRIPTION": "Set your weapon to [#FC63C6]Bow. NL Strong to: #rSword, #bLance, #gAxe. NL Weak to: [#00EE88]Wind, [#FF9933]Fire, #yThunder."
   },
 
   {
     "ID": "wind_weapon",
     "PROPER_NAME": "Wind",
     "NAMES": ["Wind"],
-    "DESCRIPTION": "Set your weapon to [#00EE88]Wind. NL Strong to: #yThunder, [#FC63C6]Bow. NL Weak to: [#FF9933]Fire, #pDark. NL Attacks calculate Focus."
+    "DESCRIPTION": "Set your weapon to [#00EE88]Wind. NL Strong to: #yThunder, [#FC63C6]Bow. NL Weak to: [#FF9933]Fire, #pDark."
   },
 
   {
     "ID": "fire_weapon",
     "PROPER_NAME": "Fire",
     "NAMES": ["Fire"],
-    "DESCRIPTION": "Set your weapon to [#FF9933]Fire. NL Strong to: [#00EE88]Wind, [#FC63C6]Bow. NL Weak to: #yThunder, #pDark. NL Attacks calculate Focus."
+    "DESCRIPTION": "Set your weapon to [#FF9933]Fire. NL Strong to: [#00EE88]Wind, [#FC63C6]Bow. NL Weak to: #yThunder, #pDark."
   },
 
   {
     "ID": "thunder_weapon",
     "PROPER_NAME": "Thunder",
     "NAMES": ["Thunder"],
-    "DESCRIPTION": "Set your weapon to #yThunder. NL Strong to: [#FF9933]Fire, [#FC63C6]Bow. NL Weak to: [#00EE88]Wind, #pDark. NL Attacks calculate Focus."
+    "DESCRIPTION": "Set your weapon to #yThunder. NL Strong to: [#FF9933]Fire, [#FC63C6]Bow. NL Weak to: [#00EE88]Wind, #pDark."
   },
 
   {
     "ID": "dark_weapon",
     "PROPER_NAME": "Dark",
     "NAMES": ["Dark"],
-    "DESCRIPTION": "Set your weapon to #pDark. NL Strong to: [#00EE88]Wind, [#FF9933]Fire, #yThunder NL Weak to: #rSword, #bLance, #gAxe. NL Attacks calculate Focus."
+    "DESCRIPTION": "Set your weapon to #pDark. NL Strong to: [#00EE88]Wind, [#FF9933]Fire, #yThunder NL Weak to: #rSword, #bLance, #gAxe."
   },
 
   {
@@ -84,7 +84,7 @@
       "copy weapon",
       "copy_weapon"
     ],
-    "DESCRIPTION": "This card uses your current weapon as its type, boosting or nerfing its effects based on weapon-triangle effects. Auto-applies Magic to appropriate weapon types."
+    "DESCRIPTION": "This card uses your current weapon as its type, boosting or nerfing its effects based on weapon-triangle effects."
   },
 
   {

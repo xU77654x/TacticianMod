@@ -15,7 +15,7 @@ public class Speedwing extends BaseRelic {
     public static final String ID = makeID(NAME); // Adds prefix to relic ID, resulting in modID:MyRelic
     private static final RelicTier RARITY = RelicTier.COMMON;
     private static final LandingSound SOUND = LandingSound.CLINK;
-    private static final int DEFLECT = 5; // This is used rather than a hard-coded value due to the description.
+    private static final int DEFLECT = 6; // This is used rather than a hard-coded value due to the description.
     private static final int ENERGY = 1;
     private static final int TURN = 2;
 

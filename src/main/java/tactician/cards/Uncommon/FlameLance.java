@@ -15,10 +15,13 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
-import tactician.cards.Weapons.Weapon2Lance;
-import tactician.cards.Weapons.Weapon6Fire;
+import tactician.cards.CardChoice.Weapon2Lance;
+import tactician.cards.CardChoice.Weapon6Fire;
 import tactician.character.MyCharacter;
+import tactician.powers.weaponscurrent.Weapon2LancePower;
+import tactician.powers.weaponscurrent.Weapon6FirePower;
 import tactician.util.CardStats;
+import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,7 @@ public class FlameLance extends BaseCard {
             CardTarget.ENEMY,
             2
     );
+    public int weapon;
 
     public FlameLance() {
         super(ID, info);
@@ -41,17 +45,31 @@ public class FlameLance extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        weapon = 0;
         ArrayList<AbstractCard> easyCardList = new ArrayList<>();
         easyCardList.add(new Weapon2Lance(() -> {
-            addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber)); // TODO: Set your weapon to Lance.
+            weapon = 2;
+            addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p)));
+            calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }));
         easyCardList.add(new Weapon6Fire(() -> {
-            addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber)); // TODO: Set your weapon to Fire.
+            weapon = 6;
+            addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p)));
+            calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
         addToBot(new EvokeAllOrbsAction());
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        int realDamage = baseDamage;
+        baseDamage += Wiz.playerWeaponCalc(m, weapon);
+        super.calculateCardDamage(m);
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
     }
 
     @Override

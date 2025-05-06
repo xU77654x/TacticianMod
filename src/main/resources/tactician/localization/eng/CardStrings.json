@@ -105,7 +105,7 @@
     "DESCRIPTION": "${modID}:Thunder. Gain !B! Block.",
     "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Thunder. Gain !B! Block."
   },
-  "${modID}:DefendDark": {
+  "${modID}:Strike8Dark": {
     "NAME": "Defend (Dark)",
     "DESCRIPTION": "${modID}:Dark. Gain !B! Block.",
     "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Dark. Gain !B! Block."
@@ -123,14 +123,17 @@
     "NAME": "Vulnerary",
     "DESCRIPTION": "Heal !M! HP. NL {@@}Add Retain on !${modID}:retainCards! card{!${modID}:retainCards!|1=|@=s} NL for the rest of combat. NL End your turn. Exhaust."
   },
+  "${modID}:DebugWeapon": {
+    "NAME": "Debug Weapon",
+    "DESCRIPTION": "Retain. Gain [E] [E]. NL Apply any weapon type onto an enemy."
+  },
   "${modID}:WrathStrike": {
     "NAME": "Wrath Strike",
     "DESCRIPTION": "${modID}:Sword. ${modID}:Combat_Art. NL Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect."
   },
   "${modID}:TempestLance": {
     "NAME": "Tempest Lance",
-    "DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and reduce it by !M!.",
-    "UPGRADE_DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Ignores your Weak and cures it."
+    "DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL Consume 3 ${modID}:Deflect NL to Channel 1 Frost."
   },
   "${modID}:Smash": {
     "NAME": "Smash",
@@ -138,7 +141,7 @@
   },
   "${modID}:CurvedShot": {
     "NAME": "Curved Shot",
-    "DESCRIPTION": "${modID}:Bow. ${modID}:Combat_Art. NL Deal !D! damage. NL Convert your ${modID}:Deflect NL into Vigor."
+    "DESCRIPTION": "${modID}:Bow. ${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Convert your ${modID}:Deflect NL into Block and Vigor."
   },
   "${modID}:Elwind": {
     "NAME": "Elwind",
@@ -180,10 +183,6 @@
     "NAME": "Alert Stance",
     "DESCRIPTION": "Gain !B! Block. NL Retain your hand NL this turn. NL End your turn."
   },
-  "${modID}:Armsthrift": {
-    "NAME": "Armsthrift",
-    "DESCRIPTION": "Gain !B! Block. NL Choose to upgrade your hand's Attacks, Skills, or Powers for the rest of combat."
-  },
   "${modID}:Tantivy": {
     "NAME": "Tantivy",
     "DESCRIPTION": "Scry !M!. NL Draw 1 card. NL Gain !${modID}:magicTempDex! temp. Dexterity."
@@ -191,6 +190,10 @@
   "${modID}:Blossom": {
     "NAME": "Blossom",
     "DESCRIPTION": "Ethereal. NL Gain 1 Vulnerable. NL Gain !M! Artifact."
+  },
+  "${modID}:Armsthrift": {
+    "NAME": "Armsthrift",
+    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Choose to upgrade your hand's Attacks, Skills, or Powers for the rest of combat."
   },
   "${modID}:OutdoorFighter": {
     "NAME": "Outdoor Fighter",
@@ -369,7 +372,7 @@
   },
   "${modID}:FrozenLance": {
     "NAME": "Frozen Lance",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL Focus affects this NL card !M! times."
+    "DESCRIPTION": "${modID}:Favor ${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL Dexterity affects NL this card !M! times."
   },
   "${modID}:ExhaustiveStrike": {
     "NAME": "Exhaustive Strike",

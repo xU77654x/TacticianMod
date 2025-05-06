@@ -133,14 +133,14 @@ public class MyCharacter extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(StrikeSword.ID);
-        retVal.add(StrikeLance.ID);
-        retVal.add(StrikeAxe.ID);
-        retVal.add(StrikeBow.ID);
-        retVal.add(DefendWind.ID);
-        retVal.add(DefendFire.ID);
-        retVal.add(DefendThunder.ID);
-        retVal.add(DefendDark.ID);
+        retVal.add(Basic1Sword.ID);
+        retVal.add(Basic2Lance.ID);
+        retVal.add(Basic3Axe.ID);
+        retVal.add(Basic4Bow.ID);
+        retVal.add(Basic5Wind.ID);
+        retVal.add(Basic6Fire.ID);
+        retVal.add(Basic7Thunder.ID);
+        retVal.add(Basic8Dark.ID);
         retVal.add(Veteran.ID);
         retVal.add(Solidarity.ID);
         retVal.add(Vulnerary.ID);

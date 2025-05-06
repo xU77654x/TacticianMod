@@ -13,15 +13,16 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Lightning;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
-import tactician.cards.Weapons.Weapon1Sword;
-import tactician.cards.Weapons.Weapon7Thunder;
+import tactician.cards.CardChoice.Weapon1Sword;
+import tactician.cards.CardChoice.Weapon7Thunder;
 import tactician.character.MyCharacter;
+import tactician.powers.weaponscurrent.Weapon1SwordPower;
+import tactician.powers.weaponscurrent.Weapon7ThunderPower;
 import tactician.util.CardStats;
+import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ public class LevinSword extends BaseCard {
             CardTarget.ENEMY,
             2
     );
+    public int weapon;
 
     public LevinSword() {
         super(ID, info);
@@ -44,17 +46,22 @@ public class LevinSword extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        weapon = 0;
         ArrayList<AbstractCard> easyCardList = new ArrayList<>();
         easyCardList.add(new Weapon1Sword(() ->  {
-            addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber)); // TODO: Set your weapon to Sword.
+            weapon = 1;
+            addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p)));
+            calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         }));
         easyCardList.add(new Weapon7Thunder(() ->  {
-            addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber)); // TODO: Set your weapon to Thunder.
-            addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
+            weapon = 7;
+            addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p)));
+            calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
+        addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
         addToBot(new ChannelAction(new Lightning()));
     }
 
@@ -62,6 +69,15 @@ public class LevinSword extends BaseCard {
     public void triggerOnExhaust() {
         addToBot(new MakeTempCardInHandAction(new Sunder()));
         addToBot(new MakeTempCardInHandAction(new Bolting()));
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        int realDamage = baseDamage;
+        baseDamage += Wiz.playerWeaponCalc(m, weapon);
+        super.calculateCardDamage(m);
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
     }
 
     @Override
