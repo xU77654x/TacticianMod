@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
-import tactician.powers.ZealPower;
 import tactician.powers.weaponscurrent.*;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;

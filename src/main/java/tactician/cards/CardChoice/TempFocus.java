@@ -18,7 +18,7 @@ public class TempFocus extends BaseCard {
 			CardTarget.NONE,
 			-2
 	);
-	private Runnable onUseOrChosen;
+	private final Runnable onUseOrChosen;
 
 	public TempFocus(Runnable onUseOrChosen) {
 		super(ID, info);
