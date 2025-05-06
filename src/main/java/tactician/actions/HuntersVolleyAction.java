@@ -25,7 +25,7 @@ public class HuntersVolleyAction extends AbstractGameAction {
             this.target.damage(this.info);
             this.target.damage(this.info);
             if (((this.target).isDying || this.target.currentHealth <= 0) && !this.target.halfDead) {
-                // addToBot(new TalkAction(true, "Now that's strategy!", 1.0F, 2.0F));
+                addToBot(new TalkAction(true, "Now that's strategy!", 1.0F, 2.0F));
                 addToBot(new GainEnergyAction(1));
                 addToBot(new DrawCardAction(1));
             }

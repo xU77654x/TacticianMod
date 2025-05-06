@@ -18,7 +18,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import tactician.cards.Basic.*;
+import tactician.cards.basic.*;
 import tactician.relics.SecretBook;
 
 import java.util.ArrayList;

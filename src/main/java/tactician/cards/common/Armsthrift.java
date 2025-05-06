@@ -1,0 +1,47 @@
+package tactician.cards.common;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.ArmsthriftAction;
+import tactician.actions.EasyModalChoiceAction;
+import tactician.cards.BaseCard;
+import tactician.cards.cardchoice.*;
+import tactician.character.MyCharacter;
+import tactician.powers.DeflectPower;
+import tactician.util.CardStats;
+
+import java.util.ArrayList;
+
+public class Armsthrift extends BaseCard {
+    public static final String ID = makeID(Armsthrift.class.getSimpleName());
+    private static final CardStats info = new CardStats(
+            MyCharacter.Meta.CARD_COLOR,
+            CardType.SKILL,
+            CardRarity.COMMON,
+            CardTarget.SELF,
+            1
+    );
+
+    public Armsthrift() {
+        super(ID, info);
+        setMagic(3, 3);
+    }
+
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
+
+        ArrayList<AbstractCard> easyCardList = new ArrayList<>();
+        easyCardList.add(new UpgradeAttacks(() -> addToBot(new ArmsthriftAction(0))));
+        easyCardList.add(new UpgradeSkills(() -> addToBot(new ArmsthriftAction(1))));
+        easyCardList.add(new UpgradePowers(() -> addToBot(new ArmsthriftAction(2))));
+        addToBot(new EasyModalChoiceAction(easyCardList));
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+        return new Armsthrift();
+    }
+}
