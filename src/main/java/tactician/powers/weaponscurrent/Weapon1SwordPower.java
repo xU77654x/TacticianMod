@@ -36,7 +36,7 @@ public class Weapon1SwordPower extends AbstractPower {
 		this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 		this.updateDescription();
 		this.p = AbstractDungeon.player;
-		priority = 1;
+		priority = Integer.MAX_VALUE;
 	}
 
 	@Override

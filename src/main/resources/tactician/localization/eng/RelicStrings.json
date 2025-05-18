@@ -2,24 +2,16 @@
   "${modID}:SecretBook": {
     "NAME": "Secret Book",
     "FLAVOR": "\"I reviewed some historical battle texts. One can glean many tactics from the past.\"",
-    "DESCRIPTIONS": ["Once per turn on right-click, consume #b",
-      " #y${modID}:Deflect to Channel 1 #yFrost.",
-      "I already activated my Secret Book earlier this turn.",
-      "I can't channel Orbs without gaining Deflect first.",
-      "I need at least NL ",
-      " Deflect to NL channel an Orb."]
+    "DESCRIPTIONS": ["At the start of combat, gain #b1 Focus and add an Anathema to your hand."]
   },
   "${modID}:ReekingBox": {
     "NAME": "Reeking Box",
     "FLAVOR": "\"This is all part of the plan.\"",
-    "DESCRIPTIONS": ["Once per combat on right-click, permanently transform your Strikes into Defends, and Defends into Strikes.",
+    "DESCRIPTIONS": ["On right-click, permanently transform your Strikes into Defends, and Defends into Strikes. This can be used #b",
+      " more times, but recharges 1 use after an Elite combat.",
+      " more time, but recharges 1 use after an Elite combat.",
+      " On right-click, permanently transform your Strikes into Defends, and Defends into Strikes. This gains 1 charge after an Elite combat.",
       "I already opened the NL Reeking Box during NL this fight."]
-  },
-  "${modID}:SpiritDust": {
-    "NAME": "Spirit Dust",
-    "FLAVOR": "\"Er, is that it?\"",
-    "DESCRIPTIONS": ["Start each combat with #b",
-      " #yFocus."]
   },
   "${modID}:Speedwing": {
     "NAME": "Speedwing",
@@ -29,17 +21,22 @@
   },
   "${modID}:SeraphRobe": {
     "NAME": "Seraph Robe",
-    "FLAVOR": "\"Believe it or not, I'm considered a pretty good tactician.\"",
-    "DESCRIPTIONS": ["Upon pickup, raise your Max HP by #b",
-      ". Once on right-click, heal #b",
-      " HP.",
-      "I have already used this relic's healing."]
+    "FLAVOR": "\"Maybe I should learn some new skills...\"",
+    "DESCRIPTIONS": ["Upon pickup and whenever you open a chest, heal #b",
+      " HP and gain #b",
+      " Gold."]
   },
   "${modID}:AsheraIcon": {
     "NAME": "Ashera Icon",
     "FLAVOR": "\"Hmm, I don't feel very different...\"",
     "DESCRIPTIONS": ["Gain #b",
-      " Gold. If your Maw Bank is disabled, re-activate it."]
+      " Gold and another random Common relic. If your Maw Bank is disabled, re-activate it."]
+  },
+  "${modID}:SpiritDust": {
+    "NAME": "Spirit Dust",
+    "FLAVOR": "\"Believe it or not, I'm considered a pretty good tactician.\"",
+    "DESCRIPTIONS": ["Whenever you play an Attack, gain #b",
+      " temp. Focus."]
   },
   "${modID}:Dracoshield": {
     "NAME": "Dracoshield",
@@ -51,12 +48,7 @@
   "${modID}:BookOfNaga": {
     "NAME": "Book of Naga",
     "FLAVOR": "\"What's this? Hmm... Perhaps we could use it...\"",
-    "DESCRIPTIONS": ["Once per turn on right-click, consume #b",
-      " #y${modID}:Deflect to Channel 1 #yLightning.",
-      "I already activated my Book of Naga earlier this turn.",
-      "I can't channel Orbs without gaining Deflect first.",
-      "I need at least NL ",
-      " Deflect to NL channel an Orb."]
+    "DESCRIPTIONS": ["At the start of combat, gain 1 Focus and add a Hex to your hand."]
   },
   "${modID}:StatueFragment": {
     "NAME": "Statue Fragment",
@@ -66,7 +58,7 @@
   "${modID}:EnergyDrop": {
     "NAME": "Energy Drop",
     "FLAVOR": "\"I can tell I've gotten stronger.\"",
-    "DESCRIPTIONS": ["At the start of your turn, draw 1 additional card. At the end of your turn, #yExhaust 1 card."]
+    "DESCRIPTIONS": ["At the start of combat, gain 1 Strength and add an Anger to your hand; it gets Ethereal."]
   },
   "${modID}:Talisman": {
     "NAME": "Talisman",
@@ -80,10 +72,11 @@
     "DESCRIPTIONS": ["When you would die, heal to 25% of your Max HP; NL next turn, gain [E] [E] and draw ",
       " cards. Works once."]
   },
-  "${modID}:LotteryWheel": {
-    "NAME": "Lottery Wheel",
-    "FLAVOR": "\"Maybe I should learn some new skills...\"",
-    "DESCRIPTIONS": ["Select one of three random Common relics to gain."]
+  "${modID}:KillingEdge": {
+    "NAME": "Killing Edge",
+    "FLAVOR": "\"Pick a god and pray!\"",
+    "DESCRIPTIONS": ["At the start of combat, lose 1 Dexterity. Every #b",
+      "th Attack you play deals triple damage."]
   },
   "${modID}:NagasTear": {
     "NAME": "Naga's Tear",

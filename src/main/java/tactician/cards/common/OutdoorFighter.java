@@ -1,14 +1,13 @@
 package tactician.cards.common;
 
-import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.OutdoorFighterAction;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.DeflectPower;
 import tactician.util.CardStats;
 
 public class OutdoorFighter extends BaseCard {
@@ -23,15 +22,15 @@ public class OutdoorFighter extends BaseCard {
 
     public OutdoorFighter() {
         super(ID, info);
-        setBlock(2, 0);
-        setMagic(2, 0);
-        setCustomVar("magicDraw", 2, 1);
-        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
-        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
+        setMagic(2, 1);
+        setCustomVar("magicDeflect", 6, 0);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new DrawCardAction(customVar("magicDraw"), (new OutdoorFighterAction(customVar("magicDraw"), this.block, this.magicNumber)))); }
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DrawCardAction(this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(customVar("magicDeflect"))));
+    }
 
     @Override
     public AbstractCard makeCopy() { return new OutdoorFighter(); }

@@ -1,4 +1,8 @@
 {
+  "${modID}:Weapon0RemovePower": {
+    "NAME": "Weapon: Remove",
+    "DESCRIPTIONS": ["Remove the unit's current weapon type."]
+  },
   "${modID}:Weapon1SwordPower": {
     "NAME": "Weapon: Sword",
     "DESCRIPTIONS": ["Strong to: #gAxe, #pDark. NL Weak to: #bLance, [#FC63C6]Bow."]
@@ -32,6 +36,11 @@
     "DESCRIPTIONS": ["Strong to: [#00EE88]Wind, [#FF9933]Fire, #yThunder NL Weak to: #rSword, #bLance, #gAxe."]
   },
 
+  "${modID}:ReekingSwapPower": {
+    "NAME": "Reeking Box",
+    "DESCRIPTIONS": ["Your Strikes and Defends NL have reversed functionality."]
+  },
+
   "${modID}:DeflectPower": {
     "NAME": "Deflect",
     "DESCRIPTIONS": ["The next time you take Attack damage, deal ",
@@ -41,6 +50,11 @@
     "NAME": "Focus Down",
     "DESCRIPTIONS": ["At the end of your turn, lose #b",
       " #yFocus."]
+  },
+  "${modID}:NextTurnDeflectPower": {
+    "NAME": "Next Turn Deflect",
+    "DESCRIPTIONS": ["Next turn, gain #b",
+      " yDeflect."]
   },
   "${modID}:ShovePower": {
     "NAME": "Boon",
@@ -58,8 +72,8 @@
   },
   "${modID}:PresciencePower": {
     "NAME": "Prescience",
-    "DESCRIPTIONS": ["If the first card you play in a turn is an #yAttack, Channel #b",
-      " #yLightning."]
+    "DESCRIPTIONS": ["If the first card you play in a turn is an #yAttack, gain #b",
+      " #yDeflect."]
   },
   "${modID}:PatiencePower": {
     "NAME": "Patience",
@@ -77,6 +91,11 @@
     "NAME": "Master's Tactics",
     "DESCRIPTIONS": ["Increase your hand size by #b",
       "."]
+  },
+  "${modID}:ExpirationPower": {
+    "NAME": "Expiration",
+    "DESCRIPTIONS": ["Whenever you Exhaust a card, deal #b",
+      " damage to ALL enemies."]
   },
   "${modID}:LunaPower": {
     "NAME": "Luna",

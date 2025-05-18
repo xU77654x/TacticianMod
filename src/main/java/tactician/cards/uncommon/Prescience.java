@@ -21,7 +21,7 @@ public class Prescience extends BaseCard {
 
     public Prescience() {
         super(ID, info);
-        setMagic(1, 0);
+        setMagic(3, 0);
         setInnate(false, true);
     }
 

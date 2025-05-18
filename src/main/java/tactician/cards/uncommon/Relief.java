@@ -10,8 +10,8 @@ import tactician.character.MyCharacter;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 
-public class Hex extends BaseCard {
-    public static final String ID = makeID(Hex.class.getSimpleName());
+public class Relief extends BaseCard {
+    public static final String ID = makeID(Relief.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
@@ -19,7 +19,7 @@ public class Hex extends BaseCard {
             CardTarget.SELF,
             1
     );
-    public Hex() {
+    public Relief() {
         super(ID, info);
         setBlock(6, 2);
         tags.add(CustomTags.COPY);
@@ -35,7 +35,7 @@ public class Hex extends BaseCard {
     @Override
     public void triggerOnExhaust() {
         if (!this.freeToPlayOnce) {
-            Hex makeCard = new Hex();
+            Relief makeCard = new Relief();
             if (this.upgraded)
                 makeCard.upgrade();
             addToBot((new MakeTempCardInHandAction(makeCard)));
@@ -45,6 +45,6 @@ public class Hex extends BaseCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new Hex();
+        return new Relief();
     }
 }

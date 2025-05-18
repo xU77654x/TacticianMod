@@ -32,7 +32,7 @@ public class FrozenLance extends BaseCard {
     public FrozenLance() {
         super(ID, info);
         setDamage(22, 0);
-        setMagic(3, 2);
+        setMagic(5, 3);
         this.p = AbstractDungeon.player;
         tags.add(CustomTags.LANCE);
         tags.add(CustomTags.COMBAT_ART);

@@ -1,7 +1,7 @@
 package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -23,22 +23,18 @@ public class IndoorFighter extends BaseCard {
 
     public IndoorFighter() {
         super(ID, info);
-        setBlock(8, 3);
-        setMagic(8, 3);
+        setMagic(9, 3);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new HandSelectAction(1, c -> true, list -> {
-            for (AbstractCard c : list) {
-                if (c.type == AbstractCard.CardType.SKILL || c.type == AbstractCard.CardType.POWER) {
-                    addToBot(new GainBlockAction(p, p, this.block));
-                }
-                else { addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber)); }
-                p.hand.moveToDiscardPile(c);
-            }
-            list.clear();
-        },null, "Discard.", false, false, false));
+        addToBot(new ExhaustAction(1, false));
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
+
+        /* Discard a card:
+        addToBot(new HandSelectAction(3, c -> true, list -> {
+        },null, "Discard.", false, true, true));
+         */
     }
 
     @Override

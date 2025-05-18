@@ -5,16 +5,17 @@ import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.DiscardAllAction;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
 import tactician.cards.cardchoice.Weapon3Axe;
 import tactician.cards.cardchoice.Weapon5Wind;
+import tactician.cards.other.Anathema;
 import tactician.character.MyCharacter;
 import tactician.powers.weaponscurrent.Weapon3AxePower;
 import tactician.powers.weaponscurrent.Weapon5WindPower;
@@ -36,7 +37,8 @@ public class HurricaneAxe extends BaseCard {
 
     public HurricaneAxe() {
         super(ID, info);
-        setDamage(17, 4);
+        setDamage(14, 4);
+        this.cardsToPreview = new Anathema();
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
         FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
@@ -58,7 +60,8 @@ public class HurricaneAxe extends BaseCard {
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
-        addToBot(new DiscardAllAction(p));
+        addToBot(new MakeTempCardInHandAction(new Anathema()));
+        addToBot(new ExhaustAction(1, false));
     }
 
     @Override

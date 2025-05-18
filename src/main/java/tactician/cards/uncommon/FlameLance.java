@@ -10,12 +10,14 @@ import com.megacrit.cardcrawl.actions.defect.EvokeAllOrbsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
 import tactician.cards.cardchoice.Weapon2Lance;
 import tactician.cards.cardchoice.Weapon6Fire;
 import tactician.character.MyCharacter;
+import tactician.powers.DeflectPower;
 import tactician.powers.weaponscurrent.Weapon2LancePower;
 import tactician.powers.weaponscurrent.Weapon6FirePower;
 import tactician.util.CardStats;
@@ -36,7 +38,8 @@ public class FlameLance extends BaseCard {
 
     public FlameLance() {
         super(ID, info);
-        setDamage(15, 4);
+        setDamage(14, 4);
+        setMagic(3, 0);
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
         FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
@@ -58,7 +61,9 @@ public class FlameLance extends BaseCard {
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
+        int orbCount = AbstractDungeon.player.filledOrbCount();
         addToBot(new EvokeAllOrbsAction());
+        if (orbCount > 0) { addToBot(new ApplyPowerAction(p, p, new DeflectPower(orbCount * this.magicNumber), orbCount * this.magicNumber)); }
     }
 
     @Override
@@ -77,7 +82,5 @@ public class FlameLance extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new FlameLance();
-    }
+    public AbstractCard makeCopy() { return new FlameLance(); }
 }

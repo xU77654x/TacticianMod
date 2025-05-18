@@ -26,11 +26,12 @@ public class DebugWeapon extends BaseCard {
 	public DebugWeapon() {
 		super(ID, info);
 		setSelfRetain(true);
+		setExhaust(true);
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		addToBot(new GainEnergyAction(2));
+		if (this.upgraded) { addToBot(new GainEnergyAction(2)); }
 		ArrayList<AbstractCard> easyCardList = new ArrayList<>();
 		easyCardList.add(new Weapon1Sword(() -> addToBot(new ApplyPowerAction(m, p, new Weapon1SwordPower(m)))));
 		easyCardList.add(new Weapon2Lance(() -> addToBot(new ApplyPowerAction(m, p, new Weapon2LancePower(m)))));

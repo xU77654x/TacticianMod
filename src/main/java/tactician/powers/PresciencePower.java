@@ -2,6 +2,7 @@ package tactician.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -39,7 +40,7 @@ public class PresciencePower extends AbstractPower implements CloneablePowerInte
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() <= 1 && (card.type == AbstractCard.CardType.ATTACK)) {
-            for (int i = 0; i < this.amount; i++) { addToBot(new ChannelAction(new Lightning())); }
+            for (int i = 0; i < this.amount; i++) { addToBot(new ApplyPowerAction(this.owner, this.owner, new DeflectPower(this.amount))); }
             this.cardsPlayed++;
             flash();
         }

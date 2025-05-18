@@ -7,18 +7,18 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.BaseCard;
 import tactician.cards.cardchoice.Weapon1Sword;
 import tactician.cards.cardchoice.Weapon7Thunder;
+import tactician.cards.other.Hex;
 import tactician.character.MyCharacter;
+import tactician.powers.DeflectPower;
 import tactician.powers.weaponscurrent.Weapon1SwordPower;
 import tactician.powers.weaponscurrent.Weapon7ThunderPower;
 import tactician.util.CardStats;
@@ -39,7 +39,9 @@ public class LevinSword extends BaseCard {
 
     public LevinSword() {
         super(ID, info);
-        setDamage(13, 4);
+        setDamage(14, 4);
+        setMagic(3, 0);
+        this.cardsToPreview = new Hex();
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
         FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
@@ -60,9 +62,10 @@ public class LevinSword extends BaseCard {
             calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
         }));
-        addToBot(new EasyModalChoiceAction(easyCardList));
-        addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
-        addToBot(new ChannelAction(new Lightning()));
+        addToTop(new EasyModalChoiceAction(easyCardList));
+        addToTop(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
+        addToBot(new MakeTempCardInHandAction(new Hex(), 1));
     }
 
     @Override

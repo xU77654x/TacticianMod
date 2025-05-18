@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.DrawPileToDiscardPileAction;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.powers.DeflectPower;
 import tactician.powers.weaponscurrent.Weapon1SwordPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -27,8 +27,8 @@ public class Sunder extends BaseCard {
 
     public Sunder() {
         super(ID, info);
-        setDamage(5, 2);
-        setMagic(1, 1);
+        setDamage(4, 2);
+        setMagic(3, 0);
         tags.add(CustomTags.SWORD);
         tags.add(CustomTags.COMBAT_ART);
     }
@@ -39,7 +39,7 @@ public class Sunder extends BaseCard {
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new DrawPileToDiscardPileAction(p, true, this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber)));
     }
 
     @Override

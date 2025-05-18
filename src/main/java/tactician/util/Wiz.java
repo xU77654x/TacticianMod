@@ -10,10 +10,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.Hitbox;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.random.Random;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import tactician.powers.ZealPower;
@@ -217,6 +219,9 @@ public class Wiz {
         return (int)c.powers.stream().filter(pow -> (pow.type == AbstractPower.PowerType.BUFF)).count();
     }
 
+
+
+
     // TODO: This lets cards be filtered by card tag, but fails if used off-class.
     public static AbstractCard randomCombatArt(boolean costZero) {
         ArrayList<AbstractCard> list = new ArrayList<>();
@@ -263,9 +268,11 @@ public class Wiz {
         int valModify = 3;
         int effect = 0;
         boolean copyFlag = true;
+        boolean loopStop = false;
         if (AbstractDungeon.player.hasPower(ZealPower.POWER_ID)) { effect = valModify; }
         else do {
             switch (weaponType) {
+                case 0: copyFlag = false; break;
                 case 1:
                     if (m.hasPower(Weapon3AxePower.POWER_ID) || m.hasPower(Weapon8DarkPower.POWER_ID)) { effect = valModify; }
                     else if (m.hasPower(Weapon2LancePower.POWER_ID) || m.hasPower(Weapon4BowPower.POWER_ID)) { effect = -valModify; }
@@ -307,6 +314,9 @@ public class Wiz {
                     if (AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { weaponType = 6; }
                     if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { weaponType = 7; }
                     if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { weaponType = 8; }
+                    if (!(m.hasPower(Weapon1SwordPower.POWER_ID) || m.hasPower(Weapon2LancePower.POWER_ID) || m.hasPower(Weapon3AxePower.POWER_ID) || m.hasPower(Weapon4BowPower.POWER_ID) || m.hasPower(Weapon5WindPower.POWER_ID) || m.hasPower(Weapon6FirePower.POWER_ID) || m.hasPower(Weapon1SwordPower.POWER_ID) || m.hasPower(Weapon7ThunderPower.POWER_ID) || m.hasPower(Weapon8DarkPower.POWER_ID))) {
+                        copyFlag = false; break;
+                    }
             }
         } while(copyFlag);
         return effect;

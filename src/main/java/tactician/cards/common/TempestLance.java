@@ -3,16 +3,14 @@ package tactician.cards.common;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.Frost;
 import tactician.cards.BaseCard;
+import tactician.cards.other.Anathema;
 import tactician.character.MyCharacter;
-import tactician.powers.DeflectPower;
 import tactician.powers.weaponscurrent.Weapon2LancePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -30,9 +28,10 @@ public class TempestLance extends BaseCard {
 
     public TempestLance() {
         super(ID, info);
-        setDamage(9, 3);
+        setDamage(12, 4);
         tags.add(CustomTags.LANCE);
         tags.add(CustomTags.COMBAT_ART);
+        this.cardsToPreview = new Anathema();
     }
 
     @Override
@@ -40,10 +39,7 @@ public class TempestLance extends BaseCard {
         addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p)));
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= 3)) {
-            addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), 3));
-            AbstractDungeon.player.channelOrb(new Frost());
-        }
+        addToBot(new MakeTempCardInDrawPileAction(new Anathema(), 1, true, true));
     }
 
     @Override

@@ -1,4 +1,4 @@
-package tactician.cards.uncommon;
+package tactician.zzzdeprecated;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.defect.IncreaseMiscAction;
