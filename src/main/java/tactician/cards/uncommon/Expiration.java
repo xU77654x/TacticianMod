@@ -37,8 +37,8 @@ public class Expiration extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID)) && Boolean.FALSE.equals(p.hasRelic(MedicalKit.ID))) {
             ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-            easyCardList.add(new TempBlueCandle(() -> { FragileRelics.obtainFragileRelic(new BlueCandle()); }));
-            easyCardList.add(new TempMedicalKit(() -> { FragileRelics.obtainFragileRelic(new MedicalKit()); }));
+            easyCardList.add(new TempBlueCandle(() -> FragileRelics.obtainFragileRelic(new BlueCandle())));
+            easyCardList.add(new TempMedicalKit(() -> FragileRelics.obtainFragileRelic(new MedicalKit())));
             addToTop(new EasyModalChoiceAction(easyCardList));
         }
         else if (Boolean.TRUE.equals(p.hasRelic(BlueCandle.ID)) && Boolean.FALSE.equals(p.hasRelic(MedicalKit.ID))) { FragileRelics.obtainFragileRelic(new MedicalKit()); }
