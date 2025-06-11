@@ -1,14 +1,5 @@
 package tactician.zzzdeprecated;
 
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.MawBank;
-import basemod.ReflectionHacks;
-import tactician.character.MyCharacter;
-import tactician.relics.BaseRelic;
-import static tactician.TacticianMod.makeID;
 /*
 public class AsheraIcon extends BaseRelic {
     private static final String NAME = "AsheraIcon";

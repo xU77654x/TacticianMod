@@ -57,7 +57,7 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
                     addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
                 }
             }
-            else if (weaponStrong > 0) {
+            else if (weaponStrong > 0) { // Ignore this error; IntelliJ is lying.
                 if (this.owner.hasPower(AcrobatPower.POWER_ID)) {
                     int acrobat = this.owner.getPower(AcrobatPower.POWER_ID).amount;
                     if (deflect > acrobat) { addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2) - acrobat)); }
