@@ -2,16 +2,7 @@
   "${modID}:SecretBook": {
     "NAME": "Secret Book",
     "FLAVOR": "\"I reviewed some historical battle texts. One can glean many tactics from the past.\"",
-    "DESCRIPTIONS": ["At the start of combat, gain #b1 Focus and add an Anathema to your hand."]
-  },
-  "${modID}:ReekingBox": {
-    "NAME": "Reeking Box",
-    "FLAVOR": "\"This is all part of the plan.\"",
-    "DESCRIPTIONS": ["On right-click, permanently transform your Strikes into Defends, and Defends into Strikes. This can be used #b",
-      " more times, but recharges 1 use after an Elite combat.",
-      " more time, but recharges 1 use after an Elite combat.",
-      " On right-click, permanently transform your Strikes into Defends, and Defends into Strikes. This gains 1 charge after an Elite combat.",
-      "I already opened the NL Reeking Box during NL this fight."]
+    "DESCRIPTIONS": ["At the start of combat, gain #b1 #yFocus and add an Anathema to your hand."]
   },
   "${modID}:Speedwing": {
     "NAME": "Speedwing",
@@ -22,21 +13,9 @@
   "${modID}:SeraphRobe": {
     "NAME": "Seraph Robe",
     "FLAVOR": "\"Maybe I should learn some new skills...\"",
-    "DESCRIPTIONS": ["Upon pickup and whenever you open a chest, heal #b",
+    "DESCRIPTIONS": ["Upon pickup and whenever you open any chest, heal #b",
       " HP and gain #b",
-      " Gold."]
-  },
-  "${modID}:AsheraIcon": {
-    "NAME": "Ashera Icon",
-    "FLAVOR": "\"Hmm, I don't feel very different...\"",
-    "DESCRIPTIONS": ["Gain #b",
-      " Gold and another random Common relic. If your Maw Bank is disabled, re-activate it."]
-  },
-  "${modID}:SpiritDust": {
-    "NAME": "Spirit Dust",
-    "FLAVOR": "\"Believe it or not, I'm considered a pretty good tactician.\"",
-    "DESCRIPTIONS": ["Whenever you play an Attack, gain #b",
-      " temp. Focus."]
+      " #yGold."]
   },
   "${modID}:Dracoshield": {
     "NAME": "Dracoshield",
@@ -48,35 +27,28 @@
   "${modID}:BookOfNaga": {
     "NAME": "Book of Naga",
     "FLAVOR": "\"What's this? Hmm... Perhaps we could use it...\"",
-    "DESCRIPTIONS": ["At the start of combat, gain 1 Focus and add a Hex to your hand."]
+    "DESCRIPTIONS": ["At the start of combat, gain #b1 #yFocus and add a Hex to your hand."]
   },
   "${modID}:StatueFragment": {
     "NAME": "Statue Fragment",
     "FLAVOR": "\"Not even the finest treasures is worth getting a comrade killed...\"",
-    "DESCRIPTIONS": ["Increase your maximum hand size by "]
+    "DESCRIPTIONS": ["Increase your maximum hand size by #b"]
   },
   "${modID}:EnergyDrop": {
     "NAME": "Energy Drop",
     "FLAVOR": "\"I can tell I've gotten stronger.\"",
-    "DESCRIPTIONS": ["At the start of combat, gain 1 Strength and add an Anger to your hand; it gets Ethereal."]
+    "DESCRIPTIONS": ["At the start of combat, gain #b1 #yStrength and add an Anger to your hand; it gets Ethereal."]
   },
   "${modID}:Talisman": {
     "NAME": "Talisman",
     "FLAVOR": "\"We're not pawns of some scripted fate. I believe we're more. Much more...\"",
-    "DESCRIPTIONS": ["Whenever you #yExhaust a card, gain #b",
-      " Temporary HP."]
-  },
-  "${modID}:Thantophage": {
-    "NAME": "Thantophage",
-    "FLAVOR": "\"YOU CANNOT SLAY... WHAT MAY NEVER DIE...\"",
-    "DESCRIPTIONS": ["When you would die, heal to 25% of your Max HP; NL next turn, gain [E] [E] and draw ",
-      " cards. Works once."]
+    "DESCRIPTIONS": ["Whenever you #yExhaust a card other than Necronomicurse, gain #b",
+      " Temp HP."]
   },
   "${modID}:KillingEdge": {
     "NAME": "Killing Edge",
     "FLAVOR": "\"Pick a god and pray!\"",
-    "DESCRIPTIONS": ["At the start of combat, lose 1 Dexterity. Every #b",
-      "th Attack you play deals triple damage."]
+    "DESCRIPTIONS": ["At the start of combat, lose 1 #yDexterity. Every #b12th Attack you play deals triple damage."]
   },
   "${modID}:NagasTear": {
     "NAME": "Naga's Tear",

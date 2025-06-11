@@ -9,14 +9,14 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
+import tactician.cards.Base3AxeCard;
 import tactician.character.MyCharacter;
-import tactician.powers.weaponscurrent.Weapon3AxePower;
+import tactician.powers.weapons.Weapon3AxePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class WildAbandon extends BaseCard {
+public class WildAbandon extends Base3AxeCard {
     public static final String ID = makeID(WildAbandon.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -35,7 +35,7 @@ public class WildAbandon extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p)));
+        if (!p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
                 calculateCardDamage(mo);

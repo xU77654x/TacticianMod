@@ -84,14 +84,14 @@
       "copy weapon",
       "copy_weapon"
     ],
-    "DESCRIPTION": "This card uses your current weapon as its type, boosting or nerfing its effects based on weapon-triangle effects."
+    "DESCRIPTION": "This card uses your current weapon as its type."
   },
 
   {
     "ID": "favor",
     "PROPER_NAME": "Favor",
     "NAMES":["favor", "favored"],
-    "DESCRIPTION": "This costs 1 less if the weapon used matches that on the card. Otherwise, set your weapon to a type stated on the card."
+    "DESCRIPTION": "This card uses your current weapon as its type. Applies the weapon type after the action."
   },
 
   {

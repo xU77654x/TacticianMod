@@ -1,4 +1,434 @@
 {
+  "${modID}:Strike1Sword": {
+    "NAME": "Strike (Sword)",
+    "DESCRIPTION": "Deal !D! damage. NL On right-click, this NL becomes a Defend for NL the rest of combat."
+  },
+  "${modID}:Strike2Lance": {
+    "NAME": "Strike (Lance)",
+    "DESCRIPTION": "Deal !D! damage. NL On right-click, this NL becomes a Defend for NL the rest of combat."
+  },
+  "${modID}:Strike3Axe": {
+    "NAME": "Strike (Axe)",
+    "DESCRIPTION": "Deal !D! damage. NL On right-click, this NL becomes a Defend for NL the rest of combat."
+  },
+  "${modID}:Strike4Bow": {
+    "NAME": "Strike (Bow)",
+    "DESCRIPTION": "Deal !D! damage. NL On right-click, this NL becomes a Defend for NL the rest of combat."
+  },
+  "${modID}:Strike5Wind": {
+    "NAME": "Strike (Wind)",
+    "DESCRIPTION": "Deal !D! damage. NL This reverts to NL a Defend at the NL end of combat."
+  },
+  "${modID}:Strike6Fire": {
+    "NAME": "Strike (Fire)",
+    "DESCRIPTION": "Deal !D! damage. NL This reverts to NL a Defend at the NL end of combat."
+  },
+  "${modID}:Strike7Thunder": {
+    "NAME": "Strike (Thunder)",
+    "DESCRIPTION": "Deal !D! damage. NL This reverts to NL a Defend at the NL end of combat."
+  },
+  "${modID}:Strike8Dark": {
+    "NAME": "Strike (Dark)",
+    "DESCRIPTION": "Deal !D! damage. NL This reverts to NL a Defend at the NL end of combat."
+  },
+  "${modID}:Defend1Sword": {
+    "NAME": "Defend (Sword)",
+    "DESCRIPTION": "Gain !B! Block. NL This reverts to NL a Strike at the NL end of combat."
+  },
+  "${modID}:Defend2Lance": {
+    "NAME": "Defend (Lance)",
+    "DESCRIPTION": "Gain !B! Block. NL This reverts to NL a Strike at the NL end of combat."
+  },
+  "${modID}:Defend3Axe": {
+    "NAME": "Defend (Axe)",
+    "DESCRIPTION": "Gain !B! Block. NL This reverts to NL a Strike at the NL end of combat."
+  },
+  "${modID}:Defend4Bow": {
+    "NAME": "Defend (Bow)",
+    "DESCRIPTION": "Gain !B! Block. NL This reverts to NL a Strike at the NL end of combat."
+  },
+  "${modID}:Defend5Wind": {
+    "NAME": "Defend (Wind)",
+    "DESCRIPTION": "Gain !B! Block. NL On right-click, this NL becomes a Strike for NL the rest of combat."
+  },
+  "${modID}:Defend6Fire": {
+    "NAME": "Defend (Fire)",
+    "DESCRIPTION": "Gain !B! Block. NL On right-click, this NL becomes a Strike for NL the rest of combat."
+  },
+  "${modID}:Defend7Thunder": {
+    "NAME": "Defend (Thunder)",
+    "DESCRIPTION": "Gain !B! Block. NL On right-click, this NL becomes a Strike for NL the rest of combat."
+  },
+  "${modID}:Defend8Dark": {
+    "NAME": "Defend (Dark)",
+    "DESCRIPTION": "Gain !B! Block. NL On right-click, this NL becomes a Strike for NL the rest of combat."
+  },
+
+  "${modID}:Veteran": {
+    "NAME": "Veteran",
+    "DESCRIPTION": "This card is a copy of the Common ${modID}:Combat_Art of your equipped weapon.",
+    "UPGRADE_DESCRIPTION": "This card is a copy of the upgraded Common ${modID}:Combat_Art of your equipped weapon."
+  },
+  "${modID}:Solidarity": {
+    "NAME": "Solidarity",
+    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Draw 2 cards. Add NL a Hex to your hand."
+  },
+  "${modID}:Vulnerary": {
+    "NAME": "Vulnerary",
+    "DESCRIPTION": "Heal !M! HP. NL Exhaust a card. NL Exhaust."
+  },
+  "${modID}:WrathStrike": {
+    "NAME": "Wrath Strike",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect."
+  },
+  "${modID}:TempestLance": {
+    "NAME": "Tempest Lance",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Shuffle an Anathema to your draw pile."
+  },
+  "${modID}:Smash": {
+    "NAME": "Smash",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Strength."
+  },
+  "${modID}:CurvedShot": {
+    "NAME": "Curved Shot",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Convert your ${modID}:Deflect NL into Block and Vigor."
+  },
+  "${modID}:Elwind": {
+    "NAME": "Elwind",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
+    "EXTENDED_DESCRIPTION": ["Elwind!"]
+  },
+  "${modID}:Arcfire": {
+    "NAME": "Arcfire",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Focus.",
+    "EXTENDED_DESCRIPTION": ["Arcfire!"]
+  },
+  "${modID}:Thunder": {
+    "NAME": "Thunder",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Vulnerable.",
+    "EXTENDED_DESCRIPTION": ["Thunder!"]
+  },
+  "${modID}:Flux": {
+    "NAME": "Flux",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage."
+  },
+  "${modID}:Shove": {
+    "NAME": "Shove",
+    "DESCRIPTION": "Deal !D! damage NL to ALL enemies. NL This turn, you can't NL lose Strength, NL Focus, or Dexterity."
+  },
+  "${modID}:Reposition": {
+    "NAME": "Reposition",
+    "DESCRIPTION": "Gain !B! Block, increased by your Strength, Focus, NL and ${modID}:Deflect.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block, increased by your Strength, Focus, ${modID}:Deflect, and Energy."
+  },
+  "${modID}:Discipline": {
+    "NAME": "Discipline",
+    "DESCRIPTION": "Gain !B! Block. NL Select a weapon NL type to equip."
+  },
+  "${modID}:Zeal": {
+    "NAME": "Zeal",
+    "DESCRIPTION": "Retain. NL This turn, you NL are weapon-strong."
+  },
+  "${modID}:AlertStance": {
+    "NAME": "Alert Stance",
+    "DESCRIPTION": "Gain !B! Block. NL Retain your hand NL this turn. NL End your turn."
+  },
+  "${modID}:Tantivy": {
+    "NAME": "Tantivy",
+    "DESCRIPTION": "Scry !M!. NL Draw 1 card. NL Gain !${modID}:magicTempDex! temp. Dexterity."
+  },
+  "${modID}:Blossom": {
+    "NAME": "Blossom",
+    "DESCRIPTION": "Ethereal. NL Gain 1 Vulnerable. NL Gain !M! Artifact."
+  },
+  "${modID}:Armsthrift": {
+    "NAME": "Armsthrift",
+    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Choose to upgrade your hand's Attacks, Skills, or Powers for the rest of combat."
+  },
+  "${modID}:OutdoorFighter": {
+    "NAME": "Outdoor Fighter",
+    "DESCRIPTION": "Gain !${modID}:magicDeflect! ${modID}:Deflect. NL {@@}Draw !M! card{!M!|1=|@=s}."
+  },
+  "${modID}:IndoorFighter": {
+    "NAME": "Indoor Fighter",
+    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Exhaust a card."
+  },
+  "${modID}:Sunder": {
+    "NAME": "Sunder",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage twice. NL Gain !M! ${modID}:Deflect."
+  },
+  "${modID}:FrozenLance": {
+    "NAME": "Frozen Lance",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Dexterity affects NL this damage !M! times."
+  },
+  "${modID}:WildAbandon": {
+    "NAME": "Wild Abandon",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage to ALL enemies. NL Exhaust a card."
+  },
+  "${modID}:WaningShot": {
+    "NAME": "Waning Shot",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Weak. NL Consume 3 ${modID}:Deflect to apply -1 Strength."
+  },
+  "${modID}:CuttingGale": {
+    "NAME": "Cutting Gale",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Exhume a random non-Status/Curse card. NL Exhaust a card.",
+    "UPGRADE_DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Exhume a random non-Status/Curse card. NL Exhaust up to 1 card."
+  },
+  "${modID}:DyingBlaze": {
+    "NAME": "Dying Blaze",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Exhaust !M! copies. NL Deal !D! damage, increased by the size of your Exhaust pile. NL Exhaust."
+  },
+  "${modID}:Bolting": {
+    "NAME": "Bolting",
+    "DESCRIPTION": "${modID}:Combat_Art. Innate. NL Deal !D! damage. NL Your Lightning Orbs target ALL enemies. Exhaust."
+  },
+  "${modID}:Nosferatu": {
+    "NAME": "Nosferatu",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Gain Temp HP equal to unblocked damage. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": ["Nosferatu!"]
+  },
+  "${modID}:LevinSword": {
+    "NAME": "Levin Sword",
+    "DESCRIPTION": "Select one of NL ${modID}:Sword or ${modID}:Thunder. NL Deal !D! damage. NL Add a Hex to your hand. Gain !M! Deflect.",
+    "FLAVOR": "On Exhaust, add a Sunder and Bolting to your hand."
+  },
+  "${modID}:FlameLance": {
+    "NAME": "Flame Lance",
+    "DESCRIPTION": "Select one of NL ${modID}:Lance or ${modID}:Fire. NL Deal !D! damage. NL Gain an Orb Slot NL for !M! turns.",
+    "FLAVOR": "On Exhaust, add a Lance Jab and Dying Blaze to your hand."
+  },
+  "${modID}:HurricaneAxe": {
+    "NAME": "Hurricane Axe",
+    "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage. Add an Anathema to your hand. Exhaust a card.",
+    "FLAVOR": "On Exhaust, add Wild Abandon and Cutting Gale to your hand."
+  },
+  "${modID}:BeguilingBow": {
+    "NAME": "Beguiling Bow",
+    "DESCRIPTION": "Select one of NL ${modID}:Bow or ${modID}:Dark. NL Deal !D! damage. NL Apply !M! Lock-On.",
+    "FLAVOR": "On Exhaust, add a Waning Shot and Nosferatu to your hand."
+  },
+  "${modID}:FlashSparrow": {
+    "NAME": "Flash Sparrow",
+    "DESCRIPTION": "Deal !D! damage. NL If you are weapon-strong, gain [E] and draw 1 card."
+  },
+  "${modID}:Relief": {
+    "NAME": "Hex",
+    "DESCRIPTION": "Gain !B! Block. NL On Exhaust, add a copy of this card to your hand. Exhaust."
+  },
+  "${modID}:Pavise": {
+    "NAME": "Pavise",
+    "DESCRIPTION": "Costs 1 less if using an ${modID}:Arm. Otherwise, select an ${modID}:Arm to equip. NL Gain !B! Block twice."
+  },
+  "${modID}:Aegis": {
+    "NAME": "Aegis",
+    "DESCRIPTION": "Costs 1 less if using a ${modID}:Tome. Otherwise, select a ${modID}:Tome to equip. NL Gain !B! Block twice."
+  },
+  "${modID}:Charm": {
+    "NAME": "Charm",
+    "DESCRIPTION": "Gain !B! Block twice. NL On Exhaust, gain [E] and add a copy to your draw pile."
+  },
+  "${modID}:Miracle": {
+    "NAME": "Miracle",
+    "DESCRIPTION": "{@@}Exhaust up to !M! card{!M!|1=|@=s}. Gain !B! Block for each Exhausted card."
+  },
+  "${modID}:EvenOddRhythm": {
+    "NAME": "Even/Odd Rhythm",
+    "DESCRIPTION": "Even Turn: Gain !B! Block and a Hex. NL Odd Turn: Gain !M! ${modID}:Deflect and an Anathema.",
+    "EXTENDED_DESCRIPTION": ["Even Rhythm",
+    "Gain !B! Block. NL Add a Hex NL to your hand.",
+    "Odd Rhythm",
+    "Gain !M! ${modID}:Deflect. NL Add an Anathema NL to your hand."]
+  },
+  "${modID}:SurpriseAttack": {
+    "NAME": "Surprise Attack",
+    "DESCRIPTION": "Gain ${modID}:Deflect equal to your Block."
+  },
+  "${modID}:Pass": {
+    "NAME": "Pass",
+    "DESCRIPTION": "Discard your hand. NL Draw cards equal to NL the amount discarded."
+  },
+  "${modID}:Locktouch": {
+    "NAME": "Locktouch",
+    "DESCRIPTION": "Exhaust your held NL Statuses and Curses. NL Add an Anathema and a Hex to your hand.",
+    "UPGRADE_DESCRIPTION": "{@@}Draw !M! card{!M!|1=|@=s}. NL Exhaust your held Statuses and Curses. NL Add an Anathema and a Hex to your hand."
+  },
+  "${modID}:Gamble": {
+    "NAME": "Gamble",
+    "DESCRIPTION": "Exhaust. NL On Exhaust, add a random ${modID}:Combat_Art to your hand; NL it costs 0 this turn."
+  },
+  "${modID}:RallySpectrum": {
+    "NAME": "Rally Spectrum",
+    "DESCRIPTION": "Gain !M! temp. Strength, Focus, and Dexterity. Choose the order they are gained.",
+    "EXTENDED_DESCRIPTION": ["Gain temp. Strength.",
+      "Gain temp. Focus.",
+      "Gain temp. Dexterity."]
+  },
+  "${modID}:SpecialDance": {
+    "NAME": "Special Dance",
+    "DESCRIPTION": "Choose one: NL !M! temp. Strength, NL !M! temp. Focus, or NL !M! temp. Dexterity.",
+    "UPGRADE_DESCRIPTION": "Retain. Choose one: NL !M! temp. Strength, NL !M! temp. Focus, or NL !M! temp. Dexterity."
+  },
+  "${modID}:Renewal": {
+    "NAME": "Renewal",
+    "DESCRIPTION": "Reduce ALL of your NL debuffs by X. NL Shuffle an Anathema to your draw pile.",
+    "UPGRADE_DESCRIPTION": "Reduce ALL of your NL debuffs by X+1. NL Shuffle an Anathema to your draw pile."
+  },
+  "${modID}:CantoControl": {
+    "NAME": "Canto Control",
+    "DESCRIPTION": "Gain X+1 [E]. NL Shuffle a Hex to NL your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s} NL Shuffle a Hex to NL your draw pile."
+  },
+  "${modID}:MastersTactics": {
+    "NAME": "Master's Tactics",
+    "DESCRIPTION": "Increase your hand size by !M! for the rest of combat. NL {@@}Draw !M! card{!M!|1=|@=s}."
+  },
+  "${modID}:Prescience": {
+    "NAME": "Prescience",
+    "DESCRIPTION": "If the first card NL you play in a turn NL is an Attack, NL Gain !M! ${modID}:Deflect.",
+    "UPGRADE_DESCRIPTION": "Innate. If the first NL card you play in a NL turn is an Attack, NL Gain !M! ${modID}:Deflect."
+  },
+  "${modID}:Patience": {
+    "NAME": "Patience",
+    "DESCRIPTION": "At the start of your turn, gain !M! ${modID}:Deflect."
+  },
+  "${modID}:Acrobat": {
+    "NAME": "Acrobat",
+    "DESCRIPTION": "Whenever you lose ${modID}:Deflect from an enemy attack, lose !M! less. ${modID}:Deflect damages NL ALL enemies."
+  },
+  "${modID}:CreationPulse": {
+    "NAME": "Creation Pulse",
+    "DESCRIPTION": "If you gain Stat Down, NL apply to ALL enemies: NL Strength: !M! Vulnerable. NL Dexterity: !M! Weak. NL Focus: !M! Lock-On."
+  },
+  "${modID}:Expiration": {
+    "NAME": "Expiration",
+    "DESCRIPTION": "Gain a Blue Candle or Medical Kit for the combat. When you Exhaust a card, ALL enemies lose !M! HP.",
+    "EXTENDED_DESCRIPTION": ["It seems that I already have both of these relics."]
+  },
+  "${modID}:DeathBlow": {
+    "NAME": "Death Blow",
+    "DESCRIPTION": "At the start of NL your turn, gain NL !M! temp. Strength.",
+    "UPGRADE_DESCRIPTION": "Now and at the start NL of your turn, gain NL !M! temp. Strength."
+  },
+  "${modID}:FiendishBlow": {
+    "NAME": "Fiendish Blow",
+    "DESCRIPTION": "At the start of NL your turn, gain NL !M! temp. Focus.",
+    "UPGRADE_DESCRIPTION": "Now and at the start NL of your turn, gain NL !M! temp. Focus."
+  },
+  "${modID}:WardingBlow": {
+    "NAME": "Warding Blow",
+    "DESCRIPTION": "At the start of NL your turn, gain NL !M! temp. Dexterity.",
+    "UPGRADE_DESCRIPTION": "Now and at the start NL of your turn, gain NL !M! temp. Dexterity."
+  },
+  "${modID}:Astra": {
+    "NAME": "Astra",
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage 5 times."
+  },
+  "${modID}:SwiftStrikes": {
+    "NAME": "Swift Strikes",
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Gain !B! Block, increased by your ${modID}:Deflect. NL Deal !D! damage twice."
+  },
+  "${modID}:ExhaustiveStrike": {
+    "NAME": "Exhaustive Strike",
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage twice. NL {@@}Exhaust up to !M! card{!M!|1=|@=s}.",
+    "FLAVOR": "If weapon-strong, Exhaust up to 3 additional cards."
+  },
+  "${modID}:HuntersVolley": {
+    "NAME": "Hunter's Volley",
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage twice. NL {@@}Retain your hand for !M! turn{!M!|1=|@=s}.",
+    "FLAVOR": "If weapon-strong, Retain your hand for 3 additional turns."
+  },
+  "${modID}:Excalibur": {
+    "NAME": "Excalibur",
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL At the start of your NL turn, draw 1 card. NL Gain !M! max. hand size.",
+    "FLAVOR": "If weapon-strong, increase your hand size by 3 more."
+  },
+  "${modID}:Bolganone": {
+    "NAME": "Bolganone",
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! Deflect. NL Double your ${modID}:Deflect.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! Deflect. NL Triple your ${modID}:Deflect.",
+    "EXTENDED_DESCRIPTION": ["Bolganone!"],
+    "FLAVOR": "If weapon-strong, gain 3 Deflect before it is multiplied."
+  },
+  "${modID}:Thoron": {
+    "NAME": "Thoron",
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose NL !D! HP twice.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose  NL !D! HP twice, as well as Barricade.",
+    "EXTENDED_DESCRIPTION": ["Thoron!"]
+  },
+  "${modID}:Goetia": {
+    "NAME": "Goetia",
+    "DESCRIPTION": "${modID}:Favor ${modID}:Combat_Art. NL Gain !B! Block twice. NL Deal !D! damage."
+  },
+  "${modID}:Luna": {
+    "NAME": "Luna",
+    "DESCRIPTION": "Your next ${modID}:Combat_Art NL is played twice.",
+    "EXTENDED_DESCRIPTION": ["Here's how it's done!"]
+  },
+  "${modID}:Ignis": {
+    "NAME": "Ignis",
+    "DESCRIPTION": "Gain Strength equal to your current Focus. NL Gain Focus equal to your prior Strength. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain Strength equal to your current Focus. Gain Focus equal to your prior Strength. NL Exhaustive !stslib:ex!."
+  },
+  "${modID}:SealAtk4": {
+    "NAME": "Seal Atk 4",
+    "DESCRIPTION": "The enemy NL loses !M! Strength. NL You lose 1 Strength. NL Exhaust."
+  },
+  "${modID}:TipTheScales": {
+    "NAME": "Tip the Scales!",
+    "DESCRIPTION": "Unplayable. Retain. NL On Exhaust, gain NL !M! Artifact.",
+    "EXTENDED_DESCRIPTION": ["Time to tip the scales!",
+      "I have to Exhaust this card to gain its effect."]
+  },
+  "${modID}:SturdyStance": {
+    "NAME": "Sturdy Stance",
+    "DESCRIPTION": "Gain a random potion NL between Flex Potion, NL Speed Potion, or NL Sage Potion. Exhaust."
+  },
+  "${modID}:PartOfThePlan": {
+    "NAME": "Part of the Plan",
+    "DESCRIPTION": "Play this as your first card only. Exhaust 2 random cards. EVERYONE gets Barricade.",
+    "UPGRADE_DESCRIPTION": "Exhaust 2 cards. NL EVERYONE gets Barricade."
+  },
+  "${modID}:MasterSeal": {
+    "NAME": "Master Seal",
+    "DESCRIPTION": "Gain 1 Ritual. NL {@@}Gain !M! Orb Slot{!M!|1=|@=s}. NL Add an Anathema and a Hex to your hand. Exhaust."
+  },
+  "${modID}:ChaosStyle": {
+    "NAME": "Chaos Style",
+    "DESCRIPTION": "Whenever you change your weapon type, NL gain !M! Block."
+  },
+  "${modID}:QuickBurn": {
+    "NAME": "Quick Burn",
+    "DESCRIPTION": "Exhaust your hand. NL Gain [E] and add random ${modID}:Combat_Arts to your hand for each card Exhausted.",
+    "EXTENDED_DESCRIPTION": ["Strategy in motion!"]
+  },
+  "${modID}:GrandmasterForm": {
+    "NAME": "Grandmaster Form",
+    "DESCRIPTION": "Whenever you NL Exhaust a card, NL gain !M! Artifact.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you NL Exhaust a card, NL gain !M! Artifact.",
+    "EXTENDED_DESCRIPTION": ["The key to victory NL lies within."],
+    "FLAVOR": "Exhausted copies, such as NL Dying Blaze, don't trigger this."
+  },
+
+  "${modID}:Hex": {
+    "NAME": "Hex",
+    "DESCRIPTION": "Retain. NL Lose !M! ${modID}:Deflect or 1 Strength next turn. NL Exhaust. On Exhaust, Channel 1 Lightning.",
+    "FLAVOR": "If you have Strength Down, NL you don't lose Strength."
+  },
+  "${modID}:Anathema": {
+    "NAME": "Anathema",
+    "DESCRIPTION": "Retain. NL Lose !M! ${modID}:Deflect or 1 Dexterity next turn. NL Exhaust. On Exhaust, Channel 1 Frost.",
+    "FLAVOR": "If you have Dexterity Down, NL you don't lose Dexterity."
+  },
+  "${modID}:SoftReset": {
+    "NAME": "Soft Reset",
+    "DESCRIPTION": "Retain. Die."
+  },
+  "${modID}:DebugWeapon": {
+    "NAME": "Debug Weapon",
+    "DESCRIPTION": "Retain. NL Apply any weapon type onto an enemy.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Apply any weapon type onto an enemy. NL Gain [E] [E]."
+  },
+
   "${modID}:Weapon1Sword": {
     "NAME": "Sword",
     "DESCRIPTION": "Set your weapon type to ${modID}:Sword."
@@ -74,495 +504,5 @@
   "${modID}:TempMedicalKit": {
     "NAME": "Medical Kit",
     "DESCRIPTION": "Gain a Medical Kit for the rest of combat. Exhaust any Unplayable Status card."
-  },
-
-  "${modID}:Basic1Sword": {
-    "NAME": "Strike (Sword)",
-    "DESCRIPTION": "${modID}:Sword. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Sword. Deal !D! damage."
-  },
-  "${modID}:Basic2Lance": {
-    "NAME": "Strike (Lance)",
-    "DESCRIPTION": "${modID}:Lance. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Lance. Deal !D! damage."
-  },
-  "${modID}:Basic3Axe": {
-    "NAME": "Strike (Axe)",
-    "DESCRIPTION": "${modID}:Axe. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Axe. Deal !D! damage."
-  },
-  "${modID}:Basic4Bow": {
-    "NAME": "Strike (Bow)",
-    "DESCRIPTION": "${modID}:Bow. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Bow. Deal !D! damage."
-  },
-  "${modID}:Basic5Wind": {
-    "NAME": "Defend (Wind)",
-    "DESCRIPTION": "${modID}:Wind. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Wind. Gain !B! Block."
-  },
-  "${modID}:Basic6Fire": {
-    "NAME": "Defend (Fire)",
-    "DESCRIPTION": "${modID}:Fire. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Fire. Gain !B! Block."
-  },
-  "${modID}:Basic7Thunder": {
-    "NAME": "Defend (Thunder)",
-    "DESCRIPTION": "${modID}:Thunder. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Thunder. Gain !B! Block."
-  },
-  "${modID}:Basic8Dark": {
-    "NAME": "Defend (Dark)",
-    "DESCRIPTION": "${modID}:Dark. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Dark. Gain !B! Block.",
-    "EXTENDED_DESCRIPTION": ["Strike (Dark)",
-      "${modID}:Dark. Deal !D! damage.",
-      "Strike (Dark)+",
-      "Retain. NL ${modID}:Dark. Deal !D! damage.",
-      "Defend (Dark)",
-      "${modID}:Dark. Gain !B! Block.",
-      "Defend (Dark)+",
-      "Ethereal. NL ${modID}:Dark. Gain !B! Block."]
-  },
-
-  "${modID}:Strike1Sword": {
-    "NAME": "Strike (Sword)",
-    "DESCRIPTION": "${modID}:Sword. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Sword. Deal !D! damage."
-  },
-  "${modID}:Strike2Lance": {
-    "NAME": "Strike (Lance)",
-    "DESCRIPTION": "${modID}:Lance. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Lance. Deal !D! damage."
-  },
-  "${modID}:Strike3Axe": {
-    "NAME": "Strike (Axe)",
-    "DESCRIPTION": "${modID}:Axe. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Axe. Deal !D! damage."
-  },
-  "${modID}:Strike4Bow": {
-    "NAME": "Strike (Bow)",
-    "DESCRIPTION": "${modID}:Bow. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Bow. Deal !D! damage."
-  },
-  "${modID}:Strike5Wind": {
-    "NAME": "Defend (Wind)",
-    "DESCRIPTION": "${modID}:Wind. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Axe. Deal !D! damage."
-  },
-  "${modID}:Strike6Fire": {
-    "NAME": "Defend (Fire)",
-    "DESCRIPTION": "${modID}:Fire. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Axe. Deal !D! damage."
-  },
-  "${modID}:Strike7Thunder": {
-    "NAME": "Defend (Thunder)",
-    "DESCRIPTION": "${modID}:Thunder. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Axe. Deal !D! damage."
-  },
-  "${modID}:Strike8Dark": {
-    "NAME": "Defend (Dark)",
-    "DESCRIPTION": "${modID}:Dark. Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "Retain. NL ${modID}:Axe. Deal !D! damage."
-  },
-  "${modID}:Defend1Sword": {
-    "NAME": "Defend (Sword)",
-    "DESCRIPTION": "${modID}:Wind. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Sword. Gain !B! Block."
-  },
-  "${modID}:Defend2Lance": {
-    "NAME": "Defend (Lance)",
-    "DESCRIPTION": "${modID}:Wind. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Lance. Gain !B! Block."
-  },
-  "${modID}:Defend3Axe": {
-    "NAME": "Defend (Axe)",
-    "DESCRIPTION": "${modID}:Wind. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Axe. Gain !B! Block."
-  },
-  "${modID}:Defend4Bow": {
-    "NAME": "Defend (Bow)",
-    "DESCRIPTION": "${modID}:Wind. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Bow. Gain !B! Block."
-  },
-    "${modID}:Defend5Wind": {
-    "NAME": "Defend (Wind)",
-    "DESCRIPTION": "${modID}:Wind. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Wind. Gain !B! Block."
-  },
-  "${modID}:Defend6Fire": {
-    "NAME": "Defend (Fire)",
-    "DESCRIPTION": "${modID}:Fire. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Fire. Gain !B! Block."
-  },
-  "${modID}:Defend7Thunder": {
-    "NAME": "Defend (Thunder)",
-    "DESCRIPTION": "${modID}:Thunder. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Thunder. Gain !B! Block."
-  },
-  "${modID}:Defend8Dark": {
-    "NAME": "Defend (Dark)",
-    "DESCRIPTION": "${modID}:Dark. Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL ${modID}:Dark. Gain !B! Block."
-  },
-
-
-
-  "${modID}:Veteran": {
-    "NAME": "Veteran",
-    "DESCRIPTION": "This card is a copy of the Common ${modID}:Combat_Art of your equipped weapon.",
-    "UPGRADE_DESCRIPTION": "This card is a copy of the upgraded Common ${modID}:Combat_Art of your equipped weapon."
-  },
-  "${modID}:Solidarity": {
-    "NAME": "Solidarity",
-    "DESCRIPTION": "Retain. Gain !M! ${modID}:Deflect. Next turn, gain NL !M! ${modID}:Deflect. Add a NL Hex to your hand."
-  },
-  "${modID}:Vulnerary": {
-    "NAME": "Vulnerary",
-    "DESCRIPTION": "Heal !M! HP. NL {@@}Add Retain on !${modID}:retainCards! card{!${modID}:retainCards!|1=|@=s} NL for the rest of combat. NL End your turn. Exhaust."
-  },
-  "${modID}:DebugWeapon": {
-    "NAME": "Debug Weapon",
-    "DESCRIPTION": "Retain. NL Apply any weapon type onto an enemy."
-  },
-  "${modID}:WrathStrike": {
-    "NAME": "Wrath Strike",
-    "DESCRIPTION": "${modID}:Sword. ${modID}:Combat_Art. NL Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect."
-  },
-  "${modID}:TempestLance": {
-    "NAME": "Tempest Lance",
-    "DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL Shuffle an Anathema to your draw pile."
-  },
-  "${modID}:Smash": {
-    "NAME": "Smash",
-    "DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Strength."
-  },
-  "${modID}:CurvedShot": {
-    "NAME": "Curved Shot",
-    "DESCRIPTION": "${modID}:Bow. ${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Convert your ${modID}:Deflect NL into Block and Vigor."
-  },
-  "${modID}:Elwind": {
-    "NAME": "Elwind",
-    "DESCRIPTION": "${modID}:Wind. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Draw !M! card{!M!|1=|@=s} next turn.",
-    "EXTENDED_DESCRIPTION": ["Elwind!"]
-  },
-  "${modID}:Arcfire": {
-    "NAME": "Arcfire",
-    "DESCRIPTION": "${modID}:Fire. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Focus.",
-    "EXTENDED_DESCRIPTION": ["Arcfire!"]
-  },
-  "${modID}:Thunder": {
-    "NAME": "Thunder",
-    "DESCRIPTION": "${modID}:Thunder. ${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Vulnerable.",
-    "EXTENDED_DESCRIPTION": ["Thunder!"]
-  },
-  "${modID}:Flux": {
-    "NAME": "Flux",
-    "DESCRIPTION": "${modID}:Dark. ${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage."
-  },
-  "${modID}:Shove": {
-    "NAME": "Shove",
-    "DESCRIPTION": "${modID}:Copy_Weapon. NL Deal !D! damage to ALL enemies. This turn, you can't lose Strength, Dexterity, or Focus."
-  },
-  "${modID}:Reposition": {
-    "NAME": "Reposition",
-    "DESCRIPTION": "${modID}:Copy_Weapon. NL Gain !B! Block, increased by your Strength, Focus, NL and ${modID}:Deflect.",
-    "UPGRADE_DESCRIPTION": "${modID}:Copy_Weapon. NL Gain !B! Block, increased by your Strength, Focus, ${modID}:Deflect, and Energy."
-  },
-  "${modID}:Discipline": {
-    "NAME": "Discipline",
-    "DESCRIPTION": "Gain !B! Block. NL Select a weapon type to equip now and at the end of your turn."
-  },
-  "${modID}:Zeal": {
-    "NAME": "Zeal",
-    "DESCRIPTION": "Retain. NL This turn, you NL are weapon-strong. NL Exhaust."
-  },
-  "${modID}:AlertStance": {
-    "NAME": "Alert Stance",
-    "DESCRIPTION": "Gain !B! Block. NL Retain your hand NL this turn. NL End your turn."
-  },
-  "${modID}:Tantivy": {
-    "NAME": "Tantivy",
-    "DESCRIPTION": "Scry !M!. NL Draw 1 card. NL Gain !${modID}:magicTempDex! temp. Dexterity."
-  },
-  "${modID}:Blossom": {
-    "NAME": "Blossom",
-    "DESCRIPTION": "Ethereal. NL Gain 1 Vulnerable. NL Gain !M! Artifact."
-  },
-  "${modID}:Armsthrift": {
-    "NAME": "Armsthrift",
-    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Choose to upgrade your hand's Attacks, Skills, or Powers for the rest of combat."
-  },
-  "${modID}:OutdoorFighter": {
-    "NAME": "Outdoor Fighter",
-    "DESCRIPTION": "{@@}Draw !M! card{!M!|1=|@=s}. NL Gain !${modID}:magicDeflect! ${modID}:Deflect."
-  },
-  "${modID}:IndoorFighter": {
-    "NAME": "Indoor Fighter",
-    "DESCRIPTION": "Exhaust a card. NL Gain !M! ${modID}:Deflect."
-  },
-  "${modID}:Sunder": {
-    "NAME": "Sunder",
-    "DESCRIPTION": "${modID}:Sword. ${modID}:Combat_Art. NL Deal !D! damage twice. NL Gain !M! ${modID}:Deflect.",
-    "UPGRADE_DESCRIPTION": "${modID}:Sword. ${modID}:Combat_Art. Strike. NL Deal !D! damage twice. {@@} NL You can freely Exhaust !M! Curse{!M!|1=|@=s} this combat."
-  },
-  "${modID}:LanceJab": {
-    "NAME": "Lance Jab",
-    "DESCRIPTION": "${modID}:Lance. ${modID}:Combat_Art. NL Gain !B! Block, increased by your ${modID}:Deflect and Strength. NL Deal !D! damage twice."
-  },
-  "${modID}:WildAbandon": {
-    "NAME": "Wild Abandon",
-    "DESCRIPTION": "${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage to ALL enemies. NL Exhaust a card."
-  },
-  "${modID}:WaningShot": {
-    "NAME": "Waning Shot",
-    "DESCRIPTION": "${modID}:Bow. ${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Weak. NL Consume 3 ${modID}:Deflect to apply -1 Strength."
-  },
-  "${modID}:CuttingGale": {
-    "NAME": "Cutting Gale",
-    "DESCRIPTION": "${modID}:Wind. ${modID}:Combat_Art. NL Deal !D! damage. NL Exhume a random non-Status/Curse card. NL Exhaust a card.",
-    "UPGRADE_DESCRIPTION": "${modID}:Wind. ${modID}:Combat_Art. NL Deal !D! damage. NL Exhume a random non-Status/Curse card. NL Exhaust up to 1 card."
-  },
-  "${modID}:DyingBlaze": {
-    "NAME": "Dying Blaze",
-    "DESCRIPTION": "${modID}:Fire. ${modID}:Combat_Art. NL Exhaust !M! copies. NL Deal !D! damage, increased by the size of your Exhaust pile. NL Exhaust."
-  },
-  "${modID}:Bolting": {
-    "NAME": "Bolting",
-    "DESCRIPTION": "${modID}:Combat_Art. Innate. NL Deal !D! damage. NL Your Lightning Orbs target ALL enemies. Exhaust."
-  },
-  "${modID}:Nosferatu": {
-    "NAME": "Nosferatu",
-    "DESCRIPTION": "${modID}:Dark. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain Temp HP equal to unblocked damage. NL Exhaust.",
-    "EXTENDED_DESCRIPTION": ["Nosferatu!"]
-  },
-  "${modID}:LevinSword": {
-    "NAME": "Levin Sword",
-    "DESCRIPTION": "Select one of NL ${modID}:Sword or ${modID}:Thunder. NL Deal !D! damage. NL Gain !M! Deflect. Add a Hex to your hand.",
-    "FLAVOR": "On Exhaust, add a Sunder and Bolting to your hand."
-  },
-  "${modID}:FlameLance": {
-    "NAME": "Flame Lance",
-    "DESCRIPTION": "Select one of NL ${modID}:Lance or ${modID}:Fire. NL Deal !D! damage. NL Evoke your Orbs; gain !M! ${modID}:Deflect for each Orb.",
-    "FLAVOR": "On Exhaust, add a Lance Jab and Dying Blaze to your hand."
-  },
-  "${modID}:HurricaneAxe": {
-    "NAME": "Hurricane Axe",
-    "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage. Add an Anathema to your hand. Exhaust a card.",
-    "FLAVOR": "On Exhaust, add Wild Abandon and Cutting Gale to your hand."
-  },
-  "${modID}:BeguilingBow": {
-    "NAME": "Beguiling Bow",
-    "DESCRIPTION": "Select one of NL ${modID}:Bow or ${modID}:Dark. NL Deal !D! damage. NL Apply !M! Lock-On.",
-    "FLAVOR": "On Exhaust, add a Waning Shot and Nosferatu to your hand."
-  },
-  "${modID}:FlashSparrow": {
-    "NAME": "Flash Sparrow",
-    "DESCRIPTION": "${modID}:Copy_Weapon. NL Deal !D! damage. NL If you are weapon-strong, gain [E] and draw 1 card."
-  },
-  "${modID}:Relief": {
-    "NAME": "Hex",
-    "DESCRIPTION": "${modID}:Copy_Weapon. NL Gain !B! Block. NL On Exhaust, add a copy of this card to your hand. Exhaust."
-  },
-  "${modID}:Pavise": {
-    "NAME": "Pavise",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Arm. NL If not ${modID}:Favored, equip one of ${modID}:Sword, ${modID}:Lance, NL ${modID}:Axe, or ${modID}:Bow. NL Gain !B! Block twice."
-  },
-  "${modID}:Aegis": {
-    "NAME": "Aegis",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Tome. NL If not ${modID}:Favored, equip one of ${modID}:Wind, ${modID}:Fire, ${modID}:Thunder, or ${modID}:Dark. NL Gain !B! Block twice."
-  },
-  "${modID}:Charm": {
-    "NAME": "Charm",
-    "DESCRIPTION": "Gain !B! Block twice. NL On Exhaust, gain [E] and add a copy to your draw pile."
-  },
-  "${modID}:Miracle": {
-    "NAME": "Miracle",
-    "DESCRIPTION": "Select up to !M! cards in your hand to Exhaust. NL Gain !B! Block for each Exhausted card."
-  },
-  "${modID}:EvenOddRhythm": {
-    "NAME": "Even/Odd Rhythm",
-    "DESCRIPTION": "If the turn count is even, gain !B! Block and 1 Blur. NL If the turn count is odd, gain !M! ${modID}:Deflect."
-  },
-  "${modID}:SurpriseAttack": {
-    "NAME": "Surprise Attack",
-    "DESCRIPTION": "Gain ${modID}:Deflect equal to your Block."
-  },
-  "${modID}:Pass": {
-    "NAME": "Pass",
-    "DESCRIPTION": "Discard your hand. NL Draw cards equal to NL the amount discarded."
-  },
-  "${modID}:Locktouch": {
-    "NAME": "Locktouch",
-    "DESCRIPTION": "Exhaust your held NL Statuses and Curses. NL Add an Anathema and a Hex to your hand. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Retain. Exhaust your held Statuses and Curses. NL Add a Hex and an Anathema to your hand. Exhaust."
-  },
-  "${modID}:Gamble": {
-    "NAME": "Gamble",
-    "DESCRIPTION": "Retain. Exhaust. NL On Exhaust, add a random ${modID}:Combat_Art to your hand; NL it costs 0 this turn."
-  },
-  "${modID}:RallySpectrum": {
-    "NAME": "Rally Spectrum",
-    "DESCRIPTION": "Gain !M! temp. Strength, Focus, and Dexterity. Choose the order they are gained.",
-    "EXTENDED_DESCRIPTION": ["Gain temp. Strength.",
-      "Gain temp. Focus.",
-      "Gain temp. Dexterity."]
-  },
-  "${modID}:SecondSeal": {
-    "NAME": "Second Seal",
-    "DESCRIPTION": "Choose one: NL !M! temp. Strength, NL !M! temp. Focus, or NL !M! temp. Dexterity.",
-    "UPGRADE_DESCRIPTION": "Retain. Choose one: NL !M! temp. Strength, NL !M! temp. Focus, or NL !M! temp. Dexterity."
-  },
-  "${modID}:Renewal": {
-    "NAME": "Renewal",
-    "DESCRIPTION": "Reduce ALL of your NL debuffs by X. NL On Exhaust, NL gain 1 Frail.",
-    "UPGRADE_DESCRIPTION": "Reduce ALL of your NL debuffs by X+1. NL On Exhaust, NL gain 1 Frail."
-  },
-  "${modID}:CantoControl": {
-    "NAME": "Canto Control",
-    "DESCRIPTION": "Ethereal. NL Gain X+1 [E]. NL On Exhaust, NL gain 1 Weak.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}. NL On Exhaust, NL gain 1 Weak."
-  },
-  "${modID}:Prescience": {
-    "NAME": "Prescience",
-    "DESCRIPTION": "If the first card NL you play in a turn NL is an Attack, NL Gain !M! ${modID}:Deflect.",
-    "UPGRADE_DESCRIPTION": "Innate. If the first NL card you play in a NL turn is an Attack, NL Gain !M! ${modID}:Deflect."
-  },
-  "${modID}:Patience": {
-    "NAME": "Patience",
-    "DESCRIPTION": "At the start of your turn, gain !M! ${modID}:Deflect."
-  },
-  "${modID}:Acrobat": {
-    "NAME": "Acrobat",
-    "DESCRIPTION": "Whenever you lose ${modID}:Deflect from an enemy attack, lose !M! less. ${modID}:Deflect damages NL ALL enemies."
-  },
-  "${modID}:CreationPulse": {
-    "NAME": "Creation Pulse",
-    "DESCRIPTION": "If you gain Stat Down, NL apply to ALL enemies: NL Strength: !M! Vulnerable. NL Dexterity: !M! Weak. NL Focus: !M! Lock-On."
-  },
-  "${modID}:MastersTactics": {
-    "NAME": "Master's Tactics",
-    "DESCRIPTION": "Increase your hand size by !M! for the rest of combat. NL {@@}Draw !M! card{!M!|1=|@=s}."
-  },
-  "${modID}:Expiration": {
-    "NAME": "Expiration",
-    "DESCRIPTION": "Gain a Blue Candle or Medical Kit for the combat. When you Exhaust a card, ALL enemies lose !M! HP.",
-    "EXTENDED_DESCRIPTION": ["It seems that I already have both of these relics."]
-  },
-  "${modID}:StrengthUp": {
-    "NAME": "Strength Up",
-    "DESCRIPTION": "Gain !M! Strength. NL Can be upgraded any number of times.",
-    "EXTENDED_DESCRIPTION": ["Strength +"]
-  },
-  "${modID}:FocusUp": {
-    "NAME": "Magic Up",
-    "DESCRIPTION": "Gain !M! Focus. NL Can be upgraded any number of times.",
-    "EXTENDED_DESCRIPTION": ["Magic +"]
-  },
-  "${modID}:DexterityUp": {
-    "NAME": "Defense Up",
-    "DESCRIPTION": "Gain !M! Dexterity. NL Can be upgraded any number of times.",
-    "EXTENDED_DESCRIPTION": ["Defense +"]
-  },
-  "${modID}:Astra": {
-    "NAME": "Astra",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Sword. ${modID}:Combat_Art. NL Deal !D! damage 5 times."
-  },
-  "${modID}:FrozenLance": {
-    "NAME": "Frozen Lance",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Lance. ${modID}:Combat_Art. NL Deal !D! damage. NL Dexterity affects NL this card !M! times."
-  },
-  "${modID}:ExhaustiveStrike": {
-    "NAME": "Exhaustive Strike",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Axe. ${modID}:Combat_Art. NL Deal !D! damage. NL Exhaust cards in your hand freely. On Exhaust, gain !M! Vulnerable."
-  },
-  "${modID}:HuntersVolley": {
-    "NAME": "Hunter's Volley",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Bow. ${modID}:Combat_Art. NL Deal !D! damage twice. NL If Fatal, gain [E] and draw a card."
-  },
-  "${modID}:Excalibur": {
-    "NAME": "Excalibur",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Wind. ${modID}:Combat_Art. NL Deal !D! damage. NL At the start of your turn, draw 1 extra card.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor ${modID}:Wind. ${modID}:Combat_Art. NL Deal !D! damage. NL At the start of your turn, draw 1 extra card. {@@}NL Next turn, draw !M! card{!M!|1=|@=s}."
-  },
-  "${modID}:Bolganone": {
-    "NAME": "Bolganone",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Fire. ${modID}:Combat_Art. NL Deal !D! damage. NL Double your ${modID}:Deflect.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor ${modID}:Fire. ${modID}:Combat_Art. NL Deal !D! damage. NL Triple your ${modID}:Deflect.",
-    "EXTENDED_DESCRIPTION": ["Bolganone!"]
-  },
-  "${modID}:Thoron": {
-    "NAME": "Thoron",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Thunder. ${modID}:Combat_Art. NL ALL enemies lose NL !D! HP and Block. NL Channel 1 Lightning.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor ${modID}:Thunder. ${modID}:Combat_Art. NL ALL enemies lose NL !D! HP, Block, and Barricade. NL Channel 1 Lightning.",
-    "EXTENDED_DESCRIPTION": ["Thoron!"]
-  },
-  "${modID}:Goetia": {
-    "NAME": "Goetia",
-    "DESCRIPTION": "${modID}:Favor ${modID}:Dark. ${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage."
-  },
-  "${modID}:Luna": {
-    "NAME": "Luna",
-    "DESCRIPTION": "Your next ${modID}:Combat_Art NL is played twice.",
-    "EXTENDED_DESCRIPTION": ["Here's how it's done!"]
-  },
-  "${modID}:Ignis": {
-    "NAME": "Ignis",
-    "DESCRIPTION": "Gain Strength equal to your current Focus. NL Gain Focus equal to your prior Strength. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Gain Strength equal to your current Focus. Gain Focus equal to your prior Strength. NL Exhaustive !stslib:ex!."
-  },
-  "${modID}:SealAtk4": {
-    "NAME": "Seal Atk 4",
-    "DESCRIPTION": "Retain. The enemy NL loses !M! Strength. NL You lose 1 Strength. NL Exhaust."
-  },
-  "${modID}:MasterSeal": {
-    "NAME": "Master Seal",
-    "DESCRIPTION": "Gain 1 Ritual. NL {@@}Gain !M! Orb Slot{!M!|1=|@=s}. NL Add an Anathema and a Hex to your hand. Exhaust."
-  },
-  "${modID}:TipTheScales": {
-    "NAME": "Tip the Scales!",
-    "DESCRIPTION": "Unplayable. Retain. NL On Exhaust, gain NL !M! Artifact.",
-    "EXTENDED_DESCRIPTION": ["Time to tip the scales!",
-      "I have to Exhaust this card to gain its effect."]
-  },
-  "${modID}:PartOfThePlan": {
-    "NAME": "Part of the Plan",
-    "DESCRIPTION": "Play this as your first card only. Exhaust 2 random cards. EVERYONE gets Barricade.",
-    "UPGRADE_DESCRIPTION": "Exhaust 2 cards. NL EVERYONE gets Barricade."
-  },
-  "${modID}:SturdyStance": {
-    "NAME": "Sturdy Stance",
-    "DESCRIPTION": "{@@}At the end of your NL turn, Retain up to NL !M! card{!M!|1=|@=s}."
-  },
-  "${modID}:ChaosStyle": {
-    "NAME": "Chaos Style",
-    "DESCRIPTION": "Whenever you change your weapon type, NL gain !M! Block."
-  },
-  "${modID}:QuickBurn": {
-    "NAME": "Quick Burn",
-    "DESCRIPTION": "Exhaust your hand. NL Gain [E] and add random ${modID}:Combat_Arts to your hand for each card Exhausted.",
-    "EXTENDED_DESCRIPTION": ["Strategy in motion!"]
-  },
-  "${modID}:GrandmasterForm": {
-    "NAME": "Grandmaster Form",
-    "DESCRIPTION": "Retain. Whenever you Exhaust a card, NL Channel 1 Lightning.",
-    "UPGRADE_DESCRIPTION": "Innate. Retain. NL Whenever you Exhaust a card, NL Channel 1 Lightning.",
-    "EXTENDED_DESCRIPTION": ["The key to victory NL lies within."],
-    "FLAVOR": "Exhausted copies, such as NL Dying Blaze, don't trigger this."
-  },
-
-  "${modID}:Hex": {
-    "NAME": "Hex",
-    "DESCRIPTION": "Retain. Lose !M! ${modID}:Deflect or 1 Strength next turn. On Exhaust, Channel 1 Lightning. Exhaust.",
-    "FLAVOR": "If you have Strength Down, lose Strength only this turn."
-  },
-  "${modID}:Anathema": {
-    "NAME": "Anathema",
-    "DESCRIPTION": "Retain. Lose !M! ${modID}:Deflect or 1 Dexterity next turn. On Exhaust, Channel 1 Frost. Exhaust.",
-    "FLAVOR": "If you have Dexterity Down, lose Dexterity only this turn."
-  },
-  "${modID}:SoftReset": {
-    "NAME": "Soft Reset",
-    "DESCRIPTION": "Retain. Die."
   }
 }

@@ -1,5 +1,7 @@
 package tactician.cards.rare;
 
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -9,15 +11,17 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
+import tactician.cards.Base6FireCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
-import tactician.powers.weaponscurrent.Weapon6FirePower;
+import tactician.powers.weapons.Weapon6FirePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class Bolganone extends BaseCard {
+import static java.lang.Math.max;
+
+public class Bolganone extends Base6FireCard {
     public static final String ID = makeID(Bolganone.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -29,31 +33,38 @@ public class Bolganone extends BaseCard {
 
     public Bolganone() {
         super(ID, info);
-        setDamage(10, 1);
-        setMagic(2, 1);
+        setDamage(10, 4);
+        setMagic(2, 0);
         tags.add(CustomTags.FIRE);
         tags.add(CustomTags.COMBAT_ART);
+        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
+        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p)));
         calculateCardDamage(m);
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) {
-            int deflect = AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount * (this.magicNumber - 1);
-            addToBot(new ApplyPowerAction(p, p, new DeflectPower(deflect), deflect));
-        }
+        int deflect = 0;
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) { deflect = AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount; }
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber)));
+        if (this.upgraded) { deflect += deflect + (this.magicNumber * 2); }
+        else { deflect += this.magicNumber; }
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(deflect)));
+        if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {
-            int realDamage = baseDamage;
-            baseDamage += Wiz.playerWeaponCalc(m, 6);
-            super.calculateCardDamage(m);
-            baseDamage = realDamage;
-            this.isDamageModified = (damage != baseDamage);
+        int realDamage = baseDamage;
+        int weaponCalc = Wiz.playerWeaponCalc(m, 9);
+        baseDamage += weaponCalc;
+        magicNumber = baseMagicNumber + max(0, weaponCalc);
+        super.calculateCardDamage(m);
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
+        this.isMagicNumberModified = (magicNumber != baseMagicNumber);
     }
 
     @Override

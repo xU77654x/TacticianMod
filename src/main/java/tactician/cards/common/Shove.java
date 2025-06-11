@@ -7,14 +7,14 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
+import tactician.cards.Base9CopyCard;
 import tactician.character.MyCharacter;
 import tactician.powers.ShovePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class Shove extends BaseCard {
+public class Shove extends Base9CopyCard {
     public static final String ID = makeID(Shove.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

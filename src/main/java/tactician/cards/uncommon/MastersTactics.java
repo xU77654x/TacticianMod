@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
-import tactician.powers.MastersTacticsPower;
+import tactician.powers.MaxHandSizePower;
 import tactician.util.CardStats;
 
 public class MastersTactics extends BaseCard {
@@ -27,7 +27,7 @@ public class MastersTactics extends BaseCard {
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new MastersTacticsPower(this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new MaxHandSizePower(this.magicNumber), this.magicNumber));
         addToBot(new DrawCardAction(this.magicNumber));
     }
 

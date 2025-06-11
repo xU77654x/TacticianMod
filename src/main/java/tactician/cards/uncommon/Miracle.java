@@ -24,7 +24,7 @@ public class Miracle extends BaseCard {
     public Miracle() {
         super(ID, info);
         setBlock(5, 2);
-        setMagic(3, 1);
+        setMagic(3, 0);
     }
 
     @Override

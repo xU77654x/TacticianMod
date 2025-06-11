@@ -12,5 +12,35 @@
       "This": "Contains pairs of Strings, used to get values based on keys.",
       "This is a key": "This is a value."
     }
+  },
+  "${modID}:Label1Sword": {
+    "TEXT": ["Sword", "Set your weapon to #rSword. NL Strong to: #gAxe, #pDark. NL Weak to: #bLance, [#FC63C6]Bow."]
+  },
+  "${modID}:Label2Lance": {
+    "TEXT": ["Lance", "Set your weapon to #bLance. NL Strong to: #rSword, #pDark. NL Weak to: #gAxe, [#FC63C6]Bow."]
+  },
+  "${modID}:Label3Axe": {
+    "TEXT": ["Axe", "Set your weapon to #gAxe. NL Strong to: #bLance, #pDark. NL Weak to: #rSword, [#FC63C6]Bow."]
+  },
+  "${modID}:Label4Bow": {
+    "TEXT": ["Bow", "Set your weapon to [#FC63C6]Bow. NL Strong to: #rSword, #bLance, #gAxe. NL Weak to: [#00EE88]Wind, [#FF9933]Fire, #yThunder."]
+  },
+  "${modID}:Label5Wind": {
+    "TEXT": ["Wind", "Set your weapon to [#00EE88]Wind. NL Strong to: #yThunder, [#FC63C6]Bow. NL Weak to: [#FF9933]Fire, #pDark.."]
+  },
+  "${modID}:Label6Fire": {
+    "TEXT": ["Fire", "Set your weapon to [#FF9933]Fire. NL Strong to: [#00EE88]Wind, [#FC63C6]Bow. NL Weak to: #yThunder, #pDark."]
+  },
+  "${modID}:Label7Thunder": {
+    "TEXT": ["Thunder", "Set your weapon to #yThunder. NL Strong to: [#FF9933]Fire, [#FC63C6]Bow. NL Weak to: [#00EE88]Wind, #pDark."]
+  },
+  "${modID}:Label8Dark": {
+    "TEXT": ["Dark", "Set your weapon to #pDark. NL Strong to: [#00EE88]Wind, [#FF9933]Fire, #yThunder NL Weak to: #rSword, #bLance, #gAxe."]
+  },
+  "${modID}:Label9Copy": {
+    "TEXT": ["Copy", "This card uses your current weapon as its type, boosting or nerfing its effects based on weapon-triangle effects."]
+  },
+  "${modID}:BasicRightClick": {
+    "TEXT": ["Mutate", "On right-click, this card Purges and adds another card to your hand."]
   }
 }

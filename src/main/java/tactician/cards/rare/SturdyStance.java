@@ -1,19 +1,25 @@
 package tactician.cards.rare;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ObtainPotionAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.RetainCardPower;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.potions.Elixir;
+import com.megacrit.cardcrawl.potions.SpeedPotion;
+import com.megacrit.cardcrawl.potions.SteroidPotion;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
+import tactician.potions.SagePotion;
 import tactician.util.CardStats;
+
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.potionRng;
 
 public class SturdyStance extends BaseCard {
     public static final String ID = makeID(SturdyStance.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
-            CardType.POWER,
+            CardType.SKILL,
             CardRarity.RARE,
             CardTarget.SELF,
             1
@@ -21,11 +27,21 @@ public class SturdyStance extends BaseCard {
 
     public SturdyStance() {
         super(ID, info);
-        setMagic(1, 1);
+        setCostUpgrade(0);
+        setExhaust(true);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new RetainCardPower(p, this.magicNumber), this.magicNumber)); }
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractPotion potion = new Elixir();
+        int roll = potionRng.random(0, 2);
+        switch (roll) {
+            case 0: potion = new SteroidPotion(); break;
+            case 1: potion = new SpeedPotion(); break;
+            case 2: potion = new SagePotion(); break;
+        }
+        addToBot(new ObtainPotionAction(potion));
+    }
 
     @Override
     public AbstractCard makeCopy() { return new SturdyStance(); }

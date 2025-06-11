@@ -5,23 +5,27 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.util.Wiz;
 
 public class FlashSparrowAction extends AbstractGameAction {
 	private final DamageInfo info;
+	private final AbstractMonster m;
 
-	public FlashSparrowAction(AbstractCreature target, DamageInfo info) {
+	public FlashSparrowAction(AbstractMonster target, DamageInfo info) {
 		this.actionType = AbstractGameAction.ActionType.BLOCK;
 		this.target = target;
+		this.m = target;
 		this.info = info;
 	}
 
 	public void update() {
 		addToTop(new DamageAction(this.target, this.info, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-		if (false) {
+
+		if ( Wiz.playerWeaponCalc(this.m, 9) == 3) {
 			addToTop(new DrawCardAction(1));
 			addToTop(new GainEnergyAction(1));
-		} // TODO: Weapon types.
+		}
 		this.isDone = true;
 	}
 }

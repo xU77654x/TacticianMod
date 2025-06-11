@@ -1,15 +1,6 @@
 package tactician.zzzdeprecated;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.defect.IncreaseMiscAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
-import tactician.util.CardStats;
-
+/*
 public class Underdog extends BaseCard {
     public static final String ID = makeID(Underdog.class.getSimpleName());
     private static final CardStats info = new CardStats(
@@ -53,4 +44,4 @@ public class Underdog extends BaseCard {
 
     @Override
     public AbstractCard makeCopy() { return new Underdog(); }
-}
+} */

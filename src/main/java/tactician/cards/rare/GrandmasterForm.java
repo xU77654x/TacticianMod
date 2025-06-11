@@ -20,11 +20,13 @@ public class GrandmasterForm extends BaseCard {
             CardType.POWER,
             CardRarity.RARE,
             CardTarget.SELF,
-            2
+            3
     );
 
     public GrandmasterForm() {
         super(ID, info);
+        setMagic(1, 0);
+        setInnate(false, true);
         tags.add(BaseModCardTags.FORM);
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
         FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
@@ -33,7 +35,7 @@ public class GrandmasterForm extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        addToBot(new ApplyPowerAction(p, p, new GrandmasterFormPower(1), 1));
+        addToBot(new ApplyPowerAction(p, p, new GrandmasterFormPower(this.magicNumber), this.magicNumber));
     }
 
     @Override

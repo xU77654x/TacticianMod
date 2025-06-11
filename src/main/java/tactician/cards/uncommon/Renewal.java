@@ -1,14 +1,13 @@
 package tactician.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.FrailPower;
 import tactician.actions.EasyXCostAction;
 import tactician.actions.ReduceDebuffsAction;
 import tactician.cards.BaseCard;
+import tactician.cards.other.Anathema;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
 
@@ -25,6 +24,7 @@ public class Renewal extends BaseCard {
     public Renewal() {
         super(ID, info);
         setMagic(0, 1);
+        this.cardsToPreview = new Anathema();
     }
 
     @Override
@@ -33,11 +33,7 @@ public class Renewal extends BaseCard {
             addToTop(new ReduceDebuffsAction(p, amt + this.magicNumber));
             return true;
         }));
-    }
-
-    @Override
-    public void triggerOnExhaust() {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FrailPower(AbstractDungeon.player, 1, false), 1));
+        addToBot(new MakeTempCardInDrawPileAction(new Anathema(), 1, true, true));
     }
 
     @Override

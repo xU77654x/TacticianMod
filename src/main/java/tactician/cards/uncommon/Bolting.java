@@ -8,14 +8,14 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ElectroPower;
-import tactician.cards.BaseCard;
+import tactician.cards.Base7ThunderCard;
 import tactician.character.MyCharacter;
-import tactician.powers.weaponscurrent.Weapon7ThunderPower;
+import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class Bolting extends BaseCard {
+public class Bolting extends Base7ThunderCard {
     public static final String ID = makeID(Bolting.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -36,7 +36,7 @@ public class Bolting extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p)));
+        if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         if (!p.hasPower(ElectroPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new ElectroPower(p))); }

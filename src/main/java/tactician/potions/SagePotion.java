@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import tactician.character.MyCharacter;
 import tactician.powers.LoseFocusPower;
-
 import static tactician.TacticianMod.makeID;
 
 public class SagePotion extends BasePotion {

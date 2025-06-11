@@ -5,12 +5,13 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.FlashSparrowAction;
-import tactician.cards.BaseCard;
+import tactician.cards.Base9CopyCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
+import tactician.util.Wiz;
 
-public class FlashSparrow extends BaseCard {
+public class FlashSparrow extends Base9CopyCard {
     public static final String ID = makeID(FlashSparrow.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -19,6 +20,7 @@ public class FlashSparrow extends BaseCard {
             CardTarget.ENEMY,
             1
     );
+
     public FlashSparrow() {
         super(ID, info);
         setDamage(5, 3);
@@ -26,13 +28,19 @@ public class FlashSparrow extends BaseCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new FlashSparrowAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
-        // TODO: FlashSparrowAction needs weapon types.
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new FlashSparrowAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL))); }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        if (m != null) {
+            int realDamage = baseDamage;
+            baseDamage += Wiz.playerWeaponCalc(m, 9);
+            super.calculateCardDamage(m);
+            baseDamage = realDamage;
+            this.isDamageModified = (damage != baseDamage);
+        }
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new FlashSparrow();
-    }
+    public AbstractCard makeCopy() { return new FlashSparrow(); }
 }

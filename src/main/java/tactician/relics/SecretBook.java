@@ -30,22 +30,9 @@ public class SecretBook extends BaseRelic {
 	@Override
 	public void atBattleStart() {
 		flash();
-		addToBot(new ApplyPowerAction(p, p, new FocusPower(p, 1), 1));
+		addToTop(new ApplyPowerAction(p, p, new FocusPower(p, 1), 1));
 		addToBot(new MakeTempCardInHandAction(new Anathema(), 1));
 	}
-
-	/*
-	@Override
-	public void onRightClick() {
-		if (Boolean.TRUE.equals(this.used)) { addToBot(new TalkAction(true, this.DESCRIPTIONS[2], 1.0F, 2.0F)); }
-		addToBot(new WaitAction(0.1F));
-		if (Boolean.TRUE.equals(!this.used) && (!AbstractDungeon.getCurrRoom().isBattleOver && AbstractDungeon.getCurrRoom().monsters != null && AbstractDungeon.getCurrRoom().monsters.monsters != null && !AbstractDungeon.getCurrRoom().monsters.monsters.isEmpty() && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())) {
-			flash();
-			stopPulse();
-		}
-		else { addToBot(new TalkAction(true, "Let me think for NL another moment...", 1.0F, 2.0F)); }
-	} // Credit to Balls: Rubber Bouncy Ball for the code to determine if the room has living monsters as a check for right-click relics.
-	  // "public class SecretBook extends BaseRelic implements ClickableRelic" */
 
 	@Override
 	public AbstractRelic makeCopy() { return new SecretBook(); }

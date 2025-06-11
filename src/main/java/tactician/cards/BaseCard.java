@@ -13,14 +13,11 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import static tactician.util.GeneralUtils.removePrefix;
 import static tactician.util.TextureLoader.getCardTextureString;
-
 
 public abstract class BaseCard extends CustomCard {
     final private static Map<String, DynamicVariable> customVars = new HashMap<>();

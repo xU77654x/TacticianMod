@@ -16,8 +16,8 @@ import tactician.cards.BaseCard;
 import tactician.cards.cardchoice.Weapon4Bow;
 import tactician.cards.cardchoice.Weapon8Dark;
 import tactician.character.MyCharacter;
-import tactician.powers.weaponscurrent.Weapon4BowPower;
-import tactician.powers.weaponscurrent.Weapon8DarkPower;
+import tactician.powers.weapons.Weapon4BowPower;
+import tactician.powers.weapons.Weapon8DarkPower;
 import tactician.util.CardStats;
 import tactician.util.Wiz;
 
@@ -48,13 +48,13 @@ public class BeguilingBow extends BaseCard {
         ArrayList<AbstractCard> easyCardList = new ArrayList<>();
         easyCardList.add(new Weapon4Bow(() ->  {
             weapon = 4;
-            addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p)));
+            if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
             calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }));
         easyCardList.add(new Weapon8Dark(() ->  {
             weapon = 8;
-            addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p)));
+            if (!p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
             calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SHIELD));
         }));

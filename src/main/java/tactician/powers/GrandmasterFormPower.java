@@ -2,13 +2,13 @@ package tactician.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import tactician.TacticianMod;
 import tactician.util.TextureLoader;
 
@@ -34,13 +34,15 @@ public class GrandmasterFormPower extends AbstractPower {
 		updateDescription();
 	}
 
+	@Override
 	public void onExhaust(AbstractCard card) {
 		if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
 			flash();
-			addToBot(new ChannelAction(new Lightning()));
+			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, this.amount), this.amount));
 		}
 	}
 
+	@Override
 	public void updateDescription() {
 		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
 	}

@@ -8,10 +8,8 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.FocusPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.*;
+import tactician.powers.CreationPulsePower;
 import tactician.powers.ShovePower;
 import java.lang.reflect.Field;
 
@@ -26,7 +24,14 @@ public class ShovePatch {
 			float duration = ((Float)getPrivateInherited(__instance, ApplyPowerAction.class, "duration")).floatValue();
 			duration -= Gdx.graphics.getDeltaTime();
 			ReflectionHacks.setPrivateInherited(__instance, ApplyPowerAction.class, "duration", Float.valueOf(duration));
-			return SpireReturn.Return(null);
+			if (AbstractDungeon.player.hasPower(CreationPulsePower.POWER_ID)) {
+				if (powerToApply.ID.equals(StrengthPower.POWER_ID)) {
+					// TODO: Apply Vulnerable to ALL enemies equal to the player's amount of CreationPulsePower.
+					// Unfortunately, addToBot does not work within this code.
+				}
+			}
+
+			return SpireReturn.Return();
 		}
 		return SpireReturn.Continue();
 	}

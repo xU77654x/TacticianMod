@@ -4,12 +4,12 @@ import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
+import tactician.cards.Base7ThunderCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
 
 @AutoAdd.Ignore
-public class Weapon7Thunder extends BaseCard {
+public class Weapon7Thunder extends Base7ThunderCard {
     public static final String ID = makeID(Weapon7Thunder.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

@@ -1,19 +1,25 @@
 package tactician.cards.rare;
 
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.HuntersVolleyAction;
-import tactician.cards.BaseCard;
+import com.megacrit.cardcrawl.powers.EquilibriumPower;
+import tactician.cards.Base4BowCard;
 import tactician.character.MyCharacter;
-import tactician.powers.weaponscurrent.Weapon4BowPower;
+import tactician.powers.weapons.Weapon4BowPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class HuntersVolley extends BaseCard {
+import static java.lang.Math.max;
+
+public class HuntersVolley extends Base4BowCard {
     public static final String ID = makeID(HuntersVolley.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -25,29 +31,35 @@ public class HuntersVolley extends BaseCard {
 
     public HuntersVolley() {
         super(ID, info);
-        setDamage(10, 3);
+        setDamage(10, 4);
+        setMagic(1, 1);
         tags.add(CustomTags.BOW);
         tags.add(CustomTags.COMBAT_ART);
+        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
+        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p)));
         calculateCardDamage(m);
-        addToBot(new HuntersVolleyAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, this.magicNumber)));
+        if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {
         int realDamage = baseDamage;
-        baseDamage += Wiz.playerWeaponCalc(m, 4);
+        int weaponCalc = Wiz.playerWeaponCalc(m, 9);
+        baseDamage += weaponCalc;
+        magicNumber = baseMagicNumber + max(0, weaponCalc);
         super.calculateCardDamage(m);
         baseDamage = realDamage;
         this.isDamageModified = (damage != baseDamage);
+        this.isMagicNumberModified = (magicNumber != baseMagicNumber);
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new HuntersVolley();
-    }
+    public AbstractCard makeCopy() { return new HuntersVolley(); }
 }

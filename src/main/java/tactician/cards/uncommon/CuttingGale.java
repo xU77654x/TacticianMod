@@ -9,14 +9,14 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.RandomExhumeAction;
-import tactician.cards.BaseCard;
+import tactician.cards.Base5WindCard;
 import tactician.character.MyCharacter;
-import tactician.powers.weaponscurrent.Weapon5WindPower;
+import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class CuttingGale extends BaseCard {
+public class CuttingGale extends Base5WindCard {
     public static final String ID = makeID(CuttingGale.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -34,7 +34,7 @@ public class CuttingGale extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p)));
+        if (!p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new RandomExhumeAction(1, false));

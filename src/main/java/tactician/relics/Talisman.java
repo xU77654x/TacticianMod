@@ -1,10 +1,12 @@
 package tactician.relics;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.curses.Necronomicurse;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import tactician.character.MyCharacter;
+import java.util.Objects;
 import static tactician.TacticianMod.makeID;
 
 public class Talisman extends BaseRelic {
@@ -20,18 +22,16 @@ public class Talisman extends BaseRelic {
     }
 
     @Override
-    public String getUpdatedDescription() {
-        return this.DESCRIPTIONS[0] + TEMPHP + this.DESCRIPTIONS[1];
-    }
+    public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + TEMPHP + this.DESCRIPTIONS[1]; }
 
     @Override
     public void onExhaust(AbstractCard card) {
-        flash();
-        addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, TEMPHP));
+        if (!Objects.equals(card.cardID, Necronomicurse.ID)) {
+            flash();
+            addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, TEMPHP));
+        }
     }
 
     @Override
-    public AbstractRelic makeCopy() {
-        return new Talisman();
-    }
+    public AbstractRelic makeCopy() { return new Talisman(); }
 }

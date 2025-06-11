@@ -19,6 +19,8 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import tactician.cards.basic.*;
+import tactician.cards.basic.defends.*;
+import tactician.cards.basic.strikes.*;
 import tactician.relics.SecretBook;
 
 import java.util.ArrayList;
@@ -133,14 +135,14 @@ public class MyCharacter extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(Basic1Sword.ID);
-        retVal.add(Basic2Lance.ID);
-        retVal.add(Basic3Axe.ID);
-        retVal.add(Basic4Bow.ID);
-        retVal.add(Basic5Wind.ID);
-        retVal.add(Basic6Fire.ID);
-        retVal.add(Basic7Thunder.ID);
-        retVal.add(Basic8Dark.ID);
+        retVal.add(Strike1Sword.ID);
+        retVal.add(Strike2Lance.ID);
+        retVal.add(Strike3Axe.ID);
+        retVal.add(Strike4Bow.ID);
+        retVal.add(Defend5Wind.ID);
+        retVal.add(Defend6Fire.ID);
+        retVal.add(Defend7Thunder.ID);
+        retVal.add(Defend8Dark.ID);
         retVal.add(Veteran.ID);
         retVal.add(Solidarity.ID);
         retVal.add(Vulnerary.ID);
@@ -150,7 +152,7 @@ public class MyCharacter extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(SecretBook.ID); // If the Reeking Box is created, add it here as well.
+        retVal.add(SecretBook.ID);
         return retVal;
     }
 

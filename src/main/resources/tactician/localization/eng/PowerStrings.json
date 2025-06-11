@@ -36,11 +36,6 @@
     "DESCRIPTIONS": ["Strong to: [#00EE88]Wind, [#FF9933]Fire, #yThunder NL Weak to: #rSword, #bLance, #gAxe."]
   },
 
-  "${modID}:ReekingSwapPower": {
-    "NAME": "Reeking Box",
-    "DESCRIPTIONS": ["Your Strikes and Defends NL have reversed functionality."]
-  },
-
   "${modID}:DeflectPower": {
     "NAME": "Deflect",
     "DESCRIPTIONS": ["The next time you take Attack damage, deal ",
@@ -50,11 +45,6 @@
     "NAME": "Focus Down",
     "DESCRIPTIONS": ["At the end of your turn, lose #b",
       " #yFocus."]
-  },
-  "${modID}:NextTurnDeflectPower": {
-    "NAME": "Next Turn Deflect",
-    "DESCRIPTIONS": ["Next turn, gain #b",
-      " yDeflect."]
   },
   "${modID}:ShovePower": {
     "NAME": "Boon",
@@ -80,22 +70,47 @@
     "DESCRIPTIONS": ["At the start of your turn, gain #b",
       " #yDeflect."]
   },
-  "${modID}:CreationPulsePower": {
-    "NAME": "Creation Pulse",
-    "DESCRIPTIONS": ["If you gain a Stat Down, apply to ALL enemies: NL Strength: #b",
-      " #yVulnerable. NL Dexterity: #b",
-      " #yWeak. NL Focus: #b",
-      " #yLock-On."]
+  "${modID}:AcrobatPower": {
+    "NAME": "Acrobat",
+    "DESCRIPTIONS": ["When you lose #yDeflect from an enemy attack, lose #b",
+      " less."]
   },
-  "${modID}:MastersTacticsPower": {
-    "NAME": "Master's Tactics",
+  "${modID}:MaxHandSizePower": {
+    "NAME": "Max Hand Size Plus",
     "DESCRIPTIONS": ["Increase your hand size by #b",
-      "."]
+      " for the rest of combat."]
   },
   "${modID}:ExpirationPower": {
     "NAME": "Expiration",
     "DESCRIPTIONS": ["Whenever you Exhaust a card, deal #b",
       " damage to ALL enemies."]
+  },
+  "${modID}:CreationPulsePower": {
+    "NAME": "Creation Pulse",
+    "DESCRIPTIONS": ["If you gain a Stat Down, NL apply to ALL enemies: NL Strength: #b",
+      " #yVulnerable. NL Dexterity: #b",
+      " #yWeak. NL Focus: #b",
+      " #yLock-On."]
+  },
+  "${modID}:DeathBlowPower": {
+    "NAME": "Death Blow",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
+      " temp. #yStrength."]
+  },
+  "${modID}:FiendishBlowPower": {
+    "NAME": "Fiendish Blow",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
+      " temp. #yFocus."]
+  },
+  "${modID}:WardingBlowPower": {
+    "NAME": "Warding Blow",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
+      " temp. #yDexterity."]
+  },
+  "${modID}:TempOrbSlotPower": {
+    "NAME": "Temp. Orb Slot",
+    "DESCRIPTIONS": ["Gain an additional Orb Slot for #b",
+      " more turns."]
   },
   "${modID}:LunaPower": {
     "NAME": "Luna",
@@ -103,14 +118,14 @@
       " Combat Arts play twice.",
       "Your next Combat Art plays twice."]
   },
-  "${modID}:AcrobatPower": {
-    "NAME": "Acrobat",
-    "DESCRIPTIONS": ["When you lose #yDeflect from an enemy attack, lose #b",
-      " less."]
+  "${modID}:ChaosStylePower": {
+    "NAME": "Chaos Style",
+    "DESCRIPTIONS": ["When you change your weapon type, gain #b",
+      " #yBlock."]
   },
   "${modID}:GrandmasterFormPower": {
     "NAME": "Grandmaster Form",
-    "DESCRIPTIONS": ["When you #uExhaust a card, Channel #b",
-      " #yLightning."]
+    "DESCRIPTIONS": ["When you #yExhaust a card, gain #b",
+      " #yArtifact."]
   }
 }

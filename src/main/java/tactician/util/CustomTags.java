@@ -14,4 +14,5 @@ public class CustomTags
     @SpireEnum public static AbstractCard.CardTags THUNDER;
     @SpireEnum public static AbstractCard.CardTags DARK;
     @SpireEnum public static AbstractCard.CardTags COPY;
+    @SpireEnum public static AbstractCard.CardTags MUTATE;
 }

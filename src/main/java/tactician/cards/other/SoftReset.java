@@ -25,7 +25,7 @@ public class SoftReset extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new LoseHPAction(p, p, 999999999));
+        addToBot(new LoseHPAction(p, p, 2147483647));
     }
 
     @Override

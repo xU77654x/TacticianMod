@@ -1,22 +1,19 @@
 package tactician.relics;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
-import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import tactician.character.MyCharacter;
 
 import static tactician.TacticianMod.makeID;
 
-public class SeraphRobe extends BaseRelic implements ClickableRelic {
+public class SeraphRobe extends BaseRelic {
     private static final String NAME = "SeraphRobe";
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.COMMON;
     private static final LandingSound SOUND = LandingSound.CLINK;
-    private boolean used = false;
-    private static final int MAXHP = 5;
-    private static final int HEAL = 7;
+    private static final int HEAL = 10;
+    private static final int GOLD = 50;
 
     public SeraphRobe() {
         super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
@@ -24,35 +21,27 @@ public class SeraphRobe extends BaseRelic implements ClickableRelic {
     }
 
     @Override
-    public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + MAXHP + this.DESCRIPTIONS[1] + HEAL + this.DESCRIPTIONS[2]; }
+    public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + HEAL + this.DESCRIPTIONS[1] + GOLD + this.DESCRIPTIONS[2]; }
+
+    public void justEnteredRoom(AbstractRoom room) {
+        if (room instanceof com.megacrit.cardcrawl.rooms.TreasureRoom) {
+            flash();
+            this.pulse = true;
+        }
+        else { this.pulse = false; }
+    }
 
     @Override
     public void onEquip() {
         flash();
-        addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        AbstractDungeon.player.increaseMaxHp(MAXHP, true);
-        setCounter(-1);
-        //
+        AbstractDungeon.player.heal(HEAL, true);
+        AbstractDungeon.player.gainGold(GOLD);
     }
 
-    @Override
-    public void onRightClick() {
-        if (this.counter == -2) { addToBot(new TalkAction(true, this.DESCRIPTIONS[3], 1.0F, 2.0F)); }
-        else {
-            AbstractDungeon.player.heal(HEAL, true);
-            setCounter(-2);
-            flash();
-            stopPulse();
-        }
-    }
-
-    @Override
-    public void setCounter(int counter) {
-        this.counter = counter;
-        if (counter == -2) {
-            this.grayscale = true;
-            this.usedUp = true;
-        }
+    public void onChestOpen() {
+        flash();
+        AbstractDungeon.player.heal(HEAL, true);
+        AbstractDungeon.player.gainGold(GOLD);
     }
 
     @Override

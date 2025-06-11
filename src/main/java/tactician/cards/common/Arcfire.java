@@ -9,15 +9,15 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
-import tactician.cards.BaseCard;
+import tactician.cards.Base6FireCard;
 import tactician.character.MyCharacter;
 import tactician.powers.LoseFocusPower;
-import tactician.powers.weaponscurrent.Weapon6FirePower;
+import tactician.powers.weapons.Weapon6FirePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class Arcfire extends BaseCard {
+public class Arcfire extends Base6FireCard {
     public static final String ID = makeID(Arcfire.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -37,7 +37,7 @@ public class Arcfire extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p)));
+        if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
         calculateCardDamage(m);
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
@@ -55,7 +55,5 @@ public class Arcfire extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new Arcfire();
-    }
+    public AbstractCard makeCopy() { return new Arcfire(); }
 }

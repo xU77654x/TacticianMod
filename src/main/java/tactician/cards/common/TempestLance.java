@@ -8,15 +8,15 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
+import tactician.cards.Base2LanceCard;
 import tactician.cards.other.Anathema;
 import tactician.character.MyCharacter;
-import tactician.powers.weaponscurrent.Weapon2LancePower;
+import tactician.powers.weapons.Weapon2LancePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class TempestLance extends BaseCard {
+public class TempestLance extends Base2LanceCard {
     public static final String ID = makeID(TempestLance.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -36,7 +36,7 @@ public class TempestLance extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p)));
+        if (!p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new MakeTempCardInDrawPileAction(new Anathema(), 1, true, true));

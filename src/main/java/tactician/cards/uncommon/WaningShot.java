@@ -11,15 +11,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import tactician.cards.BaseCard;
+import tactician.cards.Base4BowCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
-import tactician.powers.weaponscurrent.Weapon4BowPower;
+import tactician.powers.weapons.Weapon4BowPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class WaningShot extends BaseCard {
+public class WaningShot extends Base4BowCard {
     public static final String ID = makeID(WaningShot.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -39,7 +39,7 @@ public class WaningShot extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p)));
+        if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), this.magicNumber));

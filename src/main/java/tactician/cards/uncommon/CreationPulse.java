@@ -26,7 +26,6 @@ public class CreationPulse extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new CreationPulsePower(this.magicNumber), this.magicNumber)); }
-    // TODO: CreationPulsePower
 
     @Override
     public AbstractCard makeCopy() { return new CreationPulse(); }

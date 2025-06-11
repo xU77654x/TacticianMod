@@ -19,8 +19,8 @@ import tactician.cards.cardchoice.Weapon7Thunder;
 import tactician.cards.other.Hex;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
-import tactician.powers.weaponscurrent.Weapon1SwordPower;
-import tactician.powers.weaponscurrent.Weapon7ThunderPower;
+import tactician.powers.weapons.Weapon1SwordPower;
+import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;
 import tactician.util.Wiz;
 
@@ -52,13 +52,13 @@ public class LevinSword extends BaseCard {
         ArrayList<AbstractCard> easyCardList = new ArrayList<>();
         easyCardList.add(new Weapon1Sword(() ->  {
             weapon = 1;
-            addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p)));
+            if (!p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
             calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         }));
         easyCardList.add(new Weapon7Thunder(() ->  {
             weapon = 7;
-            addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p)));
+            if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
             calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
         }));

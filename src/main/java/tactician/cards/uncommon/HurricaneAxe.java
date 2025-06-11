@@ -17,8 +17,8 @@ import tactician.cards.cardchoice.Weapon3Axe;
 import tactician.cards.cardchoice.Weapon5Wind;
 import tactician.cards.other.Anathema;
 import tactician.character.MyCharacter;
-import tactician.powers.weaponscurrent.Weapon3AxePower;
-import tactician.powers.weaponscurrent.Weapon5WindPower;
+import tactician.powers.weapons.Weapon3AxePower;
+import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
 import tactician.util.Wiz;
 
@@ -49,13 +49,13 @@ public class HurricaneAxe extends BaseCard {
         ArrayList<AbstractCard> easyCardList = new ArrayList<>();
         easyCardList.add(new Weapon3Axe(() ->  {
             weapon = 3;
-            addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p)));
+            if (!p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
             calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
         }));
         easyCardList.add(new Weapon5Wind(() ->  {
             weapon = 5;
-            addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p)));
+            if (!p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
             calculateCardDamage(m);
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }));

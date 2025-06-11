@@ -21,7 +21,6 @@ public class Gamble extends BaseCard {
 
     public Gamble() {
         super(ID, info);
-        this.selfRetain = true;
         this.exhaust = true;
         setCostUpgrade(0);
     }

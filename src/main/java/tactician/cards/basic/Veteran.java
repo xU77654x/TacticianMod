@@ -3,11 +3,12 @@ package tactician.cards.basic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
+import tactician.cards.Base9CopyCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
+import tactician.util.CustomTags;
 
-public class Veteran extends BaseCard {
+public class Veteran extends Base9CopyCard {
     public static final String ID = makeID(Veteran.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -19,6 +20,7 @@ public class Veteran extends BaseCard {
 
     public Veteran() {
         super(ID, info);
+        tags.add(CustomTags.COPY);
     }
 
     @Override

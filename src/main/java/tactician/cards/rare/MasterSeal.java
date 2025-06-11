@@ -17,7 +17,7 @@ public class MasterSeal extends BaseCard {
     public static final String ID = makeID(MasterSeal.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
-            CardType.SKILL,
+            CardType.POWER,
             CardRarity.RARE,
             CardTarget.SELF,
             3
@@ -27,7 +27,6 @@ public class MasterSeal extends BaseCard {
         super(ID, info);
         setMagic(1, 0);
         setCostUpgrade(2);
-        this.exhaust = true;
     }
 
     @Override

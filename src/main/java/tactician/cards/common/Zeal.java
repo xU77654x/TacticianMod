@@ -26,7 +26,6 @@ public class Zeal extends BaseCard {
         setMagic(1, 0);
         setCostUpgrade(0);
         this.selfRetain = true;
-        this.exhaust = true;
         this.p = AbstractDungeon.player;
     }
 

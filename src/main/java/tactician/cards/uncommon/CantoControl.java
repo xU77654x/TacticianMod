@@ -1,15 +1,14 @@
 package tactician.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import tactician.actions.EasyXCostAction;
 import tactician.cards.BaseCard;
+import tactician.cards.other.Hex;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
 
@@ -26,7 +25,7 @@ public class CantoControl extends BaseCard {
     public CantoControl() {
         super(ID, info);
         setMagic(0, 1);
-        this.isEthereal = true;
+        this.cardsToPreview = new Hex();
     }
 
     @Override
@@ -36,11 +35,7 @@ public class CantoControl extends BaseCard {
             return true;
         }));
         if (this.upgraded) { addToBot(new DrawCardAction(this.magicNumber)); }
-    }
-
-    @Override
-    public void triggerOnExhaust() {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new WeakPower(AbstractDungeon.player, 1, false), 1));
+        addToBot(new MakeTempCardInDrawPileAction(new Hex(), 1, true, true));
     }
 
     @Override

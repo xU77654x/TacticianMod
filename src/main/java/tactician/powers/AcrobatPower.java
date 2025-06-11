@@ -1,5 +1,4 @@
 package tactician.powers;
-
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -8,7 +7,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
 import tactician.util.TextureLoader;
-
 import static tactician.TacticianMod.imagePath;
 
 public class AcrobatPower extends AbstractPower {
@@ -31,5 +29,8 @@ public class AcrobatPower extends AbstractPower {
 		this.updateDescription();
 	}
 
+	@Override
 	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
+
+	public AbstractPower makeCopy() { return new AcrobatPower(this.amount); }
 }

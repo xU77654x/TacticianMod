@@ -22,7 +22,6 @@ public class SealAtk4 extends BaseCard {
         super(ID, info);
         setMagic(4, 0);
         setCostUpgrade(0);
-        setSelfRetain(true);
     }
 
     @Override

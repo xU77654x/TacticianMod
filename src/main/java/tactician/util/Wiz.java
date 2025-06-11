@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import tactician.powers.ZealPower;
-import tactician.powers.weaponscurrent.*;
+import tactician.powers.weapons.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +31,10 @@ public class Wiz {
         return AbstractDungeon.player;
     }
 
+    public static void atb(AbstractGameAction action) { AbstractDungeon.actionManager.addToBottom(action); }
+
+    public static void att(AbstractGameAction action) { AbstractDungeon.actionManager.addToTop(action); }
+
     public static void forAllCardsInList(Consumer<AbstractCard> consumer, ArrayList<AbstractCard> cardsList) {
         for (AbstractCard c : cardsList)
             consumer.accept(c);
@@ -38,8 +42,7 @@ public class Wiz {
 
     public static int getLogicalPowerAmount(AbstractCreature ac, String powerId) {
         AbstractPower pow = ac.getPower(powerId);
-        if (pow == null)
-            return 0;
+        if (pow == null) { return 0; }
         return pow.amount;
     }
 
@@ -47,16 +50,13 @@ public class Wiz {
         ArrayList<AbstractCard> masterCardsList = new ArrayList<>();
         masterCardsList.addAll(AbstractDungeon.player.drawPile.group);
         masterCardsList.addAll(AbstractDungeon.player.discardPile.group);
-        if (includeHand)
-            masterCardsList.addAll(AbstractDungeon.player.hand.group);
-        if (includeExhaust)
-            masterCardsList.addAll(AbstractDungeon.player.exhaustPile.group);
+        if (includeHand) { masterCardsList.addAll(AbstractDungeon.player.hand.group); }
+        if (includeExhaust) { masterCardsList.addAll(AbstractDungeon.player.exhaustPile.group); }
         return masterCardsList;
     }
 
     public static void forAllMonstersLiving(Consumer<AbstractMonster> consumer) {
-        for (AbstractMonster m : getEnemies())
-            consumer.accept(m);
+        for (AbstractMonster m : getEnemies()) { consumer.accept(m); }
     }
 
     public static ArrayList<AbstractMonster> getEnemies() {
@@ -72,25 +72,13 @@ public class Wiz {
     public static ArrayList<AbstractCard> getCardsMatchingPredicate(Predicate<AbstractCard> pred, boolean allcards) {
         if (allcards) {
             ArrayList<AbstractCard> arrayList = new ArrayList<>();
-            for (AbstractCard c : CardLibrary.getAllCards()) {
-                if (pred.test(c))
-                    arrayList.add(c.makeStatEquivalentCopy());
-            }
+            for (AbstractCard c : CardLibrary.getAllCards()) { if (pred.test(c)) { arrayList.add(c.makeStatEquivalentCopy()); } }
             return arrayList;
         }
         ArrayList<AbstractCard> cardsList = new ArrayList<>();
-        for (AbstractCard c : srcCommonCardPool.group) {
-            if (pred.test(c))
-                cardsList.add(c.makeStatEquivalentCopy());
-        }
-        for (AbstractCard c : srcUncommonCardPool.group) {
-            if (pred.test(c))
-                cardsList.add(c.makeStatEquivalentCopy());
-        }
-        for (AbstractCard c : srcRareCardPool.group) {
-            if (pred.test(c))
-                cardsList.add(c.makeStatEquivalentCopy());
-        }
+        for (AbstractCard c : srcCommonCardPool.group) { if (pred.test(c)) { cardsList.add(c.makeStatEquivalentCopy()); } }
+        for (AbstractCard c : srcUncommonCardPool.group) { if (pred.test(c)) { cardsList.add(c.makeStatEquivalentCopy()); } }
+        for (AbstractCard c : srcRareCardPool.group) { if (pred.test(c)) { cardsList.add(c.makeStatEquivalentCopy()); } }
         return cardsList;
     }
 
@@ -102,21 +90,10 @@ public class Wiz {
         return returnTrulyRandomPrediCardInCombat(pred, false);
     }
 
-    public static <T> T getRandomItem(List<T> list, Random rng) {
-        return list.isEmpty() ? null : list.get(rng.random(list.size() - 1));
-    }
-
-    public static <T> T getRandomItem(List<T> list) {
-        return getRandomItem(list, AbstractDungeon.cardRandomRng);
-    }
-
-    public static AbstractCard getRandomItem(CardGroup group, Random rng) {
-        return getRandomItem(group.group, rng);
-    }
-
-    public static AbstractCard getRandomItem(CardGroup group) {
-        return getRandomItem(group, AbstractDungeon.cardRandomRng);
-    }
+    public static <T> T getRandomItem(List<T> list, Random rng) { return list.isEmpty() ? null : list.get(rng.random(list.size() - 1)); }
+    public static <T> T getRandomItem(List<T> list) { return getRandomItem(list, AbstractDungeon.cardRandomRng); }
+    public static AbstractCard getRandomItem(CardGroup group, Random rng) { return getRandomItem(group.group, rng); }
+    public static AbstractCard getRandomItem(CardGroup group) { return getRandomItem(group, AbstractDungeon.cardRandomRng); }
 
     private static boolean actuallyHovered(Hitbox hb) {
         return (InputHelper.mX > hb.x && InputHelper.mX < hb.x + hb.width && InputHelper.mY > hb.y && InputHelper.mY < hb.y + hb.height);
@@ -126,32 +103,23 @@ public class Wiz {
         return (CardCrawlGame.isInARun() && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT);
     }
 
-    public static void topDeck(AbstractCard c, int i) {
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c, i, false, true));
-    }
+    public static void topDeck(AbstractCard c, int i) { AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c, i, false, true)); }
 
-    public static void topDeck(AbstractCard c) {
-        topDeck(c, 1);
-    }
+    public static void topDeck(AbstractCard c) { topDeck(c, 1); }
 
     public static boolean isAttacking(AbstractCreature m) {
-        if (m instanceof AbstractMonster)
-            return (((AbstractMonster)m).getIntentBaseDmg() >= 0);
+        if (m instanceof AbstractMonster) { return (((AbstractMonster)m).getIntentBaseDmg() >= 0); }
         return false;
     }
 
     public static AbstractGameAction.AttackEffect getRandomSlash() {
         int x = AbstractDungeon.miscRng.random(0, 2);
-        if (x == 0)
-            return AbstractGameAction.AttackEffect.SLASH_DIAGONAL;
-        if (x == 1)
-            return AbstractGameAction.AttackEffect.SLASH_HORIZONTAL;
+        if (x == 0) { return AbstractGameAction.AttackEffect.SLASH_DIAGONAL; }
+        if (x == 1) { return AbstractGameAction.AttackEffect.SLASH_HORIZONTAL; }
         return AbstractGameAction.AttackEffect.SLASH_VERTICAL;
     }
 
-    public static AbstractMonster getRandomEnemy() {
-        return AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
-    }
+    public static AbstractMonster getRandomEnemy() { return AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng); }
 
     public static AbstractMonster getLowestHealthEnemy() {
         AbstractMonster weakest = null;
@@ -160,8 +128,7 @@ public class Wiz {
                 weakest = m;
                 continue;
             }
-            if (weakest.currentHealth > m.currentHealth)
-                weakest = m;
+            if (weakest.currentHealth > m.currentHealth) { weakest = m; }
         }
         return weakest;
     }
@@ -173,8 +140,7 @@ public class Wiz {
                 strongest = m;
                 continue;
             }
-            if (strongest.currentHealth < m.currentHealth)
-                strongest = m;
+            if (strongest.currentHealth < m.currentHealth) { strongest = m; }
         }
         return strongest;
     }
@@ -193,17 +159,14 @@ public class Wiz {
 
     public static int pwrAmt(AbstractCreature check, String ID) {
         AbstractPower found = check.getPower(ID);
-        if (found != null)
-            return found.amount;
+        if (found != null) { return found.amount; }
         return 0;
     }
 
     public static int getLogicalCardCost(AbstractCard c) {
         if (!c.freeToPlay()) {
-            if (c.cost <= -2)
-                return 0;
-            if (c.cost == -1)
-                return EnergyPanel.totalCount;
+            if (c.cost <= -2) { return 0; }
+            if (c.cost == -1) { return EnergyPanel.totalCount; }
             return c.costForTurn;
         }
         return 0;
@@ -219,32 +182,22 @@ public class Wiz {
 
 
 
-
     // TODO: This lets cards be filtered by card tag, but fails if used off-class.
     public static AbstractCard randomCombatArt(boolean costZero) {
         ArrayList<AbstractCard> list = new ArrayList<>();
-        for (AbstractCard c : srcCommonCardPool.group) {
-            if (c.hasTag(CustomTags.COMBAT_ART)) {
+        for (AbstractCard c : srcCommonCardPool.group) { if (c.hasTag(CustomTags.COMBAT_ART)) {
                 list.add(c);
-                if (costZero) {
-                    c.setCostForTurn(0);
-                }
+                if (costZero) { c.setCostForTurn(0); }
             }
         }
-        for (AbstractCard d : srcUncommonCardPool.group) {
-            if (d.hasTag(CustomTags.COMBAT_ART)) {
+        for (AbstractCard d : srcUncommonCardPool.group) { if (d.hasTag(CustomTags.COMBAT_ART)) {
                 list.add(d);
-                if (costZero) {
-                    d.setCostForTurn(0);
-                }
+                if (costZero) { d.setCostForTurn(0); }
             }
         }
-        for (AbstractCard e : srcRareCardPool.group) {
-            if (e.hasTag(CustomTags.COMBAT_ART)) {
+        for (AbstractCard e : srcRareCardPool.group) { if (e.hasTag(CustomTags.COMBAT_ART)) {
                 list.add(e);
-                if (costZero) {
-                    e.setCostForTurn(0);
-                }
+                if (costZero) { e.setCostForTurn(0); }
             }
         }
         return list.get(cardRandomRng.random(list.size() - 1));
@@ -266,7 +219,6 @@ public class Wiz {
         int valModify = 3;
         int effect = 0;
         boolean copyFlag = true;
-        boolean loopStop = false;
         if (AbstractDungeon.player.hasPower(ZealPower.POWER_ID)) { effect = valModify; }
         else do {
             switch (weaponType) {

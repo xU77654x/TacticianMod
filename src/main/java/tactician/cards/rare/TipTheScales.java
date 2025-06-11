@@ -23,7 +23,7 @@ public class TipTheScales extends BaseCard {
 
     public TipTheScales() {
         super(ID, info);
-        setMagic(6, 2);
+        setMagic(3, 1);
         setSelfRetain(true);
     }
 

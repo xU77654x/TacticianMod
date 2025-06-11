@@ -1,5 +1,7 @@
 package tactician.cards.rare;
 
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -10,14 +12,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import tactician.cards.Base3AxeCard;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
-import tactician.powers.weaponscurrent.Weapon3AxePower;
+import tactician.powers.weapons.Weapon3AxePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class ExhaustiveStrike extends BaseCard {
+public class ExhaustiveStrike extends Base3AxeCard {
     public static final String ID = makeID(ExhaustiveStrike.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -29,19 +32,22 @@ public class ExhaustiveStrike extends BaseCard {
 
     public ExhaustiveStrike() {
         super(ID, info);
-        setDamage(20, 5);
-        setMagic(1, 0);
+        setDamage(10, 4);
+        setMagic(1, 2);
         tags.add(CardTags.STRIKE);
         tags.add(CustomTags.AXE);
         tags.add(CustomTags.COMBAT_ART);
+        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
+        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p)));
+        if (!p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
         calculateCardDamage(m);
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new ExhaustAction(false, true, true));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new ExhaustAction(this.magicNumber, false, true));
     }
 
     @Override
@@ -56,12 +62,5 @@ public class ExhaustiveStrike extends BaseCard {
     }
 
     @Override
-    public void triggerOnExhaust() {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VulnerablePower(AbstractDungeon.player, this.magicNumber, false), this.magicNumber));
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new ExhaustiveStrike();
-    }
+    public AbstractCard makeCopy() { return new ExhaustiveStrike(); }
 }

@@ -5,18 +5,20 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.cards.Base9CopyCard;
 import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
+import tactician.util.Wiz;
 
-public class Relief extends BaseCard {
+public class Relief extends Base9CopyCard {
     public static final String ID = makeID(Relief.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
-            CardTarget.SELF,
+            CardTarget.ENEMY,
             1
     );
     public Relief() {
@@ -29,6 +31,7 @@ public class Relief extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        calculateCardDamage(m);
         addToBot(new GainBlockAction(p, p, this.block));
     }
 
@@ -36,15 +39,21 @@ public class Relief extends BaseCard {
     public void triggerOnExhaust() {
         if (!this.freeToPlayOnce) {
             Relief makeCard = new Relief();
-            if (this.upgraded)
-                makeCard.upgrade();
+            if (this.upgraded) { makeCard.upgrade(); }
             addToBot((new MakeTempCardInHandAction(makeCard)));
         }
         // Credit to The Forsaken: Precise Strike for this code.
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new Relief();
+    public void calculateCardDamage(AbstractMonster m) {
+        int realBlock = baseBlock;
+        baseBlock += Wiz.playerWeaponCalc(m, 9);
+        super.calculateCardDamage(m);
+        baseBlock = realBlock;
+        this.isBlockModified = (block != baseBlock);
     }
+
+    @Override
+    public AbstractCard makeCopy() { return new Relief(); }
 }

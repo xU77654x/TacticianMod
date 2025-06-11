@@ -8,15 +8,15 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
+import tactician.cards.Base1SwordCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
-import tactician.powers.weaponscurrent.Weapon1SwordPower;
+import tactician.powers.weapons.Weapon1SwordPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class WrathStrike extends BaseCard {
+public class WrathStrike extends Base1SwordCard {
     public static final String ID = makeID(WrathStrike.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -28,8 +28,8 @@ public class WrathStrike extends BaseCard {
 
     public WrathStrike() {
         super(ID, info);
-        setDamage(6, 2);
-        setMagic(3, 1);
+        setDamage(6, 0);
+        setMagic(3, 3);
         tags.add(CardTags.STRIKE);
         tags.add(CustomTags.SWORD);
         tags.add(CustomTags.COMBAT_ART);
@@ -37,7 +37,7 @@ public class WrathStrike extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p)));
+        if (!p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));

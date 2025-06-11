@@ -1,13 +1,4 @@
 {
-  "${modID}:PotionID": {
-    "NAME": "Some Kind of Potion",
-    "DESCRIPTIONS": [
-      "Little",
-      " pieces ",
-      "that get put together",
-      " into a description.",
-      " Exactly how depends on the potion, and you can set it up however you want."]
-  },
   "${modID}:FocusPotionT": {
     "NAME": "Focus Potion",
     "DESCRIPTIONS": [
@@ -20,5 +11,15 @@
       "Gain #b",
       " #yFocus. At the end of your turn, lose #b",
       " #yFocus."]
+  },
+  "${modID}:CorrosionPotion": {
+    "NAME": "Corrosion Potion",
+    "DESCRIPTIONS": ["Exhaust cards in your hand freely."]
+  },
+  "${modID}:DeflectPotion": {
+    "NAME": "Deflect Potion",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " #yDeflect. Select a weapon type to equip."]
   }
 }

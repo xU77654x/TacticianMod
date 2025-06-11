@@ -1,7 +1,13 @@
 package tactician.relics;
 
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.red.Anger;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.character.MyCharacter;
 import static tactician.TacticianMod.makeID;
@@ -11,6 +17,7 @@ public class EnergyDrop extends BaseRelic {
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.RARE;
     private static final LandingSound SOUND = LandingSound.CLINK;
+    public AbstractPlayer p;
 
     public EnergyDrop() {
         super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
@@ -18,29 +25,17 @@ public class EnergyDrop extends BaseRelic {
     }
 
     @Override
-    public String getUpdatedDescription() {
-        return this.DESCRIPTIONS[0];
-    }
+    public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
 
     @Override
-    public void onEquip() {
-        AbstractDungeon.player.masterHandSize++;
-    }
-
-    @Override
-    public void onUnequip() {
-        AbstractDungeon.player.masterHandSize--;
-    }
-
-    @Override
-    public void onPlayerEndTurn() {
+    public void atBattleStart() {
         flash();
-        addToBot(new ExhaustAction(1, false));
-        // TODO: If a card remains in the user's hand on turn end, then the relic may flash.
+        addToTop(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1));
+        AbstractCard c = new Anger();
+        CardModifierManager.addModifier(c, new EtherealMod());
+        addToBot(new MakeTempCardInHandAction(c, 1));
     }
 
     @Override
-    public AbstractRelic makeCopy() {
-        return new EnergyDrop();
-    }
+    public AbstractRelic makeCopy() { return new EnergyDrop(); }
 }

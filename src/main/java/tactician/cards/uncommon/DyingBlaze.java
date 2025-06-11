@@ -9,14 +9,14 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.MakeTempCardInExhaustAction;
-import tactician.cards.BaseCard;
+import tactician.cards.Base6FireCard;
 import tactician.character.MyCharacter;
-import tactician.powers.weaponscurrent.Weapon6FirePower;
+import tactician.powers.weapons.Weapon6FirePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class DyingBlaze extends BaseCard {
+public class DyingBlaze extends Base6FireCard {
     public static final String ID = makeID(DyingBlaze.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -40,7 +40,7 @@ public class DyingBlaze extends BaseCard {
         for (int i = this.magicNumber; i > 0; i--) {
             addToBot(new MakeTempCardInExhaustAction(makeStatEquivalentCopy(), 1));
         }
-        addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p)));
+        if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
 

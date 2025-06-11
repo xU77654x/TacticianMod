@@ -11,9 +11,13 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
 import tactician.util.TextureLoader;
+import tactician.util.Wiz;
+
+import static java.lang.Math.max;
 import static tactician.TacticianMod.imagePath;
 
 public class DeflectPower extends AbstractPower implements CloneablePowerInterface {
@@ -39,21 +43,37 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
             flash();
-            if (this.owner.hasPower(AcrobatPower.POWER_ID)) {
-                int acrobat = this.owner.getPower(AcrobatPower.POWER_ID).amount;
-                int deflect = this.amount;
-                if (deflect > acrobat) { addToTop(new ReducePowerAction(this.owner, this.owner, this, deflect - acrobat)); }
-                addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+            int deflect = this.amount;
+            AbstractMonster m = (AbstractMonster)info.owner;
+            int weaponStrong = max(0, Wiz.playerWeaponCalc(m, 9));
+            if (weaponStrong == 0) {
+                if (this.owner.hasPower(AcrobatPower.POWER_ID)) {
+                    int acrobat = this.owner.getPower(AcrobatPower.POWER_ID).amount;
+                    if (deflect > acrobat) { addToTop(new ReducePowerAction(this.owner, this.owner, this, deflect - acrobat)); }
+                    addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                }
+                else {
+                    addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+                    addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                }
             }
-            else {
-                addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-                addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+            else if (weaponStrong > 0) {
+                if (this.owner.hasPower(AcrobatPower.POWER_ID)) {
+                    int acrobat = this.owner.getPower(AcrobatPower.POWER_ID).amount;
+                    if (deflect > acrobat) { addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2) - acrobat)); }
+                    addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                }
+                else {
+                    addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2)));
+                    addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                }
             }
 
         }
         return damageAmount;
     }
 
+    @Override
     public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
     public AbstractPower makeCopy() { return new DeflectPower(this.amount); }

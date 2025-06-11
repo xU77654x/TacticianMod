@@ -8,14 +8,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import tactician.cards.BaseCard;
+import tactician.cards.Base9CopyCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class Reposition extends BaseCard {
+public class Reposition extends Base9CopyCard {
     public static final String ID = makeID(Reposition.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -27,7 +27,7 @@ public class Reposition extends BaseCard {
 
     public Reposition() {
         super(ID, info);
-        setBlock(4, 1);
+        setBlock(4, 0);
         tags.add(CustomTags.COPY);
     }
 
