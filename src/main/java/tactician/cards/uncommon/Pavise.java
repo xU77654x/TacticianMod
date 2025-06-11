@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.Base9CopyCard;
-import tactician.cards.BaseCard;
 import tactician.cards.cardchoice.*;
 import tactician.character.MyCharacter;
 import tactician.powers.weapons.*;

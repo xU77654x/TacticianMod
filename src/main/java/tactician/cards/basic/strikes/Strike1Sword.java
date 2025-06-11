@@ -1,17 +1,13 @@
 package tactician.cards.basic.strikes;
 
-import com.evacipated.cardcrawl.mod.stslib.patches.HitboxRightClick;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.Base1SwordCard;
-import tactician.cards.basic.defends.Defend1Sword;
 import tactician.character.MyCharacter;
 import tactician.powers.weapons.*;
 import tactician.util.CardStats;
@@ -42,28 +38,6 @@ public class Strike1Sword extends Base1SwordCard {
 		addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p)));
 		calculateCardDamage(m);
 		addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-
-		/*
-		setCostForTurn(0);
-		Defend1Sword basic = new Defend1Sword();
-		if (this.upgraded) { basic.upgrade(); }
-		addToBot(new MakeTempCardInHandAction(basic, 1));
-		this.purgeOnUse = true;
-		*/
-	}
-
-	public void clickUpdate() {
-		if (!AbstractDungeon.isScreenUp && (Boolean)HitboxRightClick.rightClicked.get(this) && !AbstractDungeon.actionManager.turnHasEnded) {
-			onRightClick();
-		}
-	}
-
-	public void onRightClick() {
-		setCostForTurn(0);
-		Defend1Sword basic = new Defend1Sword();
-		if (this.upgraded) { basic.upgrade(); }
-		addToBot(new MakeTempCardInHandAction(basic, 1));
-		this.purgeOnUse = true;
 	}
 
 	public void calculateCardDamage(AbstractMonster m) {

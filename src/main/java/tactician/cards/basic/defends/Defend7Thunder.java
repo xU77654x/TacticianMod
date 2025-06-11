@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.Base7ThunderCard;
-import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;

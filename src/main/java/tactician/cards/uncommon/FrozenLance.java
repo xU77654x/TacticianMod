@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
 import tactician.cards.Base2LanceCard;
-import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.weapons.Weapon2LancePower;
 import tactician.util.CardStats;

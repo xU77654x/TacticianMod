@@ -18,7 +18,7 @@ public class Weapon6Fire extends Base6FireCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public Weapon6Fire(Runnable onUseOrChosen) {
         super(ID, info);

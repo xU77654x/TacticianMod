@@ -225,7 +225,7 @@
   },
   "${modID}:Charm": {
     "NAME": "Charm",
-    "DESCRIPTION": "Gain !B! Block twice. NL On Exhaust, gain [E] and add a copy to your draw pile."
+    "DESCRIPTION": "Gain !B! Block twice. NL On Exhaust, gain [E] and add a copy to NL your draw pile."
   },
   "${modID}:Miracle": {
     "NAME": "Miracle",

@@ -52,3 +52,4 @@ public class RightClickPatch {
 	}
 	}
 }
+// Credit to Packmaster: Rip for the code related to right-click functionality for cards. Also, thanks to Enbeon and Ellie for help with the rest.

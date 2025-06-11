@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.Base2LanceCard;
-import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.util.CardStats;
 
@@ -19,7 +18,7 @@ public class Weapon2Lance extends Base2LanceCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public Weapon2Lance(Runnable onUseOrChosen) {
         super(ID, info);

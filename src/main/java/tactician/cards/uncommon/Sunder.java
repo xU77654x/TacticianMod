@@ -52,19 +52,5 @@ public class Sunder extends Base1SwordCard {
     }
 
     @Override
-    public void upgrade() {
-        if (!this.upgraded) {
-            upgradeName();
-            upgradeDamage(damageUpgrade);
-            upgradeMagicNumber(magicUpgrade);
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-            initializeDescription();
-            tags.add(CardTags.STRIKE);
-        }
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Sunder();
-    }
+    public AbstractCard makeCopy() { return new Sunder(); }
 }

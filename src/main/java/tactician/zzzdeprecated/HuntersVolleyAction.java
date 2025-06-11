@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 public class HuntersVolleyAction extends AbstractGameAction {
-    private DamageInfo info;
+    private final DamageInfo info;
     public HuntersVolleyAction(AbstractCreature target, DamageInfo info) {
         this.info = info;
         setValues(target, info);

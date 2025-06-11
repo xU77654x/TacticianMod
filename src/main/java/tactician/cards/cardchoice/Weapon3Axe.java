@@ -18,7 +18,7 @@ public class Weapon3Axe extends Base3AxeCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public Weapon3Axe(Runnable onUseOrChosen) {
         super(ID, info);

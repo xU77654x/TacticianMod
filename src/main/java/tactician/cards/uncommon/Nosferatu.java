@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.NosferatuAction;
 import tactician.cards.Base8DarkCard;
-import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.weapons.Weapon8DarkPower;
 import tactician.util.CardStats;

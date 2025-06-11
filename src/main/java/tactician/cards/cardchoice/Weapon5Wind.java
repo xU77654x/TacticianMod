@@ -18,7 +18,7 @@ public class Weapon5Wind extends Base5WindCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public Weapon5Wind(Runnable onUseOrChosen) {
         super(ID, info);

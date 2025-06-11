@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.Base2LanceCard;
-import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon2LancePower;

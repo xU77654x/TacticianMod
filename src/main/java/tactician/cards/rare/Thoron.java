@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
 import tactician.cards.Base7ThunderCard;
-import tactician.cards.BaseCard;
 import tactician.character.MyCharacter;
 import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;

@@ -18,7 +18,7 @@ public class Weapon1Sword extends Base1SwordCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public Weapon1Sword(Runnable onUseOrChosen) {
         super(ID, info);
