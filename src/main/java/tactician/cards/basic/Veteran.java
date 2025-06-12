@@ -15,13 +15,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import tactician.cards.Base9CopyCard;
-import tactician.cards.common.WrathStrike;
-import tactician.cards.common.TempestLance;
-import tactician.cards.common.Smash;
-import tactician.cards.common.CurvedShot;
-import tactician.cards.common.Elwind;
-import tactician.cards.common.Arcfire;
-import tactician.cards.common.Thunder;
 import tactician.cards.common.Flux;
 import tactician.cards.other.Anathema;
 import tactician.character.MyCharacter;
@@ -197,7 +190,7 @@ public class Veteran extends Base9CopyCard {
                 if (this.upgraded) { setBlock(8); }
                 else { setBlock(6); }
                 tags.add(CustomTags.DARK);
-                this.name = Flux.class.getSimpleName(); // cardStrings.EXTENDED_DESCRIPTION[21];
+                this.name =  cardStrings.EXTENDED_DESCRIPTION[21]; // Flux.class.getSimpleName();
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[13];
                 this.glowColor = Color.PURPLE;
             }
