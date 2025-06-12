@@ -31,75 +31,8 @@ import tactician.powers.weapons.*;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
-
 import java.util.ArrayList;
 import java.util.List;
-
-/*
-       private void setDuplicateCard(AbstractMonster targetMonster) {
-        if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { VeteranClone = new WrathStrike(); }
-        else if (AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID)) { VeteranClone = new TempestLance(); }
-        else if (AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID)) { VeteranClone = new Smash(); }
-        else if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) { VeteranClone = new CurvedShot(); }
-        else if (AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { VeteranClone = new Elwind(); }
-        else if (AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { VeteranClone = new Arcfire(); }
-        else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { VeteranClone = new Thunder(); }
-        else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { VeteranClone = new Flux(); }
-        CardModifierManager.removeAllModifiers(this, true);
-        CardModifierManager.copyModifiers(VeteranClone, this, true, false, false);
-        if (this.upgraded) { VeteranClone.upgrade(); }
-
-        if (!VeteranClone.cardID.equals(this.cardID)) {
-            VeteranClone = VeteranClone.makeStatEquivalentCopy();
-            this.name = VeteranClone.name;
-            this.type = VeteranClone.type;
-            this.target = VeteranClone.target;
-            this.baseDamage = VeteranClone.baseDamage;
-            this.baseBlock = VeteranClone.baseBlock;
-            this.baseMagicNumber = VeteranClone.baseMagicNumber;
-            this.rawDescription = VeteranClone.rawDescription;
-            // setCardImage();
-            initializeTitle();
-            VeteranClone.initializeDescription();
-            this.description = VeteranClone.description;
-            return;
-        }
-        resetCard();
-    }
-
-    public void triggerWhenDrawn(AbstractCard c) { setDuplicateCard(null); }
-
-    private void setDynamicVariables(AbstractMonster targetMonster) {
-        VeteranClone.applyPowers();
-        if (targetMonster != null) { VeteranClone.calculateCardDamage(targetMonster); }
-        this.damage = VeteranClone.damage;
-        this.block = VeteranClone.block;
-        this.magicNumber = VeteranClone.magicNumber;
-        this.isDamageModified = VeteranClone.isDamageModified;
-        this.isBlockModified = VeteranClone.isBlockModified;
-    }
-
-    @Override
-    public void applyPowers() {
-        if (VeteranClone != null) { setDuplicateCard(null); }
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        if (VeteranClone != null) { setDynamicVariables(mo); }
-        else { setDuplicateCard(mo); }
-    }
-
-    @Override
-    public void onMoveToDiscard() { resetCard(); }
-
-    @Override
-    public void render(SpriteBatch sb) { super.render(sb); }
-
-    @Override
-    public AbstractCard makeCopy() { return new Veteran(); }
-}
-*/
 
 public class Veteran extends Base9CopyCard {
     public static final String ID = makeID(Veteran.class.getSimpleName());
