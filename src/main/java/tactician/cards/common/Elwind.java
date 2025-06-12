@@ -28,7 +28,7 @@ public class Elwind extends Base5WindCard {
 
     public Elwind() {
         super(ID, info);
-        setDamage(7, 1);
+        setDamage(7, 2);
         setMagic(2, 1);
         tags.add(CustomTags.WIND);
         tags.add(CustomTags.COMBAT_ART);
@@ -53,7 +53,5 @@ public class Elwind extends Base5WindCard {
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new Elwind();
-    }
+    public AbstractCard makeCopy() { return new Elwind(); }
 }

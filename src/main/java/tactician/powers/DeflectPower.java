@@ -47,8 +47,8 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
             AbstractMonster m = (AbstractMonster)info.owner;
             int weaponStrong = max(0, Wiz.playerWeaponCalc(m, 9));
             if (weaponStrong == 0) {
-                if (this.owner.hasPower(AcrobatPower.POWER_ID)) {
-                    int acrobat = this.owner.getPower(AcrobatPower.POWER_ID).amount;
+                if (this.owner.hasPower(VantagePower.POWER_ID)) {
+                    int acrobat = this.owner.getPower(VantagePower.POWER_ID).amount;
                     if (deflect > acrobat) { addToTop(new ReducePowerAction(this.owner, this.owner, this, deflect - acrobat)); }
                     addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
                 }
@@ -58,8 +58,8 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
                 }
             }
             else if (weaponStrong > 0) { // Ignore this error; IntelliJ is lying.
-                if (this.owner.hasPower(AcrobatPower.POWER_ID)) {
-                    int acrobat = this.owner.getPower(AcrobatPower.POWER_ID).amount;
+                if (this.owner.hasPower(VantagePower.POWER_ID)) {
+                    int acrobat = this.owner.getPower(VantagePower.POWER_ID).amount;
                     if (deflect > acrobat) { addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2) - acrobat)); }
                     addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
                 }

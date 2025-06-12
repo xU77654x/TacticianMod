@@ -67,7 +67,31 @@
   "${modID}:Veteran": {
     "NAME": "Veteran",
     "DESCRIPTION": "This card is a copy of the Common ${modID}:Combat_Art of your equipped weapon.",
-    "UPGRADE_DESCRIPTION": "This card is a copy of the upgraded Common ${modID}:Combat_Art of your equipped weapon."
+    "UPGRADE_DESCRIPTION": "This card is a copy of the upgraded Common ${modID}:Combat_Art of your equipped weapon.",
+    "EXTENDED_DESCRIPTION": [
+      "I don't have a weapon type to use this card.",
+      "This card copies the Common Combat Art of your weapon.",
+      "This card copies the upgraded Common Combat Art of your equipped weapon.",
+      "Elwind!",
+      "Arcfire!",
+      "Thunder!",
+      "${modID}:Combat_Art. NL Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect.",
+      "${modID}:Combat_Art. NL Deal !D! damage. NL Shuffle an Anathema to your draw pile.",
+      "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Strength.",
+      "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Convert your ${modID}:Deflect NL into Block and Vigor.",
+      "${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
+      "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Focus.",
+      "${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Vulnerable.",
+      "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage.",
+      "Wrath Strike",
+      "Tempest Lance",
+      "Smash",
+      "Curved Shot",
+      "Elwind",
+      "Arcfire",
+      "Thunder",
+      "Flux"
+    ]
   },
   "${modID}:Solidarity": {
     "NAME": "Solidarity",
@@ -163,7 +187,7 @@
   },
   "${modID}:WildAbandon": {
     "NAME": "Wild Abandon",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage to ALL enemies. NL Exhaust a card."
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage NL to ALL enemies. NL Exhaust a card."
   },
   "${modID}:WaningShot": {
     "NAME": "Waning Shot",

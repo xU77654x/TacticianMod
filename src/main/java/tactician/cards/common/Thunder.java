@@ -54,7 +54,5 @@ public class Thunder extends Base7ThunderCard {
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new Thunder();
-    }
+    public AbstractCard makeCopy() { return new Thunder(); }
 }

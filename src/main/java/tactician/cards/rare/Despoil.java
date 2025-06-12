@@ -15,8 +15,8 @@ import tactician.util.CardStats;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.potionRng;
 
-public class SturdyStance extends BaseCard {
-    public static final String ID = makeID(SturdyStance.class.getSimpleName());
+public class Despoil extends BaseCard {
+    public static final String ID = makeID(Despoil.class.getSimpleName());
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
@@ -25,7 +25,7 @@ public class SturdyStance extends BaseCard {
             1
     );
 
-    public SturdyStance() {
+    public Despoil() {
         super(ID, info);
         setCostUpgrade(0);
         setExhaust(true);
@@ -44,5 +44,5 @@ public class SturdyStance extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new SturdyStance(); }
+    public AbstractCard makeCopy() { return new Despoil(); }
 }

@@ -70,8 +70,8 @@
     "DESCRIPTIONS": ["At the start of your turn, gain #b",
       " #yDeflect."]
   },
-  "${modID}:AcrobatPower": {
-    "NAME": "Acrobat",
+  "${modID}:VantagePower": {
+    "NAME": "Vantage",
     "DESCRIPTIONS": ["When you lose #yDeflect from an enemy attack, lose #b",
       " less."]
   },

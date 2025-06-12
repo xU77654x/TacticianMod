@@ -9,15 +9,15 @@ import tactician.TacticianMod;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.imagePath;
 
-public class AcrobatPower extends AbstractPower {
-	public static final String POWER_ID = TacticianMod.makeID("AcrobatPower");
+public class VantagePower extends AbstractPower {
+	public static final String POWER_ID = TacticianMod.makeID("VantagePower");
 	private static final Texture tex84 = TextureLoader.getTexture(imagePath("Resources/images/powers/large/example.png")); // TODO: Add images here.
 	private static final Texture tex32 = TextureLoader.getTexture(imagePath("Resources/images/powers/example.png")); // TODO: Add images here.
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-	public AcrobatPower(int amount) {
+	public VantagePower(int amount) {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = AbstractDungeon.player;
@@ -32,5 +32,5 @@ public class AcrobatPower extends AbstractPower {
 	@Override
 	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
-	public AbstractPower makeCopy() { return new AcrobatPower(this.amount); }
+	public AbstractPower makeCopy() { return new VantagePower(this.amount); }
 }

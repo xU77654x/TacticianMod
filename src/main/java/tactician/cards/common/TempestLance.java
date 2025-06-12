@@ -52,7 +52,5 @@ public class TempestLance extends Base2LanceCard {
     }
 
     @Override
-    public AbstractCard makeCopy() {
-    return new TempestLance();
-}
+    public AbstractCard makeCopy() { return new TempestLance(); }
 }
