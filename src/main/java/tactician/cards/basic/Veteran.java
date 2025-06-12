@@ -1,9 +1,7 @@
 package tactician.cards.basic;
 
-import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -15,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import tactician.cards.Base9CopyCard;
-import tactician.cards.common.Flux;
 import tactician.cards.other.Anathema;
 import tactician.character.MyCharacter;
 import tactician.powers.DeflectPower;
