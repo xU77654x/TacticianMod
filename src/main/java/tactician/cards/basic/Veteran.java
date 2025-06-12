@@ -274,4 +274,6 @@ public class Veteran extends Base9CopyCard {
 
     @Override
     public AbstractCard makeCopy() { return new Veteran(); }
+
+    // This card originally tried to copy from Rhythm Girl's Working Dough, but I changed the code to copy from Downfall: Gremlins' Gremlin Dance.
 }
