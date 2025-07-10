@@ -7,19 +7,19 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.BlurPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import static tactician.TacticianMod.makeID;
 
 public class Dracoshield extends BaseRelic {
     private static final String NAME = "Dracoshield"; // Determines the filename and ID.
     public static final String ID = makeID(NAME); // Adds prefix to relic ID, resulting in modID:MyRelic
-    private static final RelicTier RARITY = RelicTier.COMMON;
+    private static final RelicTier RARITY = RelicTier.UNCOMMON;
     private static final LandingSound SOUND = LandingSound.CLINK;
     private static final int BLUR = 1;
     private static final int CARDS = 3;
 
     public Dracoshield() {
-        super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
+        super(ID, NAME, RARITY, SOUND);
         // TODO: Relic image and level up sound.
     }
 

@@ -8,10 +8,11 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawPower;
-import tactician.cards.Base5WindCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician5WindCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.MaxHandSizePower;
 import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
@@ -20,10 +21,10 @@ import tactician.util.Wiz;
 
 import static java.lang.Math.max;
 
-public class Excalibur extends Base5WindCard {
+public class Excalibur extends Tactician5WindCard {
     public static final String ID = makeID(Excalibur.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
@@ -32,8 +33,8 @@ public class Excalibur extends Base5WindCard {
 
     public Excalibur() {
         super(ID, info);
-        setDamage(10, 4);
-        setMagic(1, 1);
+        setDamage(10, 8);
+        setMagic(0, 0);
         tags.add(CustomTags.WIND);
         tags.add(CustomTags.COMBAT_ART);
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
@@ -46,7 +47,7 @@ public class Excalibur extends Base5WindCard {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(p, p, new DrawPower(p, 1), 1));
         addToBot(new ApplyPowerAction(p, p, new MaxHandSizePower(this.magicNumber), this.magicNumber));
-        if (!p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
+        if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
     }
 
     @Override

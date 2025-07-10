@@ -9,20 +9,20 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import com.megacrit.cardcrawl.relics.BlueCandle;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.CreationPulsePower;
 import tactician.powers.DeflectPower;
 import tactician.powers.ShovePower;
 import tactician.util.CardStats;
 
-public class Anathema extends BaseCard {
+public class Anathema extends TacticianCard {
 	public static final String ID = makeID(Anathema.class.getSimpleName());
 	private static final CardStats info = new CardStats(
-			MyCharacter.Meta.CARD_COLOR,
+			TacticianRobin.Meta.CARD_COLOR,
 			CardType.CURSE,
 			CardRarity.CURSE,
 			CardTarget.SELF,
@@ -33,8 +33,8 @@ public class Anathema extends BaseCard {
 	public Anathema() {
 		super(ID, info);
 		setMagic(3);
-		this.retain = true;
-		this.exhaust = true;
+		setSelfRetain(true);
+		setExhaust(true);
 		FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
 		FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
 	}

@@ -5,25 +5,25 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.FiendishBlowPower;
 import tactician.powers.LoseFocusPower;
 import tactician.util.CardStats;
 
-public class FiendishBlow extends BaseCard {
+public class FiendishBlow extends TacticianCard {
     public static final String ID = makeID(FiendishBlow.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.POWER,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            1
+            2
     );
 
     public FiendishBlow() {
         super(ID, info);
-        setMagic(2, 0);
+        setMagic(3, 0);
     }
 
     @Override

@@ -11,17 +11,17 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
-import tactician.cards.Base7ThunderCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician7ThunderCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class Thoron extends Base7ThunderCard {
+public class Thoron extends Tactician7ThunderCard {
     public static final String ID = makeID(Thoron.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ALL_ENEMY,
@@ -46,14 +46,14 @@ public class Thoron extends Base7ThunderCard {
                 if (this.upgraded) { addToBot(new RemoveSpecificPowerAction(mo, mo, BarricadePower.POWER_ID)); }
             }
         }
-        if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
+        if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {
         if (m != null) {
             int realDamage = baseDamage;
-            baseDamage += Wiz.playerWeaponCalc(m, 7);
+            baseDamage += Wiz.playerWeaponCalc(m, 9);
             super.calculateCardDamage(m);
             baseDamage = realDamage;
             this.isDamageModified = (damage != baseDamage);

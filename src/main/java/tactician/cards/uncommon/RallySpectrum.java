@@ -10,18 +10,18 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.*;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.LoseFocusPower;
 import tactician.util.CardStats;
 
 import java.util.ArrayList;
 
-public class RallySpectrum extends BaseCard {
+public class RallySpectrum extends TacticianCard {
     public static final String ID = makeID(RallySpectrum.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.SELF,

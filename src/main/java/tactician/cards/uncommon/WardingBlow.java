@@ -6,24 +6,24 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.WardingBlowPower;
 import tactician.util.CardStats;
 
-public class WardingBlow extends BaseCard {
+public class WardingBlow extends TacticianCard {
     public static final String ID = makeID(WardingBlow.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.POWER,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            1
+            2
     );
 
     public WardingBlow() {
         super(ID, info);
-        setMagic(2, 0);
+        setMagic(3, 0);
     }
 
     @Override

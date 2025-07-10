@@ -2,25 +2,25 @@ package tactician.relics;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.Hex;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import static tactician.TacticianMod.makeID;
 
 
 public class BookOfNaga extends BaseRelic {
 	private static final String NAME = "BookOfNaga";
 	public static final String ID = makeID(NAME);
-	private static final RelicTier RARITY = RelicTier.STARTER;
+	private static final RelicTier RARITY = RelicTier.UNCOMMON;
 	private static final LandingSound SOUND = LandingSound.CLINK;
 	public AbstractPlayer p;
 
 	public BookOfNaga() {
-		super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
-		this.p = AbstractDungeon.player;
+		super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
 		// TODO: Relic image and level up sound.
 	}
 
@@ -29,8 +29,10 @@ public class BookOfNaga extends BaseRelic {
 
 	@Override
 	public void atBattleStart() {
-		addToBot(new ApplyPowerAction(p, p, new FocusPower(p, 1)));
-		addToBot(new MakeTempCardInHandAction(new Hex(), 1));
+		this.p = AbstractDungeon.player;
+		addToTop(new ApplyPowerAction(p, p, new FocusPower(p, 1)));
+		addToTop(new MakeTempCardInHandAction(new Hex(), 1));
+		addToTop(new RelicAboveCreatureAction(p, this));
 	}
 
 	/*

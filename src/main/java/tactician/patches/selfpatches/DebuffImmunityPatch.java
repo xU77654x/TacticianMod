@@ -1,4 +1,4 @@
-package tactician.patchesself;
+package tactician.patches.selfpatches;
 
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
@@ -14,7 +14,7 @@ import tactician.powers.ShovePower;
 import java.lang.reflect.Field;
 
 @SpirePatch(clz = ApplyPowerAction.class, method = "update")
-public class ShovePatch {
+public class DebuffImmunityPatch {
 	@SpireInsertPatch(rloc = 35)
 	public static SpireReturn Insert(ApplyPowerAction __instance) {
 		AbstractPower powerToApply = ReflectionHacks.getPrivate(__instance, ApplyPowerAction.class, "powerToApply");

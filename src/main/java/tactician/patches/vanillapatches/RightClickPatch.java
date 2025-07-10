@@ -1,4 +1,4 @@
-package tactician.patchesself;
+package tactician.patches.vanillapatches;
 
 import com.evacipated.cardcrawl.mod.stslib.patches.HitboxRightClick;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;

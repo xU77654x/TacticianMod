@@ -45,7 +45,7 @@ public class RandomExhumeAction extends AbstractGameAction {
             cardsToReturn.shuffle();
             List<AbstractCard> cardsToExhaust = new ArrayList<>();
             for (AbstractCard c : cardsToReturn.group) {
-                if (c.type != AbstractCard.CardType.STATUS && c.type != AbstractCard.CardType.CURSE) {
+                if (c.type != AbstractCard.CardType.STATUS && !c.hasTag(AbstractCard.CardTags.HEALING)) {
                     exhumeRandom(c);
                     cardsReturned++;
                     cardsToExhaust.add(c);
@@ -54,7 +54,7 @@ public class RandomExhumeAction extends AbstractGameAction {
             }
             if (cardsReturned < this.count)
                 for (AbstractCard c : cardsToReturn.group) {
-                    if (c.type != AbstractCard.CardType.STATUS && c.type != AbstractCard.CardType.CURSE) {
+                    if (c.type != AbstractCard.CardType.STATUS && !c.hasTag(AbstractCard.CardTags.HEALING)) {
                         exhumeRandom(c);
                         cardsReturned++;
                         cardsToExhaust.add(c);

@@ -8,10 +8,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.ArrayList;
 
-public class MiracleAction extends AbstractGameAction {
+public class HealtouchAction extends AbstractGameAction {
     private int blockPerCard;
 
-    public MiracleAction(int blockAmount) {
+    public HealtouchAction(int blockAmount) {
         this.blockPerCard = blockAmount;
         setValues(AbstractDungeon.player, AbstractDungeon.player);
         this.actionType = AbstractGameAction.ActionType.BLOCK;

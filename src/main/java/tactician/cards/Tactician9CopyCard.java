@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import tactician.TacticianMod;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,19 +15,19 @@ import java.util.List;
 import static tactician.util.GeneralUtils.removePrefix;
 import static tactician.util.TextureLoader.getCardTextureString;
 
-public abstract class Base2LanceCard extends BaseCard {
-	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(TacticianMod.makeID("Label2Lance"));
+public abstract class Tactician9CopyCard extends TacticianCard {
+	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(TacticianMod.makeID("Label9Copy"));
 
-	public Base2LanceCard(String ID, CardStats info) {
+	public Tactician9CopyCard(String ID, CardStats info) {
 		this(ID, info, getCardTextureString(removePrefix(ID), info.cardType));
 	}
 
-	public Base2LanceCard(String ID, CardStats info, String cardImage) {
+	public Tactician9CopyCard(String ID, CardStats info, String cardImage) {
 		this(ID, info.baseCost, info.cardType, info.cardTarget, info.cardRarity, info.cardColor, cardImage);
 	}
 
-	public Base2LanceCard(String ID, int baseCost, CardType cardType, CardTarget cardTarget, CardRarity cardRarity, CardColor cardColor, String cardImage) {
-		super(ID, baseCost, cardType, cardTarget, cardRarity, MyCharacter.Meta.CARD_COLOR, cardImage);
+	public Tactician9CopyCard(String ID, int baseCost, CardType cardType, CardTarget cardTarget, CardRarity cardRarity, CardColor cardColor, String cardImage) {
+		super(ID, baseCost, cardType, cardTarget, cardRarity, TacticianRobin.Meta.CARD_COLOR, cardImage);
 		CardModifierManager.addModifier(this, new RarityTipModifier());
 	}
 
@@ -37,7 +37,7 @@ public abstract class Base2LanceCard extends BaseCard {
 	public static class RarityTipModifier extends AbstractCardModifier {
 		public List<TooltipInfo> additionalTooltips(AbstractCard card) {
 			ArrayList<TooltipInfo> tips = new ArrayList<>();
-			tips.add(new TooltipInfo(Base2LanceCard.uiStrings.TEXT[0], Base2LanceCard.uiStrings.TEXT[1]));
+			tips.add(new TooltipInfo(Tactician9CopyCard.uiStrings.TEXT[0], Tactician9CopyCard.uiStrings.TEXT[1]));
 			return tips;
 		}
 		public boolean isInherent(AbstractCard card) { return true; }

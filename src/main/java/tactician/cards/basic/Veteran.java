@@ -12,9 +12,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
-import tactician.cards.Base9CopyCard;
+import tactician.cards.Tactician9CopyCard;
 import tactician.cards.other.Anathema;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import tactician.powers.LoseFocusPower;
 import tactician.powers.weapons.*;
@@ -24,10 +24,10 @@ import tactician.util.Wiz;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Veteran extends Base9CopyCard {
+public class Veteran extends Tactician9CopyCard {
     public static final String ID = makeID(Veteran.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.BASIC,
             CardTarget.ENEMY,
@@ -218,6 +218,7 @@ public class Veteran extends Base9CopyCard {
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         boolean canUse = super.canUse(p, m);
         if (!canUse) { return false; }
+        if (!(AbstractDungeon.player instanceof TacticianRobin)) { addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[22], 1.0F, 2.0F)); }
         if (!AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID) && !AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID) && !AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID) && !AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID) && !AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID) && !AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID) && !AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID) && !AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) {
             this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
             canUse = false;
@@ -233,21 +234,18 @@ public class Veteran extends Base9CopyCard {
         return toolTipList;
     }
 
+    /*
     @Override
     public void applyPowers() {
         updateContents(false);
-        int realDamage = baseDamage;
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) {
-            baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
-        }
         super.applyPowers();
         magicNumber = baseMagicNumber;
         AbstractPower pow = AbstractDungeon.player.getPower(DeflectPower.POWER_ID);
-        if (pow != null) magicNumber += pow.amount;
+        if (pow != null && (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID))) { magicNumber += pow.amount; }
         isMagicNumberModified = (magicNumber != baseMagicNumber);
-        baseDamage = realDamage;
-        this.isDamageModified = (damage != baseDamage);
-    }
+    } */
+    @Override
+    public void applyPowers() { updateContents(false); }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {

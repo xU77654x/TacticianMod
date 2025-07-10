@@ -5,15 +5,15 @@ import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import tactician.util.CardStats;
 
-public class IndoorFighter extends BaseCard {
+public class IndoorFighter extends TacticianCard {
     public static final String ID = makeID(IndoorFighter.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.COMMON,
             CardTarget.SELF,

@@ -9,22 +9,22 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.Base2LanceCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician2LanceCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon2LancePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class SwiftStrikes extends Base2LanceCard {
+public class SwiftStrikes extends Tactician2LanceCard {
     public static final String ID = makeID(SwiftStrikes.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            1
+            2
     );
     public SwiftStrikes() {
         super(ID, info);
@@ -41,7 +41,7 @@ public class SwiftStrikes extends Base2LanceCard {
         addToBot(new GainBlockAction(p, p, block));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        if (!p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
+        if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
     }
 
     @Override
@@ -58,8 +58,8 @@ public class SwiftStrikes extends Base2LanceCard {
     public void calculateCardDamage(AbstractMonster m) {
         int realDamage = baseDamage;
         int realBlock = baseBlock;
-        baseDamage += Wiz.playerWeaponCalc(m, 2);
-        baseBlock += Wiz.playerWeaponCalc(m, 2);
+        baseDamage += Wiz.playerWeaponCalc(m, 9);
+        baseBlock += Wiz.playerWeaponCalc(m, 9);
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
             baseBlock += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
         super.calculateCardDamage(m);

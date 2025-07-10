@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.cards.cardchoice.*;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.*;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class DeflectPotion extends BasePotion {
 
 	public DeflectPotion() {
 		super(ID, 15, PotionRarity.COMMON, PotionSize.SPIKY, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
-		playerClass = MyCharacter.Meta.TACTICIAN;
+		playerClass = TacticianRobin.Meta.TACTICIAN;
 		this.tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordProper("tactician:deflect")), GameDictionary.keywords.get("tactician:deflect")));
 	}
 
@@ -37,17 +37,18 @@ public class DeflectPotion extends BasePotion {
 	public void use(AbstractCreature target) {
 		if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
 			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DeflectPower(potency), potency));
-
-			ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-			easyCardList.add(new Weapon1Sword(() -> { if (!AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon1SwordPower(AbstractDungeon.player))); } }));
-			easyCardList.add(new Weapon2Lance(() -> { if (!AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon2LancePower(AbstractDungeon.player))); } }));
-			easyCardList.add(new Weapon3Axe(() -> { if (!AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon3AxePower(AbstractDungeon.player))); } }));
-			easyCardList.add(new Weapon4Bow(() -> { if (!AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon4BowPower(AbstractDungeon.player))); } }));
-			easyCardList.add(new Weapon5Wind(() -> { if (!AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon5WindPower(AbstractDungeon.player))); } }));
-			easyCardList.add(new Weapon6Fire(() -> { if (!AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon6FirePower(AbstractDungeon.player))); } }));
-			easyCardList.add(new Weapon7Thunder(() -> { if (!AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon7ThunderPower(AbstractDungeon.player))); } }));
-			easyCardList.add(new Weapon8Dark(() -> { if (!AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon8DarkPower(AbstractDungeon.player))); } }));
-			addToBot(new EasyModalChoiceAction(easyCardList));
+			if (AbstractDungeon.player instanceof TacticianRobin) {
+				ArrayList<AbstractCard> easyCardList = new ArrayList<>();
+				easyCardList.add(new Weapon1Sword(() -> { if (!AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon1SwordPower(AbstractDungeon.player))); } }));
+				easyCardList.add(new Weapon2Lance(() -> { if (!AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon2LancePower(AbstractDungeon.player))); } }));
+				easyCardList.add(new Weapon3Axe(() -> { if (!AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon3AxePower(AbstractDungeon.player))); } }));
+				easyCardList.add(new Weapon4Bow(() -> { if (!AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon4BowPower(AbstractDungeon.player))); } }));
+				easyCardList.add(new Weapon5Wind(() -> { if (!AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon5WindPower(AbstractDungeon.player))); } }));
+				easyCardList.add(new Weapon6Fire(() -> { if (!AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon6FirePower(AbstractDungeon.player))); } }));
+				easyCardList.add(new Weapon7Thunder(() -> { if (!AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon7ThunderPower(AbstractDungeon.player))); } }));
+				easyCardList.add(new Weapon8Dark(() -> { if (!AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon8DarkPower(AbstractDungeon.player))); } }));
+				addToBot(new EasyModalChoiceAction(easyCardList));
+			}
 		}
 	}
 

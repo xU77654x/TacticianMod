@@ -5,16 +5,16 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.Base9CopyCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician9CopyCard;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class Relief extends Base9CopyCard {
+public class Relief extends Tactician9CopyCard {
     public static final String ID = makeID(Relief.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,

@@ -10,13 +10,14 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon3Axe;
 import tactician.cards.cardchoice.Weapon5Wind;
 import tactician.cards.other.Anathema;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon3AxePower;
 import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
@@ -24,10 +25,10 @@ import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
-public class HurricaneAxe extends BaseCard {
+public class HurricaneAxe extends TacticianCard {
     public static final String ID = makeID(HurricaneAxe.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
@@ -46,20 +47,23 @@ public class HurricaneAxe extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         weapon = 0;
-        ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-        easyCardList.add(new Weapon3Axe(() ->  {
-            weapon = 3;
-            if (!p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        }));
-        easyCardList.add(new Weapon5Wind(() ->  {
-            weapon = 5;
-            if (!p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        }));
-        addToBot(new EasyModalChoiceAction(easyCardList));
+        if (AbstractDungeon.player instanceof TacticianRobin) {
+            ArrayList<AbstractCard> easyCardList = new ArrayList<>();
+            easyCardList.add(new Weapon3Axe(() ->  {
+                weapon = 3;
+                if (!p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
+                calculateCardDamage(m);
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            }));
+            easyCardList.add(new Weapon5Wind(() ->  {
+                weapon = 5;
+                if (!p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
+                calculateCardDamage(m);
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+            }));
+            addToBot(new EasyModalChoiceAction(easyCardList));
+        }
+        else { addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY)); }
         addToBot(new MakeTempCardInHandAction(new Anathema()));
         addToBot(new ExhaustAction(1, false));
     }

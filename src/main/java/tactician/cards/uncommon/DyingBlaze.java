@@ -1,5 +1,7 @@
 package tactician.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -9,17 +11,17 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.MakeTempCardInExhaustAction;
-import tactician.cards.Base6FireCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician6FireCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon6FirePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class DyingBlaze extends Base6FireCard {
+public class DyingBlaze extends Tactician6FireCard {
     public static final String ID = makeID(DyingBlaze.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
@@ -33,6 +35,8 @@ public class DyingBlaze extends Base6FireCard {
         tags.add(CustomTags.FIRE);
         tags.add(CustomTags.COMBAT_ART);
         this.exhaust = true;
+        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
+        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
@@ -40,7 +44,7 @@ public class DyingBlaze extends Base6FireCard {
         for (int i = this.magicNumber; i > 0; i--) {
             addToBot(new MakeTempCardInExhaustAction(makeStatEquivalentCopy(), 1));
         }
-        if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
+        if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
 

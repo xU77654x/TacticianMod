@@ -8,10 +8,11 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.EquilibriumPower;
-import tactician.cards.Base4BowCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician4BowCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon4BowPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -19,10 +20,10 @@ import tactician.util.Wiz;
 
 import static java.lang.Math.max;
 
-public class HuntersVolley extends Base4BowCard {
+public class HuntersVolley extends Tactician4BowCard {
     public static final String ID = makeID(HuntersVolley.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
@@ -45,7 +46,7 @@ public class HuntersVolley extends Base4BowCard {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, this.magicNumber)));
-        if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
+        if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
     }
 
     @Override

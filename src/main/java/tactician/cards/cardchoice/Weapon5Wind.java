@@ -4,15 +4,15 @@ import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.Base5WindCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician5WindCard;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 
 @AutoAdd.Ignore
-public class Weapon5Wind extends Base5WindCard {
+public class Weapon5Wind extends Tactician5WindCard {
     public static final String ID = makeID(Weapon5Wind.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.NONE,

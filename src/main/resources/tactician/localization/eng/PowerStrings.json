@@ -1,38 +1,38 @@
 {
-  "${modID}:Weapon0RemovePower": {
-    "NAME": "Weapon: Remove",
-    "DESCRIPTIONS": ["Remove the unit's current weapon type."]
+  "${modID}:Weapon0NeutralPower": {
+    "NAME": "Weapon: Neutral ",
+    "DESCRIPTIONS": ["This unit has no weapon type."]
   },
   "${modID}:Weapon1SwordPower": {
-    "NAME": "Weapon: Sword",
+    "NAME": "Weapon: Sword ",
     "DESCRIPTIONS": ["Strong to: #gAxe, #pDark. NL Weak to: #bLance, [#FC63C6]Bow."]
   },
   "${modID}:Weapon2LancePower": {
-    "NAME": "Weapon: Lance",
+    "NAME": "Weapon: Lance ",
     "DESCRIPTIONS": ["Strong to: #rSword, #pDark. NL Weak to: #gAxe, [#FC63C6]Bow."]
   },
   "${modID}:Weapon3AxePower": {
-    "NAME": "Weapon: Axe",
+    "NAME": "Weapon: Axe ",
     "DESCRIPTIONS": ["Strong to: #bLance, #pDark. NL Weak to: #rSword, [#FC63C6]Bow."]
   },
   "${modID}:Weapon4BowPower": {
-    "NAME": "Weapon: Bow",
+    "NAME": "Weapon: Bow ",
     "DESCRIPTIONS": ["Strong to: #rSword, #bLance, #gAxe. NL Weak to: [#00EE88]Wind, [#FF9933]Fire, #yThunder."]
   },
   "${modID}:Weapon5WindPower": {
-    "NAME": "Weapon: Wind",
+    "NAME": "Weapon: Wind ",
     "DESCRIPTIONS": ["Strong to: #yThunder, [#FC63C6]Bow. NL Weak to: [#FF9933]Fire, #pDark."]
   },
   "${modID}:Weapon6FirePower": {
-    "NAME": "Weapon: Fire",
+    "NAME": "Weapon: Fire ",
     "DESCRIPTIONS": ["Strong to: [#00EE88]Wind, [#FC63C6]Bow. NL Weak to: #yThunder, #pDark."]
   },
   "${modID}:Weapon7ThunderPower": {
-    "NAME": "Weapon: Thunder",
+    "NAME": "Weapon: Thunder ",
     "DESCRIPTIONS": ["Strong to: [#FF9933]Fire, [#FC63C6]Bow. NL Weak to: [#00EE88]Wind, #pDark."]
   },
   "${modID}:Weapon8DarkPower": {
-    "NAME": "Weapon: Dark",
+    "NAME": "Weapon: Dark ",
     "DESCRIPTIONS": ["Strong to: [#00EE88]Wind, [#FF9933]Fire, #yThunder NL Weak to: #rSword, #bLance, #gAxe."]
   },
 
@@ -58,7 +58,7 @@
     "DESCRIPTIONS": ["You are weapon-strong ",
       "this turn.",
       "for #b",
-      "turns."]
+      " turns."]
   },
   "${modID}:PresciencePower": {
     "NAME": "Prescience",
@@ -123,9 +123,19 @@
     "DESCRIPTIONS": ["When you change your weapon type, gain #b",
       " #yBlock."]
   },
+  "${modID}:QuickBurnPower": {
+    "NAME": "Quick Burn",
+    "DESCRIPTIONS": ["Attacks cost 0. Whenever you play an Attack, Exhaust it."]
+  },
   "${modID}:GrandmasterFormPower": {
     "NAME": "Grandmaster Form",
     "DESCRIPTIONS": ["When you #yExhaust a card, gain #b",
       " #yArtifact."]
+  },
+  "${modID}:KillingEdgePower": {
+    "NAME": "Killing Edge",
+    "DESCRIPTIONS": ["Your next attack deals triple damage.",
+    "Your next #b",
+    " attacks deal triple damage."]
   }
 }

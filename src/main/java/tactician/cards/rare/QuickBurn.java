@@ -1,18 +1,19 @@
 package tactician.cards.rare;
 
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.QuickBurnAction;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
+import tactician.powers.QuickBurnPower;
 import tactician.util.CardStats;
 
-public class QuickBurn extends BaseCard {
+public class QuickBurn extends TacticianCard {
 	public static final String ID = makeID(QuickBurn.class.getSimpleName());
 	private static final CardStats info = new CardStats(
-			MyCharacter.Meta.CARD_COLOR,
+			TacticianRobin.Meta.CARD_COLOR,
 			CardType.POWER,
 			CardRarity.RARE,
 			CardTarget.SELF,
@@ -27,9 +28,11 @@ public class QuickBurn extends BaseCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-		addToBot(new QuickBurnAction());
+		addToBot(new ApplyPowerAction(p, p, new QuickBurnPower(p)));
 	}
 
 	@Override
 	public AbstractCard makeCopy() { return new QuickBurn(); }
+
+
 }

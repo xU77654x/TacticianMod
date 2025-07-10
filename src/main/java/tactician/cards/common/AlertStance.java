@@ -7,14 +7,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.EquilibriumPower;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 
-public class AlertStance extends BaseCard {
+public class AlertStance extends TacticianCard {
     public static final String ID = makeID(AlertStance.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.COMMON,
             CardTarget.SELF,

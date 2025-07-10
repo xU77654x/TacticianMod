@@ -3,8 +3,9 @@ package tactician;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.potions.BasePotion;
 import tactician.relics.BaseRelic;
 import tactician.util.GeneralUtils;
@@ -38,6 +39,7 @@ public class TacticianMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         PostInitializeSubscriber
+
 {
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
@@ -54,7 +56,7 @@ public class TacticianMod implements
     //This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
     public static void initialize() {
         new TacticianMod();
-        MyCharacter.Meta.registerColor();
+        TacticianRobin.Meta.registerColor();
     }
 
     public TacticianMod() {
@@ -166,9 +168,7 @@ public class TacticianMod implements
         return resourcesFolder + "/localization/" + lang + "/" + file;
     }
 
-    public static String imagePath(String file) {
-        return resourcesFolder + "/images/" + file;
-    }
+    public static String imagePath(String file) { return resourcesFolder + "/images/" + file; }
     public static String characterPath(String file) {
         return resourcesFolder + "/images/character/" + file;
     }
@@ -229,32 +229,24 @@ public class TacticianMod implements
 
     @Override
     public void receiveEditCharacters() {
-        MyCharacter.Meta.registerCharacter();
+        TacticianRobin.Meta.registerCharacter();
     }
 
     @Override
     public void receiveEditCards(){
         new AutoAdd(modID) // Loads files from this mod
-                .packageFilter(BaseCard.class) // In the same package as this class
+                .packageFilter(TacticianCard.class) // In the same package as this class
                 .setDefaultSeen(true) // And marks them as seen in the compendium
                 .cards(); // Adds the cards
     }
 
     @Override
     public void receiveEditRelics() {
-        new AutoAdd(modID) // Loads files from this mod
-                // .packageFilter(BaseRelic.class) // In the same package as this class
-                .any(BaseRelic.class, (info, relic) -> { // Run this code for any classes that extend this class
-                    if (relic.pool != null)
-                        BaseMod.addRelicToCustomPool(relic, relic.pool); // Register a custom character specific relic
-                    else
-                        BaseMod.addRelic(relic, relic.relicType); // Register a shared or base game character specific relic
-
-                    // If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
-                    // If you want all your relics to be visible by default, just remove this if statement.
-                    /*
-                    if (info.seen)
-                        UnlockTracker.markRelicAsSeen(relic.relicId); */
-                });
+        new AutoAdd(modID).any(BaseRelic.class, (info, relic) -> { // Loads files from this mod. Run this code for any classes that extend this class.
+            if (relic.pool != null) { BaseMod.addRelicToCustomPool(relic, relic.pool); } // Register a custom character specific relic
+            else { BaseMod.addRelic(relic, relic.relicType); } // Register a shared or base game character specific relic
+            UnlockTracker.markRelicAsSeen(relic.relicId);
+            // If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
+        });
     }
 }

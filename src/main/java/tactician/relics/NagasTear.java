@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 
 import static tactician.TacticianMod.makeID;
 
@@ -20,7 +20,7 @@ public class NagasTear extends BaseRelic {
     private static final int STAT = 1;
 
     public NagasTear() {
-        super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
+        super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
         // TODO: Relic image and level up sound.
     }
 

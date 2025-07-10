@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.curses.Necronomicurse;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import java.util.Objects;
 import static tactician.TacticianMod.makeID;
 
@@ -17,7 +17,7 @@ public class Talisman extends BaseRelic {
     private static final int TEMPHP = 2;
 
     public Talisman() {
-        super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
+        super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
         // TODO: Relic image and level up sound.
     }
 

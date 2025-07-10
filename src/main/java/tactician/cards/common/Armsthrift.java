@@ -6,18 +6,18 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.ArmsthriftAction;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.*;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import tactician.util.CardStats;
 
 import java.util.ArrayList;
 
-public class Armsthrift extends BaseCard {
+public class Armsthrift extends TacticianCard {
     public static final String ID = makeID(Armsthrift.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.COMMON,
             CardTarget.SELF,

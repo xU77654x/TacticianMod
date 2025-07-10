@@ -4,15 +4,15 @@ import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 
 @AutoAdd.Ignore
-public class TempStrength extends BaseCard {
+public class TempStrength extends TacticianCard {
 	public static final String ID = makeID(TempStrength.class.getSimpleName());
 	private static final CardStats info = new CardStats(
-			MyCharacter.Meta.CARD_COLOR,
+			TacticianRobin.Meta.CARD_COLOR,
 			CardType.SKILL,
 			CardRarity.SPECIAL,
 			CardTarget.NONE,

@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 
 import static tactician.TacticianMod.makeID;
@@ -15,12 +15,12 @@ public class Speedwing extends BaseRelic {
     public static final String ID = makeID(NAME); // Adds prefix to relic ID, resulting in modID:MyRelic
     private static final RelicTier RARITY = RelicTier.COMMON;
     private static final LandingSound SOUND = LandingSound.CLINK;
-    private static final int DEFLECT = 6; // This is used rather than a hard-coded value due to the description.
+    private static final int DEFLECT = 3; // This is used rather than a hard-coded value due to the description.
     private static final int ENERGY = 1;
     private static final int TURN = 2;
 
     public Speedwing() {
-        super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
+        super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
         // TODO: Relic image and level up sound.
     }
 

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.LoseFocusPower;
 import static tactician.TacticianMod.makeID;
 
@@ -22,7 +22,7 @@ public class SagePotion extends BasePotion {
 
     public SagePotion() {
         super(ID, 5, PotionRarity.COMMON, PotionSize.SNECKO, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
-        playerClass = MyCharacter.Meta.TACTICIAN;
+        playerClass = TacticianRobin.Meta.TACTICIAN;
     }
 
     @Override

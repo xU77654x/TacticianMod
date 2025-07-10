@@ -1,6 +1,10 @@
 package tactician.util;
 
+import basemod.BaseMod;
+import basemod.abstracts.CustomSavable;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -15,7 +19,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.saveAndContinue.SaveAndContinue;
+import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import tactician.character.TacticianRobin;
 import tactician.powers.ZealPower;
 import tactician.powers.weapons.*;
 
@@ -180,8 +187,6 @@ public class Wiz {
         return (int)c.powers.stream().filter(pow -> (pow.type == AbstractPower.PowerType.BUFF)).count();
     }
 
-
-
     // TODO: This lets cards be filtered by card tag, but fails if used off-class.
     public static AbstractCard randomCombatArt(boolean costZero) {
         ArrayList<AbstractCard> list = new ArrayList<>();
@@ -203,23 +208,13 @@ public class Wiz {
         return list.get(cardRandomRng.random(list.size() - 1));
     }
 
-    /*
-    // TODO: This lets off-class characters pull from Robin's cards, but cannot filter by card tag.
-    public static AbstractCard randomCombatArt(boolean upg) {
-        ArrayList<String> tmp = new ArrayList<>();
-
-        for (Map.Entry<String, AbstractCard> c : CardLibrary.cards.entrySet()) {
-            if ((c.getValue()).color == MyCharacter.Meta.CARD_COLOR) { tmp.add(c.getKey()); }
-        }
-        return CardLibrary.cards.get(tmp.get(cardRandomRng.random(0, tmp.size() - 1)));
-    }
-    */
-
     public static int playerWeaponCalc (AbstractMonster m, int weaponType) {
         int valModify = 3;
         int effect = 0;
         boolean copyFlag = true;
         if (AbstractDungeon.player.hasPower(ZealPower.POWER_ID)) { effect = valModify; }
+        else if (!(AbstractDungeon.player instanceof TacticianRobin)) { return 0; }
+        else if (m.hasPower(Weapon0NeutralPower.POWER_ID)) { return 0; }
         else do {
             switch (weaponType) {
                 case 0: copyFlag = false; break;
@@ -264,11 +259,44 @@ public class Wiz {
                     if (AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { weaponType = 6; }
                     if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { weaponType = 7; }
                     if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { weaponType = 8; }
-                    if (!(m.hasPower(Weapon1SwordPower.POWER_ID) || m.hasPower(Weapon2LancePower.POWER_ID) || m.hasPower(Weapon3AxePower.POWER_ID) || m.hasPower(Weapon4BowPower.POWER_ID) || m.hasPower(Weapon5WindPower.POWER_ID) || m.hasPower(Weapon6FirePower.POWER_ID) || m.hasPower(Weapon1SwordPower.POWER_ID) || m.hasPower(Weapon7ThunderPower.POWER_ID) || m.hasPower(Weapon8DarkPower.POWER_ID))) {
-                        copyFlag = false; break;
-                    }
+                    if (!(AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID))) { weaponType = 0; }
+                    if (!(m.hasPower(Weapon1SwordPower.POWER_ID) || m.hasPower(Weapon2LancePower.POWER_ID) || m.hasPower(Weapon3AxePower.POWER_ID) || m.hasPower(Weapon4BowPower.POWER_ID) || m.hasPower(Weapon5WindPower.POWER_ID) || m.hasPower(Weapon6FirePower.POWER_ID) || m.hasPower(Weapon7ThunderPower.POWER_ID) || m.hasPower(Weapon8DarkPower.POWER_ID))) { weaponType = 0; }
             }
         } while(copyFlag);
         return effect;
+    }
+
+    public static int savedWeapon = 0;
+
+    public static void setNextCombatWeapon(int weapon) {
+        savedWeapon = weapon;
+        BaseMod.addSaveField("TacticianNextCombatWeapon", new CustomSavable<Integer>() {
+            public Integer onSave() { return Wiz.savedWeapon; }
+            public void onLoad(Integer weapon) { savedWeapon = weapon; }
+        });
+
+        SaveAndContinue.save(new SaveFile(SaveFile.SaveType.POST_COMBAT));
+    }
+
+    public static void applyNextCombatWeapon() {
+        if (floorNum == 1) { savedWeapon = 0; } // TODO: Account for Downfall route's starting campfire.
+        switch(savedWeapon) { // Required to do this nonsense due to SaveFile crashing from using AbstractPower instead of an integer.
+            case 1: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon1SwordPower(AbstractDungeon.player))); break;
+            case 2: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon2LancePower(AbstractDungeon.player))); break;
+            case 3: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon3AxePower(AbstractDungeon.player))); break;
+            case 4: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon4BowPower(AbstractDungeon.player))); break;
+            case 5: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon5WindPower(AbstractDungeon.player))); break;
+            case 6: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon6FirePower(AbstractDungeon.player))); break;
+            case 7: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon7ThunderPower(AbstractDungeon.player))); break;
+            case 8: case 0: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon8DarkPower(AbstractDungeon.player))); break;
+        }
+        savedWeapon = 0;
+    }
+
+    @SpirePatch(clz = AbstractPlayer.class, method = "applyStartOfCombatLogic", paramtypez = {})
+    public static class OnStartOfCombatTactician {
+        public static void Prefix(AbstractPlayer __instance) {
+            if (AbstractDungeon.player instanceof TacticianRobin) { Wiz.applyNextCombatWeapon(); }
+        }
     }
 }

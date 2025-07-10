@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.Base9CopyCard;
+import tactician.cards.Tactician9CopyCard;
 import tactician.cards.cardchoice.*;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.weapons.*;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -17,10 +17,10 @@ import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
-public class Pavise extends Base9CopyCard {
+public class Pavise extends Tactician9CopyCard {
     public static final String ID = makeID(Pavise.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
@@ -36,7 +36,7 @@ public class Pavise extends Base9CopyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (Boolean.TRUE.equals(p.hasPower(Weapon5WindPower.POWER_ID) || p.hasPower(Weapon6FirePower.POWER_ID) || p.hasPower(Weapon7ThunderPower.POWER_ID) || p.hasPower(Weapon8DarkPower.POWER_ID))) {
+        if (AbstractDungeon.player instanceof TacticianRobin && (Boolean.TRUE.equals(p.hasPower(Weapon5WindPower.POWER_ID) || p.hasPower(Weapon6FirePower.POWER_ID) || p.hasPower(Weapon7ThunderPower.POWER_ID) || p.hasPower(Weapon8DarkPower.POWER_ID)))) {
             ArrayList<AbstractCard> easyCardList = new ArrayList<>();
             easyCardList.add(new Weapon1Sword(() ->  { weapon = 1; addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }));
             easyCardList.add(new Weapon2Lance(() ->  { weapon = 2; addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }));
@@ -64,6 +64,7 @@ public class Pavise extends Base9CopyCard {
     public void calculateCardDamage(AbstractMonster m) {
         int realBlock = baseBlock;
         baseBlock += Wiz.playerWeaponCalc(m, weapon);
+        if (!(AbstractDungeon.player instanceof TacticianRobin)) { baseBlock += 3; } // Pavise grants +3 Block if used off-class.
         super.calculateCardDamage(m);
         baseBlock = realBlock;
         this.isBlockModified = (block != baseBlock);

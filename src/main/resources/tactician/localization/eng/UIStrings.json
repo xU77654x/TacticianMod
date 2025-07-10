@@ -13,6 +13,9 @@
       "This is a key": "This is a value."
     }
   },
+  "${modID}:Label0Neutral": {
+    "TEXT": ["Neutral", "Set your weapon to Neutral. NL Not strong or weak to any weapons."]
+  },
   "${modID}:Label1Sword": {
     "TEXT": ["Sword", "Set your weapon to #rSword. NL Strong to: #gAxe, #pDark. NL Weak to: #bLance, [#FC63C6]Bow."]
   },
@@ -26,7 +29,7 @@
     "TEXT": ["Bow", "Set your weapon to [#FC63C6]Bow. NL Strong to: #rSword, #bLance, #gAxe. NL Weak to: [#00EE88]Wind, [#FF9933]Fire, #yThunder."]
   },
   "${modID}:Label5Wind": {
-    "TEXT": ["Wind", "Set your weapon to [#00EE88]Wind. NL Strong to: #yThunder, [#FC63C6]Bow. NL Weak to: [#FF9933]Fire, #pDark.."]
+    "TEXT": ["Wind", "Set your weapon to [#00EE88]Wind. NL Strong to: #yThunder, [#FC63C6]Bow. NL Weak to: [#FF9933]Fire, #pDark."]
   },
   "${modID}:Label6Fire": {
     "TEXT": ["Fire", "Set your weapon to [#FF9933]Fire. NL Strong to: [#00EE88]Wind, [#FC63C6]Bow. NL Weak to: #yThunder, #pDark."]

@@ -7,16 +7,16 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.other.Anathema;
 import tactician.cards.other.Hex;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 
-public class Locktouch extends BaseCard {
+public class Locktouch extends TacticianCard {
 	public static final String ID = makeID(Locktouch.class.getSimpleName());
 	private static final CardStats info = new CardStats(
-			MyCharacter.Meta.CARD_COLOR,
+			TacticianRobin.Meta.CARD_COLOR,
 			CardType.SKILL,
 			CardRarity.UNCOMMON,
 			CardTarget.SELF,

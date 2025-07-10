@@ -1,15 +1,19 @@
 package tactician.relics;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.Anathema;
-import tactician.character.MyCharacter;
-import static tactician.TacticianMod.makeID;
+import tactician.character.TacticianRobin;
+import tactician.util.TextureLoader;
 
+import static tactician.TacticianMod.makeID;
+import static tactician.TacticianMod.relicPath;
 
 public class SecretBook extends BaseRelic {
 	private static final String NAME = "SecretBook";
@@ -19,8 +23,7 @@ public class SecretBook extends BaseRelic {
 	public AbstractPlayer p;
 
 	public SecretBook() {
-		super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
-		this.p = AbstractDungeon.player;
+		super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
 		// TODO: Relic image and level up sound.
 	}
 
@@ -30,8 +33,10 @@ public class SecretBook extends BaseRelic {
 	@Override
 	public void atBattleStart() {
 		flash();
+		this.p = AbstractDungeon.player;
 		addToTop(new ApplyPowerAction(p, p, new FocusPower(p, 1), 1));
-		addToBot(new MakeTempCardInHandAction(new Anathema(), 1));
+		addToTop(new MakeTempCardInHandAction(new Anathema(), 1));
+		addToTop(new RelicAboveCreatureAction(p, this));
 	}
 
 	@Override

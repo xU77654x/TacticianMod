@@ -4,14 +4,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 
-public class SoftReset extends BaseCard {
+public class SoftReset extends TacticianCard {
     public static final String ID = makeID(SoftReset.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.CURSE,
             CardRarity.CURSE,
             CardTarget.SELF,
@@ -20,7 +20,7 @@ public class SoftReset extends BaseCard {
 
     public SoftReset() {
         super(ID, info);
-        this.retain = true;
+        setSelfRetain(true);
     }
 
     @Override

@@ -6,24 +6,24 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.DeathBlowPower;
 import tactician.util.CardStats;
 
-public class DeathBlow extends BaseCard {
+public class DeathBlow extends TacticianCard {
 	public static final String ID = makeID(DeathBlow.class.getSimpleName());
 	private static final CardStats info = new CardStats(
-			MyCharacter.Meta.CARD_COLOR,
+			TacticianRobin.Meta.CARD_COLOR,
 			CardType.POWER,
 			CardRarity.UNCOMMON,
 			CardTarget.SELF,
-			1
+			2
 	);
 
 	public DeathBlow() {
 		super(ID, info);
-		setMagic(2, 0);
+		setMagic(3, 0);
 	}
 
 	@Override

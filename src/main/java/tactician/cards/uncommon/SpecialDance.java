@@ -6,20 +6,20 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.TempStrength;
 import tactician.cards.cardchoice.TempFocus;
 import tactician.cards.cardchoice.TempDexterity;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.LoseFocusPower;
 import tactician.util.CardStats;
 
 import java.util.ArrayList;
 
-public class SpecialDance extends BaseCard {
+public class SpecialDance extends TacticianCard {
     public static final String ID = makeID(SpecialDance.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.SELF,

@@ -21,7 +21,7 @@
     "NAME": "Dracoshield",
     "FLAVOR": "\"All right! I managed to sneak some practice in.\"",
     "DESCRIPTIONS": ["Every time you play #b",
-      " Attacks in 1 turn, gain #b",
+      " Attacks in a single turn, gain #b",
       " #yBlur."]
   },
   "${modID}:BookOfNaga": {

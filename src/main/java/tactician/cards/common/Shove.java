@@ -7,17 +7,17 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.Base9CopyCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician9CopyCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.ShovePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class Shove extends Base9CopyCard {
+public class Shove extends Tactician9CopyCard {
     public static final String ID = makeID(Shove.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.COMMON,
             CardTarget.ALL_ENEMY,

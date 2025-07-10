@@ -3,7 +3,7 @@ package tactician.relics;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 
 import static tactician.TacticianMod.makeID;
 
@@ -16,7 +16,7 @@ public class SeraphRobe extends BaseRelic {
     private static final int GOLD = 50;
 
     public SeraphRobe() {
-        super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
+        super(ID, NAME, RARITY, SOUND);
         // TODO: Relic image and level up sound.
     }
 

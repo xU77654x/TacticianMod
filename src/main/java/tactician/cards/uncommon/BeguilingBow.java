@@ -9,13 +9,14 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LockOnPower;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon4Bow;
 import tactician.cards.cardchoice.Weapon8Dark;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon4BowPower;
 import tactician.powers.weapons.Weapon8DarkPower;
 import tactician.util.CardStats;
@@ -23,10 +24,10 @@ import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
-public class BeguilingBow extends BaseCard {
+public class BeguilingBow extends TacticianCard {
     public static final String ID = makeID(BeguilingBow.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
@@ -45,20 +46,23 @@ public class BeguilingBow extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         weapon = 0;
-        ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-        easyCardList.add(new Weapon4Bow(() ->  {
-            weapon = 4;
-            if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        }));
-        easyCardList.add(new Weapon8Dark(() ->  {
-            weapon = 8;
-            if (!p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SHIELD));
-        }));
-        addToBot(new EasyModalChoiceAction(easyCardList));
+        if (AbstractDungeon.player instanceof TacticianRobin) {
+            ArrayList<AbstractCard> easyCardList = new ArrayList<>();
+            easyCardList.add(new Weapon4Bow(() ->  {
+                weapon = 4;
+                if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
+                calculateCardDamage(m);
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            }));
+            easyCardList.add(new Weapon8Dark(() ->  {
+                weapon = 8;
+                if (!p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
+                calculateCardDamage(m);
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SHIELD));
+            }));
+            addToBot(new EasyModalChoiceAction(easyCardList));
+        }
+        else { addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)); }
         addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, this.magicNumber), this.magicNumber));
     }
 

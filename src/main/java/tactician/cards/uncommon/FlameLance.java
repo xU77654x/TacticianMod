@@ -9,13 +9,13 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon2Lance;
 import tactician.cards.cardchoice.Weapon6Fire;
-import tactician.cards.rare.SwiftStrikes;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.TempOrbSlotPower;
 import tactician.powers.weapons.Weapon2LancePower;
 import tactician.powers.weapons.Weapon6FirePower;
@@ -24,10 +24,10 @@ import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
-public class FlameLance extends BaseCard {
+public class FlameLance extends TacticianCard {
     public static final String ID = makeID(FlameLance.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
@@ -46,20 +46,23 @@ public class FlameLance extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         weapon = 0;
-        ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-        easyCardList.add(new Weapon2Lance(() -> {
-            weapon = 2;
-            if (!p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        }));
-        easyCardList.add(new Weapon6Fire(() -> {
-            weapon = 6;
-            if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-        }));
-        addToBot(new EasyModalChoiceAction(easyCardList));
+        if (AbstractDungeon.player instanceof TacticianRobin) {
+            ArrayList<AbstractCard> easyCardList = new ArrayList<>();
+            easyCardList.add(new Weapon2Lance(() -> {
+                weapon = 2;
+                if (!p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
+                calculateCardDamage(m);
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            }));
+            easyCardList.add(new Weapon6Fire(() -> {
+                weapon = 6;
+                if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
+                calculateCardDamage(m);
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+            }));
+            addToBot(new EasyModalChoiceAction(easyCardList));
+        }
+        else { addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)); }
         addToBot(new ApplyPowerAction(p, p, new TempOrbSlotPower(this.magicNumber)));
     }
 
@@ -74,7 +77,7 @@ public class FlameLance extends BaseCard {
 
     @Override
     public void triggerOnExhaust() {
-        addToBot(new MakeTempCardInHandAction(new SwiftStrikes()));
+        addToBot(new MakeTempCardInHandAction(new FrozenLance()));
         addToBot(new MakeTempCardInHandAction(new DyingBlaze()));
     }
 

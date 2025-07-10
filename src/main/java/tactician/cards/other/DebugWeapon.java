@@ -6,18 +6,18 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.*;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.weapons.*;
 import tactician.util.CardStats;
 
 import java.util.ArrayList;
 
-public class DebugWeapon extends BaseCard {
+public class DebugWeapon extends TacticianCard {
 	public static final String ID = makeID(DebugWeapon.class.getSimpleName());
 	private static final CardStats info = new CardStats(
-			MyCharacter.Meta.CARD_COLOR,
+			TacticianRobin.Meta.CARD_COLOR,
 			CardType.SKILL,
 			CardRarity.SPECIAL,
 			CardTarget.ENEMY,

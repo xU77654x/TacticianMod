@@ -8,20 +8,20 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.BlueCandle;
 import com.megacrit.cardcrawl.relics.MedicalKit;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.TempBlueCandle;
 import tactician.cards.cardchoice.TempMedicalKit;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.ExpirationPower;
 import tactician.util.CardStats;
 import tactician.util.FragileRelics;
 
 import java.util.ArrayList;
 
-public class Expiration extends BaseCard {
+public class Expiration extends TacticianCard {
     public static final String ID = makeID(Expiration.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.POWER,
             CardRarity.UNCOMMON,
             CardTarget.SELF,

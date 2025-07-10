@@ -4,18 +4,19 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.Base3AxeCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician3AxeCard;
+import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon3AxePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class Defend3Axe extends Base3AxeCard {
+public class Defend3Axe extends Tactician3AxeCard {
 	public static final String ID = makeID(Defend3Axe.class.getSimpleName());
 	private static final CardStats info = new CardStats(
-			MyCharacter.Meta.CARD_COLOR,
+			TacticianRobin.Meta.CARD_COLOR,
 			CardType.SKILL,
 			CardRarity.BASIC,
 			CardTarget.ENEMY,
@@ -31,7 +32,7 @@ public class Defend3Axe extends Base3AxeCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p)));
+		if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon3AxePower.POWER_ID)) {addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
 		calculateCardDamage(m);
 		addToBot(new GainBlockAction(p, p, this.block));
 	}

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import static com.badlogic.gdx.graphics.Color.PURPLE;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static tactician.TacticianMod.makeID;
@@ -21,7 +21,7 @@ public class CorrosionPotion extends BasePotion {
 
 	public CorrosionPotion() {
 		super(ID, 0, PotionRarity.UNCOMMON, PotionSize.T, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
-		playerClass = MyCharacter.Meta.TACTICIAN;
+		playerClass = TacticianRobin.Meta.TACTICIAN;
 	}
 
 	@Override

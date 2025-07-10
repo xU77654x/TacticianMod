@@ -4,12 +4,14 @@ import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.red.Anger;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import static tactician.TacticianMod.makeID;
 
 public class EnergyDrop extends BaseRelic {
@@ -20,7 +22,7 @@ public class EnergyDrop extends BaseRelic {
     public AbstractPlayer p;
 
     public EnergyDrop() {
-        super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
+        super(ID, NAME, RARITY, SOUND);
         // TODO: Relic image and level up sound.
     }
 
@@ -30,10 +32,12 @@ public class EnergyDrop extends BaseRelic {
     @Override
     public void atBattleStart() {
         flash();
+        this.p = AbstractDungeon.player;
         addToTop(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1));
         AbstractCard c = new Anger();
         CardModifierManager.addModifier(c, new EtherealMod());
         addToBot(new MakeTempCardInHandAction(c, 1));
+        addToTop(new RelicAboveCreatureAction(p, this));
     }
 
     @Override

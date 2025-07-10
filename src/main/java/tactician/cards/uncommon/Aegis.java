@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.Base9CopyCard;
+import tactician.cards.Tactician9CopyCard;
 import tactician.cards.cardchoice.*;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.weapons.*;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -17,10 +17,10 @@ import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
-public class Aegis extends Base9CopyCard {
+public class Aegis extends Tactician9CopyCard {
     public static final String ID = makeID(Aegis.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
@@ -36,7 +36,7 @@ public class Aegis extends Base9CopyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (Boolean.TRUE.equals(p.hasPower(Weapon1SwordPower.POWER_ID) || p.hasPower(Weapon2LancePower.POWER_ID) || p.hasPower(Weapon3AxePower.POWER_ID) || p.hasPower(Weapon4BowPower.POWER_ID))) {
+        if (AbstractDungeon.player instanceof TacticianRobin && (Boolean.TRUE.equals(p.hasPower(Weapon1SwordPower.POWER_ID) || p.hasPower(Weapon2LancePower.POWER_ID) || p.hasPower(Weapon3AxePower.POWER_ID) || p.hasPower(Weapon4BowPower.POWER_ID)))) {
             ArrayList<AbstractCard> easyCardList = new ArrayList<>();
             easyCardList.add(new Weapon5Wind(() ->  { weapon = 5; addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }));
             easyCardList.add(new Weapon6Fire(() ->  { weapon = 6; addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }));
@@ -55,9 +55,10 @@ public class Aegis extends Base9CopyCard {
         boolean favor = Boolean.TRUE.equals(AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID));
 		if (!this.freeToPlayOnce && this.costForTurn != 0) {
             this.costForTurn = 2;
-            if (favor) { this.costForTurn = 1; }
+            if (favor || !(AbstractDungeon.player instanceof TacticianRobin)) { this.costForTurn = 1; }
         }
-        // This is what lets a Favored card reduce Energy cost.
+
+        // Aegis costs 1 less if used off-class.
     }
 
     @Override

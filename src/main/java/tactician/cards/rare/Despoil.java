@@ -8,17 +8,17 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.Elixir;
 import com.megacrit.cardcrawl.potions.SpeedPotion;
 import com.megacrit.cardcrawl.potions.SteroidPotion;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.potions.SagePotion;
 import tactician.util.CardStats;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.potionRng;
 
-public class Despoil extends BaseCard {
+public class Despoil extends TacticianCard {
     public static final String ID = makeID(Despoil.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.RARE,
             CardTarget.SELF,

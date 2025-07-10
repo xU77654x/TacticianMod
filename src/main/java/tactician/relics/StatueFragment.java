@@ -2,7 +2,7 @@ package tactician.relics;
 
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 
 import static tactician.TacticianMod.makeID;
 
@@ -14,9 +14,8 @@ public class StatueFragment extends BaseRelic{
     private static final int HANDSIZE = 3;
 
     public StatueFragment() {
-        super(ID, NAME, MyCharacter.Meta.CARD_COLOR, RARITY, SOUND);
-
-        // TODO: Relic image and level up sound.
+        super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
+        // TODO: Relic level up sound.
     }
 
     @Override

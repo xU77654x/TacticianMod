@@ -7,21 +7,21 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.BaseCard;
-import tactician.character.MyCharacter;
+import tactician.cards.TacticianCard;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 
-public class Miracle extends BaseCard {
-    public static final String ID = makeID(Miracle.class.getSimpleName());
+public class Healtouch extends TacticianCard {
+    public static final String ID = makeID(Healtouch.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
             1
     );
 
-    public Miracle() {
+    public Healtouch() {
         super(ID, info);
         setBlock(5, 2);
         setMagic(3, 0);
@@ -38,5 +38,5 @@ public class Miracle extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new Miracle(); }
+    public AbstractCard makeCopy() { return new Healtouch(); }
 }

@@ -10,14 +10,15 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.cards.BaseCard;
+import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon1Sword;
 import tactician.cards.cardchoice.Weapon7Thunder;
 import tactician.cards.other.Hex;
-import tactician.character.MyCharacter;
+import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon1SwordPower;
 import tactician.powers.weapons.Weapon7ThunderPower;
@@ -26,10 +27,10 @@ import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
-public class LevinSword extends BaseCard {
+public class LevinSword extends TacticianCard {
     public static final String ID = makeID(LevinSword.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
@@ -49,20 +50,23 @@ public class LevinSword extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         weapon = 0;
-        ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-        easyCardList.add(new Weapon1Sword(() ->  {
-            weapon = 1;
-            if (!p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        }));
-        easyCardList.add(new Weapon7Thunder(() ->  {
-            weapon = 7;
-            if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
-            calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
-        }));
-        addToTop(new EasyModalChoiceAction(easyCardList));
+        if (AbstractDungeon.player instanceof TacticianRobin) {
+            ArrayList<AbstractCard> easyCardList = new ArrayList<>();
+            easyCardList.add(new Weapon1Sword(() ->  {
+                weapon = 1;
+                if (!p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
+                calculateCardDamage(m);
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            }));
+            easyCardList.add(new Weapon7Thunder(() ->  {
+                weapon = 7;
+                if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
+                calculateCardDamage(m);
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
+            }));
+            addToTop(new EasyModalChoiceAction(easyCardList));
+        }
+        else { addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL)); }
         addToTop(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         addToBot(new MakeTempCardInHandAction(new Hex(), 1));
@@ -70,7 +74,7 @@ public class LevinSword extends BaseCard {
 
     @Override
     public void triggerOnExhaust() {
-        addToBot(new MakeTempCardInHandAction(new Sunder()));
+        addToBot(new MakeTempCardInHandAction(new CrosswiseCut()));
         addToBot(new MakeTempCardInHandAction(new Bolting()));
     }
 

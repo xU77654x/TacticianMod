@@ -19,7 +19,7 @@ import java.util.Map;
 import static tactician.util.GeneralUtils.removePrefix;
 import static tactician.util.TextureLoader.getCardTextureString;
 
-public abstract class BaseCard extends CustomCard {
+public abstract class TacticianCard extends CustomCard {
     final private static Map<String, DynamicVariable> customVars = new HashMap<>();
 
     protected static String makeID(String name) { return TacticianMod.makeID(name); }
@@ -46,16 +46,16 @@ public abstract class BaseCard extends CustomCard {
 
     final protected Map<String, LocalVarInfo> cardVariables = new HashMap<>();
 
-    public BaseCard(String ID, CardStats info) {
+    public TacticianCard(String ID, CardStats info) {
         this(ID, info, getCardTextureString(removePrefix(ID), info.cardType));
     }
-    public BaseCard(String ID, CardStats info, String cardImage) {
+    public TacticianCard(String ID, CardStats info, String cardImage) {
         this(ID, info.baseCost, info.cardType, info.cardTarget, info.cardRarity, info.cardColor, cardImage);
     }
-    public BaseCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color) {
+    public TacticianCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color) {
         this(ID, cost, cardType, target, rarity, color, getCardTextureString(removePrefix(ID), cardType));
     }
-    public BaseCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, String cardImage)
+    public TacticianCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, String cardImage)
     {
         super(ID, getName(ID), cardImage, cost, getInitialDescription(ID), cardType, color, rarity, target);
         this.cardStrings = CardCrawlGame.languagePack.getCardStrings(cardID);
@@ -162,16 +162,16 @@ public abstract class BaseCard extends CustomCard {
             initializeDescription();
         }
     }
-    protected final void setCustomVar(String key, VariableType type, int base, TriFunction<BaseCard, AbstractMonster, Integer, Integer> preCalc) {
+    protected final void setCustomVar(String key, VariableType type, int base, TriFunction<TacticianCard, AbstractMonster, Integer, Integer> preCalc) {
         setCustomVar(key, type, base, 0, preCalc);
     }
-    protected final void setCustomVar(String key, VariableType type, int base, int upgrade, TriFunction<BaseCard, AbstractMonster, Integer, Integer> preCalc) {
+    protected final void setCustomVar(String key, VariableType type, int base, int upgrade, TriFunction<TacticianCard, AbstractMonster, Integer, Integer> preCalc) {
         setCustomVar(key, type, base, upgrade, preCalc, LocalVarInfo::noCalc);
     }
-    protected final void setCustomVar(String key, VariableType type, int base, TriFunction<BaseCard, AbstractMonster, Integer, Integer> preCalc, TriFunction<BaseCard, AbstractMonster, Integer, Integer> postCalc) {
+    protected final void setCustomVar(String key, VariableType type, int base, TriFunction<TacticianCard, AbstractMonster, Integer, Integer> preCalc, TriFunction<TacticianCard, AbstractMonster, Integer, Integer> postCalc) {
         setCustomVar(key, type, base, 0, preCalc, postCalc);
     }
-    protected final void setCustomVar(String key, VariableType type, int base, int upgrade, TriFunction<BaseCard, AbstractMonster, Integer, Integer> preCalc, TriFunction<BaseCard, AbstractMonster, Integer, Integer> postCalc) {
+    protected final void setCustomVar(String key, VariableType type, int base, int upgrade, TriFunction<TacticianCard, AbstractMonster, Integer, Integer> preCalc, TriFunction<TacticianCard, AbstractMonster, Integer, Integer> postCalc) {
         setCustomVarValue(key, base, upgrade);
 
         switch (type) {
@@ -279,7 +279,7 @@ public abstract class BaseCard extends CustomCard {
             return result;
         });
     }
-    protected void setVarCalculation(String key, TriFunction<BaseCard, AbstractMonster, Integer, Integer> calculation) {
+    protected void setVarCalculation(String key, TriFunction<TacticianCard, AbstractMonster, Integer, Integer> calculation) {
         cardVariables.get(key).calculation = calculation;
     }
 
@@ -347,34 +347,34 @@ public abstract class BaseCard extends CustomCard {
     public AbstractCard makeStatEquivalentCopy() {
         AbstractCard card = super.makeStatEquivalentCopy();
 
-        if (card instanceof BaseCard)
+        if (card instanceof TacticianCard)
         {
             card.rawDescription = this.rawDescription;
-            ((BaseCard) card).upgradesDescription = this.upgradesDescription;
-            ((BaseCard) card).baseCost = this.baseCost;
-            ((BaseCard) card).upgradeCost = this.upgradeCost;
-            ((BaseCard) card).upgradeDamage = this.upgradeDamage;
-            ((BaseCard) card).upgradeBlock = this.upgradeBlock;
-            ((BaseCard) card).upgradeMagic = this.upgradeMagic;
-            ((BaseCard) card).costUpgrade = this.costUpgrade;
-            ((BaseCard) card).damageUpgrade = this.damageUpgrade;
-            ((BaseCard) card).blockUpgrade = this.blockUpgrade;
-            ((BaseCard) card).magicUpgrade = this.magicUpgrade;
-            ((BaseCard) card).baseExhaust = this.baseExhaust;
-            ((BaseCard) card).upgExhaust = this.upgExhaust;
-            ((BaseCard) card).baseEthereal = this.baseEthereal;
-            ((BaseCard) card).upgEthereal = this.upgEthereal;
-            ((BaseCard) card).baseInnate = this.baseInnate;
-            ((BaseCard) card).upgInnate = this.upgInnate;
-            ((BaseCard) card).baseRetain = this.baseRetain;
-            ((BaseCard) card).upgRetain = this.upgRetain;
+            ((TacticianCard) card).upgradesDescription = this.upgradesDescription;
+            ((TacticianCard) card).baseCost = this.baseCost;
+            ((TacticianCard) card).upgradeCost = this.upgradeCost;
+            ((TacticianCard) card).upgradeDamage = this.upgradeDamage;
+            ((TacticianCard) card).upgradeBlock = this.upgradeBlock;
+            ((TacticianCard) card).upgradeMagic = this.upgradeMagic;
+            ((TacticianCard) card).costUpgrade = this.costUpgrade;
+            ((TacticianCard) card).damageUpgrade = this.damageUpgrade;
+            ((TacticianCard) card).blockUpgrade = this.blockUpgrade;
+            ((TacticianCard) card).magicUpgrade = this.magicUpgrade;
+            ((TacticianCard) card).baseExhaust = this.baseExhaust;
+            ((TacticianCard) card).upgExhaust = this.upgExhaust;
+            ((TacticianCard) card).baseEthereal = this.baseEthereal;
+            ((TacticianCard) card).upgEthereal = this.upgEthereal;
+            ((TacticianCard) card).baseInnate = this.baseInnate;
+            ((TacticianCard) card).upgInnate = this.upgInnate;
+            ((TacticianCard) card).baseRetain = this.baseRetain;
+            ((TacticianCard) card).upgRetain = this.upgRetain;
 
             for (Map.Entry<String, LocalVarInfo> varEntry : cardVariables.entrySet()) {
-                LocalVarInfo target = ((BaseCard) card).getCustomVar(varEntry.getKey()),
+                LocalVarInfo target = ((TacticianCard) card).getCustomVar(varEntry.getKey()),
                         current = varEntry.getValue();
                 if (target == null) {
-                    ((BaseCard) card).setCustomVar(varEntry.getKey(), current.base, current.upgrade);
-                    target = ((BaseCard) card).getCustomVar(varEntry.getKey());
+                    ((TacticianCard) card).setCustomVar(varEntry.getKey(), current.base, current.upgrade);
+                    target = ((TacticianCard) card).getCustomVar(varEntry.getKey());
                 }
                 target.base = current.base;
                 target.value = current.value;
@@ -480,7 +480,7 @@ public abstract class BaseCard extends CustomCard {
 
     private static class QuickDynamicVariable extends DynamicVariable {
         final String localKey, key;
-        private BaseCard current = null;
+        private TacticianCard current = null;
         public QuickDynamicVariable(String key) {
             this.localKey = key;
             this.key = makeID(key);
@@ -493,26 +493,26 @@ public abstract class BaseCard extends CustomCard {
 
         @Override
         public void setIsModified(AbstractCard c, boolean v) {
-            if (c instanceof BaseCard) {
-                LocalVarInfo var = ((BaseCard) c).getCustomVar(localKey);
+            if (c instanceof TacticianCard) {
+                LocalVarInfo var = ((TacticianCard) c).getCustomVar(localKey);
                 if (var != null)
                     var.forceModified = v;
             }
         }
 
         @Override
-        public boolean isModified(AbstractCard c) { return c instanceof BaseCard && (current = (BaseCard) c).isCustomVarModified(localKey); }
+        public boolean isModified(AbstractCard c) { return c instanceof TacticianCard && (current = (TacticianCard) c).isCustomVarModified(localKey); }
 
         @Override
         public int value(AbstractCard c) {
-            return c instanceof BaseCard ? ((BaseCard) c).customVar(localKey) : 0;
+            return c instanceof TacticianCard ? ((TacticianCard) c).customVar(localKey) : 0;
         }
 
         @Override
-        public int baseValue(AbstractCard c) { return c instanceof BaseCard ? ((BaseCard) c).customVarBase(localKey) : 0; }
+        public int baseValue(AbstractCard c) { return c instanceof TacticianCard ? ((TacticianCard) c).customVarBase(localKey) : 0; }
 
         @Override
-        public boolean upgraded(AbstractCard c) { return c instanceof BaseCard && ((BaseCard) c).customVarUpgraded(localKey); }
+        public boolean upgraded(AbstractCard c) { return c instanceof TacticianCard && ((TacticianCard) c).customVarUpgraded(localKey); }
 
         public Color getNormalColor() {
             LocalVarInfo var;
@@ -549,14 +549,14 @@ public abstract class BaseCard extends CustomCard {
         Color increasedColor = Settings.GREEN_TEXT_COLOR;
         Color decreasedColor = Settings.RED_TEXT_COLOR;
 
-        TriFunction<BaseCard, AbstractMonster, Integer, Integer> calculation = LocalVarInfo::noCalc;
+        TriFunction<TacticianCard, AbstractMonster, Integer, Integer> calculation = LocalVarInfo::noCalc;
 
         public LocalVarInfo(int base, int upgrade) {
             this.base = this.value = base;
             this.upgrade = upgrade;
         }
 
-        private static int noCalc(BaseCard c, AbstractMonster m, int base) {
+        private static int noCalc(TacticianCard c, AbstractMonster m, int base) {
             return base;
         }
         public boolean isModified() {

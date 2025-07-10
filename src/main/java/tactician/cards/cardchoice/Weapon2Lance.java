@@ -4,15 +4,15 @@ import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.cards.Base2LanceCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician2LanceCard;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 
 @AutoAdd.Ignore
-public class Weapon2Lance extends Base2LanceCard {
+public class Weapon2Lance extends Tactician2LanceCard {
     public static final String ID = makeID(Weapon2Lance.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.NONE,

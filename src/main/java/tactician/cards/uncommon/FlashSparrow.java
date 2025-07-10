@@ -5,16 +5,16 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.FlashSparrowAction;
-import tactician.cards.Base9CopyCard;
-import tactician.character.MyCharacter;
+import tactician.cards.Tactician9CopyCard;
+import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-public class FlashSparrow extends Base9CopyCard {
+public class FlashSparrow extends Tactician9CopyCard {
     public static final String ID = makeID(FlashSparrow.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            MyCharacter.Meta.CARD_COLOR,
+            TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
