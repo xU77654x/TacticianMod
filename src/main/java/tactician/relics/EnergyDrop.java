@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import tactician.character.TacticianRobin;
 import static tactician.TacticianMod.makeID;
 
 public class EnergyDrop extends BaseRelic {

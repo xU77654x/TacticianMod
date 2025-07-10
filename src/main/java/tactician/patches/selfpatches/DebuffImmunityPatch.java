@@ -27,7 +27,7 @@ public class DebuffImmunityPatch {
 			if (AbstractDungeon.player.hasPower(CreationPulsePower.POWER_ID)) {
 				if (powerToApply.ID.equals(StrengthPower.POWER_ID)) {
 					// TODO: Apply Vulnerable to ALL enemies equal to the player's amount of CreationPulsePower.
-					// Unfortunately, addToBot does not work within this code.
+					// addToBot does not work within this code, so use the other variant.
 				}
 			}
 

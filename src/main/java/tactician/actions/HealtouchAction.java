@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import java.util.ArrayList;
 
 public class HealtouchAction extends AbstractGameAction {
-    private int blockPerCard;
+    private final int blockPerCard;
 
     public HealtouchAction(int blockAmount) {
         this.blockPerCard = blockAmount;

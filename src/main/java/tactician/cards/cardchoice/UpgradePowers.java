@@ -18,7 +18,7 @@ public class UpgradePowers extends TacticianCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public UpgradePowers(Runnable onUseOrChosen) {
         super(ID, info);

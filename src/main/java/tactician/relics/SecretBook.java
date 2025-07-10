@@ -1,6 +1,5 @@
 package tactician.relics;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
@@ -10,10 +9,7 @@ import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.Anathema;
 import tactician.character.TacticianRobin;
-import tactician.util.TextureLoader;
-
 import static tactician.TacticianMod.makeID;
-import static tactician.TacticianMod.relicPath;
 
 public class SecretBook extends BaseRelic {
 	private static final String NAME = "SecretBook";

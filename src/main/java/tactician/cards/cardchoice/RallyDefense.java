@@ -18,7 +18,7 @@ public class RallyDefense extends TacticianCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public RallyDefense(Runnable onUseOrChosen) {
         super(ID, info);

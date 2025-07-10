@@ -18,7 +18,7 @@ public class RallyMagic extends TacticianCard {
             CardTarget.NONE,
             -2
     );
-    private Runnable onUseOrChosen;
+    private final Runnable onUseOrChosen;
 
     public RallyMagic(Runnable onUseOrChosen) {
         super(ID, info);

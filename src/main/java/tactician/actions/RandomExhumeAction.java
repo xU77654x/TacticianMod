@@ -12,8 +12,8 @@ import java.util.List;
 
 public class RandomExhumeAction extends AbstractGameAction {
     private AbstractPlayer p;
-    private int count;
-    private boolean isupgraded;
+    private final int count;
+    private final boolean isupgraded;
 
     public RandomExhumeAction(int count, boolean upgraded) {
         this.count = count;

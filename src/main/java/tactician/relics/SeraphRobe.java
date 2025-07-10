@@ -3,8 +3,6 @@ package tactician.relics;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import tactician.character.TacticianRobin;
-
 import static tactician.TacticianMod.makeID;
 
 public class SeraphRobe extends BaseRelic {

@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.BlurPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import tactician.character.TacticianRobin;
 import static tactician.TacticianMod.makeID;
 
 public class Dracoshield extends BaseRelic {
