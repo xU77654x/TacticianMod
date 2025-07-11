@@ -245,7 +245,16 @@ public class Veteran extends Tactician9CopyCard {
         isMagicNumberModified = (magicNumber != baseMagicNumber);
     } */
     @Override
-    public void applyPowers() { updateContents(false); }
+    public void applyPowers() {
+        updateContents(false);
+        if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) {
+            super.applyPowers();
+            magicNumber = baseMagicNumber;
+            AbstractPower pow = AbstractDungeon.player.getPower(DeflectPower.POWER_ID);
+            if (pow != null) magicNumber += pow.amount;
+            isMagicNumberModified = (magicNumber != baseMagicNumber);
+        }
+    }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {

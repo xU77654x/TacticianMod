@@ -36,7 +36,7 @@ public class Weapon0NeutralPower extends AbstractPower {
 		this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 40, 40);
 		this.updateDescription();
 		this.p = AbstractDungeon.player;
-		priority = Integer.MAX_VALUE;
+		priority = -1000;
 	}
 
 	@Override

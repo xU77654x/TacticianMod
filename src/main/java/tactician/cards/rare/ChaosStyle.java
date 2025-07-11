@@ -27,7 +27,6 @@ public class ChaosStyle extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new ChaosStylePower(this.magicNumber), this.magicNumber));
-        // TODO: Chaos Style power.
     }
 
     @Override
