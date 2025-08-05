@@ -28,8 +28,8 @@ public class CrosswiseCut extends Tactician1SwordCard {
 
     public CrosswiseCut() {
         super(ID, info);
-        setDamage(4, 2);
-        setMagic(4, 0);
+        setDamage(4, 1);
+        setMagic(4, 2);
         tags.add(CustomTags.SWORD);
         tags.add(CustomTags.COMBAT_ART);
     }

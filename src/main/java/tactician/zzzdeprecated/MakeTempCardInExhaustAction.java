@@ -1,4 +1,4 @@
-package tactician.actions;
+package tactician.zzzdeprecated;
 
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -26,23 +26,19 @@ public class MakeTempCardInExhaustAction extends AbstractGameAction {
     public MakeTempCardInExhaustAction(AbstractCard card, boolean sameUUID) {
         this(card, 1);
         this.sameUUID = sameUUID;
-        if (!sameUUID && this.c.type != AbstractCard.CardType.CURSE && this.c.type != AbstractCard.CardType.STATUS && AbstractDungeon.player.hasPower("MasterRealityPower"))
-            this.c.upgrade();
+        if (!sameUUID && this.c.type != AbstractCard.CardType.CURSE && this.c.type != AbstractCard.CardType.STATUS && AbstractDungeon.player.hasPower("MasterRealityPower")) { this.c.upgrade(); }
     }
 
     public void update() {
         if (this.duration == this.startDuration) {
-            if (this.numCards < 6)
-                for (int i = 0; i < this.numCards; i++)
-                    AbstractDungeon.effectList.add(new ExhaustCopyEffect(makeNewCard()));
+            if (this.numCards < 6) { for (int i = 0; i < this.numCards; i++) { AbstractDungeon.effectList.add(new ExhaustCopyEffect(makeNewCard(), false)); }}
             this.duration -= Gdx.graphics.getDeltaTime();
         }
         tickDuration();
     }
 
     private AbstractCard makeNewCard() {
-        if (this.sameUUID)
-            return this.c.makeSameInstanceOf();
+        if (this.sameUUID) { return this.c.makeSameInstanceOf(); }
         return this.c.makeStatEquivalentCopy();
     }
 }

@@ -28,8 +28,8 @@ public class PartOfThePlan extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!this.upgraded) { addToBot(new ExhaustAction(2, true, false, false)); }
-        if (this.upgraded) { addToBot(new ExhaustAction(2, false)); }
+        if (!this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, true, false, false)); }
+        if (this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, false)); }
         addToBot(new ApplyPowerAction(p, p, new BarricadePower(p)));
         for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { addToBot(new ApplyPowerAction(mo, p, new BarricadePower(p))); }
     }

@@ -1,8 +1,10 @@
 package tactician.cards.common;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
@@ -32,8 +34,22 @@ public class Blossom extends TacticianCard {
         addToBot(new ApplyPowerAction(p, p, new ArtifactPower(p, this.magicNumber), this.magicNumber));
     }
 
-    @Override
-    public AbstractCard makeCopy() {
-        return new Blossom();
+    protected Texture getPortraitImage() {
+        if (this.upgraded) { return ImageMaster.loadImage("tactician/images/cards/skill/BlossomHero_p.png"); }
+        return super.getPortraitImage();
     }
+
+    public void upgrade() {
+        if (!this.upgraded) {
+            this.upgraded = true;
+            upgradeName();
+            upgradeMagicNumber(1);
+            initializeTitle();
+            initializeDescription();
+            loadCardImage("tactician/images/cards/skill/BlossomHero.png");
+        }
+    }
+
+    @Override
+    public AbstractCard makeCopy() { return new Blossom(); }
 }

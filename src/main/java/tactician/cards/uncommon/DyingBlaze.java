@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.MakeTempCardInExhaustAction;
+import tactician.actions.MakeAndExhaustCopyAction;
 import tactician.cards.Tactician6FireCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon6FirePower;
@@ -30,23 +30,25 @@ public class DyingBlaze extends Tactician6FireCard {
 
     public DyingBlaze() {
         super(ID, info);
-        setDamage(5, 0);
-        setMagic(3, 3);
+        setDamage(4, 2);
+        setMagic(2, 1);
         tags.add(CustomTags.FIRE);
         tags.add(CustomTags.COMBAT_ART);
-        this.exhaust = true;
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
         FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = this.magicNumber; i > 0; i--) {
-            addToBot(new MakeTempCardInExhaustAction(makeStatEquivalentCopy(), 1));
-        }
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
         calculateCardDamage(m);
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new MakeAndExhaustCopyAction(makeStatEquivalentCopy(), this.magicNumber));
+
+        /*
+        for (int i = this.magicNumber; i > 0; i--) {
+            addToBot(new MakeAndExhaustCopyAction(makeStatEquivalentCopy(), 1));
+        } */
 
         /*
         for (int x = 0; x < 3; x++) {
@@ -58,13 +60,13 @@ public class DyingBlaze extends Tactician6FireCard {
             x = 0;
         }
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-         */ // TODO: This is supposed to create a pause every 3 exhausted copy, but instead causes the game to hang due to the UnlockTracker already having seen this card.
+         */// This is supposed to create a pause every 3 exhausted copy, but instead causes the game to hang due to the UnlockTracker already having seen this card.
     }
 
     @Override
     public void applyPowers() {
         int realDamage = baseDamage;
-        baseDamage += AbstractDungeon.player.exhaustPile.size() + this.magicNumber;
+        baseDamage += AbstractDungeon.player.exhaustPile.size();
         super.applyPowers();
         baseDamage = realDamage;
         this.isDamageModified = (damage != baseDamage);
@@ -73,7 +75,7 @@ public class DyingBlaze extends Tactician6FireCard {
     @Override
     public void calculateCardDamage(AbstractMonster m) {
         int realDamage = baseDamage;
-        baseDamage += AbstractDungeon.player.exhaustPile.size() + this.magicNumber;
+        baseDamage += AbstractDungeon.player.exhaustPile.size();
         baseDamage += Wiz.playerWeaponCalc(m, 6);
         super.calculateCardDamage(m);
         baseDamage = realDamage;

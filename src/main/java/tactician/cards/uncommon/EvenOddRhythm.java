@@ -1,11 +1,13 @@
 package tactician.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.TacticianCard;
 import tactician.cards.other.Anathema;
@@ -40,7 +42,6 @@ public class EvenOddRhythm extends TacticianCard {
             addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
             addToBot(new MakeTempCardInHandAction(new Anathema(), 1));
         }
-        // TODO: If possible, change the card art between Panne and Nowi based on the turn number. Stone Calendar may not be the way.
     }
 
     public void onMoveToDiscard() {
@@ -49,8 +50,15 @@ public class EvenOddRhythm extends TacticianCard {
         this.rawDescription = cardStrings.DESCRIPTION;
         initializeTitle();
         initializeDescription();
-        // Set card art.
+        loadCardImage("tactician/images/cards/skill/EvenOddRhythm.png");
     }
+
+    /*
+    protected Texture getPortraitImage() {
+        if (GameActionManager.turn % 2 == 0) { return ImageMaster.loadImage("tactician/images/cards/skill/EvenOddRhythm_Panne_p.png"); }
+        else if (GameActionManager.turn % 2 == 1) { return ImageMaster.loadImage("tactician/images/cards/skill/EvenOddRhythm_Nowi_p.png"); }
+        return super.getPortraitImage();
+    } // Change the portrait image based on the turn order. Not required here due to the card preview always in the deck, shop, or Compendium--where it is always turn-neutral. */
 
     @Override
     public void applyPowers() {
@@ -59,13 +67,13 @@ public class EvenOddRhythm extends TacticianCard {
             this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[1];
             if (upgraded) { this.name = cardStrings.EXTENDED_DESCRIPTION[0] + "+"; }
             else { this.name = cardStrings.EXTENDED_DESCRIPTION[0]; }
-            // Set card art.
+            loadCardImage("tactician/images/cards/skill/EvenOddRhythm_Panne.png");
         }
         else {
             this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
             if (upgraded) { this.name = cardStrings.EXTENDED_DESCRIPTION[2] + "+"; }
             else { this.name = cardStrings.EXTENDED_DESCRIPTION[2]; }
-            // Set card art.
+            loadCardImage("tactician/images/cards/skill/EvenOddRhythm_Nowi.png");
         }
         initializeTitle();
         initializeDescription();
@@ -78,16 +86,12 @@ public class EvenOddRhythm extends TacticianCard {
             this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[1];
             if (upgraded) { this.name = cardStrings.EXTENDED_DESCRIPTION[0] + "+"; }
             else { this.name = cardStrings.EXTENDED_DESCRIPTION[0]; }
-            // Set card art.
 		}
         else {
             this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
             if (upgraded) { this.name = cardStrings.EXTENDED_DESCRIPTION[2] + "+"; }
             else { this.name = cardStrings.EXTENDED_DESCRIPTION[2]; }
-            // Set card art.
 		}
-		initializeTitle();
-		initializeDescription();
 	}
 
     @Override

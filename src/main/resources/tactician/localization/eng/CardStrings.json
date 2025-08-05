@@ -203,7 +203,7 @@
   },
   "${modID}:DyingBlaze": {
     "NAME": "Dying Blaze",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Exhaust !M! copies. NL Deal !D! damage, increased by the size of your Exhaust pile. NL Exhaust.",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage, increased by the size NL of your Exhaust pile. NL Exhaust !M! copies.",
     "FLAVOR": "Exhausted copies don't trigger effects such as Dark Embrace."
   },
   "${modID}:Bolting": {
@@ -269,7 +269,7 @@
   },
   "${modID}:SurpriseAttack": {
     "NAME": "Surprise Attack",
-    "DESCRIPTION": "Gain ${modID}:Deflect equal to your Block."
+    "DESCRIPTION": "Gain ${modID}:Deflect equal NL to your Block."
   },
   "${modID}:Pass": {
     "NAME": "Pass",
@@ -368,7 +368,8 @@
   },
   "${modID}:Excalibur": {
     "NAME": "Excalibur",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL At the start of your NL turn, draw 1 card.",
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}At the start of your NL turn, draw !M! card{!M!|1=|@=s}.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}At the start of your NL turn, and again next NL turn, draw !M! card{!M!|1=|@=s}.",
     "FLAVOR": "If weapon-strong, increase your hand size by 3."
   },
   "${modID}:Bolganone": {
@@ -381,7 +382,7 @@
   "${modID}:Thoron": {
     "NAME": "Thoron",
     "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose NL !D! HP twice.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose  NL !D! HP twice, as well as Barricade.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose  NL !D! HP twice, as well NL as Barricade.",
     "EXTENDED_DESCRIPTION": ["Thoron!"]
   },
   "${modID}:Goetia": {
@@ -414,12 +415,12 @@
   },
   "${modID}:PartOfThePlan": {
     "NAME": "Part of the Plan",
-    "DESCRIPTION": "Play this as your first card only. Exhaust 2 random cards. EVERYONE gets Barricade.",
-    "UPGRADE_DESCRIPTION": "Exhaust 2 cards. NL EVERYONE gets Barricade."
+    "DESCRIPTION": "Play this as your first card only. {@@}Exhaust !M! random card{!M!|1=|@=s}. EVERYONE gets Barricade.",
+    "UPGRADE_DESCRIPTION": "{@@}Exhaust !M! card{!M!|1=|@=s}. NL EVERYONE gets Barricade."
   },
   "${modID}:MasterSeal": {
     "NAME": "Master Seal",
-    "DESCRIPTION": "Gain 1 Ritual. NL {@@}Gain !M! Orb Slot{!M!|1=|@=s}. NL Add an Anathema and a Hex to your hand. Exhaust."
+    "DESCRIPTION": "Gain 1 Ritual. NL {@@}Gain !M! Orb Slot{!M!|1=|@=s}. NL Add an Anathema and a Hex to your hand."
   },
   "${modID}:ChaosStyle": {
     "NAME": "Chaos Style",
