@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import tactician.effects.ExhaustCopyEffect;
 
 public class MakeTempCardInExhaustAction extends AbstractGameAction {
-    private AbstractCard c;
-    private int numCards;
+    private final AbstractCard c;
+    private final int numCards;
     private boolean sameUUID;
 
     public MakeTempCardInExhaustAction(AbstractCard card, int amount) {

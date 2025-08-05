@@ -3,7 +3,6 @@ package tactician.effects;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -17,7 +16,7 @@ import com.megacrit.cardcrawl.vfx.combat.CardPoofEffect;
 
 public class ExhaustCopyEffect extends AbstractGameEffect {
     private static final float EFFECT_DUR = 1.5F;
-    private AbstractCard card;
+    private final AbstractCard card;
     private static final float PADDING = 30.0F * Settings.scale;
 
     public ExhaustCopyEffect(AbstractCard srcCard, float x, float y) {
