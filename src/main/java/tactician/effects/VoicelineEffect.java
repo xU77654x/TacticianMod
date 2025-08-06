@@ -2,7 +2,6 @@ package tactician.effects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
@@ -34,6 +33,7 @@ public class VoicelineEffect extends AbstractGameEffect {
 				case "Nosferatu": this.played = true; CardCrawlGame.sound.play("tactician/sfx/voice/Male_Nosferatu.wav"); break;
 				case "Bolganone": this.played = true; CardCrawlGame.sound.play("tactician/sfx/voice/Male_Bolganone.wav"); break;
 				case "Thoron": this.played = true; CardCrawlGame.sound.play("tactician/sfx/voice/Male_Thoron.wav"); break;
+				// TODO: Robin's voice will not occur if he spoke within the past 5.0F  of time.
 			}
 		}
 		this.duration -= Gdx.graphics.getDeltaTime();
