@@ -1,5 +1,6 @@
 package tactician.relics;
 
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -13,10 +14,7 @@ public class SeraphRobe extends BaseRelic {
     private static final int HEAL = 10;
     private static final int GOLD = 50;
 
-    public SeraphRobe() {
-        super(ID, NAME, RARITY, SOUND);
-        // TODO: Relic image and level up sound.
-    }
+    public SeraphRobe() { super(ID, NAME, RARITY, SOUND); }
 
     @Override
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + HEAL + this.DESCRIPTIONS[1] + GOLD + this.DESCRIPTIONS[2]; }
@@ -41,6 +39,9 @@ public class SeraphRobe extends BaseRelic {
         AbstractDungeon.player.heal(HEAL, true);
         AbstractDungeon.player.gainGold(GOLD);
     }
+
+    @Override
+    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() { return new SeraphRobe(); }

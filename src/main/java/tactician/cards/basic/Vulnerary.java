@@ -2,6 +2,7 @@ package tactician.cards.basic;
 
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -29,6 +30,7 @@ public class Vulnerary extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ExhaustAction(1, false));
+        addToBot(new SFXAction("tactician:Vulnerary"));
         addToBot(new HealAction(p, p, this.magicNumber));
     }
 

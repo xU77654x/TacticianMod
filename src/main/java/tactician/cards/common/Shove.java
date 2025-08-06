@@ -2,6 +2,7 @@ package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -35,6 +36,7 @@ public class Shove extends Tactician9CopyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            addToBot(new SFXAction("tactician:Shove"));
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
                 calculateCardDamage(mo);
                 addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));

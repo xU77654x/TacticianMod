@@ -213,7 +213,12 @@ public class Wiz {
         int effect = 0;
         boolean copyFlag = true;
         if (AbstractDungeon.player.hasPower(ZealPower.POWER_ID)) { effect = valModify; }
-        else if (!(AbstractDungeon.player instanceof TacticianRobin)) { return 0; }
+        else if (!(AbstractDungeon.player instanceof TacticianRobin)) {
+            if (!AbstractDungeon.actionManager.cardsPlayedThisCombat.isEmpty() && (AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 1)).type == AbstractCard.CardType.POWER) {
+                effect = valModify; // If a non-Robin character uses a Tactician card that calculates weapon types, it instead is weapon-strong if the last-played card was a Power.
+            }
+            else { return 0; }
+        }
         else if (m.hasPower(Weapon0NeutralPower.POWER_ID)) { return 0; }
         else do {
             switch (weaponType) {

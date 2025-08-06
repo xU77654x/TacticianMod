@@ -3,6 +3,7 @@ package tactician.cards.uncommon;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -27,12 +28,14 @@ public class Charm extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new SFXAction("tactician:Charm"));
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new GainBlockAction(p, p, this.block));
     }
 
     @Override
     public void triggerOnExhaust() {
+        addToBot(new SFXAction("tactician:Charm"));
         addToTop(new GainEnergyAction(1));
         Charm c = new Charm();
         addToTop(new MakeTempCardInDrawPileAction(c, 1, true, true));

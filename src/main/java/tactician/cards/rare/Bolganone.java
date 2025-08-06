@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -45,6 +46,7 @@ public class Bolganone extends Tactician6FireCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+        addToBot(new SFXAction("tactician:Bolganone"));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         int deflect = 0;
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) { deflect = AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount; }

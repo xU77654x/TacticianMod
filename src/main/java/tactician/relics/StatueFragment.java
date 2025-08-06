@@ -1,6 +1,7 @@
 package tactician.relics;
 
 import basemod.BaseMod;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.character.TacticianRobin;
 
@@ -13,10 +14,7 @@ public class StatueFragment extends BaseRelic{
     private static final LandingSound SOUND = LandingSound.CLINK;
     private static final int HANDSIZE = 3;
 
-    public StatueFragment() {
-        super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
-        // TODO: Relic level up sound.
-    }
+    public StatueFragment() { super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
 
     @Override
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + HANDSIZE + "."; }
@@ -26,6 +24,9 @@ public class StatueFragment extends BaseRelic{
 
     @Override
     public void onUnequip() { BaseMod.MAX_HAND_SIZE -= HANDSIZE; }
+
+    @Override
+    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() {

@@ -2,8 +2,10 @@ package tactician.relics;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -17,10 +19,7 @@ public class KillingEdge extends BaseRelic {
 	private static final LandingSound SOUND = LandingSound.CLINK;
 	private static final int COUNTER = 12;
 
-	public KillingEdge() {
-		super(ID, NAME, RARITY, SOUND);
-		// TODO: Relic image and level up sound.
-	}
+	public KillingEdge() { super(ID, NAME, RARITY, SOUND); }
 
 	@Override
 	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
@@ -38,6 +37,7 @@ public class KillingEdge extends BaseRelic {
 				this.pulse = true;
 				AbstractDungeon.player.hand.refreshHandLayout();
 				addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+				addToBot(new SFXAction("tactician:Luna_KillingEdgeGain"));
 				addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KillingEdgePower(AbstractDungeon.player, 1), 1));
 			}
 		}
@@ -49,9 +49,13 @@ public class KillingEdge extends BaseRelic {
 			beginPulse();
 			this.pulse = true;
 			AbstractDungeon.player.hand.refreshHandLayout();
+			addToBot(new SFXAction("tactician:Luna_KillingEdgeGain"));
 			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KillingEdgePower(AbstractDungeon.player, 1), 1));
 		}
 	}
+
+	@Override
+	public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
 	@Override
 	public AbstractRelic makeCopy() { return new KillingEdge(); }

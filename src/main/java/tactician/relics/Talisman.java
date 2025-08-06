@@ -2,6 +2,7 @@ package tactician.relics;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.curses.Necronomicurse;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
@@ -16,10 +17,7 @@ public class Talisman extends BaseRelic {
     private static final LandingSound SOUND = LandingSound.CLINK;
     private static final int TEMPHP = 2;
 
-    public Talisman() {
-        super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
-        // TODO: Relic image and level up sound.
-    }
+    public Talisman() { super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
 
     @Override
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + TEMPHP + this.DESCRIPTIONS[1]; }
@@ -31,6 +29,9 @@ public class Talisman extends BaseRelic {
             addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, TEMPHP));
         }
     }
+
+    @Override
+    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() { return new Talisman(); }

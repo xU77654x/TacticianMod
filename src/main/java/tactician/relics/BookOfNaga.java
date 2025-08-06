@@ -4,11 +4,13 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
+
 import static tactician.TacticianMod.makeID;
 
 
@@ -20,9 +22,7 @@ public class BookOfNaga extends BaseRelic {
 	public AbstractPlayer p;
 
 	public BookOfNaga() {
-		super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
-		// TODO: Relic image and level up sound.
-	}
+		super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
 
 	@Override
 	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
@@ -34,6 +34,9 @@ public class BookOfNaga extends BaseRelic {
 		addToTop(new MakeTempCardInHandAction(new Hex(), 1));
 		addToTop(new RelicAboveCreatureAction(p, this));
 	}
+
+	@Override
+	public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
 	/*
 	@Override

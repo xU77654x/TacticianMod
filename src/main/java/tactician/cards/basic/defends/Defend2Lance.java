@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.StrikeDefendSFXAction;
 import tactician.cards.Tactician2LanceCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon2LancePower;
@@ -34,6 +35,7 @@ public class Defend2Lance extends Tactician2LanceCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) {addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
 		calculateCardDamage(m);
+		addToBot(new StrikeDefendSFXAction(0, m));
 		addToBot(new GainBlockAction(p, p, this.block));
 	}
 

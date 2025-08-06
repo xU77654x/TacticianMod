@@ -2,6 +2,7 @@ package tactician.cards.rare;
 
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -28,6 +29,7 @@ public class QuickBurn extends TacticianCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+		addToBot(new SFXAction("tactician:QuickBurn"));
 		addToBot(new ApplyPowerAction(p, p, new QuickBurnPower(p)));
 	}
 

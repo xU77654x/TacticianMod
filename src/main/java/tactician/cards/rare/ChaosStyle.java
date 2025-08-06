@@ -1,6 +1,7 @@
 package tactician.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -27,6 +28,7 @@ public class ChaosStyle extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new ChaosStylePower(this.magicNumber), this.magicNumber));
+        addToBot(new SFXAction("tactician:ChaosStyle"));
     }
 
     @Override

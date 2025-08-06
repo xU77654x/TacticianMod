@@ -3,6 +3,7 @@ package tactician.cards.rare;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -31,6 +32,7 @@ public class MasterSeal extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new SFXAction("tactician:MasterSeal"));
         addToBot(new ApplyPowerAction(p, p, new RitualPower(p, 1, true), 1));
         addToBot(new IncreaseMaxOrbAction(this.magicNumber));
         addToBot(new MakeTempCardInHandAction(new Anathema(), 1));

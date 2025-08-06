@@ -1,6 +1,7 @@
 package tactician.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -29,6 +30,7 @@ public class Renewal extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new SFXAction("tactician:Renewal"));
         addToBot(new EasyXCostAction(this, (amt, params)->{
             addToTop(new ReduceDebuffsAction(p, amt + this.magicNumber));
             return true;

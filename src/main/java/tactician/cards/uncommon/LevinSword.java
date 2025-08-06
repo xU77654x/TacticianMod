@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -24,7 +25,6 @@ import tactician.powers.weapons.Weapon1SwordPower;
 import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;
 import tactician.util.Wiz;
-
 import java.util.ArrayList;
 
 public class LevinSword extends TacticianCard {
@@ -56,18 +56,20 @@ public class LevinSword extends TacticianCard {
                 weapon = 1;
                 if (!p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
                 calculateCardDamage(m);
+                addToBot(new SFXAction("tactician:LevinSword"));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
             }));
             easyCardList.add(new Weapon7Thunder(() ->  {
                 weapon = 7;
                 if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
                 calculateCardDamage(m);
+                addToBot(new SFXAction("tactician:LevinSword"));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
             }));
             addToTop(new EasyModalChoiceAction(easyCardList));
         }
         else { addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL)); }
-        addToTop(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
+
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         addToBot(new MakeTempCardInHandAction(new Hex(), 1));
     }

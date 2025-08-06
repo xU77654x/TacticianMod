@@ -2,13 +2,13 @@ package tactician.relics;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.character.TacticianRobin;
-
 import static tactician.TacticianMod.makeID;
 
 public class NagasTear extends BaseRelic {
@@ -19,10 +19,7 @@ public class NagasTear extends BaseRelic {
     private static final int MAXHP = 10;
     private static final int STAT = 1;
 
-    public NagasTear() {
-        super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
-        // TODO: Relic image and level up sound.
-    }
+    public NagasTear() { super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
 
     @Override
     public String getUpdatedDescription() {
@@ -44,7 +41,8 @@ public class NagasTear extends BaseRelic {
     }
 
     @Override
-    public AbstractRelic makeCopy() {
-        return new NagasTear();
-    }
+    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
+
+    @Override
+    public AbstractRelic makeCopy() { return new NagasTear(); }
 }

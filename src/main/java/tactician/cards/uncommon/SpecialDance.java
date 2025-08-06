@@ -1,6 +1,7 @@
 package tactician.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -47,8 +48,8 @@ public class SpecialDance extends TacticianCard {
             addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, this.magicNumber), this.magicNumber));
         }));
-
         addToBot(new EasyModalChoiceAction(easyCardList));
+        addToBot(new SFXAction("tactician:SpecialDance"));
     }
 
     @Override

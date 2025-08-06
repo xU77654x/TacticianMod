@@ -1,6 +1,7 @@
 package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -34,6 +35,7 @@ public class Reposition extends Tactician9CopyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
+        addToBot(new SFXAction("tactician:Reposition"));
         addToBot(new GainBlockAction(p, p, this.block));
     }
 

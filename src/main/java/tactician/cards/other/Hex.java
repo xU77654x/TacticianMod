@@ -3,11 +3,15 @@ package tactician.cards.other;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.Lightning;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.relics.BlueCandle;
 import tactician.cards.TacticianCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -41,19 +45,19 @@ public class Hex extends TacticianCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
+		addToBot(new SFXAction("tactician:Hex"));
 		if (Boolean.TRUE.equals(p.hasPower(ShovePower.POWER_ID) && p.hasPower(CreationPulsePower.POWER_ID))) {
-			addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, 1), 1));
-			// This has the unfortunate side effect of consuming Artifact, but I don't know how to avoid this yet.
+			int val = p.getPower(CreationPulsePower.POWER_ID).amount;
+			addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, val, false), val, true, AbstractGameAction.AttackEffect.NONE));
 		}
-		else if (Boolean.TRUE.equals(p.hasRelic(BlueCandle.ID) && p.hasPower(ShovePower.POWER_ID))) { addToTop(new AddTemporaryHPAction(p, p, 1)); } // Blue Candle won't make the player lose HP if they have ShovePower.
+		if (Boolean.TRUE.equals(p.hasRelic(BlueCandle.ID) && p.hasPower(ShovePower.POWER_ID))) { addToTop(new AddTemporaryHPAction(p, p, 1)); } // Blue Candle won't make the player lose HP if they have ShovePower.
 		else if (Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID) || p.hasPower(ShovePower.POWER_ID) || p.hasPower(LoseStrengthPower.POWER_ID))) { // No Deflect is consumed or stats lost if the player has LoseStrengthPower or ShovePower.
 			if (p.hasPower(ShovePower.POWER_ID)) {
-				addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, 1), 1));
-			} else if (Boolean.TRUE.equals(p.hasPower(DeflectPower.POWER_ID)) && (p.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {
+				addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, 1), 1)); }
+			else if (Boolean.TRUE.equals(p.hasPower(DeflectPower.POWER_ID)) && (p.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {
 				addToBot(new ReducePowerAction(p, p, p.getPower(DeflectPower.POWER_ID), this.magicNumber));
-			} else {
-				addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, 1), 1));
 			}
+			else { addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, 1), 1)); }
 		}
 	}
 

@@ -3,6 +3,7 @@ package tactician.powers;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -36,7 +37,9 @@ public class KillingEdgePower extends AbstractPower {
 	}
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {
-		if (card.type == AbstractCard.CardType.ATTACK) { addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this)); }
+		if (card.type == AbstractCard.CardType.ATTACK) {
+			addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+		}
 	}
 
 	public void updateDescription() {
@@ -47,5 +50,9 @@ public class KillingEdgePower extends AbstractPower {
 	public float atDamageGive(float damage, DamageInfo.DamageType type) {
 		if (type == DamageInfo.DamageType.NORMAL) { return damage * 3.0F; }
 		return damage;
+	}
+
+	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+		if (target != this.owner && info.type == DamageInfo.DamageType.NORMAL) { addToTop(new SFXAction("tactician:CriticalHitFE8")); }
 	}
 }

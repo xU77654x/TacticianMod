@@ -2,6 +2,7 @@ package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -28,6 +29,7 @@ public class OutdoorFighter extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new SFXAction("tactician:OutdoorFighter"));
         addToBot(new DrawCardAction(this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(customVar("magicDeflect"))));
     }

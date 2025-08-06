@@ -2,6 +2,7 @@ package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.ScryAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -30,6 +31,7 @@ public class Tantivy extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster M) {
+        addToBot(new SFXAction("tactician:Tantivy"));
         addToBot(new ScryAction(this.magicNumber)); // Scry 3 > 6
         addToBot(new DrawCardAction(p, 1)); // Draw 1.
         addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, customVar("magicTempDex")), customVar("magicTempDex"))); // Gain 2 > 3 Dexterity

@@ -1,6 +1,7 @@
 package tactician.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ObtainPotionAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -40,7 +41,9 @@ public class Despoil extends TacticianCard {
             case 1: potion = new SpeedPotion(); break;
             case 2: potion = new SagePotion(); break;
         }
+        addToBot(new SFXAction("tactician:Despoil")); // TODO: Don't play the sound if all potion slots are full.
         addToBot(new ObtainPotionAction(potion));
+
     }
 
     @Override

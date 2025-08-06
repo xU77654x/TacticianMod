@@ -2,6 +2,7 @@ package tactician.cards.common;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -32,6 +33,7 @@ public class Blossom extends TacticianCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, 1, false), 1));
         addToBot(new ApplyPowerAction(p, p, new ArtifactPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new SFXAction("tactician:Blossom"));
     }
 
     protected Texture getPortraitImage() {

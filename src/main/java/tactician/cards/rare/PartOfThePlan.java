@@ -2,6 +2,7 @@ package tactician.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -30,6 +31,7 @@ public class PartOfThePlan extends TacticianCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, true, false, false)); }
         if (this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, false)); }
+        addToBot(new SFXAction("tactician:PartOfThePlan"));
         addToBot(new ApplyPowerAction(p, p, new BarricadePower(p)));
         for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { addToBot(new ApplyPowerAction(mo, p, new BarricadePower(p))); }
     }

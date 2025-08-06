@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.BlurPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -17,10 +18,7 @@ public class Dracoshield extends BaseRelic {
     private static final int BLUR = 1;
     private static final int CARDS = 3;
 
-    public Dracoshield() {
-        super(ID, NAME, RARITY, SOUND);
-        // TODO: Relic image and level up sound.
-    }
+    public Dracoshield() { super(ID, NAME, RARITY, SOUND); }
 
     @Override
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + CARDS + this.DESCRIPTIONS[1] + BLUR + this.DESCRIPTIONS[2]; }
@@ -43,6 +41,9 @@ public class Dracoshield extends BaseRelic {
 
     @Override
     public void onVictory() { this.counter = -1; }
+
+    @Override
+    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() { return new Dracoshield(); }

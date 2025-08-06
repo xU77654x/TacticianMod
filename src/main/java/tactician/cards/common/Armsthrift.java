@@ -1,6 +1,7 @@
 package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -38,6 +39,7 @@ public class Armsthrift extends TacticianCard {
         easyCardList.add(new UpgradeSkills(() -> addToBot(new ArmsthriftAction(1))));
         easyCardList.add(new UpgradePowers(() -> addToBot(new ArmsthriftAction(2))));
         addToBot(new EasyModalChoiceAction(easyCardList));
+        addToBot(new SFXAction("tactician:Armsthrift"));
     }
 
     @Override

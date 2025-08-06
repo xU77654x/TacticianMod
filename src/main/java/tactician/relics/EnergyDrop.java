@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.red.Anger;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -20,10 +21,7 @@ public class EnergyDrop extends BaseRelic {
     private static final LandingSound SOUND = LandingSound.CLINK;
     public AbstractPlayer p;
 
-    public EnergyDrop() {
-        super(ID, NAME, RARITY, SOUND);
-        // TODO: Relic image and level up sound.
-    }
+    public EnergyDrop() { super(ID, NAME, RARITY, SOUND); }
 
     @Override
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
@@ -38,6 +36,9 @@ public class EnergyDrop extends BaseRelic {
         addToBot(new MakeTempCardInHandAction(c, 1));
         addToTop(new RelicAboveCreatureAction(p, this));
     }
+
+    @Override
+    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() { return new EnergyDrop(); }

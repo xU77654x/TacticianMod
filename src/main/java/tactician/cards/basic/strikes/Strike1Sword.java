@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.StrikeDefendSFXAction;
 import tactician.cards.Tactician1SwordCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.*;
@@ -38,6 +39,7 @@ public class Strike1Sword extends Tactician1SwordCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
 		calculateCardDamage(m);
+		addToBot(new StrikeDefendSFXAction(1, m));
 		addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 	}
 

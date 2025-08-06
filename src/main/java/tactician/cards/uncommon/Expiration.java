@@ -2,6 +2,7 @@ package tactician.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -40,6 +41,7 @@ public class Expiration extends TacticianCard {
             easyCardList.add(new TempBlueCandle(() -> FragileRelics.obtainFragileRelic(new BlueCandle())));
             easyCardList.add(new TempMedicalKit(() -> FragileRelics.obtainFragileRelic(new MedicalKit())));
             addToTop(new EasyModalChoiceAction(easyCardList));
+            addToBot(new SFXAction("tactician:Expiration"));
         }
         else if (Boolean.TRUE.equals(p.hasRelic(BlueCandle.ID)) && Boolean.FALSE.equals(p.hasRelic(MedicalKit.ID))) { FragileRelics.obtainFragileRelic(new MedicalKit()); }
         else if (Boolean.TRUE.equals(p.hasRelic(MedicalKit.ID)) && Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID))) { FragileRelics.obtainFragileRelic(new BlueCandle()); }

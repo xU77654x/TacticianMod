@@ -4,6 +4,8 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -37,7 +39,14 @@ public class CuttingGale extends Tactician5WindCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
         calculateCardDamage(m);
+        addToBot(new SFXAction("tactician:CuttingGale_Jab"));
+        addToBot(new WaitAction(0.05F));
+        addToBot(new SFXAction("tactician:CuttingGale_Jab"));
+        addToBot(new WaitAction(0.05F));
+        addToBot(new SFXAction("tactician:CuttingGale_Jab"));
+        addToBot(new WaitAction(0.05F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new SFXAction("tactician:CuttingGale_Finish"));
         addToBot(new RandomExhumeAction(1, false));
         if (this.upgraded) { addToBot(new ExhaustAction(1, true)); }
         else { addToBot(new ExhaustAction(1, false)); }

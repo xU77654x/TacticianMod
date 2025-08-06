@@ -3,6 +3,7 @@ package tactician.relics;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.character.TacticianRobin;
@@ -19,10 +20,7 @@ public class Speedwing extends BaseRelic {
     private static final int ENERGY = 1;
     private static final int TURN = 2;
 
-    public Speedwing() {
-        super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
-        // TODO: Relic image and level up sound.
-    }
+    public Speedwing() { super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
 
     @Override
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + DEFLECT + this.DESCRIPTIONS[1]; }
@@ -48,6 +46,9 @@ public class Speedwing extends BaseRelic {
         this.counter = -1;
         this.grayscale = false;
     }
+
+    @Override
+    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() { return new Speedwing(); }

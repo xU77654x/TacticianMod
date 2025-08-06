@@ -429,7 +429,7 @@
   "${modID}:QuickBurn": {
     "NAME": "Quick Burn",
     "DESCRIPTION": "Attacks cost 0. NL Whenever you play an NL Attack, Exhaust it.",
-    "EXTENDED_DESCRIPTION": ["Strategy in motion!"]
+    "EXTENDED_DESCRIPTION": ["Now that's strategy!"]
   },
   "${modID}:GrandmasterForm": {
     "NAME": "Grandmaster Form",

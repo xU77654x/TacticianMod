@@ -2,6 +2,7 @@ package tactician.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -46,6 +47,7 @@ public class Aegis extends Tactician9CopyCard {
         }
         else { weapon = 9; }
         calculateCardDamage(m);
+        addToBot(new SFXAction("tactician:PaviseAegis"));
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new GainBlockAction(p, p, this.block));
     }

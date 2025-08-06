@@ -1,6 +1,7 @@
 package tactician.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.unique.CalculatedGambleAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -23,7 +24,10 @@ public class Pass extends TacticianCard {
         setCostUpgrade(0);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new CalculatedGambleAction(true)); }
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new SFXAction("tactician:Pass"));
+        addToBot(new CalculatedGambleAction(true));
+    }
 
     @Override
     public AbstractCard makeCopy() { return new Pass(); }

@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -18,10 +19,7 @@ public class SecretBook extends BaseRelic {
 	private static final LandingSound SOUND = LandingSound.CLINK;
 	public AbstractPlayer p;
 
-	public SecretBook() {
-		super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
-		// TODO: Relic image and level up sound.
-	}
+	public SecretBook() { super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
 
 	@Override
 	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
@@ -34,6 +32,9 @@ public class SecretBook extends BaseRelic {
 		addToTop(new MakeTempCardInHandAction(new Anathema(), 1));
 		addToTop(new RelicAboveCreatureAction(p, this));
 	}
+
+	@Override
+	public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
 	@Override
 	public AbstractRelic makeCopy() { return new SecretBook(); }

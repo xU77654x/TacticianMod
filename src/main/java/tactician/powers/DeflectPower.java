@@ -7,6 +7,8 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -66,6 +68,8 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
                     addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2)));
                     addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
                 }
+                addToTop(new WaitAction(0.1F));
+                addToTop(new SFXAction("tactician:DeflectReceiveHit"));
             }
 
         }
