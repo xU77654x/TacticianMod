@@ -54,8 +54,8 @@ public class TacticianRobin extends CustomPlayer {
         public static CardLibrary.LibraryType LIBRARY_COLOR;
 
         // Character select images.
-        private static final String CHAR_SELECT_BUTTON = characterPath("select/button.png");
-        private static final String CHAR_SELECT_PORTRAIT = characterPath("select/portrait.png");
+        private static final String CHAR_SELECT_BUTTON = characterPath("select/TacticianButton.png");
+        private static final String CHAR_SELECT_PORTRAIT = characterPath("select/TacticianSelect.png");
 
         // Character card images.
         private static final String BG_ATTACK = characterPath("cardback/bg_attack.png");
