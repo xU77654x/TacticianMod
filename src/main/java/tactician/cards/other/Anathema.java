@@ -9,9 +9,11 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.Frost;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.relics.BlueCandle;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -44,18 +46,21 @@ public class Anathema extends TacticianCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		addToBot(new SFXAction("tactician:Anathema"));
+		addToBot(new PlaySoundAction("tactician:Anathema", 1.20f));
 		if (Boolean.TRUE.equals(p.hasPower(ShovePower.POWER_ID) && p.hasPower(CreationPulsePower.POWER_ID))) {
 			int val = p.getPower(CreationPulsePower.POWER_ID).amount;
 			addToBot(new ApplyPowerAction(m, p, new WeakPower(m, val, false), val, true, AbstractGameAction.AttackEffect.NONE));
 		}
 		if (Boolean.TRUE.equals(p.hasRelic(BlueCandle.ID) && p.hasPower(ShovePower.POWER_ID))) { addToTop(new AddTemporaryHPAction(p, p, 1)); } // Blue Candle won't make the player lose HP if they have ShovePower.
 		else if (Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID) || p.hasPower(ShovePower.POWER_ID) || p.hasPower(LoseDexterityPower.POWER_ID))) { // No Deflect is consumed or stats lost if the player has LoseDexterityPower or ShovePower.
-			if (p.hasPower(ShovePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, 1), 1)); }
-			else if (Boolean.TRUE.equals(p.hasPower(DeflectPower.POWER_ID)) && (p.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {
+			/* if (p.hasPower(ShovePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, 1), 1)); } */
+			if (Boolean.TRUE.equals(p.hasPower(DeflectPower.POWER_ID)) && (p.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {
 				addToBot(new ReducePowerAction(p, p, p.getPower(DeflectPower.POWER_ID), this.magicNumber));
 			}
-			else { addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, 1), 1)); }
+			else {
+				if (!p.hasPower(ArtifactPower.POWER_ID)) { addToBot(new PlaySoundAction("tactician:StatDecreaseFE", 1.00f)); }
+				addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, 1), 1));
+			}
 		}
 	}
 

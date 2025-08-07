@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician4BowCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
@@ -42,18 +43,18 @@ public class WaningShot extends Tactician4BowCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:WaningShot_Draw"));
+        addToTop(new PlaySoundAction("tactician:WaningShot_Draw", 1.25f));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
         calculateCardDamage(m);
-        addToBot(new WaitAction(1.00F));
-        addToBot(new SFXAction("tactician:CurvedShot"));
+        addToBot(new WaitAction(1.50F));
+        addToBot(new PlaySoundAction("tactician:CurvedShot", 1.25f));
         addToBot(new WaitAction(0.25F));
-        addToBot(new SFXAction("tactician:WaningShot_Hit"));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new PlaySoundAction("tactician:WaningShot_Hit", 1.25f));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), this.magicNumber));
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= 3)) {
             addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), 3));
-            if (!m.hasPower(ArtifactPower.POWER_ID)) { addToBot(new SFXAction("tactician:StatDecreaseFE")); }
+            if (!m.hasPower(ArtifactPower.POWER_ID)) { addToBot(new PlaySoundAction("tactician:StatDecreaseFE", 1.00f)); }
             addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -1), -1));
         }
     }

@@ -11,8 +11,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician7ThunderCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -41,9 +43,9 @@ public class Thunder extends Tactician7ThunderCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:Thunder"));
-        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToTop(new PlaySoundAction("tactician:Thunder", 1.25f));
+        AbstractDungeon.effectList.add(new PlayVoiceEffect("Thunder"));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
         addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
     }
 

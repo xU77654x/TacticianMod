@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician1SwordCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
@@ -40,7 +41,7 @@ public class WrathStrike extends Tactician1SwordCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:WrathStrike"));
+        addToBot(new PlaySoundAction("tactician:WrathStrike", 1.33f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
     }

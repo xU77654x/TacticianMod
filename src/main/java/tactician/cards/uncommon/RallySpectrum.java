@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
@@ -62,7 +63,7 @@ public class RallySpectrum extends TacticianCard {
             addToBot(new ApplyPowerAction(p, p, new LoseFocusPower(this.magicNumber), this.magicNumber));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
-        addToBot(new SFXAction("tactician:RallySpectrum"));
+        addToBot(new PlaySoundAction("tactician:RallySpectrum", 1.00f));
     }
 
     @Override

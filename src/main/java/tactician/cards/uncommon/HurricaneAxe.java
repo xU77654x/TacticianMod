@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon3Axe;
 import tactician.cards.cardchoice.Weapon5Wind;
@@ -54,19 +55,22 @@ public class HurricaneAxe extends TacticianCard {
                 weapon = 3;
                 if (!p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
                 calculateCardDamage(m);
-                addToBot(new SFXAction("tactician:HurricaneAxe"));
+                addToBot(new PlaySoundAction("tactician:HurricaneAxe", 1.50f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
             }));
             easyCardList.add(new Weapon5Wind(() ->  {
                 weapon = 5;
                 if (!p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new SFXAction("tactician:HurricaneAxe"));
+                addToBot(new PlaySoundAction("tactician:HurricaneAxe", 1.50f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
             }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
-        else { addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY)); }
+        else {
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            addToBot(new PlaySoundAction("tactician:HurricaneAxe", 1.50f));
+        }
         addToBot(new MakeTempCardInHandAction(new Anathema()));
         addToBot(new ExhaustAction(1, false));
     }

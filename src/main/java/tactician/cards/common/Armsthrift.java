@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.ArmsthriftAction;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
@@ -39,7 +40,7 @@ public class Armsthrift extends TacticianCard {
         easyCardList.add(new UpgradeSkills(() -> addToBot(new ArmsthriftAction(1))));
         easyCardList.add(new UpgradePowers(() -> addToBot(new ArmsthriftAction(2))));
         addToBot(new EasyModalChoiceAction(easyCardList));
-        addToBot(new SFXAction("tactician:Armsthrift"));
+        addToTop(new PlaySoundAction("tactician:Armsthrift", 1.25f));
     }
 
     @Override

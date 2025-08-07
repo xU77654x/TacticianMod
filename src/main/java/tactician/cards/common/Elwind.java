@@ -11,8 +11,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician5WindCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -40,9 +42,9 @@ public class Elwind extends Tactician5WindCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:Elwind"));
-        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToTop(new PlaySoundAction("tactician:Elwind", 1.50f));
+        AbstractDungeon.effectList.add(new PlayVoiceEffect("Elwind"));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber));
     }
 

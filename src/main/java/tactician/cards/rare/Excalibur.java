@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.DrawPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician5WindCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.MaxHandSizePower;
@@ -46,11 +47,11 @@ public class Excalibur extends Tactician5WindCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new SFXAction("tactician:Excalibur_Cast"));
+        addToTop(new PlaySoundAction("tactician:Excalibur_Cast", 1.25f));
         calculateCardDamage(m);
         addToBot(new WaitAction(0.75F));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new SFXAction("tactician:Excalibur_Hit"));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        addToBot(new PlaySoundAction("tactician:Excalibur_Hit", 1.25f));
         addToBot(new ApplyPowerAction(p, p, new DrawPower(p, 1), 1));
         addToBot(new ApplyPowerAction(p, p, new MaxHandSizePower(this.magicNumber), this.magicNumber));
         if (this.upgraded) { addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber)); }

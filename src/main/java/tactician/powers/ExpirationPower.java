@@ -16,7 +16,7 @@ import static tactician.TacticianMod.powerPath;
 
 public class ExpirationPower extends AbstractPower {
 	public static final String POWER_ID = TacticianMod.makeID("ExpirationPower");
-	private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/Expiration.png"));
+	private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/Expiration_Large.png"));
 	private static final Texture tex32 = TextureLoader.getTexture(powerPath("Expiration.png"));
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;

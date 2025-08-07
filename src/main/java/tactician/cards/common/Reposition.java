@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician9CopyCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
@@ -35,7 +36,7 @@ public class Reposition extends Tactician9CopyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:Reposition"));
+        addToTop(new PlaySoundAction("tactician:Reposition", 1.25f));
         addToBot(new GainBlockAction(p, p, this.block));
     }
 

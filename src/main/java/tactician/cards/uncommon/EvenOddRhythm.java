@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.other.Anathema;
 import tactician.cards.other.Hex;
@@ -34,12 +35,12 @@ public class EvenOddRhythm extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (GameActionManager.turn % 2 == 0) {
-            addToBot(new SFXAction("tactician:EvenRhythm"));
+            addToTop(new PlaySoundAction("tactician:EvenRhythm", 1.00f));
             addToBot(new GainBlockAction(p, p, this.block));
             addToBot(new MakeTempCardInHandAction(new Hex(), 1));
         }
         else {
-            addToBot(new SFXAction("tactician:OddRhythm"));
+            addToTop(new PlaySoundAction("tactician:OddRhythm", 1.00f));
             addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
             addToBot(new MakeTempCardInHandAction(new Anathema(), 1));
         }

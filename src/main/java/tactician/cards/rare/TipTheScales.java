@@ -8,8 +8,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.util.CardStats;
 
 public class TipTheScales extends TacticianCard {
@@ -39,8 +41,8 @@ public class TipTheScales extends TacticianCard {
 
     @Override
     public void triggerOnExhaust() {
-        addToBot(new SFXAction("tactician:TipTheScales"));
-        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+        addToTop(new PlaySoundAction("tactician:TipTheScales", 1.33f));
+        AbstractDungeon.effectList.add(new PlayVoiceEffect("TipTheScales"));
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, this.magicNumber), this.magicNumber));
     }
 

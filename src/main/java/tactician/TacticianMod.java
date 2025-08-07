@@ -58,7 +58,7 @@ public class TacticianMod implements
 
     public TacticianMod() {
         BaseMod.subscribe(this); // This will make BaseMod trigger all the subscribers at their appropriate times.
-        logger.info(modID + " subscribed to BaseMod.");
+		logger.info("{} subscribed to BaseMod.", modID); // logger.info(modID + " subscribed to BaseMod.");
     }
 
     @Override
@@ -154,8 +154,7 @@ public class TacticianMod implements
     private static String checkResourcesPath() {
         String name = TacticianMod.class.getName(); //getPackage can be iffy with patching, so class name is used instead.
         int separator = name.indexOf('.');
-        if (separator > 0)
-            name = name.substring(0, separator);
+        if (separator > 0) { name = name.substring(0, separator); }
 
         FileHandle resources = new LwjglFileHandle(name, Files.FileType.Internal);
 
@@ -179,7 +178,8 @@ public class TacticianMod implements
     /**
      * This determines the mod's ID based on information stored by ModTheSpire.
      */
-    private static void loadModInfo() {
+    @SuppressWarnings("UrlHashCode")
+	private static void loadModInfo() {
         Optional<ModInfo> infos = Arrays.stream(Loader.MODINFOS).filter((modInfo)->{
             AnnotationDB annotationDB = Patcher.annotationDBMap.get(modInfo.jarURL);
             if (annotationDB == null)
@@ -217,112 +217,133 @@ public class TacticianMod implements
 
     @Override
     public void receiveAddAudio() {
+        // CardCrawlGame.sound.playAndLoop(add here)
+
         // Basic Cards
-        BaseMod.addAudio("tactician:Strike_Strong", "tactician/audio/effect/Strike_Strong.wav");
-        BaseMod.addAudio("tactician:Strike_Neutral", "tactician/audio/effect/Strike_Neutral.wav");
-        BaseMod.addAudio("tactician:Strike_Weak", "tactician/audio/effect/Strike_Weak.wav");
-        BaseMod.addAudio("tactician:Defend_Strong", "tactician/audio/effect/Defend_Strong.wav");
-        BaseMod.addAudio("tactician:Defend_Neutral", "tactician/audio/effect/Defend_Neutral.wav");
-        BaseMod.addAudio("tactician:Defend_Weak", "tactician/audio/effect/Defend_Weak.wav");
-        BaseMod.addAudio("tactician:Solidarity", "tactician/audio/effect/Solidarity.wav");
-        BaseMod.addAudio("tactician:Vulnerary", "tactician/audio/effect/Vulnerary.wav");
+        BaseMod.addAudio("tactician:Strike_Strong", "tactician/audio/effect/Strike_Strong.ogg");
+        BaseMod.addAudio("tactician:Strike_Neutral", "tactician/audio/effect/Strike_Neutral.ogg");
+        BaseMod.addAudio("tactician:Strike_Weak", "tactician/audio/effect/Strike_Weak.ogg");
+        BaseMod.addAudio("tactician:Defend_Strong", "tactician/audio/effect/Defend_Strong.ogg");
+        BaseMod.addAudio("tactician:Defend_Neutral", "tactician/audio/effect/Defend_Neutral.ogg");
+        BaseMod.addAudio("tactician:Defend_Weak", "tactician/audio/effect/Defend_Weak.ogg");
+        BaseMod.addAudio("tactician:Solidarity", "tactician/audio/effect/Solidarity.ogg");
+        BaseMod.addAudio("tactician:Vulnerary", "tactician/audio/effect/Vulnerary.ogg");
 
         // Common Cards
-        BaseMod.addAudio("tactician:WrathStrike", "tactician/audio/effect/WrathStrike.wav");
-        BaseMod.addAudio("tactician:TempestLance", "tactician/audio/effect/TempestLance.wav");
-        BaseMod.addAudio("tactician:Smash", "tactician/audio/effect/Smash.wav");
-        BaseMod.addAudio("tactician:CurvedShot", "tactician/audio/effect/CurvedShot.wav");
-        BaseMod.addAudio("tactician:Elwind", "tactician/audio/effect/Elwind.wav");
-        BaseMod.addAudio("tactician:Arcfire_Cast", "tactician/audio/effect/Arcfire_Cast.wav");
-        BaseMod.addAudio("tactician:Arcfire_Hit", "tactician/audio/effect/Arcfire_Hit.wav");
-        BaseMod.addAudio("tactician:Thunder", "tactician/audio/effect/Thunder.wav");
-        BaseMod.addAudio("tactician:Flux", "tactician/audio/effect/Flux.wav");
-        BaseMod.addAudio("tactician:Shove", "tactician/audio/effect/Shove.wav");
-        BaseMod.addAudio("tactician:Reposition", "tactician/audio/effect/Reposition.wav");
-        BaseMod.addAudio("tactician:Discipline", "tactician/audio/effect/Discipline.wav");
-        BaseMod.addAudio("tactician:Zeal", "tactician/audio/effect/Zeal.wav");
-        BaseMod.addAudio("tactician:AlertStance", "tactician/audio/effect/AlertStance.wav");
-        BaseMod.addAudio("tactician:Tantivy", "tactician/audio/effect/Tantivy.wav");
-        BaseMod.addAudio("tactician:Blossom", "tactician/audio/effect/Blossom.wav");
-        BaseMod.addAudio("tactician:Armsthrift", "tactician/audio/effect/Armsthrift.wav");
-        BaseMod.addAudio("tactician:OutdoorFighter", "tactician/audio/effect/OutdoorFighter.wav");
-        BaseMod.addAudio("tactician:IndoorFighter", "tactician/audio/effect/IndoorFighter.wav");
+        BaseMod.addAudio("tactician:WrathStrike", "tactician/audio/effect/WrathStrike.ogg");
+        BaseMod.addAudio("tactician:TempestLance", "tactician/audio/effect/TempestLance.ogg");
+        BaseMod.addAudio("tactician:Smash", "tactician/audio/effect/Smash.ogg");
+        BaseMod.addAudio("tactician:CurvedShot", "tactician/audio/effect/CurvedShot.ogg");
+        BaseMod.addAudio("tactician:Elwind", "tactician/audio/effect/Elwind.ogg");
+        BaseMod.addAudio("tactician:Arcfire_Cast", "tactician/audio/effect/Arcfire_Cast.ogg");
+        BaseMod.addAudio("tactician:Arcfire_Hit", "tactician/audio/effect/Arcfire_Hit.ogg");
+        BaseMod.addAudio("tactician:Thunder", "tactician/audio/effect/Thunder.ogg");
+        BaseMod.addAudio("tactician:Flux", "tactician/audio/effect/Flux.ogg");
+        BaseMod.addAudio("tactician:Shove", "tactician/audio/effect/Shove.ogg");
+        BaseMod.addAudio("tactician:Reposition", "tactician/audio/effect/Reposition.ogg");
+        BaseMod.addAudio("tactician:Discipline", "tactician/audio/effect/Discipline.ogg");
+        BaseMod.addAudio("tactician:Zeal", "tactician/audio/effect/Zeal.ogg");
+        BaseMod.addAudio("tactician:AlertStance", "tactician/audio/effect/AlertStance.ogg");
+        BaseMod.addAudio("tactician:Tantivy", "tactician/audio/effect/Tantivy.ogg");
+        BaseMod.addAudio("tactician:Blossom", "tactician/audio/effect/Blossom.ogg");
+        BaseMod.addAudio("tactician:Armsthrift", "tactician/audio/effect/Armsthrift.ogg");
+        BaseMod.addAudio("tactician:OutdoorFighter", "tactician/audio/effect/OutdoorFighter.ogg");
+        BaseMod.addAudio("tactician:IndoorFighter", "tactician/audio/effect/IndoorFighter.ogg");
 
         // Uncommon Cards
-        BaseMod.addAudio("tactician:CrosswiseCut1", "tactician/audio/effect/CrosswiseCut1.wav");
-        BaseMod.addAudio("tactician:CrosswiseCut2", "tactician/audio/effect/CrosswiseCut2.wav");
-        BaseMod.addAudio("tactician:FrozenLance", "tactician/audio/effect/FrozenLance.wav");
-        BaseMod.addAudio("tactician:WildAbandon", "tactician/audio/effect/WildAbandon.wav");
-        BaseMod.addAudio("tactician:WaningShot_Draw", "tactician/audio/effect/WaningShot_Draw.wav");
-        BaseMod.addAudio("tactician:WaningShot_Hit", "tactician/audio/effect/WaningShot_Hit.wav");
-        BaseMod.addAudio("tactician:CuttingGale_Jab", "tactician/audio/effect/CuttingGale_Jab.wav");
-        BaseMod.addAudio("tactician:CuttingGale_Finish", "tactician/audio/effect/CuttingGale_Finish.wav");
-        BaseMod.addAudio("tactician:DyingBlaze", "tactician/audio/effect/DyingBlaze.wav");
-        BaseMod.addAudio("tactician:Bolting", "tactician/audio/effect/Bolting.wav");
-        BaseMod.addAudio("tactician:Nosferatu", "tactician/audio/effect/Nosferatu.wav");
-        BaseMod.addAudio("tactician:LevinSword", "tactician/audio/effect/LevinSword.wav");
-        BaseMod.addAudio("tactician:FlameLance", "tactician/audio/effect/FlameLance.wav");
-        BaseMod.addAudio("tactician:HurricaneAxe", "tactician/audio/effect/HurricaneAxe.wav");
-        BaseMod.addAudio("tactician:BeguilingBow", "tactician/audio/effect/BeguilingBow.wav");
-        BaseMod.addAudio("tactician:FlashSparrow", "tactician/audio/effect/FlashSparrow.wav");
-        BaseMod.addAudio("tactician:Relief", "tactician/audio/effect/Relief.wav");
-        BaseMod.addAudio("tactician:PaviseAegis", "tactician/audio/effect/PaviseAegis.wav");
-        BaseMod.addAudio("tactician:Charm", "tactician/audio/effect/Charm.wav");
-        BaseMod.addAudio("tactician:Healtouch", "tactician/audio/effect/Healtouch.wav");
-        BaseMod.addAudio("tactician:EvenRhythm", "tactician/audio/effect/EvenOddRhythm_Even.wav");
-        BaseMod.addAudio("tactician:OddRhythm", "tactician/audio/effect/EvenOddRhythm_Odd.wav");
-        BaseMod.addAudio("tactician:SurpriseAttack", "tactician/audio/effect/SurpriseAttack.wav");
-        BaseMod.addAudio("tactician:Pass", "tactician/audio/effect/Pass.wav");
-        BaseMod.addAudio("tactician:Locktouch", "tactician/audio/effect/Locktouch.wav");
-        BaseMod.addAudio("tactician:Gamble", "tactician/audio/effect/Gamble.wav");
-        BaseMod.addAudio("tactician:RallySpectrum", "tactician/audio/effect/RallySpectrum.wav");
-        BaseMod.addAudio("tactician:SpecialDance", "tactician/audio/effect/SpecialDance.wav");
-        BaseMod.addAudio("tactician:Renewal", "tactician/audio/effect/Renewal.wav");
-        BaseMod.addAudio("tactician:Acrobat", "tactician/audio/effect/Acrobat.wav");
-        BaseMod.addAudio("tactician:MastersTactics", "tactician/audio/effect/MastersTactics.wav");
-        BaseMod.addAudio("tactician:Prescience", "tactician/audio/effect/Prescience.wav");
-        BaseMod.addAudio("tactician:Patience", "tactician/audio/effect/Patience.wav");
-        BaseMod.addAudio("tactician:Vantage", "tactician/audio/effect/Vantage.wav");
-        BaseMod.addAudio("tactician:Expiration", "tactician/audio/effect/Expiration.wav");
-        BaseMod.addAudio("tactician:CreationPulse", "tactician/audio/effect/CreationPulse.wav");
-        BaseMod.addAudio("tactician:StatIncreaseFE", "tactician/audio/effect/StatIncreaseFE.wav");
+        BaseMod.addAudio("tactician:CrosswiseCut1", "tactician/audio/effect/CrosswiseCut1.ogg");
+        BaseMod.addAudio("tactician:CrosswiseCut2", "tactician/audio/effect/CrosswiseCut2.ogg");
+        BaseMod.addAudio("tactician:FrozenLance", "tactician/audio/effect/FrozenLance.ogg");
+        BaseMod.addAudio("tactician:WildAbandon", "tactician/audio/effect/WildAbandon.ogg");
+        BaseMod.addAudio("tactician:WaningShot_Draw", "tactician/audio/effect/WaningShot_Draw.ogg");
+        BaseMod.addAudio("tactician:WaningShot_Hit", "tactician/audio/effect/WaningShot_Hit.ogg");
+        BaseMod.addAudio("tactician:CuttingGale_Jab", "tactician/audio/effect/CuttingGale_Jab.ogg");
+        BaseMod.addAudio("tactician:CuttingGale_Finish", "tactician/audio/effect/CuttingGale_Finish.ogg");
+        BaseMod.addAudio("tactician:DyingBlaze", "tactician/audio/effect/DyingBlaze.ogg");
+        BaseMod.addAudio("tactician:Bolting", "tactician/audio/effect/Bolting.ogg");
+        BaseMod.addAudio("tactician:Nosferatu", "tactician/audio/effect/Nosferatu.ogg");
+        BaseMod.addAudio("tactician:LevinSword", "tactician/audio/effect/LevinSword.ogg");
+        BaseMod.addAudio("tactician:FlameLance", "tactician/audio/effect/FlameLance.ogg");
+        BaseMod.addAudio("tactician:HurricaneAxe", "tactician/audio/effect/HurricaneAxe.ogg");
+        BaseMod.addAudio("tactician:BeguilingBow", "tactician/audio/effect/BeguilingBow.ogg");
+        BaseMod.addAudio("tactician:FlashSparrow", "tactician/audio/effect/FlashSparrow.ogg");
+        BaseMod.addAudio("tactician:Relief", "tactician/audio/effect/Relief.ogg");
+        BaseMod.addAudio("tactician:PaviseAegis", "tactician/audio/effect/PaviseAegis.ogg");
+        BaseMod.addAudio("tactician:Charm", "tactician/audio/effect/Charm.ogg");
+        BaseMod.addAudio("tactician:Healtouch", "tactician/audio/effect/Healtouch.ogg");
+        BaseMod.addAudio("tactician:EvenRhythm", "tactician/audio/effect/EvenOddRhythm_Even.ogg");
+        BaseMod.addAudio("tactician:OddRhythm", "tactician/audio/effect/EvenOddRhythm_Odd.ogg");
+        BaseMod.addAudio("tactician:SurpriseAttack", "tactician/audio/effect/SurpriseAttack.ogg");
+        BaseMod.addAudio("tactician:Pass", "tactician/audio/effect/Pass.ogg");
+        BaseMod.addAudio("tactician:Locktouch", "tactician/audio/effect/Locktouch.ogg");
+        BaseMod.addAudio("tactician:Gamble", "tactician/audio/effect/Gamble.ogg");
+        BaseMod.addAudio("tactician:RallySpectrum", "tactician/audio/effect/RallySpectrum.ogg");
+        BaseMod.addAudio("tactician:SpecialDance", "tactician/audio/effect/SpecialDance.ogg");
+        BaseMod.addAudio("tactician:Renewal", "tactician/audio/effect/Renewal.ogg");
+        BaseMod.addAudio("tactician:Acrobat", "tactician/audio/effect/Acrobat.ogg");
+        BaseMod.addAudio("tactician:MastersTactics", "tactician/audio/effect/MastersTactics.ogg");
+        BaseMod.addAudio("tactician:Prescience", "tactician/audio/effect/Prescience.ogg");
+        BaseMod.addAudio("tactician:Patience", "tactician/audio/effect/Patience.ogg");
+        BaseMod.addAudio("tactician:Vantage", "tactician/audio/effect/Vantage.ogg");
+        BaseMod.addAudio("tactician:Expiration", "tactician/audio/effect/Expiration.ogg");
+        BaseMod.addAudio("tactician:CreationPulse", "tactician/audio/effect/CreationPulse.ogg");
+        BaseMod.addAudio("tactician:StatIncreaseFE", "tactician/audio/effect/StatIncreaseFE.ogg");
 
         // Rare Cards
-        BaseMod.addAudio("tactician:Astra_Hit1", "tactician/audio/effect/Astra_Hit1.wav");
-        BaseMod.addAudio("tactician:Astra_Hit2", "tactician/audio/effect/Astra_Hit2.wav");
-        BaseMod.addAudio("tactician:Astra_Hit3", "tactician/audio/effect/Astra_Hit3.wav");
-        BaseMod.addAudio("tactician:Astra_Hit4", "tactician/audio/effect/Astra_Hit4.wav");
-        BaseMod.addAudio("tactician:Astra_Hit5", "tactician/audio/effect/Astra_Hit5.wav");
-        BaseMod.addAudio("tactician:Astra_Hit1", "tactician/audio/effect/Astra_Hit1.wav");
-        BaseMod.addAudio("tactician:SwiftStrikes_Hit1", "tactician/audio/effect/SwiftStrikes_Hit1.wav");
-        BaseMod.addAudio("tactician:SwiftStrikes_Hit2", "tactician/audio/effect/SwiftStrikes_Hit2.wav");
-        BaseMod.addAudio("tactician:ExhaustiveStrike_Hit1", "tactician/audio/effect/ExhaustiveStrike_Hit1.wav");
-        BaseMod.addAudio("tactician:ExhaustiveStrike_Hit2", "tactician/audio/effect/ExhaustiveStrike_Hit2.wav");
-        BaseMod.addAudio("tactician:HuntersVolley_Hit1", "tactician/audio/effect/HuntersVolley_Hit1.wav");
-        BaseMod.addAudio("tactician:HuntersVolley_Hit2", "tactician/audio/effect/HuntersVolley_Hit2.wav");
-        BaseMod.addAudio("tactician:Excalibur_Cast", "tactician/audio/effect/Excalibur_Cast.wav");
-        BaseMod.addAudio("tactician:Excalibur_Hit", "tactician/audio/effect/Excalibur_Hit.wav");
-        BaseMod.addAudio("tactician:Bolganone", "tactician/audio/effect/Bolganone.wav");
-        BaseMod.addAudio("tactician:Thoron_Cast", "tactician/audio/effect/Thoron_Cast.wav");
-        BaseMod.addAudio("tactician:Thoron_Glint", "tactician/audio/effect/Thoron_Glint.wav");
-        BaseMod.addAudio("tactician:Goetia", "tactician/audio/effect/Goetia.wav");
-        BaseMod.addAudio("tactician:Luna_KillingEdgeGain", "tactician/audio/effect/Luna_KillingEdgeGain.wav");
-        BaseMod.addAudio("tactician:Ignis", "tactician/audio/effect/Ignis.wav");
-        BaseMod.addAudio("tactician:StatDecreaseFE", "tactician/audio/effect/StatDecreaseFE.wav");
-        BaseMod.addAudio("tactician:MasterSeal", "tactician/audio/effect/MasterSeal.wav");
-        BaseMod.addAudio("tactician:TipTheScales", "tactician/audio/effect/TipTheScales.wav");
-        BaseMod.addAudio("tactician:UnplayableFE", "tactician/audio/effect/UnplayableFE.wav");
-        BaseMod.addAudio("tactician:Despoil", "tactician/audio/effect/Despoil.wav");
-        BaseMod.addAudio("tactician:PartOfThePlan", "tactician/audio/effect/PartOfThePlan.wav");
-        BaseMod.addAudio("tactician:ChaosStyle", "tactician/audio/effect/ChaosStyle.wav");
-        BaseMod.addAudio("tactician:QuickBurn", "tactician/audio/effect/QuickBurn.wav");
-        BaseMod.addAudio("tactician:GrandmasterForm", "tactician/audio/effect/GrandmasterForm.wav");
+        BaseMod.addAudio("tactician:Astra_Hit1", "tactician/audio/effect/Astra_Hit1.ogg");
+        BaseMod.addAudio("tactician:Astra_Hit2", "tactician/audio/effect/Astra_Hit2.ogg");
+        BaseMod.addAudio("tactician:Astra_Hit3", "tactician/audio/effect/Astra_Hit3.ogg");
+        BaseMod.addAudio("tactician:Astra_Hit4", "tactician/audio/effect/Astra_Hit4.ogg");
+        BaseMod.addAudio("tactician:Astra_Hit5", "tactician/audio/effect/Astra_Hit5.ogg");
+        BaseMod.addAudio("tactician:Astra_Hit1", "tactician/audio/effect/Astra_Hit1.ogg");
+        BaseMod.addAudio("tactician:SwiftStrikes_Hit1", "tactician/audio/effect/SwiftStrikes_Hit1.ogg");
+        BaseMod.addAudio("tactician:SwiftStrikes_Hit2", "tactician/audio/effect/SwiftStrikes_Hit2.ogg");
+        BaseMod.addAudio("tactician:ExhaustiveStrike_Hit1", "tactician/audio/effect/ExhaustiveStrike_Hit1.ogg");
+        BaseMod.addAudio("tactician:ExhaustiveStrike_Hit2", "tactician/audio/effect/ExhaustiveStrike_Hit2.ogg");
+        BaseMod.addAudio("tactician:HuntersVolley_Hit1", "tactician/audio/effect/HuntersVolley_Hit1.ogg");
+        BaseMod.addAudio("tactician:HuntersVolley_Hit2", "tactician/audio/effect/HuntersVolley_Hit2.ogg");
+        BaseMod.addAudio("tactician:Excalibur_Cast", "tactician/audio/effect/Excalibur_Cast.ogg");
+        BaseMod.addAudio("tactician:Excalibur_Hit", "tactician/audio/effect/Excalibur_Hit.ogg");
+        BaseMod.addAudio("tactician:Bolganone", "tactician/audio/effect/Bolganone.ogg");
+        BaseMod.addAudio("tactician:Thoron_Cast", "tactician/audio/effect/Thoron_Cast.ogg");
+        BaseMod.addAudio("tactician:Thoron_Glint", "tactician/audio/effect/Thoron_Glint.ogg");
+        BaseMod.addAudio("tactician:Goetia", "tactician/audio/effect/Goetia.ogg");
+        BaseMod.addAudio("tactician:Luna_KillingEdgeGain", "tactician/audio/effect/Luna_KillingEdgeGain.ogg");
+        BaseMod.addAudio("tactician:Ignis", "tactician/audio/effect/Ignis.ogg");
+        BaseMod.addAudio("tactician:StatDecreaseFE", "tactician/audio/effect/StatDecreaseFE.ogg");
+        BaseMod.addAudio("tactician:MasterSeal", "tactician/audio/effect/MasterSeal.ogg");
+        BaseMod.addAudio("tactician:TipTheScales", "tactician/audio/effect/TipTheScales.ogg");
+        BaseMod.addAudio("tactician:UnplayableFE", "tactician/audio/effect/UnplayableFE.ogg");
+        BaseMod.addAudio("tactician:Despoil", "tactician/audio/effect/Despoil.ogg");
+        BaseMod.addAudio("tactician:PartOfThePlan", "tactician/audio/effect/PartOfThePlan.ogg");
+        BaseMod.addAudio("tactician:ChaosStyle", "tactician/audio/effect/ChaosStyle.ogg");
+        BaseMod.addAudio("tactician:QuickBurn", "tactician/audio/effect/QuickBurn.ogg");
+        BaseMod.addAudio("tactician:GrandmasterForm", "tactician/audio/effect/GrandmasterForm.ogg");
 
         // Other Cards and Powers
-        BaseMod.addAudio("tactician:Hex", "tactician/audio/effect/Hex.wav");
-        BaseMod.addAudio("tactician:Anathema", "tactician/audio/effect/Anathema.wav");
-        BaseMod.addAudio("tactician:LevelUpFE8", "tactician/audio/effect/LevelUpFE8.wav");
-        BaseMod.addAudio("tactician:CriticalHitFE8", "tactician/audio/effect/CriticalHitFE8.wav");
-        BaseMod.addAudio("tactician:DeflectReceiveHit", "tactician/audio/effect/DeflectReceiveHit.wav");
+        BaseMod.addAudio("tactician:Hex", "tactician/audio/effect/Hex.ogg");
+        BaseMod.addAudio("tactician:Anathema", "tactician/audio/effect/Anathema.ogg");
+        BaseMod.addAudio("tactician:LevelUpFE8", "tactician/audio/effect/LevelUpFE8.ogg");
+        BaseMod.addAudio("tactician:CriticalHitFE8", "tactician/audio/effect/CriticalHitFE8.ogg");
+        BaseMod.addAudio("tactician:DeflectReceiveHit", "tactician/audio/effect/DeflectReceiveHit.ogg");
+
+        // Male Voice
+        BaseMod.addAudio("tactician:Male_CA_Sword", "tactician/audio/voice/Male_CA_Sword.ogg");
+        BaseMod.addAudio("tactician:Male_CA_Lance", "tactician/audio/voice/Male_CA_Lance.ogg");
+        BaseMod.addAudio("tactician:Male_CA_Axe", "tactician/audio/voice/Male_CA_Axe.ogg");
+        BaseMod.addAudio("tactician:Male_CA_Bow", "tactician/audio/voice/Male_CA_Bow.ogg");
+        BaseMod.addAudio("tactician:Male_CA_MiscMagic", "tactician/audio/voice/Male_CA_MiscMagic.ogg");
+        BaseMod.addAudio("tactician:Male_Elwind", "tactician/audio/voice/Male_Elwind.ogg");
+        BaseMod.addAudio("tactician:Male_Arcfire", "tactician/audio/voice/Male_Arcfire.ogg");
+        BaseMod.addAudio("tactician:Male_Thunder", "tactician/audio/voice/Male_Thunder.ogg");
+        BaseMod.addAudio("tactician:Male_Flux", "tactician/audio/voice/Male_Flux.ogg");
+        BaseMod.addAudio("tactician:Male_Nosferatu", "tactician/audio/voice/Male_Nosferatu.ogg");
+        BaseMod.addAudio("tactician:Male_Bolganone", "tactician/audio/voice/Male_Bolganone.ogg");
+        BaseMod.addAudio("tactician:Male_Thoron", "tactician/audio/voice/Male_Thoron.ogg");
+        BaseMod.addAudio("tactician:Male_Luna", "tactician/audio/voice/Male_Luna.ogg");
+        BaseMod.addAudio("tactician:Male_TipTheScales", "tactician/audio/voice/Male_TipTheScales.ogg");
+        BaseMod.addAudio("tactician:Male_QuickBurn", "tactician/audio/voice/Male_QuickBurn.ogg");
+        BaseMod.addAudio("tactician:Male_GrandmasterForm", "tactician/audio/voice/Male_GrandmasterForm.ogg");
+        BaseMod.addAudio("tactician:Male_RunicDome", "tactician/audio/voice/Male_RunicDome.ogg");
     }
 }

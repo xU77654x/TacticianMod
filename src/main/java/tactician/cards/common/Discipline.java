@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
@@ -33,7 +34,7 @@ public class Discipline extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:Discipline"));
+        addToTop(new PlaySoundAction("tactician:Discipline", 1.25f));
         addToBot(new GainBlockAction(p, p, this.block));
         if (AbstractDungeon.player instanceof TacticianRobin) {
             ArrayList<AbstractCard> easyCardList = new ArrayList<>();

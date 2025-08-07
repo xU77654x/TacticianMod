@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.MakeAndExhaustCopyAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician6FireCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon6FirePower;
@@ -43,7 +44,7 @@ public class DyingBlaze extends Tactician6FireCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:DyingBlaze"));
+        addToBot(new PlaySoundAction("tactician:DyingBlaze", 1.00f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         addToBot(new MakeAndExhaustCopyAction(makeStatEquivalentCopy(), this.magicNumber));
 

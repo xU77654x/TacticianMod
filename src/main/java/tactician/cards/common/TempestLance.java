@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician2LanceCard;
 import tactician.cards.other.Anathema;
 import tactician.character.TacticianRobin;
@@ -40,7 +41,7 @@ public class TempestLance extends Tactician2LanceCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:TempestLance"));
+        addToTop(new PlaySoundAction("tactician:TempestLance", 1.15f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new MakeTempCardInDrawPileAction(new Anathema(), 1, true, true));
     }

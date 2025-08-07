@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.PresciencePower;
@@ -28,7 +29,7 @@ public class Prescience extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:Prescience"));
+        addToBot(new PlaySoundAction("tactician:Prescience", 1.10f));
         addToBot(new ApplyPowerAction(p, p, new PresciencePower(this.magicNumber), this.magicNumber));
     }
 

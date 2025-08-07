@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
@@ -28,14 +29,14 @@ public class Charm extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:Charm"));
+        addToBot(new PlaySoundAction("tactician:Charm", 1.25f));
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new GainBlockAction(p, p, this.block));
     }
 
     @Override
     public void triggerOnExhaust() {
-        addToBot(new SFXAction("tactician:Charm"));
+        addToBot(new PlaySoundAction("tactician:Charm", 1.25f));
         addToTop(new GainEnergyAction(1));
         Charm c = new Charm();
         addToTop(new MakeTempCardInDrawPileAction(c, 1, true, true));

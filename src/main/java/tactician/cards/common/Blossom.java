@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
@@ -33,7 +34,7 @@ public class Blossom extends TacticianCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, 1, false), 1));
         addToBot(new ApplyPowerAction(p, p, new ArtifactPower(p, this.magicNumber), this.magicNumber));
-        addToBot(new SFXAction("tactician:Blossom"));
+        addToTop(new PlaySoundAction("tactician:Blossom", 1.00f));
     }
 
     protected Texture getPortraitImage() {

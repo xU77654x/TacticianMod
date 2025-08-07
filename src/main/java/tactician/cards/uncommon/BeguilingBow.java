@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LockOnPower;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon4Bow;
 import tactician.cards.cardchoice.Weapon8Dark;
@@ -53,19 +54,22 @@ public class BeguilingBow extends TacticianCard {
                 weapon = 4;
                 if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new SFXAction("tactician:BeguilingBow"));
+                addToBot(new PlaySoundAction("tactician:BeguilingBow", 1.00f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             }));
             easyCardList.add(new Weapon8Dark(() ->  {
                 weapon = 8;
                 if (!p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new SFXAction("tactician:BeguilingBow"));
+                addToBot(new PlaySoundAction("tactician:BeguilingBow", 1.00f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SHIELD));
             }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
-        else { addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)); }
+        else {
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new PlaySoundAction("tactician:BeguilingBow", 1.00f));
+        }
         addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, this.magicNumber), this.magicNumber));
     }
 

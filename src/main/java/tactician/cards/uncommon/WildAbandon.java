@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician3AxeCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon3AxePower;
@@ -40,7 +41,7 @@ public class WildAbandon extends Tactician3AxeCard {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
                 calculateCardDamage(mo);
-                addToBot(new SFXAction("tactician:WildAbandon")); // The sound effect plays for each enemy it hits.
+                addToBot(new PlaySoundAction("tactician:WildAbandon", 1.10f)); // The sound effect plays for each enemy it hits.
                 addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
             }
         }

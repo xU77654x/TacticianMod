@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician2LanceCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
@@ -40,9 +41,9 @@ public class SwiftStrikes extends Tactician2LanceCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new SFXAction("tactician:SwiftStrikes_Hit1"));
+        addToBot(new PlaySoundAction("tactician:SwiftStrikes_Hit1", 1.12f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new SFXAction("tactician:SwiftStrikes_Hit2"));
+        addToBot(new PlaySoundAction("tactician:SwiftStrikes_Hit2", 1.12f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
     }

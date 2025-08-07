@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.EquilibriumPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician4BowCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon4BowPower;
@@ -45,10 +46,10 @@ public class HuntersVolley extends Tactician4BowCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:HuntersVolley_Hit1"));
+        addToBot(new PlaySoundAction("tactician:HuntersVolley_Hit1", 1.00f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new WaitAction(0.25F));
-        addToBot(new SFXAction("tactician:HuntersVolley_Hit2"));
+        addToTop(new PlaySoundAction("tactician:HuntersVolley_Hit2", 1.50f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, this.magicNumber)));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }

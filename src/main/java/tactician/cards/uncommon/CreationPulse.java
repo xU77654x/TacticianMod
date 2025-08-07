@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.CreationPulsePower;
@@ -27,7 +28,7 @@ public class CreationPulse extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:CreationPulse"));
+        addToBot(new PlaySoundAction("tactician:CreationPulse", 1.00f));
         addToBot(new ApplyPowerAction(p, p, new CreationPulsePower(this.magicNumber), this.magicNumber));
     }
 

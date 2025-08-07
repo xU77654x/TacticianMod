@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.BlueCandle;
 import com.megacrit.cardcrawl.relics.MedicalKit;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.TempBlueCandle;
 import tactician.cards.cardchoice.TempMedicalKit;
@@ -41,12 +42,12 @@ public class Expiration extends TacticianCard {
             easyCardList.add(new TempBlueCandle(() -> FragileRelics.obtainFragileRelic(new BlueCandle())));
             easyCardList.add(new TempMedicalKit(() -> FragileRelics.obtainFragileRelic(new MedicalKit())));
             addToTop(new EasyModalChoiceAction(easyCardList));
-            addToBot(new SFXAction("tactician:Expiration"));
         }
         else if (Boolean.TRUE.equals(p.hasRelic(BlueCandle.ID)) && Boolean.FALSE.equals(p.hasRelic(MedicalKit.ID))) { FragileRelics.obtainFragileRelic(new MedicalKit()); }
         else if (Boolean.TRUE.equals(p.hasRelic(MedicalKit.ID)) && Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID))) { FragileRelics.obtainFragileRelic(new BlueCandle()); }
         else { addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F)); }
 
+        addToBot(new PlaySoundAction("tactician:Expiration", 1.25f));
         addToBot(new ApplyPowerAction(p, p, new ExpirationPower(this.magicNumber)));
     }
 

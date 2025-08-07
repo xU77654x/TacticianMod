@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician9CopyCard;
 import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
@@ -32,7 +33,7 @@ public class Relief extends Tactician9CopyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:Relief"));
+        addToBot(new PlaySoundAction("tactician:Relief", 2.25f));
         addToBot(new GainBlockAction(p, p, this.block));
     }
 

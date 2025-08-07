@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
@@ -31,9 +32,9 @@ public class PartOfThePlan extends TacticianCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, true, false, false)); }
         if (this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, false)); }
-        addToBot(new SFXAction("tactician:PartOfThePlan"));
-        addToBot(new ApplyPowerAction(p, p, new BarricadePower(p)));
-        for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { addToBot(new ApplyPowerAction(mo, p, new BarricadePower(p))); }
+        addToBot(new PlaySoundAction("tactician:PartOfThePlan", 1.50f));
+        if (!p.hasPower(BarricadePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new BarricadePower(p))); }
+        for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { if (!mo.hasPower(BarricadePower.POWER_ID)) { addToBot(new ApplyPowerAction(mo, p, new BarricadePower(mo))); }}
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.TempStrength;
 import tactician.cards.cardchoice.TempFocus;
@@ -49,7 +50,7 @@ public class SpecialDance extends TacticianCard {
             addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, this.magicNumber), this.magicNumber));
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
-        addToBot(new SFXAction("tactician:SpecialDance"));
+        addToBot(new PlaySoundAction("tactician:SpecialDance", 1.00f));
     }
 
     @Override

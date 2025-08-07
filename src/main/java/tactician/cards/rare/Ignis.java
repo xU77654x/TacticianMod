@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
@@ -35,7 +36,7 @@ public class Ignis extends TacticianCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         int oldStrength = 0;
         int oldFocus = 0;
-        addToBot(new SFXAction("tactician:Ignis"));
+        addToTop(new PlaySoundAction("tactician:Ignis", 1.33f));
 
         if (this.p.hasPower(StrengthPower.POWER_ID)) { oldStrength = this.p.getPower(StrengthPower.POWER_ID).amount; }
         if (this.p.hasPower(FocusPower.POWER_ID)) { oldFocus = this.p.getPower(FocusPower.POWER_ID).amount; }

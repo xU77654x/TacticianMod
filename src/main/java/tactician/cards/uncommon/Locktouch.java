@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.other.Anathema;
 import tactician.cards.other.Hex;
@@ -31,7 +32,7 @@ public class Locktouch extends TacticianCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		addToBot(new SFXAction("tactician:Locktouch"));
+		addToBot(new PlaySoundAction("tactician:Locktouch", 2.25f));
 		if (this.upgraded) { addToBot(new DrawCardAction(this.magicNumber)); }
 		for (AbstractCard c : AbstractDungeon.player.hand.group) {
 			if (c.type == AbstractCard.CardType.CURSE || c.type == AbstractCard.CardType.STATUS) {

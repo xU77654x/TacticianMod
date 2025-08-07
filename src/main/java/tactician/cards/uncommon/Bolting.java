@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ElectroPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician7ThunderCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon7ThunderPower;
@@ -40,7 +41,7 @@ public class Bolting extends Tactician7ThunderCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:Bolting"));
+        addToBot(new PlaySoundAction("tactician:Bolting", 1.10f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         if (!p.hasPower(ElectroPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new ElectroPower(p))); }
     }

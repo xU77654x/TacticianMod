@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
@@ -29,7 +30,7 @@ public class SurpriseAttack extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.magicNumber = p.currentBlock;
-        addToBot(new SFXAction("tactician:SurpriseAttack"));
+        addToBot(new PlaySoundAction("tactician:SurpriseAttack", 1.10f));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
     }
 

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
@@ -31,7 +32,7 @@ public class Healtouch extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(this.magicNumber, "Exhaust", true, true, card -> true, exhaustedCard -> {
-            addToBot(new SFXAction("tactician:Healtouch"));
+            addToBot(new PlaySoundAction("tactician:Healtouch", 1.20f));
             for (AbstractCard c : exhaustedCard) {
                 addToTop(new GainBlockAction(p, this.block));
                 addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));

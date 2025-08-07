@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician9CopyCard;
 import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
@@ -47,7 +48,7 @@ public class Pavise extends Tactician9CopyCard {
         }
         else { weapon = 9; }
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:PaviseAegis"));
+        addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new GainBlockAction(p, p, this.block));
     }

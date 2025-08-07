@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.Elixir;
 import com.megacrit.cardcrawl.potions.SpeedPotion;
 import com.megacrit.cardcrawl.potions.SteroidPotion;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.potions.SagePotion;
@@ -41,7 +42,7 @@ public class Despoil extends TacticianCard {
             case 1: potion = new SpeedPotion(); break;
             case 2: potion = new SagePotion(); break;
         }
-        addToBot(new SFXAction("tactician:Despoil")); // TODO: Don't play the sound if all potion slots are full.
+        addToTop(new PlaySoundAction("tactician:Despoil", 1.25f)); // TODO: Don't play the sound if all potion slots are full.
         addToBot(new ObtainPotionAction(potion));
 
     }

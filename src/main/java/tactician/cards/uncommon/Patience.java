@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.PatiencePower;
@@ -27,7 +28,7 @@ public class Patience extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:Patience"));
+        addToBot(new PlaySoundAction("tactician:Patience", 0.90f));
         addToBot(new ApplyPowerAction(p, p, new PatiencePower(this.magicNumber), this.magicNumber));
     }
 

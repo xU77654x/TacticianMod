@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon2Lance;
 import tactician.cards.cardchoice.Weapon6Fire;
@@ -53,19 +54,22 @@ public class FlameLance extends TacticianCard {
                 weapon = 2;
                 if (!p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
                 calculateCardDamage(m);
-                addToBot(new SFXAction("tactician:FlameLance"));
+                addToBot(new PlaySoundAction("tactician:FlameLance", 1.20f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             }));
             easyCardList.add(new Weapon6Fire(() -> {
                 weapon = 6;
                 if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
                 calculateCardDamage(m);
-                addToBot(new SFXAction("tactician:FlameLance"));
+                addToBot(new PlaySoundAction("tactician:FlameLance", 1.20f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
             }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
-        else { addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)); }
+        else {
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new PlaySoundAction("tactician:FlameLance", 1.20f));
+        }
         addToBot(new ApplyPowerAction(p, p, new TempOrbSlotPower(this.magicNumber)));
     }
 

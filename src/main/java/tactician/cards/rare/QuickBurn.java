@@ -5,9 +5,12 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.QuickBurnPower;
 import tactician.util.CardStats;
 
@@ -28,9 +31,11 @@ public class QuickBurn extends TacticianCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-		addToBot(new SFXAction("tactician:QuickBurn"));
-		addToBot(new ApplyPowerAction(p, p, new QuickBurnPower(p)));
+		addToBot(new PlaySoundAction("tactician:QuickBurn", 1.00f));
+		if (!p.hasPower(QuickBurnPower.POWER_ID)) {
+			addToBot(new ApplyPowerAction(p, p, new QuickBurnPower(p)));
+			AbstractDungeon.effectList.add(new PlayVoiceEffect("QuickBurn"));
+		}
 	}
 
 	@Override

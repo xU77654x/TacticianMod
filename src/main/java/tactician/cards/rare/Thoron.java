@@ -2,6 +2,7 @@ package tactician.cards.rare;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -12,8 +13,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
+import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician7ThunderCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -38,17 +42,18 @@ public class Thoron extends Tactician7ThunderCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:Thoron_Cast"));
-        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        addToBot(new SFXAction("tactician:Thoron_Glint"));
+        addToBot(new PlaySoundAction("tactician:Thoron_Cast", 1.00f));
+        AbstractDungeon.effectList.add(new PlayVoiceEffect("Thoron"));
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            addToBot(new VFXAction(p, new CleaveEffect(), 0.01F));
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
                 calculateCardDamage(mo);
-                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SMASH));
-                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SMASH));
+                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE));
+                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE));
                 if (this.upgraded) { addToBot(new RemoveSpecificPowerAction(mo, mo, BarricadePower.POWER_ID)); }
             }
         }
+        addToBot(new PlaySoundAction("tactician:Thoron_Glint", 1.10f));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
     }
 

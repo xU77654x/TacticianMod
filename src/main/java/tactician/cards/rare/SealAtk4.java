@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.ShovePower;
@@ -30,9 +31,9 @@ public class SealAtk4 extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!m.hasPower(ArtifactPower.POWER_ID)) { addToBot(new SFXAction("tactician:StatDecreaseFE")); }
+        if (!m.hasPower(ArtifactPower.POWER_ID)) { addToBot(new PlaySoundAction("tactician:StatDecreaseFE", 1.00f)); }
         addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber));
-        if (!p.hasPower(ArtifactPower.POWER_ID) && !p.hasPower(ShovePower.POWER_ID)) { addToBot(new SFXAction("tactician:StatDecreaseFE")); }
+        if (!p.hasPower(ArtifactPower.POWER_ID) && !p.hasPower(ShovePower.POWER_ID)) { addToBot(new PlaySoundAction("tactician:StatDecreaseFE", 1.00f)); }
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, -1), -1));
     }
 

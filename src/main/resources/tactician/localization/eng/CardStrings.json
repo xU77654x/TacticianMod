@@ -454,8 +454,8 @@
   },
   "${modID}:DebugWeapon": {
     "NAME": "Debug Weapon",
-    "DESCRIPTION": "Retain. NL Apply any weapon type onto an enemy.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Apply any weapon type onto an enemy. NL Gain [E] [E]."
+    "DESCRIPTION": "Retain. NL Apply any weapon type onto an enemy. NL Purge.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Apply any weapon type onto an enemy. NL Gain [E] [E]. Purge."
   },
 
   "${modID}:Weapon1Sword": {

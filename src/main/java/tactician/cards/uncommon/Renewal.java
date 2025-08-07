@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyXCostAction;
+import tactician.actions.PlaySoundAction;
 import tactician.actions.ReduceDebuffsAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.other.Anathema;
@@ -30,7 +31,7 @@ public class Renewal extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:Renewal"));
+        addToBot(new PlaySoundAction("tactician:Renewal", 1.05f));
         addToBot(new EasyXCostAction(this, (amt, params)->{
             addToTop(new ReduceDebuffsAction(p, amt + this.magicNumber));
             return true;

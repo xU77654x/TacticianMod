@@ -22,7 +22,7 @@ public class FlashSparrowAction extends AbstractGameAction {
 
 	public void update() {
 		addToTop(new DamageAction(this.target, this.info, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-		addToTop(new SFXAction("tactician:FlashSparrow"));
+		addToTop(new PlaySoundAction("tactician:FlashSparrow", 1.33f));
 
 		if ( Wiz.playerWeaponCalc(this.m, 9) > 0) {
 			addToTop(new DrawCardAction(1));

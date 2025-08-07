@@ -5,14 +5,17 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician6FireCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.LoseFocusPower;
 import tactician.powers.weapons.Weapon6FirePower;
 import tactician.util.CardStats;
@@ -39,11 +42,14 @@ public class Arcfire extends Tactician6FireCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToTop(new PlaySoundAction("tactician:Arcfire_Cast", 1.33f));
+        AbstractDungeon.effectList.add(new PlayVoiceEffect("Arcfire"));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
-        addToBot(new SFXAction("tactician:Arcfire_Cast"));
         calculateCardDamage(m);
-        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        addToBot(new SFXAction("tactician:Arcfire_Hit"));
+        addToBot(new WaitAction(1.0F));
+        addToBot(new WaitAction(1.0F));
+        addToBot(new WaitAction(1.0F));
+        addToBot(new PlaySoundAction("tactician:Arcfire_Hit", 1.33f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new LoseFocusPower(this.magicNumber), this.magicNumber));

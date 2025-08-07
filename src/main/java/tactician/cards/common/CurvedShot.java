@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician4BowCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
@@ -44,7 +45,7 @@ public class CurvedShot extends Tactician4BowCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:CurvedShot"));
+        addToTop(new PlaySoundAction("tactician:CurvedShot", 1.25f));
         addToBot(new GainBlockAction(p, this.block + this.magicNumber));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) {

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.RitualPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.other.Anathema;
 import tactician.cards.other.Hex;
@@ -32,7 +33,7 @@ public class MasterSeal extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:MasterSeal"));
+        addToBot(new PlaySoundAction("tactician:MasterSeal", 0.75f));
         addToBot(new ApplyPowerAction(p, p, new RitualPower(p, 1, true), 1));
         addToBot(new IncreaseMaxOrbAction(this.magicNumber));
         addToBot(new MakeTempCardInHandAction(new Anathema(), 1));

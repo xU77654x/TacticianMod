@@ -1,17 +1,21 @@
 package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician8DarkCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.weapons.Weapon8DarkPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -37,11 +41,13 @@ public class Flux extends Tactician8DarkCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:Flux"));
+        addToTop(new PlaySoundAction("tactician:Flux", 1.00f));
+        AbstractDungeon.effectList.add(new PlayVoiceEffect("Flux"));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new VFXAction(new DarkOrbActivateEffect(m.drawX, m.drawY + 133), 0.05F));
     }
 
     @Override

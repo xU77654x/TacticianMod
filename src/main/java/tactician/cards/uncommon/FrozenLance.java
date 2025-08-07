@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician2LanceCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon2LancePower;
@@ -47,8 +48,8 @@ public class FrozenLance extends Tactician2LanceCard {
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, this.block));
         addToBot(new VFXAction(new BlizzardEffect((damage / 4), AbstractDungeon.getMonsters().shouldFlipVfx()), 0.2F));
-        addToBot(new SFXAction("tactician:FrozenLance"));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new PlaySoundAction("tactician:FrozenLance", 1.25f));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
     @Override

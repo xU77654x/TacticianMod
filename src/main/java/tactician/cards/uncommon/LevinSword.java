@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon1Sword;
 import tactician.cards.cardchoice.Weapon7Thunder;
@@ -54,19 +55,22 @@ public class LevinSword extends TacticianCard {
                 weapon = 1;
                 if (!p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new SFXAction("tactician:LevinSword"));
+                addToBot(new PlaySoundAction("tactician:LevinSword", 1.33f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
             }));
             easyCardList.add(new Weapon7Thunder(() ->  {
                 weapon = 7;
                 if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new SFXAction("tactician:LevinSword"));
+                addToBot(new PlaySoundAction("tactician:LevinSword", 1.33f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
             }));
             addToTop(new EasyModalChoiceAction(easyCardList));
         }
-        else { addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL)); }
+        else {
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToBot(new PlaySoundAction("tactician:LevinSword", 1.33f));
+        }
 
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         addToBot(new MakeTempCardInHandAction(new Hex(), 1));

@@ -17,14 +17,14 @@ public class StrikeDefendSFXAction extends AbstractGameAction {
 	@Override
 	public void update() {
 		if (card == 1) {
-			if ( Wiz.playerWeaponCalc(this.m, 9) > 0) { CardCrawlGame.sound.play("tactician:Strike_Strong"); }
-			else if ( Wiz.playerWeaponCalc(this.m, 9) < 0) { CardCrawlGame.sound.play("tactician:Strike_Weak"); }
-			else { CardCrawlGame.sound.play("tactician:Strike_Neutral"); }
+			if ( Wiz.playerWeaponCalc(this.m, 9) > 0) { addToTop(new PlaySoundAction("tactician:Strike_Strong", 1.00f)); }
+			else if ( Wiz.playerWeaponCalc(this.m, 9) < 0) { addToTop(new PlaySoundAction("tactician:Strike_Weak", 1.00f)); }
+			else { addToTop(new PlaySoundAction("tactician:Strike_Neutral", 1.00f)); }
 		}
 		else if (card == 0) {
-			if ( Wiz.playerWeaponCalc(this.m, 9) > 0) { CardCrawlGame.sound.play("tactician:Defend_Strong"); }
-			else if ( Wiz.playerWeaponCalc(this.m, 9) < 0) { CardCrawlGame.sound.play("tactician:Defend_Weak"); }
-			else { CardCrawlGame.sound.play("tactician:Defend_Neutral"); }
+			if ( Wiz.playerWeaponCalc(this.m, 9) > 0) { addToTop(new PlaySoundAction("tactician:Defend_Strong", 1.50f)); }
+			else if ( Wiz.playerWeaponCalc(this.m, 9) < 0) { addToTop(new PlaySoundAction("tactician:Defend_Weak", 1.50f)); }
+			else { addToTop(new PlaySoundAction("tactician:Defend_Neutral", 1.50f)); }
 		}
 
 		this.isDone = true;

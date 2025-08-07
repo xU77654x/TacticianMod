@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
@@ -25,13 +26,13 @@ public class Tantivy extends TacticianCard {
 
     public Tantivy() {
         super(ID, info);
-        setMagic(4, 3); // magicNumber is used for Scry; the customVar is used for Strength and Strength Down.
+        setMagic(3, 3); // magicNumber is used for Scry; the customVar is used for Strength and Strength Down.
         setCustomVar("magicTempDex", 2, 1); // TempStr 2 > 3
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster M) {
-        addToBot(new SFXAction("tactician:Tantivy"));
+        addToTop(new PlaySoundAction("tactician:Tantivy", 1.50f));
         addToBot(new ScryAction(this.magicNumber)); // Scry 3 > 6
         addToBot(new DrawCardAction(p, 1)); // Draw 1.
         addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, customVar("magicTempDex")), customVar("magicTempDex"))); // Gain 2 > 3 Dexterity

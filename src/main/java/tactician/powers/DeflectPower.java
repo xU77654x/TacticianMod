@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
+import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import tactician.util.Wiz;
 import static java.lang.Math.max;
@@ -69,7 +70,7 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
                     addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
                 }
                 addToTop(new WaitAction(0.1F));
-                addToTop(new SFXAction("tactician:DeflectReceiveHit"));
+                addToTop(new PlaySoundAction("tactician:DeflectReceiveHit", 1.25f));
             }
 
         }

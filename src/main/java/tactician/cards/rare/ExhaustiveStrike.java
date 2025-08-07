@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician3AxeCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon3AxePower;
@@ -43,9 +44,9 @@ public class ExhaustiveStrike extends Tactician3AxeCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
-        addToBot(new SFXAction("tactician:ExhaustiveStrike_Hit1"));
+        addToBot(new PlaySoundAction("tactician:ExhaustiveStrike_Hit1", 1.25f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        addToBot(new SFXAction("tactician:ExhaustiveStrike_Hit2"));
+        addToBot(new PlaySoundAction("tactician:ExhaustiveStrike_Hit2", 1.25f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         addToBot(new ExhaustAction(this.magicNumber, false, true));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }

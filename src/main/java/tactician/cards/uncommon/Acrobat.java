@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyXCostAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
@@ -31,7 +32,7 @@ public class Acrobat extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SFXAction("tactician:Acrobat"));
+        addToBot(new PlaySoundAction("tactician:Acrobat", 1.00f));
         addToBot(new EasyXCostAction(this, (amt, params)->{
             addToTop(new GainEnergyAction(amt + 1));
             return true;
