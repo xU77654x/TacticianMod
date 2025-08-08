@@ -21,6 +21,7 @@ public class SoftReset extends TacticianCard {
     public SoftReset() {
         super(ID, info);
         setSelfRetain(true);
+        setBackgroundTexture("tactician/images/character/cardback/bg_curse.png", "tactician/images/character/cardback/bg_curse_p.png");
     }
 
     @Override

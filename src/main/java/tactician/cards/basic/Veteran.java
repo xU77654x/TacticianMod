@@ -113,9 +113,10 @@ public class Veteran extends Tactician9CopyCard {
         setMagic(0, 0);
         if (!forceReset) {
             if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { // Wrath Strike
-                setDamage(6);
+                if (this.upgraded) { setDamage(66); }
+                else { setDamage(5); }
                 if (this.upgraded) { setMagic(6); }
-                else { setMagic(3); }
+                else { setMagic(4); }
                 this.tags.add(CustomTags.SWORD);
                 this.tags.add(CardTags.STRIKE);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[14];

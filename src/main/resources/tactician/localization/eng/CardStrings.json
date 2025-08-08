@@ -144,8 +144,7 @@
   },
   "${modID}:Reposition": {
     "NAME": "Reposition",
-    "DESCRIPTION": "Gain !B! Block, increased by your Strength, Focus, NL and ${modID}:Deflect.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block, increased by your Strength, Focus, ${modID}:Deflect, and Energy."
+    "DESCRIPTION": "Gain !B! Block. Dexterity grants Deflect instead of additional Block."
   },
   "${modID}:Discipline": {
     "NAME": "Discipline",
@@ -194,7 +193,7 @@
   },
   "${modID}:WaningShot": {
     "NAME": "Waning Shot",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Weak. NL Consume 3 ${modID}:Deflect to apply -1 Strength."
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Weak. NL Consume 4 ${modID}:Deflect to apply -1 Strength."
   },
   "${modID}:CuttingGale": {
     "NAME": "Cutting Gale",
@@ -312,8 +311,8 @@
   },
   "${modID}:Prescience": {
     "NAME": "Prescience",
-    "DESCRIPTION": "If the first card NL you play in a turn NL is an Attack, NL Gain !M! ${modID}:Deflect.",
-    "UPGRADE_DESCRIPTION": "Innate. If the first NL card you play in a NL turn is an Attack, NL Gain !M! ${modID}:Deflect."
+    "DESCRIPTION": "If the first card NL you play in a turn NL is an Attack, NL gain !M! ${modID}:Deflect.",
+    "UPGRADE_DESCRIPTION": "Innate. If the first NL card you play in a NL turn is an Attack, NL gain !M! ${modID}:Deflect."
   },
   "${modID}:Patience": {
     "NAME": "Patience",
@@ -433,8 +432,8 @@
   },
   "${modID}:GrandmasterForm": {
     "NAME": "Grandmaster Form",
-    "DESCRIPTION": "Whenever you NL Exhaust a card, NL gain !M! Artifact.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you NL Exhaust a card, NL gain !M! Artifact.",
+    "DESCRIPTION": "Ethereal. NL Whenever you NL Exhaust a card, NL gain !M! Artifact.",
+    "UPGRADE_DESCRIPTION": "Whenever you NL Exhaust a card, NL gain !M! Artifact.",
     "EXTENDED_DESCRIPTION": ["The key to victory NL lies within."]
   },
 
@@ -454,8 +453,8 @@
   },
   "${modID}:DebugWeapon": {
     "NAME": "Debug Weapon",
-    "DESCRIPTION": "Retain. NL Apply any weapon type onto an enemy. NL Purge.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Apply any weapon type onto an enemy. NL Gain [E] [E]. Purge."
+    "DESCRIPTION": "Retain. NL Apply any weapon NL type onto the enemy. NL Purge.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Apply any weapon NL type onto the enemy. NL Gain [E] [E]. Purge."
   },
 
   "${modID}:Weapon1Sword": {

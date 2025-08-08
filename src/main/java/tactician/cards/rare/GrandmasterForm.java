@@ -1,7 +1,6 @@
 package tactician.cards.rare;
 
 import basemod.helpers.BaseModCardTags;
-import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -27,7 +26,7 @@ public class GrandmasterForm extends TacticianCard {
     public GrandmasterForm() {
         super(ID, info);
         setMagic(1, 0);
-        setInnate(false, true);
+        setEthereal(true, false);
         tags.add(BaseModCardTags.FORM);
     }
 

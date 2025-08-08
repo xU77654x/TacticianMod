@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -29,7 +28,7 @@ public class EvenOddRhythm extends TacticianCard {
     public EvenOddRhythm() {
         super(ID, info);
         setBlock(14, 4);
-        setMagic(15,5);
+        setMagic(14,4);
     }
 
     @Override

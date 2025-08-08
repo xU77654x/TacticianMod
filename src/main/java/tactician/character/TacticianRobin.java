@@ -4,11 +4,8 @@ import basemod.BaseMod;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.AbstractAnimation;
-import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -21,11 +18,11 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import tactician.cards.basic.*;
 import tactician.cards.basic.defends.*;
 import tactician.cards.basic.strikes.*;
 import tactician.relics.SecretBook;
+
 import java.util.ArrayList;
 import static tactician.TacticianMod.characterPath;
 import static tactician.TacticianMod.makeID;
@@ -64,6 +61,8 @@ public class TacticianRobin extends CustomPlayer {
         private static final String BG_SKILL_P = characterPath("cardback/bg_skill_p.png");
         private static final String BG_POWER = characterPath("cardback/bg_power.png");
         private static final String BG_POWER_P = characterPath("cardback/bg_power_p.png");
+        private static final String BG_CURSE = characterPath("cardback/bg_curse.png"); // Unable to access within a card.
+        private static final String BG_CURSE_P = characterPath("cardback/bg_curse_p.png"); // Unable to access within a card.
         private static final String ENERGY_ORB = characterPath("cardback/energy_orb.png");
         private static final String ENERGY_ORB_P = characterPath("cardback/energy_orb_p.png");
         private static final String SMALL_ORB = characterPath("cardback/small_orb.png");
@@ -79,49 +78,39 @@ public class TacticianRobin extends CustomPlayer {
         public static void registerCharacter() { BaseMod.addCharacter(new TacticianRobin(), CHAR_SELECT_BUTTON, CHAR_SELECT_PORTRAIT); }
     }
 
-
     // In-game images.
     private static final String SHOULDER_1 = characterPath("shoulder.png"); // Shoulder 1 and 2 are used at rest sites.
     private static final String SHOULDER_2 = characterPath("shoulder2.png");
-    private static final String CORPSE = characterPath("corpse.png"); // Corpse is when you die.
+    private static final String CORPSE = characterPath("corpse.png"); // When you die (couldn't be me).
 
-    /*
-    @Override
-    public void renderOrb(SpriteBatch sb, boolean enabled, float current_x, float current_y) {
-        orbTextures = EnergyPanel.totalCount > 0 ? characterPath("energyorb/Tactician_ColorLarge.png") : characterPath("energyorb/Tactician_GreyLarge.png");
-        sb.draw(orbTextures, current_x - 64.0F, current_y - 64.0F, 128.0F, 128.0F);
-    } */
-
-
-    // Textures used for the energy orb.
+    // Textures to satiate BaseMod's stubborn energy orb implementation.
     private static final String[] orbTextures = {
-            characterPath("energyorb/layer1.png"), // When you have energy.
-            characterPath("energyorb/layer2.png"),
-            characterPath("energyorb/layer3.png"),
-            characterPath("energyorb/layer4.png"),
-            characterPath("energyorb/layer5.png"),
-            characterPath("energyorb/Tactician_ColorLarge.png"), // "container"
-            characterPath("energyorb/layer1d.png"), // When you don't have energy.
-            characterPath("energyorb/layer2d.png"),
-            characterPath("energyorb/layer3d.png"),
-            characterPath("energyorb/layer4d.png"),
-            characterPath("energyorb/layer5d.png")
+        characterPath("energyorb/Tactician_ColorLarge.png"), // When you have energy.
+        characterPath("energyorb/lol.png"),
+        characterPath("energyorb/lol.png"),
+        characterPath("energyorb/lol.png"),
+        characterPath("energyorb/lol.png"),
+        characterPath("energyorb/lol.png"), // The image that matters.
+        characterPath("energyorb/Tactician_GreyLarge.png"), // When you don't have energy.
+        characterPath("energyorb/lol.png"),
+        characterPath("energyorb/lol.png"),
+        characterPath("energyorb/lol.png"),
+        characterPath("energyorb/lol.png")
     };
 
-    // Speeds at which each layer of the energy orb texture rotates. Negative is backwards.
-    private static final float[] layerSpeeds = new float[] { -20.0F, 20.0F, -40.0F, 40.0F, 360.0F };
+    // You spiiiiiiiiiin!. Negative is backwards.
+    private static final float[] layerSpeeds = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
 
     // Actual character class code is below this point.
-    public TacticianRobin() {
-        super(getNames()[0], Meta.TACTICIAN,
-            new CustomEnergyOrb(orbTextures, characterPath("energyorb/Tactician_ColorLarge.png"), layerSpeeds), // Energy Orb
-            new AbstractAnimation() {
-                @Override
-                public Type type() { return Type.NONE; }
-            }); // A NONE animation results in the image given in initializeClass being used.
+    public TacticianRobin() { super(getNames()[0], Meta.TACTICIAN,
+        new CustomEnergyOrb(orbTextures, characterPath("energyorb/lol.png"), layerSpeeds), // Energy Orb
+        new AbstractAnimation() {
+            @Override
+            public Type type() { return Type.NONE; }
+        }); // A NONE animation results in the image given in initializeClass being used.
 
-        // Character hitbox. x y position, then width and height.
-        initializeClass(characterPath("Robin_StaticRender.png"), SHOULDER_2, SHOULDER_1, CORPSE, getLoadout(), 20.0F, -20.0F, 229.0F, 250.0F, new EnergyManager(ENERGY_PER_TURN));
+        // Character hitbox. States the x/y position, then width and height.
+        initializeClass(characterPath("Robin_StaticRender.png"), SHOULDER_2, SHOULDER_1, CORPSE, getLoadout(), 0.0F, 10F, 229.0F, 250.0F, new EnergyManager(ENERGY_PER_TURN));
 
         // Location for text bubbles. You can adjust it as necessary. For most characters, these values are fine.
         dialogX = (drawX + 0.0F * Settings.scale);
@@ -229,4 +218,4 @@ public class TacticianRobin extends CustomPlayer {
 
     @Override
     public AbstractPlayer newInstance() { return new TacticianRobin(); } // Makes a new instance of your character class.
-}
+} // https://drive.google.com/file/d/1moR8cH0a7-O2ZA_drzvNjcr8T6TS0LgD/view

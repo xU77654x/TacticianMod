@@ -25,7 +25,7 @@ public class DeflectPotion extends BasePotion {
 	private static final Color SPOTS_COLOR = null; // CardHelper.getColor(255, 0, 255);
 
 	public DeflectPotion() {
-		super(ID, 15, PotionRarity.COMMON, PotionSize.SPIKY, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
+		super(ID, 16, PotionRarity.COMMON, PotionSize.SPIKY, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
 		playerClass = TacticianRobin.Meta.TACTICIAN;
 		this.tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordProper("tactician:deflect")), GameDictionary.keywords.get("tactician:deflect")));
 	}

@@ -1,14 +1,13 @@
 package tactician.cards.common;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.powers.FocusPower;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician9CopyCard;
 import tactician.character.TacticianRobin;
@@ -30,6 +29,7 @@ public class Reposition extends Tactician9CopyCard {
     public Reposition() {
         super(ID, info);
         setBlock(4, 0);
+        setMagic(0, 0);
         tags.add(CustomTags.COPY);
     }
 
@@ -38,8 +38,41 @@ public class Reposition extends Tactician9CopyCard {
         calculateCardDamage(m);
         addToTop(new PlaySoundAction("tactician:Reposition", 1.25f));
         addToBot(new GainBlockAction(p, p, this.block));
+        if (p.hasPower(DexterityPower.POWER_ID)) {
+            int dex = p.getPower(DexterityPower.POWER_ID).amount;
+            if (dex > 0) { addToBot(new ApplyPowerAction(p, p, new DeflectPower(dex), dex)); }
+            else if (dex < 0 && p.hasPower(DeflectPower.POWER_ID)) {
+                addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), -dex));
+            }
+        }
     }
 
+    @Override
+    public void applyPowers() {
+        int realBlock = baseBlock;
+        int realMagic = baseMagicNumber;
+        if (AbstractDungeon.player.hasPower(DexterityPower.POWER_ID)) {
+            baseBlock -= AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount;
+        }
+        super.applyPowers();
+        baseBlock = realBlock;
+        this.isBlockModified = (block != baseBlock);
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        int realBlock = baseBlock;
+        if (AbstractDungeon.player.hasPower(DexterityPower.POWER_ID)) {
+            baseBlock -= AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount;
+        }
+        baseBlock += Wiz.playerWeaponCalc(m, 9);
+        super.calculateCardDamage(m);
+        baseBlock = realBlock;
+        this.isBlockModified = (block != baseBlock);
+    }
+
+    // Strength, Focus, and Energy (if upgraded) grant additional Block. No longer used.
+    /*
     @Override
     public void applyPowers() {
         int realBlock = baseBlock;
@@ -63,7 +96,7 @@ public class Reposition extends Tactician9CopyCard {
         super.calculateCardDamage(m);
         baseBlock = realBlock;
         this.isBlockModified = (block != baseBlock);
-    }
+    } */
 
     @Override
     public AbstractCard makeCopy() { return new Reposition(); }

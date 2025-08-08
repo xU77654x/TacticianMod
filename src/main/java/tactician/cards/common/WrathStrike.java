@@ -3,7 +3,6 @@ package tactician.cards.common;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -30,8 +29,8 @@ public class WrathStrike extends Tactician1SwordCard {
 
     public WrathStrike() {
         super(ID, info);
-        setDamage(6, 0);
-        setMagic(3, 3);
+        setDamage(5, 1);
+        setMagic(4, 2);
         tags.add(CardTags.STRIKE);
         tags.add(CustomTags.SWORD);
         tags.add(CustomTags.COMBAT_ART);

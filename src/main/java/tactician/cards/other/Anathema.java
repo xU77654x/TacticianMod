@@ -6,7 +6,6 @@ import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
@@ -35,11 +34,13 @@ public class Anathema extends TacticianCard {
 	);
 	public AbstractPlayer p;
 
+
 	public Anathema() {
 		super(ID, info);
-		setMagic(3);
+		setMagic(4);
 		setSelfRetain(true);
 		setExhaust(true);
+		setBackgroundTexture("tactician/images/character/cardback/bg_curse.png", "tactician/images/character/cardback/bg_curse_p.png");
 		FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
 		FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
 	}
