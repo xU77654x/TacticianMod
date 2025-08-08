@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,6 +14,7 @@ import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician8DarkCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.weapons.Weapon8DarkPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -41,6 +41,7 @@ public class Goetia extends Tactician8DarkCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToTop(new PlaySoundAction("tactician:Goetia", 1.00f));
+        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_MiscMagic"));
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new GainBlockAction(p, p, this.block));

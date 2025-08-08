@@ -1,10 +1,8 @@
 package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -33,7 +31,7 @@ public class Thunder extends Tactician7ThunderCard {
 
     public Thunder() {
         super(ID, info);
-        setDamage(6, 1);
+        setDamage(7, 1);
         setMagic(1, 1);
         tags.add(CustomTags.THUNDER);
         tags.add(CustomTags.COMBAT_ART);
@@ -60,4 +58,42 @@ public class Thunder extends Tactician7ThunderCard {
 
     @Override
     public AbstractCard makeCopy() { return new Thunder(); }
+
+    /*
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        updateContents(false);
+        int realDamage = baseDamage;
+        int realBlock = baseBlock;
+        int realMagic = baseMagicNumber;
+        baseDamage += Wiz.playerWeaponCalc(m, 9);
+        baseBlock += Wiz.playerWeaponCalc(m, 9);
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) {
+            baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
+        }
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) {
+            baseMagicNumber += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
+        }
+        super.calculateCardDamage(m);
+        baseDamage = realDamage;
+        baseBlock = realBlock;
+        baseMagicNumber = realMagic;
+        this.isDamageModified = (damage != baseDamage);
+        this.isBlockModified = (block != baseBlock);
+        this.isMagicNumberModified = (magicNumber != baseMagicNumber);
+    }
+    @Override
+    public void applyPowers() {
+        updateContents(false);
+        super.applyPowers();
+        if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) {
+            magicNumber = baseMagicNumber;
+            AbstractPower pow = AbstractDungeon.player.getPower(DeflectPower.POWER_ID);
+            if (pow != null) magicNumber += pow.amount;
+            isMagicNumberModified = (magicNumber != baseMagicNumber);
+        }
+    }
+
+
+     */
 }

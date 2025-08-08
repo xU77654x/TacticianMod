@@ -3,7 +3,6 @@ package tactician.cards.rare;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician1SwordCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.weapons.Weapon1SwordPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -36,6 +36,7 @@ public class Astra extends Tactician1SwordCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Sword"));
         calculateCardDamage(m);
         addToBot(new PlaySoundAction("tactician:Astra_Hit1", 1.25f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));

@@ -1,10 +1,11 @@
 package tactician.cards.basic;
-
 import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,9 +13,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
+import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician9CopyCard;
 import tactician.cards.other.Anathema;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.LoseFocusPower;
 import tactician.powers.weapons.*;
@@ -45,54 +49,72 @@ public class Veteran extends Tactician9CopyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { // Wrath Strike
+            AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Sword"));
             calculateCardDamage(m);
+            addToBot(new PlaySoundAction("tactician:WrathStrike", 1.33f));
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
             addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         }
         else if (AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID)) { // Tempest Lance
+            AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Lance"));
             calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToTop(new PlaySoundAction("tactician:TempestLance", 1.15f));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             addToBot(new MakeTempCardInDrawPileAction(new Anathema(), 1, true, true));
         }
         else if (AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID)) { // Smash
+            AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Axe"));
             calculateCardDamage(m);
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToBot(new PlaySoundAction("tactician:Smash", 1.01f));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SMASH));
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));
         }
         else if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) { // Curved Shot
+            AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Bow"));
             calculateCardDamage(m);
-            addToBot(new GainBlockAction(p, this.block + this.magicNumber));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToTop(new PlaySoundAction("tactician:CurvedShot", 1.25f));
+            addToBot(new GainBlockAction(p, this.block));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
             if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) {
-                addToBot(new ApplyPowerAction(p, p, new VigorPower(p, this.magicNumber), this.magicNumber));
-                addToBot(new ApplyPowerAction(p, p, new DeflectPower(-this.magicNumber), -this.magicNumber));
+                addToBot(new ApplyPowerAction(p, p, new VigorPower(p, p.getPower(DeflectPower.POWER_ID).amount), p.getPower(DeflectPower.POWER_ID).amount));
+                addToBot(new GainBlockAction(p, p.getPower(DeflectPower.POWER_ID).amount));
                 addToBot(new RemoveSpecificPowerAction(p, p, DeflectPower.POWER_ID));
             }
         }
         else if (AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { // Elwind
             calculateCardDamage(m);
-            addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[3], 1.0F, 2.0F));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToTop(new PlaySoundAction("tactician:Elwind", 1.50f));
+            AbstractDungeon.effectList.add(new PlayVoiceEffect("Elwind"));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber));
         }
         else if (AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { // Arcfire
+            addToTop(new PlaySoundAction("tactician:Arcfire_Cast", 1.33f));
+            AbstractDungeon.effectList.add(new PlayVoiceEffect("Arcfire"));
             calculateCardDamage(m);
-            addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[4], 1.0F, 2.0F));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToBot(new WaitAction(1.0F));
+            addToBot(new WaitAction(1.0F));
+            addToBot(new WaitAction(1.0F));
+            addToBot(new PlaySoundAction("tactician:Arcfire_Hit", 1.33f));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
             addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new LoseFocusPower(this.magicNumber), this.magicNumber));
         }
         else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { // Thunder
             calculateCardDamage(m);
-            addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[5], 1.0F, 2.0F));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToTop(new PlaySoundAction("tactician:Thunder", 1.25f));
+            AbstractDungeon.effectList.add(new PlayVoiceEffect("Thunder"));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
             addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
         }
         else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { // Flux
+            addToTop(new PlaySoundAction("tactician:Flux", 1.00f));
+            AbstractDungeon.effectList.add(new PlayVoiceEffect("Flux"));
             calculateCardDamage(m);
             addToBot(new GainBlockAction(p, p, this.block));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            addToBot(new VFXAction(new DarkOrbActivateEffect(m.drawX, m.drawY + 133), 0.05F));
         }
     }
 
@@ -113,7 +135,7 @@ public class Veteran extends Tactician9CopyCard {
         setMagic(0, 0);
         if (!forceReset) {
             if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { // Wrath Strike
-                if (this.upgraded) { setDamage(66); }
+                if (this.upgraded) { setDamage(6); }
                 else { setDamage(5); }
                 if (this.upgraded) { setMagic(6); }
                 else { setMagic(4); }
@@ -146,7 +168,6 @@ public class Veteran extends Tactician9CopyCard {
                 if (this.upgraded) { setDamage(9); }
                 else { setDamage(6); }
                 setBlock(3, 0);
-                setMagic(0, 0);
                 tags.add(CustomTags.BOW);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[17];
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[9];
@@ -173,8 +194,8 @@ public class Veteran extends Tactician9CopyCard {
                 this.glowColor = Color.SCARLET;
             }
             else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { // Thunder
-                if (this.upgraded) { setDamage(7); }
-                else { setDamage(6); }
+                if (this.upgraded) { setDamage(8); }
+                else { setDamage(7); }
                 if (this.upgraded) { setMagic(2); }
                 else { setMagic(1); }
                 tags.add(CustomTags.THUNDER);
@@ -235,26 +256,10 @@ public class Veteran extends Tactician9CopyCard {
         return toolTipList;
     }
 
-    /*
     @Override
     public void applyPowers() {
         updateContents(false);
         super.applyPowers();
-        magicNumber = baseMagicNumber;
-        AbstractPower pow = AbstractDungeon.player.getPower(DeflectPower.POWER_ID);
-        if (pow != null && (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID))) { magicNumber += pow.amount; }
-        isMagicNumberModified = (magicNumber != baseMagicNumber);
-    } */
-    @Override
-    public void applyPowers() {
-        updateContents(false);
-        super.applyPowers();
-        if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) {
-            magicNumber = baseMagicNumber;
-            AbstractPower pow = AbstractDungeon.player.getPower(DeflectPower.POWER_ID);
-            if (pow != null) magicNumber += pow.amount;
-            isMagicNumberModified = (magicNumber != baseMagicNumber);
-        }
     }
 
     @Override
@@ -262,22 +267,16 @@ public class Veteran extends Tactician9CopyCard {
         updateContents(false);
         int realDamage = baseDamage;
         int realBlock = baseBlock;
-        int realMagic = baseMagicNumber;
         baseDamage += Wiz.playerWeaponCalc(m, 9);
         baseBlock += Wiz.playerWeaponCalc(m, 9);
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) {
             baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
         }
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) {
-            baseMagicNumber += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
-        }
         super.calculateCardDamage(m);
         baseDamage = realDamage;
         baseBlock = realBlock;
-        baseMagicNumber = realMagic;
         this.isDamageModified = (damage != baseDamage);
         this.isBlockModified = (block != baseBlock);
-        this.isMagicNumberModified = (magicNumber != baseMagicNumber);
     }
 
     @Override

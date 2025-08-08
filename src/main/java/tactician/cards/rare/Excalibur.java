@@ -5,7 +5,6 @@ import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -17,6 +16,7 @@ import com.megacrit.cardcrawl.powers.DrawPower;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician5WindCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.PlayVoiceEffect;
 import tactician.powers.MaxHandSizePower;
 import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
@@ -48,6 +48,7 @@ public class Excalibur extends Tactician5WindCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToTop(new PlaySoundAction("tactician:Excalibur_Cast", 1.25f));
+        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_MiscMagic"));
         calculateCardDamage(m);
         addToBot(new WaitAction(0.75F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));

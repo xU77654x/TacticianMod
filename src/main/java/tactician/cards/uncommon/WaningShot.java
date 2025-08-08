@@ -42,7 +42,7 @@ public class WaningShot extends Tactician4BowCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:WaningShot_Draw", 1.25f));
+        addToTop(new PlaySoundAction("tactician:WaningShot_Draw", 1.25f)); // Robin does NOT make a voice with this card.
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
         calculateCardDamage(m);
         addToBot(new WaitAction(1.50F));
