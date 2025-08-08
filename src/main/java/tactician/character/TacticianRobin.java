@@ -146,7 +146,7 @@ public class TacticianRobin extends CustomPlayer {
 
     // Below this is a series of methods that you should *probably* adjust, but don't have to.
     @Override
-    public int getAscensionMaxHPLoss() { return 5; } // Max HP reduction at ascension 14+.
+    public int getAscensionMaxHPLoss() { return 5; } // Max HP reduction at Ascension 14+.
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
@@ -189,11 +189,11 @@ public class TacticianRobin extends CustomPlayer {
     public void doCharSelectScreenSelectEffect() {
         // This occurs when you click the character's button in the character select screen.
         // See SoundMaster for a full list of existing sound effects, or look at BaseMod's wiki for adding custom audio.
-        CardCrawlGame.sound.playA("ATTACK_DAGGER_2", MathUtils.random(0F, 0F));
+        CardCrawlGame.sound.playA("tactician:TacticianSelect", MathUtils.random(0F, 0F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
     }
     @Override
-    public String getCustomModeCharacterButtonSoundKey() { return "ATTACK_DAGGER_2"; }
+    public String getCustomModeCharacterButtonSoundKey() { return "tactician:TacticianSelect"; }
 
     // Don't adjust these four directly, adjust the contents of the CharacterStrings.json file.
     @Override
@@ -207,6 +207,8 @@ public class TacticianRobin extends CustomPlayer {
 
     @Override
     public String getVampireText() { return getText()[2]; }
+
+    public String getSensoryStoneText() { return getText()[3]; }
 
     // You shouldn't need to edit any of the following methods.
     // This is used to display the character's information on the character selection screen.

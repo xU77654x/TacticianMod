@@ -323,6 +323,7 @@ public class TacticianMod implements
         // Other Cards and Powers
         BaseMod.addAudio("tactician:Hex", "tactician/audio/effect/Hex.ogg");
         BaseMod.addAudio("tactician:Anathema", "tactician/audio/effect/Anathema.ogg");
+        BaseMod.addAudio("tactician:TacticianSelect", "tactician/audio/effect/Tactician_Select.ogg");
         BaseMod.addAudio("tactician:LevelUpFE8", "tactician/audio/effect/LevelUpFE8.ogg");
         BaseMod.addAudio("tactician:CriticalHitFE8", "tactician/audio/effect/CriticalHitFE8.ogg");
         BaseMod.addAudio("tactician:DeflectReceiveHit", "tactician/audio/effect/DeflectReceiveHit.ogg");
