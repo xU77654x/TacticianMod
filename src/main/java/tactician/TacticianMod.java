@@ -2,10 +2,16 @@ package tactician;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.abstracts.CustomPlayer;
+import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.events.exordium.GoldenWing;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
+import tactician.events.GoldenWingTactician;
 import tactician.potions.BasePotion;
 import tactician.relics.BaseRelic;
 import tactician.util.GeneralUtils;
@@ -29,6 +35,8 @@ import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+
+import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
 @SpireInitializer
 public class TacticianMod implements
@@ -69,6 +77,7 @@ public class TacticianMod implements
         // If you want to set up a config panel, that will be done here. The Mod Badges page has a basic example of this, but setting up config is overall a bit complex.
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
         registerPotions();
+        BaseMod.addEvent(new AddEventParams.Builder(GoldenWingTactician.ID, GoldenWingTactician.class).playerClass(TACTICIAN).overrideEvent(GoldenWing.ID).create());
     }
 
     /*----------Localization----------*/
@@ -214,6 +223,8 @@ public class TacticianMod implements
             // If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
         });
     }
+
+
 
     @Override
     public void receiveAddAudio() {

@@ -6,7 +6,6 @@
       "#g~This~ #g~text~ #g~is~ #g~green~ #g~and~ #g~wavy.~",
       "#r@RED@ #r@AND@ #r@VIBRATING@ #r@TEXT.@",
       "#rRed #gGreen #yYellow #bBlue #pPurple. ~Wavy~ @vibrating.@",
-      "You have to mark every word individually.",
       "You can also use [#ffffff]white[] hex color codes like this to color text.",
       "Hex color codes also work in card text! But not on keywords, without some workarounds."
     ],
@@ -17,5 +16,10 @@
       "[Leave]",
       "Select card to remove. (You can also stick extra text like this in here.)"
     ]
+  },
+  "${modID}:GoldenWingTactician": {
+    "NAME": "Winged Statue",
+    "DESCRIPTIONS": [ "With a focus on the angle of your strike rather than its brute force, you chip off a quality fragment for use as a relic." ],
+    "OPTIONS": [ "[Salvage] #gIncrease #gyour #gmaximum #ghand #gsize #gby #g3." ]
   }
 }
