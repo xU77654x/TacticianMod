@@ -21,6 +21,7 @@ public class FirstIntentWeaponPatch {
 			if (AbstractDungeon.player instanceof TacticianRobin) {
 				AbstractPower w = FirstTurnEnemyWeaponHelper.enemyWeaponCalc(_inst, _inst.intent);
 				if (!Objects.equals(w.ID, StrengthPower.POWER_ID)) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, w)); }
+
 			}
 		}
 	}

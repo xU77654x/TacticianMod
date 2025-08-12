@@ -81,7 +81,7 @@
       "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Convert your ${modID}:Deflect NL into Block and Vigor.",
       "${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
       "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Focus.",
-      "${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Vulnerable.",
+      "${modID}:Combat_Art. NL Deal !D! damage. NL Consume 4 ${modID}:Deflect to NL apply !M! Vulnerable.",
       "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage.",
       "Wrath Strike",
       "Tempest Lance",
@@ -131,7 +131,7 @@
   },
   "${modID}:Thunder": {
     "NAME": "Thunder",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Vulnerable.",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Consume 4 ${modID}:Deflect to NL apply !M! Vulnerable.",
     "EXTENDED_DESCRIPTION": ["Thunder!"]
   },
   "${modID}:Flux": {

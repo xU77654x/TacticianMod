@@ -1,16 +1,20 @@
 package tactician.relics;
 
+import basemod.helpers.CardPowerTip;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
 
+import static com.codedisaster.steamworks.SteamFriends.OverlayDialog.Settings;
 import static tactician.TacticianMod.makeID;
 
 
@@ -22,7 +26,10 @@ public class BookOfNaga extends BaseRelic {
 	public AbstractPlayer p;
 
 	public BookOfNaga() {
-		super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
+		super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
+		Hex c = new Hex();
+		this.tips.add(new CardPowerTip(c));
+	}
 
 	@Override
 	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }

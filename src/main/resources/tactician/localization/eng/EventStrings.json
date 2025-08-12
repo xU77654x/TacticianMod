@@ -17,9 +17,33 @@
       "Select card to remove. (You can also stick extra text like this in here.)"
     ]
   },
+  "${modID}:VampiresTactician": {
+    "NAME": "Vampires(?)",
+    "DESCRIPTIONS": [
+      "You shout against the vampires for their offer, feeling a #p@familiar@ #p@painful@ #p@ringing@ in your head. NL NL \"Okay man, chill. What insect crawled up your back?\" NL NL They speak an incantation, and disappear into a dark mist. NL NL For some reason you feel... stronger?",
+      "You maintain a professional yet cautious facade, wanting to leave the scene immediately. NL NL Surely they would not let you go so easily. NL You must stay alert and prepared. NL NL As you avoid the topic of “feeling their warmth,” NL their presence #p~affects~ #p~your~ #p~mind.~",
+      "The pale figures gasp as you take out the #yBlood #yVial. NL ~\"The~ ~master's~ ~blood...~ ~the~ ~master's~ ~blood!~ @THE@ @MASTER'S@ @BLOOD!\"@ NL They all chant fervently as the tall one bows before you. \"Drink from His blood, and become one with #y~Him.\"~ NL NL The chant growing louder, you refuse the contents of the vial--stating that it is a gift. NL With a glint of disappointment, they accept the #yVial and present a #ggift of their own."
+    ],
+    "OPTIONS": [
+      "[Spurn]: #gHeal #g",
+      " #gHP. #rCursed #r- #rHex.",
+      "[Placate]: #rLose #r",
+      " #rHP. #gCursed #g- #gAnathema.",
+      "[Offer]: #rLose #rBlood #rVial. #gGain #gVajra.",
+      "[Locked] Requires: Blood Vial."
+    ]
+  },
   "${modID}:GoldenWingTactician": {
     "NAME": "Winged Statue",
     "DESCRIPTIONS": [ "With a focus on the angle of your strike rather than its brute force, you chip off a quality fragment for use as a relic." ],
     "OPTIONS": [ "[Salvage] #gIncrease #gyour #gmaximum #ghand #gsize #gby #g3." ]
+  },
+  "${modID}:FallingTactician": {
+    "NAME": "Falling",
+    "DESCRIPTIONS": [ "Your instincts kick in, and you utilize a recovery technique using your Elwind tome to propel yourself upward--without any risk of impact."],
+    "OPTIONS": [
+      "[Elwind] #gRecover #gsafely.",
+      "[Locked] Requires: Elwind."
+    ]
   }
 }

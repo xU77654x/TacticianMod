@@ -111,7 +111,21 @@
   {
     "ID": "tome",
     "PROPER_NAME": "Tome",
-    "NAMES": ["Tome"],
+    "NAMES": ["tome"],
     "DESCRIPTION": "A shorthand for the weapons NL [#00EE88]Wind, [#FF9933]Fire, #yThunder, #pDark."
+  },
+
+  {
+    "ID": "blur",
+    "PROPER_NAME": "Blur",
+    "NAMES": ["Blur"],
+    "DESCRIPTION": "Block is not removed at the start of your next turn."
+  },
+
+  {
+    "ID": "focus",
+    "PROPER_NAME": "Focus",
+    "NAMES": ["Focus"],
+    "DESCRIPTION": "Focus increases effectiveness of #yChanneled Orbs."
   }
 ]

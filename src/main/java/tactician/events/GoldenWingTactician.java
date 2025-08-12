@@ -32,9 +32,8 @@ public class GoldenWingTactician extends AbstractImageEvent {
 	private final int damage = 7;
 	private final boolean canAttack;
 	private boolean purgeResult = false;
-	private CUR_SCREEN screen = CUR_SCREEN.INTRO;
-	private int goldAmount;
-	private enum CUR_SCREEN { INTRO, PURGE, MAP; }
+	private CurScreen screen = CurScreen.INTRO;
+	private enum CurScreen { INTRO, PURGE, MAP; }
 
 	private static final String INTRO = vanilla_ES.DESCRIPTIONS[0];
 	private static final String AGREE_DIALOG = vanilla_ES.DESCRIPTIONS[1];
@@ -66,18 +65,18 @@ public class GoldenWingTactician extends AbstractImageEvent {
 						this.imageEventText.updateBodyText(AGREE_DIALOG);
 						AbstractDungeon.player.damage(new DamageInfo(AbstractDungeon.player, this.damage));
 						AbstractDungeon.effectList.add(new FlashAtkImgEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, AbstractGameAction.AttackEffect.FIRE));
-						this.screen = CUR_SCREEN.PURGE;
+						this.screen = CurScreen.PURGE;
 						this.imageEventText.updateDialogOption(0, vanilla_ES.OPTIONS[8]);
 						this.imageEventText.clearRemainingOptions();
 						return;
 					case 1:
 						if (this.canAttack) {
-							this.goldAmount = AbstractDungeon.miscRng.random(50, 80);
-							AbstractDungeon.effectList.add(new RainingGoldEffect(this.goldAmount));
-							AbstractDungeon.player.gainGold(this.goldAmount);
-							AbstractEvent.logMetricGainGold("Golden Wing", "Gained Gold", this.goldAmount);
+							int goldAmount = AbstractDungeon.miscRng.random(50, 80);
+							AbstractDungeon.effectList.add(new RainingGoldEffect(goldAmount));
+							AbstractDungeon.player.gainGold(goldAmount);
+							AbstractEvent.logMetricGainGold("Golden Wing", "Gained Gold", goldAmount);
 							this.imageEventText.updateBodyText(SPECIAL_OPTION);
-							this.screen = CUR_SCREEN.MAP;
+							this.screen = CurScreen.MAP;
 							this.imageEventText.updateDialogOption(0, vanilla_ES.OPTIONS[7]);
 							this.imageEventText.clearRemainingOptions();
 							return;
@@ -96,13 +95,13 @@ public class GoldenWingTactician extends AbstractImageEvent {
 							AbstractDungeon.getCurrRoom().spawnRelicAndObtain(this.drawX, this.drawY, worthless);
 							logMetricObtainRelic("Golden Wing", "Statue Fragment", worthless);
 						}
-						this.screen = CUR_SCREEN.MAP;
+						this.screen = CurScreen.MAP;
 						this.imageEventText.updateDialogOption(0, vanilla_ES.OPTIONS[7]);
 						return;
 				}
 				this.imageEventText.updateBodyText(DISAGREE_DIALOG);
 				AbstractEvent.logMetricIgnored("Golden Wing");
-				this.screen = CUR_SCREEN.MAP;
+				this.screen = CurScreen.MAP;
 				this.imageEventText.updateDialogOption(0, vanilla_ES.OPTIONS[7]);
 				this.imageEventText.clearRemainingOptions();
 				return;
@@ -111,7 +110,7 @@ public class GoldenWingTactician extends AbstractImageEvent {
 				AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck.getPurgeableCards()), 1, vanilla_ES.OPTIONS[9], false, false, false, true);
 				this.imageEventText.updateDialogOption(0, vanilla_ES.OPTIONS[7]);
 				this.purgeResult = true;
-				this.screen = CUR_SCREEN.MAP;
+				this.screen = CurScreen.MAP;
 				return;
 
 			case MAP: openMap(); return;

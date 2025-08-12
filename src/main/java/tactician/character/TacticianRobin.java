@@ -22,7 +22,6 @@ import tactician.cards.basic.*;
 import tactician.cards.basic.defends.*;
 import tactician.cards.basic.strikes.*;
 import tactician.relics.SecretBook;
-
 import java.util.ArrayList;
 import static tactician.TacticianMod.characterPath;
 import static tactician.TacticianMod.makeID;
@@ -51,7 +50,7 @@ public class TacticianRobin extends CustomPlayer {
         public static CardLibrary.LibraryType LIBRARY_COLOR;
 
         // Character select images.
-        private static final String CHAR_SELECT_BUTTON = characterPath("select/TacticianButton.png");
+        private static final String CHAR_SELECT_BUTTON = characterPath("select/TacticianButton.png"); // Credit to bat.nick for this art.
         private static final String CHAR_SELECT_PORTRAIT = characterPath("select/TacticianSelect.png");
 
         // Character card images.
@@ -68,7 +67,7 @@ public class TacticianRobin extends CustomPlayer {
         private static final String SMALL_ORB = characterPath("cardback/small_orb.png");
 
         // This is used to color *some* images, but NOT the actual cards. For that, edit the images in the cardback folder!
-        private static final Color cardColor = new Color(128f/255f, 128f/255f, 128f/255f, 1f);
+        private static final Color cardColor = new Color(Color.PURPLE);
 
         // Methods that will be used in the main mod file.
         public static void registerColor() {
@@ -79,8 +78,8 @@ public class TacticianRobin extends CustomPlayer {
     }
 
     // In-game images.
-    private static final String SHOULDER_1 = characterPath("shoulder.png"); // Shoulder 1 and 2 are used at rest sites.
-    private static final String SHOULDER_2 = characterPath("shoulder2.png");
+    private static final String SHOULDER_1 = characterPath("Tactician_RestSite1.png"); // Shoulder 1 and 2 are used at rest sites.
+    private static final String SHOULDER_2 = characterPath("Tactician_RestSite2.png");
     private static final String CORPSE = characterPath("corpse.png"); // When you die (couldn't be me).
 
     // Textures to satiate BaseMod's stubborn energy orb implementation.
@@ -110,7 +109,7 @@ public class TacticianRobin extends CustomPlayer {
         }); // A NONE animation results in the image given in initializeClass being used.
 
         // Character hitbox. States the x/y position, then width and height.
-        initializeClass(characterPath("Robin_StaticRender.png"), SHOULDER_2, SHOULDER_1, CORPSE, getLoadout(), 0.0F, 12F, 229.0F, 250.0F, new EnergyManager(ENERGY_PER_TURN));
+        initializeClass(characterPath("Tactician_StaticRender.png"), SHOULDER_2, SHOULDER_1, CORPSE, getLoadout(), 0.0F, 12F, 229.0F, 250.0F, new EnergyManager(ENERGY_PER_TURN));
 
         // Location for text bubbles. You can adjust it as necessary. For most characters, these values are fine.
         dialogX = (drawX + 0.0F * Settings.scale);

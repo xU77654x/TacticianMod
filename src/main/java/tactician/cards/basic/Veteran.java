@@ -106,7 +106,10 @@ public class Veteran extends Tactician9CopyCard {
             addToTop(new PlaySoundAction("tactician:Thunder", 1.25f));
             AbstractDungeon.effectList.add(new PlayVoiceEffect("Thunder"));
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
-            addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
+            if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= 4)) {
+                addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), 4));
+                addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
+            }
         }
         else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { // Flux
             addToTop(new PlaySoundAction("tactician:Flux", 1.00f));
@@ -194,10 +197,10 @@ public class Veteran extends Tactician9CopyCard {
                 this.glowColor = Color.SCARLET;
             }
             else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { // Thunder
-                if (this.upgraded) { setDamage(8); }
-                else { setDamage(7); }
-                if (this.upgraded) { setMagic(2); }
-                else { setMagic(1); }
+                if (this.upgraded) { setDamage(7); }
+                else { setDamage(6); }
+                if (this.upgraded) { setMagic(3); }
+                else { setMagic(2); }
                 tags.add(CustomTags.THUNDER);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[20];
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[12];
@@ -259,7 +262,12 @@ public class Veteran extends Tactician9CopyCard {
     @Override
     public void applyPowers() {
         updateContents(false);
+        int realDamage = baseDamage;
+        if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID) && AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
+            baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
         super.applyPowers();
+        baseDamage = realDamage;
+        this.isDamageModified = (damage != baseDamage);
     }
 
     @Override

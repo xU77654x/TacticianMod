@@ -11,12 +11,11 @@ import tactician.powers.weapons.Weapon2LancePower;
 import tactician.powers.weapons.Weapon7ThunderPower;
 
 public class Weapon_TheGuardian {
-	private static final boolean enemyWeapon = (AbstractDungeon.player instanceof TacticianRobin);
 	@SpirePatch(clz = TheGuardian.class, method = "useVentSteam")
 	public static class WhirlwindAfterVentSteam {
 		@SpireInsertPatch(rloc = 13)
 		public static void Insert(TheGuardian _inst) {
-			if (enemyWeapon) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, new Weapon1SwordPower(_inst))); }
+			if (AbstractDungeon.player instanceof TacticianRobin) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, new Weapon1SwordPower(_inst))); }
 		}
 	}
 
@@ -24,7 +23,7 @@ public class Weapon_TheGuardian {
 	public static class EnterDefensiveMode {
 		@SpireInsertPatch(rloc = 9)
 		public static void Insert(TheGuardian _inst) {
-			if (enemyWeapon) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, new Weapon2LancePower(_inst))); }
+			if (AbstractDungeon.player instanceof TacticianRobin) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, new Weapon2LancePower(_inst))); }
 		}
 	}
 
@@ -32,7 +31,7 @@ public class Weapon_TheGuardian {
 	public static class WhirlwindAfterTwinSmash {
 		@SpireInsertPatch(rloc = 7)
 		public static void Insert(TheGuardian _inst) {
-			if (enemyWeapon) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, new Weapon1SwordPower(_inst))); }
+			if (AbstractDungeon.player instanceof TacticianRobin) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, new Weapon1SwordPower(_inst))); }
 		}
 	}
 
@@ -40,7 +39,7 @@ public class Weapon_TheGuardian {
 	public static class FierceBashAfterChargeUp {
 		@SpireInsertPatch(rloc = 5)
 		public static void Insert(TheGuardian _inst) {
-			if (enemyWeapon) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, new Weapon7ThunderPower(_inst))); }
+			if (AbstractDungeon.player instanceof TacticianRobin) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, new Weapon7ThunderPower(_inst))); }
 		}
 	}
 } // Program Arguments: --out-jar

@@ -1,6 +1,7 @@
 package tactician.monsterweapons;
 
 import com.megacrit.cardcrawl.actions.GameActionManager;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.exordium.*;
 import com.megacrit.cardcrawl.monsters.city.*;
@@ -54,7 +55,7 @@ public class FirstTurnEnemyWeaponHelper {
 			case GremlinWizard.ID:
 				if (intent == UNKNOWN) { pow = new Weapon7ThunderPower(m); }
 				if (intent == ATTACK) { pow = new Weapon7ThunderPower(m); } break;
-			case Looter.ID: case Mugger.ID:
+			case Looter.ID: case Mugger.ID: case "downfall:LooterAlt": case "downfall:MuggerAlt":
 				if (intent == ATTACK) {
 					if (GameActionManager.turn == 1) { pow = new Weapon4BowPower(m); } // Uses Bow on Turn 1.
 					else { pow = new Weapon1SwordPower(m); }} // Uses Sword after Turn 1. Does not function if enemy is Stunned or if Vault is used.
@@ -90,8 +91,7 @@ public class FirstTurnEnemyWeaponHelper {
 				if (intent == ATTACK) { pow = new StrengthPower(m, 999); } break; // Guardian has 3 different attacks.
 			case Hexaghost.ID:
 				if (intent == UNKNOWN) { pow = new Weapon8DarkPower(m); }
-				else { pow = new StrengthPower(m, 999); } break;
-				// Hexaghost's weapon patch contains all assignments beyond Turn 1.
+				else { pow = new StrengthPower(m, 999); } break; // Hexaghost's patch contains all assignments beyond Turn 1.
 
 			// Standard Act 2
 			case Byrd.ID:
@@ -124,7 +124,7 @@ public class FirstTurnEnemyWeaponHelper {
 				if (intent == DEFEND) { pow = new Weapon7ThunderPower(m); }
 				if (intent == ATTACK_DEFEND) { pow = new Weapon5WindPower(m); }
 				if (intent == ATTACK_DEBUFF) { pow = new Weapon6FirePower(m); } break;
-			case ShelledParasite.ID:
+			case ShelledParasite.ID: case "beaked:SuperParasite":
 				if (intent == ATTACK) { pow = new Weapon3AxePower(m); }
 				if (intent == ATTACK_BUFF) { pow = new Weapon6FirePower(m); }
 				if (intent == ATTACK_DEBUFF) { pow = new Weapon2LancePower(m); } break;
@@ -146,7 +146,7 @@ public class FirstTurnEnemyWeaponHelper {
 				if (intent == DEFEND_BUFF) { pow = new Weapon7ThunderPower(m); }
 				if (intent == STUN) { pow = new Weapon0NeutralPower(m); }
 				if (intent == ATTACK) { pow = new StrengthPower(m, 999); } break;
-			case BronzeOrb.ID:
+			case BronzeOrb.ID: case "BronzeOrbWhoReallyLikesDefectForSomeReason":
 				if (intent == STRONG_DEBUFF) { pow = new Weapon8DarkPower(m); }
 				if (intent == ATTACK) { pow = new Weapon6FirePower(m); }
 				if (intent == DEFEND) { pow = new Weapon3AxePower(m); } break;
@@ -168,9 +168,9 @@ public class FirstTurnEnemyWeaponHelper {
 				if (intent == ATTACK_DEBUFF) { pow = new Weapon4BowPower(m); }
 				if (intent == ATTACK) { pow = new Weapon5WindPower(m); } break;
 			case BanditBear.ID:
-				if (intent == STRONG_DEBUFF) { pow = new Weapon7ThunderPower(m); }
-				if (intent == ATTACK_DEBUFF) { pow = new Weapon4BowPower(m); }
-				if (intent == ATTACK) { pow = new Weapon5WindPower(m); } break;
+				if (intent == STRONG_DEBUFF) { pow = new Weapon8DarkPower(m); }
+				if (intent == ATTACK_DEFEND) { pow = new Weapon2LancePower(m); }
+				if (intent == ATTACK) { pow = new Weapon3AxePower(m); } break;
 
 			// Standard Act 3
 			case Maw.ID:
@@ -215,7 +215,7 @@ public class FirstTurnEnemyWeaponHelper {
 				if (intent == UNKNOWN) { pow = new Weapon6FirePower(m); }
 				if (intent == ATTACK_DEBUFF) { pow = new Weapon7ThunderPower(m); }
 				if (intent == ATTACK) { pow = new Weapon5WindPower(m); } break;
-			case SnakeDagger.ID:
+			case SnakeDagger.ID: case "downfall:DoomedDagger":
 				if (intent == ATTACK_DEBUFF) { pow = new Weapon1SwordPower(m); }
 				if (intent == ATTACK) { pow = new Weapon3AxePower(m); } break;
 			case AwakenedOne.ID:
@@ -251,10 +251,106 @@ public class FirstTurnEnemyWeaponHelper {
 				if (intent == BUFF) { pow = new Weapon0NeutralPower(m); }
 				if (intent == ATTACK) { pow = new StrengthPower(m, 999); } break;
 
-			// Downfall Events
 
+			// Downfall Events and Boss Minions
+			case "downfall:Augmenter":
+				if (intent == ATTACK_BUFF) { pow = new Weapon6FirePower(m); }
+				if (intent == ATTACK_DEBUFF) { pow = new Weapon8DarkPower(m); } break;
+			case "downfall:FaceTrader":
+				if (intent == ATTACK_DEBUFF) { pow = new Weapon0NeutralPower(m); } // Three possible attacks on turn 1. :(
+				if (intent == DEFEND_BUFF) { pow = new StrengthPower(m, 999); } break; // Requires a patch.
+			case "downfall:LadyInBlue":
+				if (intent == ATTACK_BUFF) { pow = new Weapon6FirePower(m); }
+				if (intent == ATTACK_DEFEND) { pow = new Weapon8DarkPower(m); }
+				if (intent == BUFF) { pow = new Weapon7ThunderPower(m); }
+				if (intent == STRONG_DEBUFF) { pow = new Weapon5WindPower(m); } break;
+			case "downfall:GrowingTotem":
+				pow = new Weapon1SwordPower(m); break;
+			case "downfall:ForgetfulTotem":
+				pow = new Weapon2LancePower(m); break;
+			case "downfall:ChangingTotem":
+				pow = new Weapon3AxePower(m); break;
+			case "downfall:FleeingMerchant":
+				if (intent == DEFEND) { pow = new Weapon4BowPower(m); }
+				if (intent == ATTACK) { pow = new Weapon0NeutralPower(m); }
+				if (intent == BUFF) { pow = new Weapon8DarkPower(m); }
+				if (intent == ESCAPE) { pow = new Weapon0NeutralPower(m); } break;
+			case "downfall:MushroomRed": pow = new Weapon2LancePower(m); break;
+			case "downfall:MushroomWhite": pow = new Weapon5WindPower(m); break;
+			case "downfall:MushroomPurple": pow = new Weapon8DarkPower(m); break;
+			case "downfall:Fortification": pow = new Weapon0NeutralPower(m); break;
+			case "downfall:FuzzyLouseTangerine":
+				if (intent == SLEEP) { pow = new Weapon0NeutralPower(m); }
+				if (intent == ATTACK) { pow = new Weapon7ThunderPower(m); }
+				if (intent == BUFF) { pow = new Weapon7ThunderPower(m); } break;
 
-			// Downfall Bosses (Supported only!!!)
+			// Downfall Act 4
+			case "downfall:GauntletIronclad":
+				if (intent == ATTACK) { pow = new Weapon1SwordPower(m); }
+				if (intent == ATTACK_DEFEND) { pow = new Weapon1SwordPower(m); }
+				if (intent == ATTACK_DEBUFF) { pow = new Weapon3AxePower(m); }
+				if (intent == DEFEND) { pow = new Weapon6FirePower(m); }
+				if (intent == BUFF) { pow = new Weapon6FirePower(m); } break;
+			case "downfall:GauntletSilent":
+				if (intent == ATTACK) { pow = new Weapon5WindPower(m); }
+				if (intent == ATTACK_DEFEND) { pow = new Weapon5WindPower(m); }
+				if (intent == DEFEND_DEBUFF) { pow = new Weapon2LancePower(m); }
+				if (intent == DEFEND) { pow = new Weapon8DarkPower(m); }
+				if (intent == BUFF) { pow = new Weapon8DarkPower(m); } break;
+			case "downfall:GauntletDefect":
+				if (intent == ATTACK) { pow = new Weapon7ThunderPower(m); }
+				if (intent == ATTACK_DEFEND) { pow = new Weapon7ThunderPower(m); }
+				if (intent == DEFEND) { pow = new Weapon4BowPower(m); }
+				if (intent == BUFF) { pow = new Weapon3AxePower(m); } break;
+			case "downfall:GauntletWatcher":
+				if (intent == ATTACK) { pow = new Weapon1SwordPower(m); }
+				if (intent == ATTACK_DEFEND) { pow = new Weapon2LancePower(m); }
+				if (intent == DEFEND) { pow = new Weapon7ThunderPower(m); }
+				if (intent == BUFF) { pow = new Weapon6FirePower(m); } break;
+			case "downfall:GauntletHermit":
+				if (intent == ATTACK) { pow = new Weapon4BowPower(m); }
+				if (intent == ATTACK_DEFEND) { pow = new Weapon4BowPower(m); }
+				if (intent == DEFEND) { pow = new Weapon8DarkPower(m); }
+				if (intent == BUFF) { pow = new Weapon5WindPower(m); } break;
+			case "downfall:NeowBoss": pow = new StrengthPower(m, 999); break;
+			case "downfall:NeowBossFinal": case "downfall:Neow4Life30Heal":
+				if (intent == ATTACK) { pow = new Weapon0NeutralPower(m); } // Neow's attacks are Neutral, unlike the Heart.
+				if (intent == STRONG_DEBUFF) { pow = new Weapon8DarkPower(m); }
+				if (intent == BUFF) { pow = new Weapon4BowPower(m); } break;
+
+			// Downfall Bosses (Note: intentions cannot be read from cards on turn start)
+			case "downfall:Ironclad":
+				switch (AbstractDungeon.actNum) {
+					case 1: pow = new Weapon1SwordPower(m); break;
+					case 2: pow = new Weapon3AxePower(m); break;
+					case 3: pow = new Weapon6FirePower(m); break;
+				} break;
+			case "downfall:Silent": case "downfall:MirrorImageSilent":
+				switch (AbstractDungeon.actNum) {
+					case 1: pow = new Weapon5WindPower(m); break;
+					case 2: if (GameActionManager.turn == 1) { pow = new Weapon8DarkPower(m); }
+							else { pow = new StrengthPower(m, 99); } break;
+					case 3: pow = new Weapon2LancePower(m); break;
+				} break;
+			case "downfall:Defect":
+				switch (AbstractDungeon.actNum) {
+					case 1: pow = new Weapon7ThunderPower(m); break;
+					case 2: pow = new Weapon4BowPower(m); break;
+					case 3: pow = new Weapon3AxePower(m); break;
+				} break;
+			case "downfall:Watcher":
+				switch (AbstractDungeon.actNum) {
+					case 1: pow = new Weapon2LancePower(m); break;
+					case 2: pow = new Weapon6FirePower(m); break;
+					case 3: pow = new Weapon1SwordPower(m); break;
+				} break;
+			case "downfall:Hermit":
+				switch (AbstractDungeon.actNum) {
+					case 1: pow = new Weapon4BowPower(m); break;
+					case 2: pow = new Weapon5WindPower(m); break;
+					case 3: pow = new Weapon8DarkPower(m); break;
+				} break;
+			case "downfall:CharBossMerchant": pow = new Weapon7ThunderPower(m); break;
 
 
 			// Jungle Act 2
@@ -265,5 +361,4 @@ public class FirstTurnEnemyWeaponHelper {
 		}
 		return pow;
 	}
-
 }

@@ -5,7 +5,6 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -31,14 +30,11 @@ public class TextureLoader {
      */
     public static Texture getTexture(final String filePath, boolean linear) {
         if (textures.get(filePath) == null) {
-            try {
-                loadTexture(filePath, linear);
-            } catch (GdxRuntimeException e) {
+            try { loadTexture(filePath, linear); }
+            catch (GdxRuntimeException e) {
                 logger.info("Failed to find texture " + filePath, e);
                 Texture missing = getTextureNull(imagePath("missing.png"), false);
-                if (missing == null) {
-                    logger.info("missing.png is missing, should be at " + imagePath("missing.png"));
-                }
+                if (missing == null) { logger.info("missing.png is missing, should be at " + imagePath("missing.png")); }
                 return missing;
             }
         }
@@ -67,11 +63,8 @@ public class TextureLoader {
      */
     public static Texture getTextureNull(final String filePath, boolean linear) {
         if (!textures.containsKey(filePath)) {
-            try {
-                loadTexture(filePath, linear);
-            } catch (GdxRuntimeException e) {
-                textures.put(filePath, null);
-            }
+            try { loadTexture(filePath, linear); }
+            catch (GdxRuntimeException e) { textures.put(filePath, null); }
         }
         Texture t = textures.get(filePath);
         if (t != null && t.getTextureObjectHandle() == 0) {
@@ -81,54 +74,35 @@ public class TextureLoader {
         return t;
     }
 
-    public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType)
-    {
+    public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType) {
         String textureString = imagePath("cards/" + cardType.name().toLowerCase(Locale.ROOT) + "/" + cardName + ".png");
 
         FileHandle h = Gdx.files.internal(textureString);
-        if (!h.exists())
-        {
+        if (!h.exists()) {
             switch (cardType) {
-                case ATTACK:
-                    textureString = imagePath("cards/attack/default.png");
-                    break;
-                case POWER:
-                    textureString = imagePath("cards/power/default.png");
-                    break;
-                default:
-                    textureString = imagePath("cards/skill/default.png");
-                    break;
+                case ATTACK: textureString = imagePath("cards/attack/default.png"); break;
+                case POWER: textureString = imagePath("cards/power/default.png"); break;
+                default: textureString = imagePath("cards/skill/default.png"); break;
             }
         }
-
         return textureString;
     }
 
-    private static void loadTexture(final String textureString) throws GdxRuntimeException {
-        loadTexture(textureString, false);
-    }
+    private static void loadTexture(final String textureString) throws GdxRuntimeException { loadTexture(textureString, false); }
 
     private static void loadTexture(final String textureString, boolean linearFilter) throws GdxRuntimeException {
         Texture texture = new Texture(textureString);
-        if (linearFilter)
-        {
-            texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        }
-        else
-        {
-            texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
-        }
+        if (linearFilter) { texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear); }
+        else { texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest); }
         logger.info("Loaded texture " + textureString);
         textures.put(textureString, texture);
     }
 
-    public static Texture getPowerTexture(final String powerName)
-    {
+    public static Texture getPowerTexture(final String powerName) {
         String textureString = powerPath(powerName + ".png");
         return getTexture(textureString);
     }
-    public static Texture getHiDefPowerTexture(final String powerName)
-    {
+    public static Texture getHiDefPowerTexture(final String powerName) {
         String textureString = powerPath("large/" + powerName + ".png");
         return getTextureNull(textureString);
     }

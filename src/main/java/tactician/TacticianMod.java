@@ -2,16 +2,15 @@ package tactician;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
-import basemod.abstracts.CustomPlayer;
 import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.events.beyond.Falling;
+import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.events.exordium.GoldenWing;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
-import tactician.events.GoldenWingTactician;
+import tactician.events.*;
 import tactician.potions.BasePotion;
 import tactician.relics.BaseRelic;
 import tactician.util.GeneralUtils;
@@ -71,13 +70,16 @@ public class TacticianMod implements
 
     @Override
     public void receivePostInitialize() {
-        // This loads the image used as an icon in the in-game mods menu.
-        Texture badgeTexture = TextureLoader.getTexture(imagePath("badge.png"));
+        Texture badgeTexture = TextureLoader.getTexture(imagePath("badge.png")); //  Load the icon image in the Mods submenu.
         // Set up the mod information displayed in the in-game mods menu. The information used is taken from your pom.xml file.
         // If you want to set up a config panel, that will be done here. The Mod Badges page has a basic example of this, but setting up config is overall a bit complex.
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
         registerPotions();
+
+        // Custom events are added here.
         BaseMod.addEvent(new AddEventParams.Builder(GoldenWingTactician.ID, GoldenWingTactician.class).playerClass(TACTICIAN).overrideEvent(GoldenWing.ID).create());
+        BaseMod.addEvent(new AddEventParams.Builder(VampiresTactician.ID, VampiresTactician.class).playerClass(TACTICIAN).overrideEvent(Vampires.ID).create());
+        BaseMod.addEvent(new AddEventParams.Builder(FallingTactician.ID, FallingTactician.class).playerClass(TACTICIAN).overrideEvent(Falling.ID).create());
     }
 
     /*----------Localization----------*/
@@ -174,12 +176,10 @@ public class TacticianMod implements
                     "\tat the top of the " + TacticianMod.class.getSimpleName() + " java file.");
         }
         if (!resources.child("images").exists()) {
-            throw new RuntimeException("\n\tFailed to find the 'images' folder in the mod's 'resources/" + name + "' folder; Make sure the " +
-                    "images folder is in the correct location.");
+            throw new RuntimeException("\n\tFailed to find the 'images' folder in the mod's 'resources/" + name + "' folder; Make sure the images folder is in the correct location.");
         }
         if (!resources.child("localization").exists()) {
-            throw new RuntimeException("\n\tFailed to find the 'localization' folder in the mod's 'resources/" + name + "' folder; Make sure the " +
-                    "localization folder is in the correct location.");
+            throw new RuntimeException("\n\tFailed to find the 'localization' folder in the mod's 'resources/" + name + "' folder; Make sure the localization folder is in the correct location.");
         }
         return name;
     }
@@ -324,7 +324,6 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:StatDecreaseFE", "tactician/audio/effect/StatDecreaseFE.ogg");
         BaseMod.addAudio("tactician:MasterSeal", "tactician/audio/effect/MasterSeal.ogg");
         BaseMod.addAudio("tactician:TipTheScales", "tactician/audio/effect/TipTheScales.ogg");
-        BaseMod.addAudio("tactician:UnplayableFE", "tactician/audio/effect/UnplayableFE.ogg");
         BaseMod.addAudio("tactician:Despoil", "tactician/audio/effect/Despoil.ogg");
         BaseMod.addAudio("tactician:PartOfThePlan", "tactician/audio/effect/PartOfThePlan.ogg");
         BaseMod.addAudio("tactician:ChaosStyle", "tactician/audio/effect/ChaosStyle.ogg");
@@ -356,6 +355,5 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:Male_TipTheScales", "tactician/audio/voice/Male_TipTheScales.ogg");
         BaseMod.addAudio("tactician:Male_QuickBurn", "tactician/audio/voice/Male_QuickBurn.ogg");
         BaseMod.addAudio("tactician:Male_GrandmasterForm", "tactician/audio/voice/Male_GrandmasterForm.ogg");
-        BaseMod.addAudio("tactician:Male_RunicDome", "tactician/audio/voice/Male_RunicDome.ogg");
     }
 }

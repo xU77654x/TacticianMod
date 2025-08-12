@@ -7,13 +7,9 @@ public class KeywordInfo {
     public String[] NAMES;
     public String[] EXTRA = new String[] {};
 
-    public KeywordInfo() {
-    }
+    public KeywordInfo() {}
 
     public void prep() {
-        for (int i = 0; i < NAMES.length; ++i)
-        {
-            NAMES[i] = NAMES[i].toLowerCase();
-        }
+        for (int i = 0; i < NAMES.length; ++i)  { NAMES[i] = NAMES[i].toLowerCase(); }
     }
 }
