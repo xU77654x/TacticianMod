@@ -2,7 +2,6 @@ package tactician.relics;
 
 import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
-import basemod.helpers.CardPowerTip;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
@@ -11,7 +10,6 @@ import com.megacrit.cardcrawl.cards.red.Anger;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 

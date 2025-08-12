@@ -2,10 +2,6 @@ package tactician.relics;
 
 import basemod.abstracts.CustomRelic;
 import basemod.helpers.RelicType;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.helpers.TipHelper;
-import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import tactician.util.GeneralUtils;
 import tactician.util.TextureLoader;
 import com.megacrit.cardcrawl.cards.AbstractCard;

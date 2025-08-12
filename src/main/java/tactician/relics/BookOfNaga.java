@@ -6,17 +6,12 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
-
-import static com.codedisaster.steamworks.SteamFriends.OverlayDialog.Settings;
 import static tactician.TacticianMod.makeID;
-
 
 public class BookOfNaga extends BaseRelic {
 	private static final String NAME = "BookOfNaga";

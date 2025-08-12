@@ -33,7 +33,7 @@ public class GoldenWingTactician extends AbstractImageEvent {
 	private final boolean canAttack;
 	private boolean purgeResult = false;
 	private CurScreen screen = CurScreen.INTRO;
-	private enum CurScreen { INTRO, PURGE, MAP; }
+	private enum CurScreen { INTRO, PURGE, MAP }
 
 	private static final String INTRO = vanilla_ES.DESCRIPTIONS[0];
 	private static final String AGREE_DIALOG = vanilla_ES.DESCRIPTIONS[1];
