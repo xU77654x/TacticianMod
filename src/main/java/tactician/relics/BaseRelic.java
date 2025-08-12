@@ -8,8 +8,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.RelicStrings;
-
-import static com.megacrit.cardcrawl.cards.AbstractCard.IMG_WIDTH;
 import static tactician.TacticianMod.relicPath;
 
 public abstract class BaseRelic extends CustomRelic {
