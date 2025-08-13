@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.beyond.Falling;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.events.exordium.GoldenWing;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import tactician.cards.TacticianCard;
@@ -35,11 +34,9 @@ import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.floorNum;
 import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 

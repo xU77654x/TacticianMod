@@ -17,8 +17,6 @@ import com.megacrit.cardcrawl.localization.TutorialStrings;
 import com.megacrit.cardcrawl.ui.FtueTip;
 import com.megacrit.cardcrawl.vfx.combat.BattleStartEffect;
 import tactician.TacticianMod;
-import tactician.util.TextureLoader;
-import static tactician.TacticianMod.makeID;
 
 public class TutorialTactician extends FtueTip {
 	public static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString("tactician:TutorialTactician");
