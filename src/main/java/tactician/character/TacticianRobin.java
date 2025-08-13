@@ -80,7 +80,7 @@ public class TacticianRobin extends CustomPlayer {
     // In-game images.
     private static final String SHOULDER_1 = characterPath("Tactician_RestSite1.png"); // Shoulder 1 and 2 are used at rest sites.
     private static final String SHOULDER_2 = characterPath("Tactician_RestSite2.png");
-    private static final String CORPSE = characterPath("corpse.png"); // When you die (couldn't be me).
+    private static final String CORPSE = characterPath("Tactician_Corpse.png"); // When you die (couldn't be me).
 
     // Textures to satiate BaseMod's stubborn energy orb implementation.
     private static final String[] orbTextures = {
