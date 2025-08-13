@@ -109,7 +109,7 @@ public class TacticianRobin extends CustomPlayer {
         }); // A NONE animation results in the image given in initializeClass being used.
 
         // Character hitbox. States the x/y position, then width and height.
-        initializeClass(characterPath("Tactician_StaticRender.png"), SHOULDER_2, SHOULDER_1, CORPSE, getLoadout(), 0.0F, 12F, 229.0F, 250.0F, new EnergyManager(ENERGY_PER_TURN));
+        initializeClass(characterPath("Tactician_StaticRender.png"), SHOULDER_2, SHOULDER_1, CORPSE, getLoadout(), 0.0F, 0.0F, 229.0F, 250.0F, new EnergyManager(ENERGY_PER_TURN));
 
         // Location for text bubbles. You can adjust it as necessary. For most characters, these values are fine.
         dialogX = (drawX + 0.0F * Settings.scale);

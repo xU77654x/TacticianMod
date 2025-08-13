@@ -24,17 +24,17 @@
 
     <!-- This information will be displayed in ModTheSpire, the modded launcher. -->
     <name>The Tactician</name>
-    <version>0.9.1</version>
+    <version>0.9.2</version>
     <!-- Avoid using \ in this description, as they can cause the description to fail to load. -->
     <!-- If you really want to use them, you'll need to "escape" them by putting another one in front, like \\ -->
     <description>Robin, the best tactician from Ylisse, enters the Spire!
 
         \nUtilize weapon types to turn the tides of battle in your favor.
-        If weapon-strong, your cards gain +3 damage and Block; if weapon-weak, these get -3.
-        If attacked by an enemy while you are weapon-strong, you take -3 damage; if weapon-weak, you take +3.
-        Gain and use Deflect to damage attacking enemies; if weapon-strong, you lose only half the amount.
+        If weapon-strong, your cards gain +3 damage / Block; if weapon-weak, these get -3.
+        If you are attacked while weapon-strong, you take -3 damage; if weapon-weak, +3.
+        Gain and use Deflect to damage attacking enemies; if weapon-strong, lose only half.
 
-        - Sword: Strong against Axe and Dark, but weak to Lance and Bow.
+        \n- Sword: Strong against Axe and Dark, but weak to Lance and Bow.
         - Lance: Strong against Sword and Dark, but weak to Axe and Bow.
         - Axe: Strong against Lance and Dark, but weak to Sword and Bow.
         - Bow: Strong against Sword, Lance, and Axe; weak to Wind, Fire, and Thunder.
@@ -43,10 +43,10 @@
         - Thunder: Strong against Fire and Bow, but weak to Wind and Dark.
         - Dark: Strong against Wind, Fire, and Thunder; weak to Sword, Lance, and Axe.
 
-        Special thanks to the following for the development of this mod:
+        \nSpecial thanks to the following for the development of this mod:
         Mistress Autumn, Vex'd, Bat, advocate, Ellie, Ninja Puppy, Indi, modargo, linger
 
-        Some code was used from Downfall, Packmaster, and Captain Falcon.
+        \nSome code was used from Downfall, Packmaster, and Captain Falcon.
         </description>
 
     <!--You shouldn't need to change anything below this point, but feel free to look at it.-->

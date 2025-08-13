@@ -17,7 +17,7 @@ public class FirstTurnEnemyWeaponHelper {
 	public static AbstractPower enemyWeaponCalc (AbstractMonster m, AbstractMonster.Intent intent) {
 		AbstractPower pow = new Weapon0NeutralPower(m);
 
-		switch (m.id) { // You can add cases for non-vanilla enemies using quotes without the ID.
+		switch (m.id) {
 			// Standard Act 1
 			case AcidSlime_S.ID:
 				if (intent == DEBUFF) { pow = new Weapon3AxePower(m); }

@@ -1,12 +1,15 @@
 package tactician;
 
-import basemod.AutoAdd;
-import basemod.BaseMod;
+import basemod.*;
 import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.beyond.Falling;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.events.exordium.GoldenWing;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
@@ -32,9 +35,12 @@ import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
+
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.floorNum;
 import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
 @SpireInitializer
@@ -45,7 +51,8 @@ public class TacticianMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         PostInitializeSubscriber,
-        AddAudioSubscriber
+        AddAudioSubscriber,
+        OnStartBattleSubscriber
 
 {
     public static ModInfo info;
@@ -57,6 +64,12 @@ public class TacticianMod implements
     // This is used to prefix the IDs of various objects like cards and relics, to avoid conflicts between different mods using the same name for things.
     public static String makeID(String id) { return modID + ":" + id; }
 
+    public static Properties defaultSettings = new Properties();
+    public static final String SKIP_TUTORIALS_SETTING = "Skip Tutorial";
+    public static Boolean skipTutorialsPlaceholder = true;
+    public static ModLabeledToggleButton skipTutorials;
+    // private static final String defaultLanguage = "eng";
+
     // This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
     public static void initialize() {
         new TacticianMod();
@@ -66,11 +79,17 @@ public class TacticianMod implements
     public TacticianMod() {
         BaseMod.subscribe(this); // This will make BaseMod trigger all the subscribers at their appropriate times.
 		logger.info("{} subscribed to BaseMod.", modID); // logger.info(modID + " subscribed to BaseMod.");
+        defaultSettings.setProperty("Skip Tutorial", "FALSE");
+        try {
+            SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
+            skipTutorialsPlaceholder = config.getBool("Skip Tutorial");
+        }
+        catch (IOException e) { e.printStackTrace(); }
     }
 
     @Override
     public void receivePostInitialize() {
-        Texture badgeTexture = TextureLoader.getTexture(imagePath("badge.png")); //  Load the icon image in the Mods submenu.
+        Texture badgeTexture = TextureLoader.getTexture(imagePath("TacticianBadge.png")); //  Load the icon image in the Mods submenu.
         // Set up the mod information displayed in the in-game mods menu. The information used is taken from your pom.xml file.
         // If you want to set up a config panel, that will be done here. The Mod Badges page has a basic example of this, but setting up config is overall a bit complex.
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
@@ -80,6 +99,15 @@ public class TacticianMod implements
         BaseMod.addEvent(new AddEventParams.Builder(GoldenWingTactician.ID, GoldenWingTactician.class).playerClass(TACTICIAN).overrideEvent(GoldenWing.ID).create());
         BaseMod.addEvent(new AddEventParams.Builder(VampiresTactician.ID, VampiresTactician.class).playerClass(TACTICIAN).overrideEvent(Vampires.ID).create());
         BaseMod.addEvent(new AddEventParams.Builder(FallingTactician.ID, FallingTactician.class).playerClass(TACTICIAN).overrideEvent(Falling.ID).create());
+
+        // ModPanel settingsPanel = new ModPanel();
+        // settingsPanel.addUIElement(skipTutorials);
+        // BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, settingsPanel);
+    }
+
+    @Override
+    public void receiveOnBattleStart(AbstractRoom abstractRoom) {
+        if (AbstractDungeon.ascensionLevel == 0 && floorNum == 1 && AbstractDungeon.player instanceof TacticianRobin) { AbstractDungeon.ftue = new TutorialTactician(); }
     }
 
     /*----------Localization----------*/
@@ -101,14 +129,10 @@ public class TacticianMod implements
     }
 
     public static void registerPotions() {
-        new AutoAdd(modID) // Loads files from this mod.
-                .packageFilter(BasePotion.class) // In the same package as this class.
-                .any(BasePotion.class, (info, potion) -> { // Run this code for any classes that extend this class.
-                    // These three null parameters are colors. If they're not null, they'll overwrite the color set in the potions themselves.
-                    // This is an old feature added before having potions determine their own color was possible.
-                    BaseMod.addPotion(potion.getClass(), null, null, null, potion.ID, potion.playerClass);
-                    // playerClass will make a potion character-specific. By default, it's null and will do nothing.
-                });
+        new AutoAdd(modID).packageFilter(BasePotion.class).any(BasePotion.class, (info, potion) -> { BaseMod.addPotion(potion.getClass(), null, null, null, potion.ID, potion.playerClass); });
+        // This code runs for any classes that extend this class.
+        // These three null parameters are a deprecated way to ste potion colors. If they're not null, they'll overwrite the color set in the potions themselves.
+        // playerClass will make a potion character-specific. By default, it's null and will do nothing.
     }
 
     private void loadLocalization(String lang) {
@@ -121,6 +145,7 @@ public class TacticianMod implements
         BaseMod.loadCustomStringsFile(PotionStrings.class, localizationPath(lang, "PotionStrings.json"));
         BaseMod.loadCustomStringsFile(PowerStrings.class, localizationPath(lang, "PowerStrings.json"));
         BaseMod.loadCustomStringsFile(RelicStrings.class, localizationPath(lang, "RelicStrings.json"));
+        BaseMod.loadCustomStringsFile(TutorialStrings.class, localizationPath(lang, "TutorialStrings.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, localizationPath(lang, "UIStrings.json"));
     }
 
@@ -223,8 +248,6 @@ public class TacticianMod implements
             // If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
         });
     }
-
-
 
     @Override
     public void receiveAddAudio() {
