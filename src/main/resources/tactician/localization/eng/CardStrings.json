@@ -502,15 +502,15 @@
     "DESCRIPTION": "Gain temp. Dexterity. NL Gain temp. Strength. NL Gain temp. Focus."
   },
   "${modID}:TempStrength": {
-    "NAME": "Death Blow",
+    "NAME": "Temp. Strength",
     "DESCRIPTION": "Gain temp. Strength."
   },
   "${modID}:TempFocus": {
-    "NAME": "Fiendish Blow",
+    "NAME": "Temp. Focus",
     "DESCRIPTION": "Gain temp. Focus."
   },
   "${modID}:TempDexterity": {
-    "NAME": "Armored Blow",
+    "NAME": "Temp. Dexterity",
     "DESCRIPTION": "Gain temp. Dexterity."
   },
   "${modID}:UpgradeAttacks": {
@@ -527,7 +527,8 @@
   },
   "${modID}:TempBlueCandle": {
     "NAME": "Blue Candle",
-    "DESCRIPTION": "Gain a Blue Candle for the rest of combat. Lose 1 HP to NL Exhaust any Curse."
+    "DESCRIPTION": "Gain a Blue Candle for the rest of combat. All Curses are playable, Exhaust, and cost 1 HP. Channel Orbs for free.",
+    "EXTENDED_DESCRIPTION": ["Gain a Blue Candle for the rest of combat. All Curses are playable, Exhaust, and cost 1 HP."]
   },
   "${modID}:TempMedicalKit": {
     "NAME": "Medical Kit",

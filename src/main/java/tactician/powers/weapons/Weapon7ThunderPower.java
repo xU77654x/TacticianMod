@@ -35,7 +35,7 @@ public class Weapon7ThunderPower extends AbstractPower {
 		this.amount = -1;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 81, 81);
+		this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 80, 80);
 		this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 40, 40);
 		this.updateDescription();
 		this.p = AbstractDungeon.player;
