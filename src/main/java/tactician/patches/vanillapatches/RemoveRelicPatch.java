@@ -55,4 +55,4 @@ public class RemoveRelicPatch {
 			return LineFinder.findInOrder(ctMethodToPatch, methodCallMatcher);
 		}
 	}
-} // Credit to Prismatic for this patch.
+} // Credit to The Prismatic for this patch.

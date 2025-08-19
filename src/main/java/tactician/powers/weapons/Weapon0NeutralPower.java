@@ -1,6 +1,7 @@
 package tactician.powers.weapons;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import tactician.TacticianMod;
 import tactician.powers.ChaosStylePower;
+import tactician.powers.ZealPower;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -51,6 +53,13 @@ public class Weapon0NeutralPower extends AbstractPower {
 		if (owner.hasPower(Weapon7ThunderPower.POWER_ID)) { addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, Weapon7ThunderPower.POWER_ID)); }
 		if (owner.hasPower(Weapon8DarkPower.POWER_ID)) { addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, Weapon8DarkPower.POWER_ID)); }
 		if (owner.hasPower(ChaosStylePower.POWER_ID)) { addToTop(new GainBlockAction(this.owner, this.owner.getPower(ChaosStylePower.POWER_ID).amount)); }
+	}
+
+	@Override
+	public float atDamageGive(float damage, DamageInfo.DamageType type) {
+		if (type == DamageInfo.DamageType.NORMAL) {
+			if (owner != this.p) {if (this.p.hasPower(ZealPower.POWER_ID)) { return damage -3; }}}
+		return damage;
 	}
 
 	public void updateDescription() { this.description = DESCRIPTIONS[0];}

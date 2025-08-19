@@ -20,7 +20,7 @@ public class SeraphRobe extends BaseRelic {
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + HEAL + this.DESCRIPTIONS[1] + GOLD + this.DESCRIPTIONS[2]; }
 
     public void justEnteredRoom(AbstractRoom room) {
-        if (room instanceof com.megacrit.cardcrawl.rooms.TreasureRoom) {
+        if (room instanceof com.megacrit.cardcrawl.rooms.TreasureRoom || room instanceof com.megacrit.cardcrawl.rooms.TreasureRoomBoss) {
             flash();
             this.pulse = true;
         }
@@ -34,10 +34,21 @@ public class SeraphRobe extends BaseRelic {
         AbstractDungeon.player.gainGold(GOLD);
     }
 
-    public void onChestOpen() {
+    @Override
+    public void onChestOpen(boolean bossChest) {
         flash();
-        AbstractDungeon.player.heal(HEAL, true);
-        AbstractDungeon.player.gainGold(GOLD);
+        if (!bossChest) {
+            AbstractDungeon.player.heal(HEAL, true);
+            AbstractDungeon.player.gainGold(GOLD);
+        }
+        else {
+            if (this.pulse == true) {
+                AbstractDungeon.player.heal(HEAL, true);
+                AbstractDungeon.player.gainGold(GOLD);
+                this.pulse = false;
+            }
+        }
+
     }
 
     @Override

@@ -28,7 +28,7 @@ public class Reposition extends Tactician9CopyCard {
 
     public Reposition() {
         super(ID, info);
-        setBlock(4, 0);
+        setBlock(4, 3);
         setMagic(0, 0);
         tags.add(CustomTags.COPY);
     }
