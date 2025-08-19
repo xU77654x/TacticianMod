@@ -13,7 +13,6 @@ import org.jetbrains.annotations.NotNull;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.events.*;
-// import tactician.patches.selfpatches.ReliquaryFlaskCardsPatch;
 import tactician.potions.BasePotion;
 import tactician.relics.BaseRelic;
 import tactician.util.GeneralUtils;
@@ -35,15 +34,10 @@ import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.floorNum;
 import static tactician.character.TacticianRobin.Meta.TACTICIAN;
-// import static tactician.patches.selfpatches.ReliquaryFlaskCardsPatch.TacticianFlaskCards.POTION_TO_VAPOR;
 
 @SuppressWarnings({"CallToPrintStackTrace", "ConstantValue", "StringConcatenationArgumentToLogCall"})
 @SpireInitializer
@@ -139,7 +133,7 @@ public class TacticianMod implements
         BaseMod.loadCustomStringsFile(CardStrings.class, localizationPath(lang, "CardStrings.json"));
         BaseMod.loadCustomStringsFile(CharacterStrings.class, localizationPath(lang, "CharacterStrings.json"));
         BaseMod.loadCustomStringsFile(EventStrings.class, localizationPath(lang, "EventStrings.json"));
-        BaseMod.loadCustomStringsFile(OrbStrings.class, localizationPath(lang, "OrbStrings.json"));
+        // BaseMod.loadCustomStringsFile(OrbStrings.class, localizationPath(lang, "OrbStrings.json"));
         BaseMod.loadCustomStringsFile(PotionStrings.class, localizationPath(lang, "PotionStrings.json"));
         BaseMod.loadCustomStringsFile(PowerStrings.class, localizationPath(lang, "PowerStrings.json"));
         BaseMod.loadCustomStringsFile(RelicStrings.class, localizationPath(lang, "RelicStrings.json"));

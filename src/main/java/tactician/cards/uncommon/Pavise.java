@@ -15,10 +15,7 @@ import tactician.powers.weapons.*;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
-
 import java.util.ArrayList;
-
-import static java.lang.Math.min;
 
 public class Pavise extends Tactician9CopyCard {
     public static final String ID = makeID(Pavise.class.getSimpleName());
