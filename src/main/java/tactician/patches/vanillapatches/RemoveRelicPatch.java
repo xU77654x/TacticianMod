@@ -18,32 +18,33 @@ public class RemoveRelicPatch {
 	public static void Insert() {
 		if (AbstractDungeon.player.chosenClass == TACTICIAN) {
 			AbstractDungeon.relicsToRemoveOnStart.add(RunicDome.ID); // Take a wild guess.
-			AbstractDungeon.relicsToRemoveOnStart.add("Elizabethan Collar"); // Vampires event guarantees an Injury.
-			AbstractDungeon.relicsToRemoveOnStart.add("Runic Blindfold"); // Same reason as Runic Dome.
-			AbstractDungeon.relicsToRemoveOnStart.add("Deflecting Bracers"); // I don't want both Deflect and Counter used together.
-
+			AbstractDungeon.relicsToRemoveOnStart.add("champ:DeflectingBracers"); // I don't want both Deflect and Counter used together.
+			AbstractDungeon.relicsToRemoveOnStart.add("reliquary:ElizabethanCollar"); // Vampires event guarantees an Injury.
+			AbstractDungeon.relicsToRemoveOnStart.add("reliquary:FishingReel"); // Applies a *debuff* to prevent infinite energy.
+			AbstractDungeon.relicsToRemoveOnStart.add("HugYouRelics:RunicBlindfold"); // Same reason as Runic Dome.
 
 			for (String remove : AbstractDungeon.relicsToRemoveOnStart) {
-				Iterator<String> s; /*
+				Iterator<String> s;
+
 				for (s = AbstractDungeon.commonRelicPool.iterator(); s.hasNext(); ) {
-					String derp = s.next();
-					if (derp.equals(remove)) { s.remove(); }
+					String common = s.next();
+					if (common.equals(remove)) { s.remove(); }
 				}
 				for (s = AbstractDungeon.uncommonRelicPool.iterator(); s.hasNext(); ) {
-					String derp = s.next();
-					if (derp.equals(remove)) { s.remove(); }
+					String uncommon = s.next();
+					if (uncommon.equals(remove)) { s.remove(); }
 				}
 				for (s = AbstractDungeon.rareRelicPool.iterator(); s.hasNext(); ) {
-					String derp = s.next();
-					if (derp.equals(remove)) { s.remove(); }
+					String rare = s.next();
+					if (rare.equals(remove)) { s.remove(); }
 				}
 				for (s = AbstractDungeon.shopRelicPool.iterator(); s.hasNext(); ) {
-					String derp = s.next();
-					if (derp.equals(remove))  s.remove();
-				} */
+					String boss = s.next();
+					if (boss.equals(remove))  s.remove();
+				}
 				for (s = AbstractDungeon.bossRelicPool.iterator(); s.hasNext(); ) {
-					String derp = s.next();
-					if (derp.equals(remove)) { s.remove(); }
+					String shop = s.next();
+					if (shop.equals(remove)) { s.remove(); }
 				}
 			}
 		}

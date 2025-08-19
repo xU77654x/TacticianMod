@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.events.exordium.GoldenWing;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import org.jetbrains.annotations.NotNull;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.events.*;
@@ -33,11 +34,13 @@ import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
+
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.floorNum;
 import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
+@SuppressWarnings({"CallToPrintStackTrace", "ConstantValue", "StringConcatenationArgumentToLogCall"})
 @SpireInitializer
 public class TacticianMod implements
         EditCardsSubscriber,
@@ -118,7 +121,7 @@ public class TacticianMod implements
     }
 
     public static void registerPotions() {
-        new AutoAdd(modID).packageFilter(BasePotion.class).any(BasePotion.class, (info, potion) -> { BaseMod.addPotion(potion.getClass(), null, null, null, potion.ID, potion.playerClass); });
+        new AutoAdd(modID).packageFilter(BasePotion.class).any(BasePotion.class, (info, potion) -> BaseMod.addPotion(potion.getClass(), null, null, null, potion.ID, potion.playerClass));
         // This code runs for any classes that extend this class.
         // These three null parameters are a deprecated way to ste potion colors. If they're not null, they'll overwrite the color set in the potions themselves.
         // playerClass will make a potion character-specific. By default, it's null and will do nothing.
@@ -172,7 +175,7 @@ public class TacticianMod implements
     public static String characterPath(String file) { return resourcesFolder + "/images/character/" + file; }
     public static String powerPath(String file) { return resourcesFolder + "/images/powers/" + file; }
     public static String relicPath(String file) { return resourcesFolder + "/images/relics/" + file; }
-    public static String musicPath(String file) { return resourcesFolder + "/audio/music/" + file; }
+    // public static String musicPath(String file) { return resourcesFolder + "/audio/music/" + file; }
 
     /**
      * Checks the expected resources path based on the package name.
@@ -182,6 +185,13 @@ public class TacticianMod implements
         int separator = name.indexOf('.');
         if (separator > 0) { name = name.substring(0, separator); }
 
+        FileHandle resources = getFileHandle(name);
+        if (!resources.child("images").exists()) { throw new RuntimeException("\n\tFailed to find the 'images' folder in the mod's 'resources/" + name + "' folder; Make sure the images folder is in the correct location."); }
+        if (!resources.child("localization").exists()) { throw new RuntimeException("\n\tFailed to find the 'localization' folder in the mod's 'resources/" + name + "' folder; Make sure the localization folder is in the correct location."); }
+        return name;
+    }
+
+    private static @NotNull FileHandle getFileHandle(String name) {
         FileHandle resources = new LwjglFileHandle(name, Files.FileType.Internal);
 
         if (!resources.exists()) {
@@ -190,13 +200,7 @@ public class TacticianMod implements
                 "\t\"private static final String resourcesFolder = checkResourcesPath();\"\n" +
                 "\tat the top of the " + TacticianMod.class.getSimpleName() + " java file.");
         }
-        if (!resources.child("images").exists()) {
-            throw new RuntimeException("\n\tFailed to find the 'images' folder in the mod's 'resources/" + name + "' folder; Make sure the images folder is in the correct location.");
-        }
-        if (!resources.child("localization").exists()) {
-            throw new RuntimeException("\n\tFailed to find the 'localization' folder in the mod's 'resources/" + name + "' folder; Make sure the localization folder is in the correct location.");
-        }
-        return name;
+        return resources;
     }
 
     /**
@@ -369,4 +373,11 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:Male_QuickBurn", "tactician/audio/voice/Male_QuickBurn.ogg");
         BaseMod.addAudio("tactician:Male_GrandmasterForm", "tactician/audio/voice/Male_GrandmasterForm.ogg");
     }
+
+    /* Tasks which could not be implemented due to technical limitations:
+    - Custom music, due to StS1 not supporting looping music.
+    - Multiple weapon types on Downfall bosses based on intention or card.
+    - Reliquary Boiling Flask cards for the four potions.
+    - Animated sprite using a 3D model with animations put onto a sprite sheet.
+     */
 }

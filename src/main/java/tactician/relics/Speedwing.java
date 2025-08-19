@@ -3,11 +3,18 @@ package tactician.relics;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import tactician.actions.EasyModalChoiceAction;
+import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
+import tactician.powers.weapons.*;
+
+import java.util.ArrayList;
 
 import static tactician.TacticianMod.makeID;
 
@@ -16,9 +23,8 @@ public class Speedwing extends BaseRelic {
     public static final String ID = makeID(NAME); // Adds prefix to relic ID, resulting in modID:MyRelic
     private static final RelicTier RARITY = RelicTier.COMMON;
     private static final LandingSound SOUND = LandingSound.CLINK;
-    private static final int DEFLECT = 3; // This is used rather than a hard-coded value due to the description.
-    private static final int ENERGY = 1;
-    private static final int TURN = 2;
+    private static final int DEFLECT = 8; // This is used rather than a hard-coded value due to the description.
+    private static final int TURN = 1;
 
     public Speedwing() { super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
 
@@ -34,10 +40,22 @@ public class Speedwing extends BaseRelic {
         if (this.counter == TURN) {
             flash();
             addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-            addToBot(new GainEnergyAction(ENERGY));
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DeflectPower(DEFLECT), DEFLECT));
             this.counter = -1;
             this.grayscale = true;
+            AbstractPlayer p = AbstractDungeon.player;
+            if (AbstractDungeon.player instanceof TacticianRobin) {
+                ArrayList<AbstractCard> easyCardList = new ArrayList<>();
+                easyCardList.add(new Weapon1Sword(() -> { if (!p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); } }));
+                easyCardList.add(new Weapon2Lance(() -> { if (!p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); } }));
+                easyCardList.add(new Weapon3Axe(() -> { if (!p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); } }));
+                easyCardList.add(new Weapon4Bow(() -> { if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); } }));
+                easyCardList.add(new Weapon5Wind(() -> { if (!p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); } }));
+                easyCardList.add(new Weapon6Fire(() -> { if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); } }));
+                easyCardList.add(new Weapon7Thunder(() -> { if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); } }));
+                easyCardList.add(new Weapon8Dark(() -> { if (!p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); } }));
+                addToBot(new EasyModalChoiceAction(easyCardList));
+            }
         }
     }
 

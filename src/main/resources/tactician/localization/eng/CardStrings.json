@@ -527,11 +527,11 @@
   },
   "${modID}:TempBlueCandle": {
     "NAME": "Blue Candle",
-    "DESCRIPTION": "Gain a Blue Candle for the rest of combat. All Curses are playable, Exhaust, and cost 1 HP. Channel Orbs for free.",
-    "EXTENDED_DESCRIPTION": ["Gain a Blue Candle for the rest of combat. All Curses are playable, Exhaust, and cost 1 HP."]
+    "DESCRIPTION": "All Curses are playable, Exhaust, and cost 1 HP. Hex and Anathema only cost 1 HP.",
+    "EXTENDED_DESCRIPTION": ["All Curses are playable, Exhaust, and cost 1 HP."]
   },
   "${modID}:TempMedicalKit": {
     "NAME": "Medical Kit",
-    "DESCRIPTION": "Gain a Medical Kit for the rest of combat. Exhaust any Unplayable Status card."
+    "DESCRIPTION": "Unplayable Status cards can be NL Exhausted for free."
   }
 }

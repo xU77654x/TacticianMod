@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.core.Settings;
 import static tactician.TacticianMod.makeID;
 
 public class SeraphRobe extends BaseRelic {
@@ -18,6 +19,11 @@ public class SeraphRobe extends BaseRelic {
 
     @Override
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + HEAL + this.DESCRIPTIONS[1] + GOLD + this.DESCRIPTIONS[2]; }
+
+
+    public boolean canSpawn() {
+        return (Settings.isEndless || AbstractDungeon.floorNum <= 33); // Cannot spawn on or after the boss chest of Act 2.
+    }
 
     public void justEnteredRoom(AbstractRoom room) {
         if (room instanceof com.megacrit.cardcrawl.rooms.TreasureRoom || room instanceof com.megacrit.cardcrawl.rooms.TreasureRoomBoss) {

@@ -20,6 +20,8 @@ import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
+import static java.lang.Math.max;
+
 public class ExhaustiveStrike extends Tactician3AxeCard {
     public static final String ID = makeID(ExhaustiveStrike.class.getSimpleName());
     private static final CardStats info = new CardStats(
@@ -57,10 +59,13 @@ public class ExhaustiveStrike extends Tactician3AxeCard {
     public void calculateCardDamage(AbstractMonster m) {
         if (m != null) {
             int realDamage = baseDamage;
-            baseDamage += Wiz.playerWeaponCalc(m, 9);
+            int weaponCalc = Wiz.playerWeaponCalc(m, 9);
+            baseDamage += weaponCalc;
+            magicNumber = baseMagicNumber + max(0, weaponCalc);
             super.calculateCardDamage(m);
             baseDamage = realDamage;
             this.isDamageModified = (damage != baseDamage);
+            this.isMagicNumberModified = (magicNumber != baseMagicNumber);
         }
     }
 
