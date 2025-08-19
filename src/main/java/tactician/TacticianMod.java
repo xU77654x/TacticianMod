@@ -3,7 +3,6 @@ package tactician;
 import basemod.*;
 import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
-import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.beyond.Falling;
 import com.megacrit.cardcrawl.events.city.Vampires;
@@ -34,7 +33,6 @@ import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.floorNum;
@@ -61,10 +59,11 @@ public class TacticianMod implements
     // This is used to prefix the IDs of various objects like cards and relics, to avoid conflicts between different mods using the same name for things.
     public static String makeID(String id) { return modID + ":" + id; }
 
+    /*
     public static Properties defaultSettings = new Properties();
     public static final String SKIP_TUTORIALS_SETTING = "Skip Tutorial";
     public static Boolean skipTutorialsPlaceholder = true;
-    public static ModLabeledToggleButton skipTutorials;
+    public static ModLabeledToggleButton skipTutorials; */
     // private static final String defaultLanguage = "eng";
 
     // This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
@@ -76,12 +75,6 @@ public class TacticianMod implements
     public TacticianMod() {
         BaseMod.subscribe(this); // This will make BaseMod trigger all the subscribers at their appropriate times.
 		logger.info("{} subscribed to BaseMod.", modID); // logger.info(modID + " subscribed to BaseMod.");
-        defaultSettings.setProperty("Skip Tutorial", "FALSE");
-        try {
-            SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
-            skipTutorialsPlaceholder = config.getBool("Skip Tutorial");
-        }
-        catch (IOException e) { e.printStackTrace(); }
     }
 
     @Override
@@ -89,17 +82,16 @@ public class TacticianMod implements
         Texture badgeTexture = TextureLoader.getTexture(imagePath("TacticianBadge.png")); //  Load the icon image in the Mods submenu.
         // Set up the mod information displayed in the in-game mods menu. The information used is taken from your pom.xml file.
         // If you want to set up a config panel, that will be done here. The Mod Badges page has a basic example of this, but setting up config is overall a bit complex.
-        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
-        registerPotions();
 
         // Custom events are added here.
         BaseMod.addEvent(new AddEventParams.Builder(GoldenWingTactician.ID, GoldenWingTactician.class).playerClass(TACTICIAN).overrideEvent(GoldenWing.ID).create());
         BaseMod.addEvent(new AddEventParams.Builder(VampiresTactician.ID, VampiresTactician.class).playerClass(TACTICIAN).overrideEvent(Vampires.ID).create());
         BaseMod.addEvent(new AddEventParams.Builder(FallingTactician.ID, FallingTactician.class).playerClass(TACTICIAN).overrideEvent(Falling.ID).create());
+        registerPotions();
 
         // ModPanel settingsPanel = new ModPanel();
         // settingsPanel.addUIElement(skipTutorials);
-        // BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, settingsPanel);
+        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
     }
 
     @Override
@@ -180,12 +172,13 @@ public class TacticianMod implements
     public static String characterPath(String file) { return resourcesFolder + "/images/character/" + file; }
     public static String powerPath(String file) { return resourcesFolder + "/images/powers/" + file; }
     public static String relicPath(String file) { return resourcesFolder + "/images/relics/" + file; }
+    public static String musicPath(String file) { return resourcesFolder + "/audio/music/" + file; }
 
     /**
      * Checks the expected resources path based on the package name.
      */
     private static String checkResourcesPath() {
-        String name = TacticianMod.class.getName(); //getPackage can be iffy with patching, so class name is used instead.
+        String name = TacticianMod.class.getName(); // getPackage can be iffy with patching, so the class name is used instead.
         int separator = name.indexOf('.');
         if (separator > 0) { name = name.substring(0, separator); }
 
@@ -193,9 +186,9 @@ public class TacticianMod implements
 
         if (!resources.exists()) {
             throw new RuntimeException("\n\tFailed to find resources folder; expected it to be named \"" + name + "\"." +
-                    " Either make sure the folder under resources has the same name as your mod's package, or change the line\n" +
-                    "\t\"private static final String resourcesFolder = checkResourcesPath();\"\n" +
-                    "\tat the top of the " + TacticianMod.class.getSimpleName() + " java file.");
+                " Either make sure the folder under resources has the same name as your mod's package, or change the line\n" +
+                "\t\"private static final String resourcesFolder = checkResourcesPath();\"\n" +
+                "\tat the top of the " + TacticianMod.class.getSimpleName() + " java file.");
         }
         if (!resources.child("images").exists()) {
             throw new RuntimeException("\n\tFailed to find the 'images' folder in the mod's 'resources/" + name + "' folder; Make sure the images folder is in the correct location.");

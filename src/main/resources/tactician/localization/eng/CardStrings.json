@@ -303,7 +303,7 @@
   "${modID}:Acrobat": {
     "NAME": "Acrobat",
     "DESCRIPTION": "Gain X+1 [E]. NL Shuffle a Hex to NL your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s} NL Shuffle a Hex to NL your draw pile."
+    "UPGRADE_DESCRIPTION": "Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}. NL Shuffle a Hex to NL your draw pile."
   },
   "${modID}:MastersTactics": {
     "NAME": "Master's Tactics",

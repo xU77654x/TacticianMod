@@ -232,7 +232,7 @@ public class FirstTurnEnemyWeaponHelper {
 				if (intent == ATTACK_DEBUFF) { pow = new Weapon2LancePower(m); }break;
 			case Deca.ID:
 				if (intent == DEFEND) { pow = new Weapon8DarkPower(m); }
-				if (intent == ATTACK) { pow = new Weapon4BowPower(m); } break;
+				if (intent == ATTACK_DEBUFF) { pow = new Weapon4BowPower(m); } break;
 			case Donu.ID:
 				if (intent == BUFF) { pow = new Weapon4BowPower(m); }
 				if (intent == ATTACK) { pow = new Weapon8DarkPower(m); } break;

@@ -24,6 +24,9 @@ public class KillingEdge extends BaseRelic {
 	@Override
 	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
 
+	@Override
+	public void onEquip() { this.counter = 0; }
+
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card.type == AbstractCard.CardType.ATTACK) {
 			this.counter++;
