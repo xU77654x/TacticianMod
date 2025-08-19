@@ -2,7 +2,6 @@ package tactician.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -40,17 +39,32 @@ public class Aegis extends Tactician9CopyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && (Boolean.TRUE.equals(p.hasPower(Weapon1SwordPower.POWER_ID) || p.hasPower(Weapon2LancePower.POWER_ID) || p.hasPower(Weapon3AxePower.POWER_ID) || p.hasPower(Weapon4BowPower.POWER_ID)))) {
             ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-            easyCardList.add(new Weapon5Wind(() ->  { weapon = 5; addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }));
-            easyCardList.add(new Weapon6Fire(() ->  { weapon = 6; addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }));
-            easyCardList.add(new Weapon7Thunder(() ->  { weapon = 7; addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }));
-            easyCardList.add(new Weapon8Dark(() ->  { weapon = 8; addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }));
+            easyCardList.add(new Weapon5Wind(() ->  {
+                weapon = 5; addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); calculateCardDamage(m);
+                addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
+                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+            }));
+            easyCardList.add(new Weapon6Fire(() ->  {
+                weapon = 6; addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); calculateCardDamage(m);
+                addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
+                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+            }));
+            easyCardList.add(new Weapon7Thunder(() ->  {
+                weapon = 7; addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); calculateCardDamage(m);
+                addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
+                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+            }));
+            easyCardList.add(new Weapon8Dark(() ->  {
+                weapon = 8; addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); calculateCardDamage(m);
+                addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
+                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+            }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
-        else { weapon = 9; }
-        calculateCardDamage(m);
-        addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-        addToBot(new GainBlockAction(p, p, this.block));
-        addToBot(new GainBlockAction(p, p, this.block));
+        else { weapon = 9; calculateCardDamage(m);
+            addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
+            addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+        }
     }
 
     @Override

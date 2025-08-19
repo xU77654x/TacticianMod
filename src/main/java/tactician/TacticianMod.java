@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.events.*;
+// import tactician.patches.selfpatches.ReliquaryFlaskCardsPatch;
 import tactician.potions.BasePotion;
 import tactician.relics.BaseRelic;
 import tactician.util.GeneralUtils;
@@ -35,10 +36,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.floorNum;
 import static tactician.character.TacticianRobin.Meta.TACTICIAN;
+// import static tactician.patches.selfpatches.ReliquaryFlaskCardsPatch.TacticianFlaskCards.POTION_TO_VAPOR;
 
 @SuppressWarnings({"CallToPrintStackTrace", "ConstantValue", "StringConcatenationArgumentToLogCall"})
 @SpireInitializer
@@ -95,6 +100,7 @@ public class TacticianMod implements
         // ModPanel settingsPanel = new ModPanel();
         // settingsPanel.addUIElement(skipTutorials);
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
+
     }
 
     @Override
@@ -373,11 +379,4 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:Male_QuickBurn", "tactician/audio/voice/Male_QuickBurn.ogg");
         BaseMod.addAudio("tactician:Male_GrandmasterForm", "tactician/audio/voice/Male_GrandmasterForm.ogg");
     }
-
-    /* Tasks which could not be implemented due to technical limitations:
-    - Custom music, due to StS1 not supporting looping music.
-    - Multiple weapon types on Downfall bosses based on intention or card.
-    - Reliquary Boiling Flask cards for the four potions.
-    - Animated sprite using a 3D model with animations put onto a sprite sheet.
-     */
 }

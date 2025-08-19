@@ -2,13 +2,13 @@ package tactician.relics;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import tactician.actions.PlaySoundAction;
 import tactician.powers.KillingEdgePower;
 import static tactician.TacticianMod.makeID;
 
@@ -40,7 +40,7 @@ public class KillingEdge extends BaseRelic {
 				this.pulse = true;
 				AbstractDungeon.player.hand.refreshHandLayout();
 				addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-				addToBot(new SFXAction("tactician:Luna_KillingEdgeGain"));
+				addToBot(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.00f));
 				addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KillingEdgePower(AbstractDungeon.player, 1), 1));
 			}
 		}
@@ -52,7 +52,7 @@ public class KillingEdge extends BaseRelic {
 			beginPulse();
 			this.pulse = true;
 			AbstractDungeon.player.hand.refreshHandLayout();
-			addToBot(new SFXAction("tactician:Luna_KillingEdgeGain"));
+			addToTop(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.00f));
 			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KillingEdgePower(AbstractDungeon.player, 1), 1));
 		}
 	}
