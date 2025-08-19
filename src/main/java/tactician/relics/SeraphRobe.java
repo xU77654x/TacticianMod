@@ -42,7 +42,7 @@ public class SeraphRobe extends BaseRelic {
             AbstractDungeon.player.gainGold(GOLD);
         }
         else {
-            if (this.pulse == true) {
+            if (this.pulse) {
                 AbstractDungeon.player.heal(HEAL, true);
                 AbstractDungeon.player.gainGold(GOLD);
                 this.pulse = false;
