@@ -38,7 +38,7 @@ public class PresciencePower extends AbstractPower implements CloneablePowerInte
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() <= 1 && (card.type == AbstractCard.CardType.ATTACK)) {
-            for (int i = 0; i < this.amount; i++) { addToBot(new ApplyPowerAction(this.owner, this.owner, new DeflectPower(this.amount))); }
+            addToBot(new ApplyPowerAction(this.owner, this.owner, new DeflectPower(this.amount)));
             this.cardsPlayed++;
             flash();
         }

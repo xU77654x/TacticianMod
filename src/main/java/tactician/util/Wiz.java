@@ -32,6 +32,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
+import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
 public class Wiz {
     public static AbstractPlayer adp() {
@@ -213,9 +214,9 @@ public class Wiz {
         int effect = 0;
         boolean copyFlag = true;
         if (AbstractDungeon.player.hasPower(ZealPower.POWER_ID)) { effect = valModify; }
-        else if (!(AbstractDungeon.player instanceof TacticianRobin)) {
-            if (!AbstractDungeon.actionManager.cardsPlayedThisCombat.isEmpty() && (AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 1)).type == AbstractCard.CardType.POWER) {
-                effect = valModify; // If a non-Robin character uses a Tactician card that calculates weapon types, it instead is weapon-strong if the last-played card was a Power.
+        else if (!(AbstractDungeon.player instanceof TacticianRobin)) { // TODO: This effect does not display calculateCardDamage correctly until one card later, where the effect doesn't apply.
+            if (!AbstractDungeon.actionManager.cardsPlayedThisCombat.isEmpty() && AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2) {
+                if ((AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).type == AbstractCard.CardType.POWER) { effect = valModify; }
             }
             else { return 0; }
         }
