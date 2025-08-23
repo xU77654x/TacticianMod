@@ -9,7 +9,7 @@ import tactician.character.TacticianRobin;
 import tactician.powers.weapons.*;
 
 public class Weapon_FaceTraderEvil {
-	/*
+
 	@SpirePatch(cls = "downfall.monsters.FaceTrader", method = "getMove", requiredModId = "downfall")
 	public static class SsserpentHead {
 		@SpireInsertPatch(rloc = 6)
@@ -32,7 +32,7 @@ public class Weapon_FaceTraderEvil {
 		public static void Insert(AbstractMonster _inst) {
 			if (AbstractDungeon.player instanceof TacticianRobin) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, new Weapon4BowPower(_inst))); }
 		}
-	} */
+	}
 
 	@SpirePatch(cls = "downfall.monsters.FaceTrader", method = "getMove", requiredModId = "downfall")
 	public static class CultistMask {

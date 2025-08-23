@@ -362,8 +362,8 @@
   },
   "${modID}:HuntersVolley": {
     "NAME": "Hunter's Volley",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage twice. NL {@@}Retain your hand NL for !M! turn{!M!|1=|@=s}.",
-    "FLAVOR": "If weapon-strong, Retain your hand for 3 additional turns."
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage twice. NL Consume !M! ${modID}:Deflect NL to Retain your hand NL for 2 turns.",
+    "FLAVOR": "If weapon-strong, Retain your hand for 1 (additional) turn."
   },
   "${modID}:Excalibur": {
     "NAME": "Excalibur",
@@ -374,7 +374,7 @@
   "${modID}:Bolganone": {
     "NAME": "Bolganone",
     "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! Deflect. NL Double your ${modID}:Deflect.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! Deflect. NL Triple your ${modID}:Deflect.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! ${modID}:Deflect. NL Triple your ${modID}:Deflect.",
     "EXTENDED_DESCRIPTION": ["Bolganone!"],
     "FLAVOR": "If weapon-strong, gain 3 Deflect before it is multiplied."
   },

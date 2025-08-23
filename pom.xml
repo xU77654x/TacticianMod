@@ -24,10 +24,10 @@
 
     <!-- This information will be displayed in ModTheSpire, the modded launcher. -->
     <name>The Tactician</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <!-- Avoid using \ in this description, as they can cause the description to fail to load. -->
     <!-- If you really want to use them, you'll need to "escape" them by putting another one in front, like \\ -->
-    <description>Robin, the best tactician from Ylisse, enters the Spire!
+    <description>Robin, the legendary tactician of Ylisse, enters the Spire!
 
         \nUtilize weapon types to turn the tides of battle in your favor.
         If weapon-strong, your cards gain +3 damage / Block; if weapon-weak, these get -3.

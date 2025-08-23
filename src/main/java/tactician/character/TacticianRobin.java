@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.SaveHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import tactician.cards.basic.*;
@@ -191,6 +192,7 @@ public class TacticianRobin extends CustomPlayer {
         CardCrawlGame.sound.playA("tactician:TacticianSelect", MathUtils.random(0F, 0F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
     }
+
     @Override
     public String getCustomModeCharacterButtonSoundKey() { return "tactician:TacticianSelect"; }
 
@@ -219,4 +221,13 @@ public class TacticianRobin extends CustomPlayer {
 
     @Override
     public AbstractPlayer newInstance() { return new TacticianRobin(); } // Makes a new instance of your character class.
-} // https://drive.google.com/file/d/1moR8cH0a7-O2ZA_drzvNjcr8T6TS0LgD/view
+
+    /*
+    @Override
+    public void loadPrefs() {
+        if (this.prefs == null) {
+            this.prefs = SaveHelper.getPrefs(this.chosenClass.name());
+            if (this.prefs.getInteger("ASCENSION_LEVEL", 1) <= 1) { this.prefs.putInteger("ASCENSION_LEVEL", 12); }
+        }
+    } */
+}

@@ -39,8 +39,8 @@ public class ExhaustiveStrike extends Tactician3AxeCard {
         tags.add(CardTags.STRIKE);
         tags.add(CustomTags.AXE);
         tags.add(CustomTags.COMBAT_ART);
-        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
+        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override

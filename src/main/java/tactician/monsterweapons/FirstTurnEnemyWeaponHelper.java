@@ -151,8 +151,8 @@ public class FirstTurnEnemyWeaponHelper {
 				if (intent == ATTACK) { pow = new Weapon6FirePower(m); }
 				if (intent == DEFEND) { pow = new Weapon3AxePower(m); } break;
 			case Champ.ID:
-				if (intent == DEFEND_DEBUFF) { pow = new Weapon2LancePower(m); }
-				if (intent == ATTACK_DEBUFF) { pow = new Weapon0NeutralPower(m); }
+				if (intent == DEFEND_BUFF) { pow = new Weapon2LancePower(m); }
+				if (intent == ATTACK_DEBUFF) { pow = new Weapon4BowPower(m); }
 				if (intent == DEBUFF) { pow = new Weapon4BowPower(m); }
 				if (intent == ATTACK) { pow = new Weapon1SwordPower(m); } // Both attacks are Sword.
 				if (intent == BUFF) { pow = new Weapon5WindPower(m); } break; // Both buffs are Wind.

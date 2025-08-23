@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -16,6 +17,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician4BowCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon4BowPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -36,7 +38,7 @@ public class HuntersVolley extends Tactician4BowCard {
     public HuntersVolley() {
         super(ID, info);
         setDamage(10, 4);
-        setMagic(1, 1);
+        setMagic(4, -3);
         tags.add(CustomTags.BOW);
         tags.add(CustomTags.COMBAT_ART);
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
@@ -52,20 +54,22 @@ public class HuntersVolley extends Tactician4BowCard {
         addToBot(new WaitAction(0.25F));
         addToTop(new PlaySoundAction("tactician:HuntersVolley_Hit2", 1.50f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, this.magicNumber)));
+
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {
+            addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), this.magicNumber));
+            addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, 2)));
+        }
+        if (Wiz.playerWeaponCalc(m, 9) > 0) { addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, 1))); }
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {
         int realDamage = baseDamage;
-        int weaponCalc = Wiz.playerWeaponCalc(m, 9);
-        baseDamage += weaponCalc;
-        magicNumber = baseMagicNumber + max(0, weaponCalc);
+        baseDamage += Wiz.playerWeaponCalc(m, 9);
         super.calculateCardDamage(m);
         baseDamage = realDamage;
         this.isDamageModified = (damage != baseDamage);
-        this.isMagicNumberModified = (magicNumber != baseMagicNumber);
     }
 
     @Override

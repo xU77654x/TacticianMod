@@ -34,7 +34,7 @@ public class Speedwing extends BaseRelic {
     public void atBattleStart() { this.counter = 0; }
 
     @Override
-    public void atTurnStart() {
+    public void atTurnStartPostDraw() {
         if (!this.grayscale) { this.counter++; }
         if (this.counter == TURN) {
             flash();
