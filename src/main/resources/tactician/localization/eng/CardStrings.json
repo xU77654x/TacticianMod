@@ -533,5 +533,9 @@
   "${modID}:TempMedicalKit": {
     "NAME": "Medical Kit",
     "DESCRIPTION": "Unplayable Status cards can be NL Exhausted for free."
+  },
+  "${modID}:TempCirclet": {
+    "NAME": "Circlet",
+    "DESCRIPTION": "Gain a fragile Circlet."
   }
 }

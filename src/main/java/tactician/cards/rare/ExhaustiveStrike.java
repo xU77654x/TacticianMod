@@ -51,7 +51,7 @@ public class ExhaustiveStrike extends Tactician3AxeCard {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         addToBot(new PlaySoundAction("tactician:ExhaustiveStrike_Hit2", 1.25f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        addToBot(new ExhaustAction(this.magicNumber, false, true));
+        addToBot(new ExhaustAction(this.magicNumber, false, true, true));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
     }
 

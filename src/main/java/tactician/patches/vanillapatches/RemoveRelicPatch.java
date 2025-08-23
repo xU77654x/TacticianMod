@@ -3,6 +3,7 @@ package tactician.patches.vanillapatches;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.BlueCandle;
 import com.megacrit.cardcrawl.relics.RunicDome;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
@@ -17,6 +18,7 @@ public class RemoveRelicPatch {
 	@SpireInsertPatch(locator = Locator.class)
 	public static void Insert() {
 		if (AbstractDungeon.player.chosenClass == TACTICIAN) {
+			AbstractDungeon.relicsToRemoveOnStart.add(BlueCandle.ID); // Blue Candle has a downside of losing HP with Hex / Anathemas; use Expiration for the choice instead.
 			AbstractDungeon.relicsToRemoveOnStart.add(RunicDome.ID); // Take a wild guess.
 			AbstractDungeon.relicsToRemoveOnStart.add("champ:DeflectingBracers"); // I don't want both Deflect and Counter used together.
 			AbstractDungeon.relicsToRemoveOnStart.add("reliquary:ElizabethanCollar"); // Vampires event guarantees an Injury.

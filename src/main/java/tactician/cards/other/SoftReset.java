@@ -1,5 +1,6 @@
 package tactician.cards.other;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -8,6 +9,7 @@ import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.util.CardStats;
 
+@AutoAdd.Ignore
 public class SoftReset extends TacticianCard {
     public static final String ID = makeID(SoftReset.class.getSimpleName());
     private static final CardStats info = new CardStats(

@@ -13,7 +13,7 @@ import tactician.powers.weapons.*;
 
 import static com.megacrit.cardcrawl.monsters.AbstractMonster.Intent.*;
 
-public class FirstTurnEnemyWeaponHelper {
+public class EnemyWeaponHelper {
 	public static AbstractPower enemyWeaponCalc (AbstractMonster m, AbstractMonster.Intent intent) {
 		AbstractPower pow = new Weapon0NeutralPower(m);
 
@@ -77,6 +77,7 @@ public class FirstTurnEnemyWeaponHelper {
 				if (intent == DEBUFF) { pow = new Weapon7ThunderPower(m); } break;
 			case Lagavulin.ID:
 				if (intent == SLEEP) { pow = new Weapon0NeutralPower(m); }
+				if (intent == UNKNOWN) { pow = new Weapon0NeutralPower(m); }
 				if (intent == ATTACK) { pow = new Weapon2LancePower(m); }
 				if (intent == STRONG_DEBUFF) { pow = new Weapon8DarkPower(m); } break;
 			case SlimeBoss.ID:

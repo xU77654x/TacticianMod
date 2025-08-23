@@ -1,5 +1,6 @@
 package tactician.cards.other;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,6 +15,7 @@ import tactician.util.CardStats;
 
 import java.util.ArrayList;
 
+@AutoAdd.Ignore
 public class DebugWeapon extends TacticianCard {
 	public static final String ID = makeID(DebugWeapon.class.getSimpleName());
 	private static final CardStats info = new CardStats(

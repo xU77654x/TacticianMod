@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import tactician.character.TacticianRobin;
-import tactician.monsterweapons.FirstTurnEnemyWeaponHelper;
+import tactician.monsterweapons.EnemyWeaponHelper;
 
 import java.util.Objects;
 
@@ -19,7 +19,7 @@ public class FirstIntentWeaponPatch {
 		@SpireInsertPatch(loc = 482)
 		public static void Insert(AbstractMonster _inst) {
 			if (AbstractDungeon.player instanceof TacticianRobin) {
-				AbstractPower w = FirstTurnEnemyWeaponHelper.enemyWeaponCalc(_inst, _inst.intent);
+				AbstractPower w = EnemyWeaponHelper.enemyWeaponCalc(_inst, _inst.intent);
 				if (!Objects.equals(w.ID, StrengthPower.POWER_ID)) { AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(_inst, _inst, w)); }
 
 			}
