@@ -23,8 +23,6 @@ import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-import static java.lang.Math.max;
-
 public class HuntersVolley extends Tactician4BowCard {
     public static final String ID = makeID(HuntersVolley.class.getSimpleName());
     private static final CardStats info = new CardStats(
