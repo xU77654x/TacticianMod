@@ -25,14 +25,11 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import tactician.character.TacticianRobin;
 import tactician.powers.ZealPower;
 import tactician.powers.weapons.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
-import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
 public class Wiz {
     public static AbstractPlayer adp() {

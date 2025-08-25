@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician4BowCard;
 import tactician.character.TacticianRobin;
