@@ -1,15 +1,13 @@
 package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician4BowCard;
@@ -35,7 +33,7 @@ public class CurvedShot extends Tactician4BowCard {
         super(ID, info);
         setDamage(6, 3);
         setBlock(3, 0);
-        // setMagic(0, 0);
+        setMagic(4, -1);
         tags.add(CustomTags.BOW);
         tags.add(CustomTags.COMBAT_ART);
     }
@@ -48,10 +46,9 @@ public class CurvedShot extends Tactician4BowCard {
         addToTop(new PlaySoundAction("tactician:CurvedShot", 1.25f));
         addToBot(new GainBlockAction(p, this.block));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) {
-            addToBot(new ApplyPowerAction(p, p, new VigorPower(p, p.getPower(DeflectPower.POWER_ID).amount), p.getPower(DeflectPower.POWER_ID).amount));
-            addToBot(new GainBlockAction(p, p.getPower(DeflectPower.POWER_ID).amount));
-            addToBot(new RemoveSpecificPowerAction(p, p, DeflectPower.POWER_ID));
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {
+            addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), this.magicNumber));
+            addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, 2, false), this.magicNumber));
         }
 
         /* Use magicNumber edited from applyPowers to alter effects when a card is used.

@@ -78,10 +78,10 @@
       "${modID}:Combat_Art. NL Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect.",
       "${modID}:Combat_Art. NL Deal !D! damage. NL Shuffle an Anathema to your draw pile.",
       "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Strength.",
-      "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Convert your ${modID}:Deflect NL into Block and Vigor.",
+      "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable.",
       "${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
       "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Focus.",
-      "${modID}:Combat_Art. NL Deal !D! damage. NL Consume 4 ${modID}:Deflect to NL apply !M! Vulnerable.",
+      "${modID}:Combat_Art. NL Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
       "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage.",
       "Wrath Strike",
       "Tempest Lance",
@@ -91,7 +91,8 @@
       "Arcfire",
       "Thunder",
       "Flux",
-      "I don't have a \"weapon type\"! NL Why do I even have this card?"
+      "I don't have a \"weapon type\"! NL Why do I even have this card?",
+      "${modID}:Combat_Art. NL Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}."
     ]
   },
   "${modID}:Solidarity": {
@@ -117,7 +118,7 @@
   },
   "${modID}:CurvedShot": {
     "NAME": "Curved Shot",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Convert your ${modID}:Deflect NL into Block and Vigor."
+    "DESCRIPTION": "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable."
   },
   "${modID}:Elwind": {
     "NAME": "Elwind",
@@ -131,7 +132,8 @@
   },
   "${modID}:Thunder": {
     "NAME": "Thunder",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Consume 4 ${modID}:Deflect to NL apply !M! Vulnerable.",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
+    "UPGRADE_DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": ["Thunder!"]
   },
   "${modID}:Flux": {
@@ -381,7 +383,7 @@
   "${modID}:Thoron": {
     "NAME": "Thoron",
     "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose NL !D! HP twice.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose  NL !D! HP twice, as well NL as Barricade.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose  NL !D! HP twice. NL Trigger the passive NL of your first Orb.",
     "EXTENDED_DESCRIPTION": ["Thoron!"]
   },
   "${modID}:Goetia": {

@@ -1,9 +1,7 @@
 package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +10,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician7ThunderCard;
+import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
 import tactician.powers.DeflectPower;
@@ -33,8 +32,9 @@ public class Thunder extends Tactician7ThunderCard {
 
     public Thunder() {
         super(ID, info);
-        setDamage(6, 1);
-        setMagic(2, 1);
+        setDamage(6, 2);
+        setMagic(1, 1);
+        this.cardsToPreview = new Hex();
         tags.add(CustomTags.THUNDER);
         tags.add(CustomTags.COMBAT_ART);
     }
@@ -46,10 +46,8 @@ public class Thunder extends Tactician7ThunderCard {
         addToTop(new PlaySoundAction("tactician:Thunder", 1.25f));
         AbstractDungeon.effectList.add(new PlayVoiceEffect("Thunder"));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= 4)) {
-            addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), 4));
-            addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
-        }
+        addToBot(new MakeTempCardInHandAction(new Hex(), 1));
+        addToBot(new ExhaustAction(this.magicNumber, false, true, this.upgraded));
     }
 
     @Override

@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician9CopyCard;
 import tactician.cards.other.Anathema;
+import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
 import tactician.powers.DeflectPower;
@@ -76,10 +77,9 @@ public class Veteran extends Tactician9CopyCard {
             addToTop(new PlaySoundAction("tactician:CurvedShot", 1.25f));
             addToBot(new GainBlockAction(p, this.block));
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-            if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) {
-                addToBot(new ApplyPowerAction(p, p, new VigorPower(p, p.getPower(DeflectPower.POWER_ID).amount), p.getPower(DeflectPower.POWER_ID).amount));
-                addToBot(new GainBlockAction(p, p.getPower(DeflectPower.POWER_ID).amount));
-                addToBot(new RemoveSpecificPowerAction(p, p, DeflectPower.POWER_ID));
+            if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {
+                addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), this.magicNumber));
+                addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, 2, false), this.magicNumber));
             }
         }
         else if (AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { // Elwind
@@ -106,10 +106,8 @@ public class Veteran extends Tactician9CopyCard {
             addToTop(new PlaySoundAction("tactician:Thunder", 1.25f));
             AbstractDungeon.effectList.add(new PlayVoiceEffect("Thunder"));
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
-            if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= 4)) {
-                addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), 4));
-                addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
-            }
+            addToBot(new MakeTempCardInHandAction(new Hex(), 1));
+            addToBot(new ExhaustAction(this.magicNumber, false, true, this.upgraded));
         }
         else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { // Flux
             addToTop(new PlaySoundAction("tactician:Flux", 1.00f));
@@ -171,6 +169,8 @@ public class Veteran extends Tactician9CopyCard {
                 if (this.upgraded) { setDamage(9); }
                 else { setDamage(6); }
                 setBlock(3, 0);
+                if (this.upgraded) { setMagic(3); } // -1 !M! on upgrade.
+                else { setMagic(4); }
                 tags.add(CustomTags.BOW);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[17];
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[9];
@@ -197,13 +197,16 @@ public class Veteran extends Tactician9CopyCard {
                 this.glowColor = Color.SCARLET;
             }
             else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { // Thunder
-                if (this.upgraded) { setDamage(7); }
+                if (this.upgraded) { setDamage(8); }
                 else { setDamage(6); }
-                if (this.upgraded) { setMagic(3); }
-                else { setMagic(2); }
+                if (this.upgraded) { setMagic(2); }
+                else { setMagic(1); }
                 tags.add(CustomTags.THUNDER);
+                this.cardsToPreview = new Hex();
                 this.name = cardStrings.EXTENDED_DESCRIPTION[20];
-                this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[12];
+                if (this.upgraded) { this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[23]; }
+                else { this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[12]; }
+
                 this.glowColor = Color.YELLOW;
             }
             else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { // Flux

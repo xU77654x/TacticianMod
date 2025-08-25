@@ -48,10 +48,14 @@ public class Thoron extends Tactician7ThunderCard {
                 calculateCardDamage(mo);
                 addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE));
                 addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE));
-                if (this.upgraded) { addToBot(new RemoveSpecificPowerAction(mo, mo, BarricadePower.POWER_ID)); }
+                // if (this.upgraded) { addToBot(new RemoveSpecificPowerAction(mo, mo, BarricadePower.POWER_ID)); }
             }
         }
         addToBot(new PlaySoundAction("tactician:Thoron_Glint", 1.10f));
+        if (this.upgraded) {
+            (AbstractDungeon.player.orbs.get(0)).onStartOfTurn();
+            (AbstractDungeon.player.orbs.get(0)).onEndOfTurn();
+        }
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
     }
 
