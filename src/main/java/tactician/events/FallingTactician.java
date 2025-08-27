@@ -30,8 +30,6 @@ public class FallingTactician extends AbstractImageEvent {
 		super(NAME, vanilla_ES.DESCRIPTIONS[0], "images/events/falling.jpg");
 		setCards();
 		this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[0]);
-		if (this.elwind) { this.imageEventText.setDialogOption(custom_ES.OPTIONS[0]); }
-		else { this.imageEventText.setDialogOption(custom_ES.OPTIONS[1], true); }
 	}
 
 	public void onEnterRoom() { if (Settings.AMBIANCE_ON) { CardCrawlGame.sound.play("EVENT_FALLING"); }}
@@ -50,8 +48,8 @@ public class FallingTactician extends AbstractImageEvent {
 	protected void buttonEffect(int buttonPressed) {
 		switch (this.screen) {
 			case INTRO:
-				switch (buttonPressed) {
-					case 0:
+				// switch (buttonPressed) {
+					// case 0:
 						this.screen = CurScreen.CHOICE;
 						this.imageEventText.updateBodyText(DIALOG_2);
 						this.imageEventText.clearAllDialogs();
@@ -63,18 +61,14 @@ public class FallingTactician extends AbstractImageEvent {
 							else { this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[4], true); }
 							if (this.attack) { this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[5] + FontHelper.colorString(this.attackCard.name, "r"), this.attackCard.makeStatEquivalentCopy()); }
 							else { this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[6], true); }
+							if (this.elwind) { this.imageEventText.setDialogOption(custom_ES.OPTIONS[0]); }
+							else { this.imageEventText.setDialogOption(custom_ES.OPTIONS[1], true); }
 						}
-						break;
-					case 1:
-						CardCrawlGame.sound.playV("tactician:Elwind", 1.67f);
-						this.screen = CurScreen.RESULT;
-						this.imageEventText.clearAllDialogs();
-						this.imageEventText.updateBodyText(custom_ES.DESCRIPTIONS[0]);
-						this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[7]);
-
-						break;
-					}
-					return;
+						// break;
+					// case 1:
+						// break;
+					// }
+				return;
 
 			case CHOICE:
 				this.screen = CurScreen.RESULT;
@@ -103,8 +97,15 @@ public class FallingTactician extends AbstractImageEvent {
 						logMetricCardRemoval("Falling", "Removed Attack", this.attackCard);
 						AbstractDungeon.player.masterDeck.removeCard(this.attackCard);
 						break;
+					case 3:
+						CardCrawlGame.sound.playV("tactician:Elwind", 1.67f);
+						this.screen = CurScreen.RESULT;
+						this.imageEventText.clearAllDialogs();
+						this.imageEventText.updateBodyText(custom_ES.DESCRIPTIONS[0]);
+						this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[7]);
+						break;
 				}
-				return;
+			return;
 		}
 		openMap();
 	}

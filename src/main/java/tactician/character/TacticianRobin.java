@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.SaveHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import tactician.cards.basic.*;
@@ -221,12 +222,14 @@ public class TacticianRobin extends CustomPlayer {
     @Override
     public AbstractPlayer newInstance() { return new TacticianRobin(); } // Makes a new instance of your character class.
 
-    /*
     @Override
     public void loadPrefs() {
         if (this.prefs == null) {
             this.prefs = SaveHelper.getPrefs(this.chosenClass.name());
-            if (this.prefs.getInteger("ASCENSION_LEVEL", 1) <= 1) { this.prefs.putInteger("ASCENSION_LEVEL", 12); }
+            if (this.prefs.getInteger("ASCENSION_LEVEL", 1) <= 9) {
+                this.prefs.putInteger("ASCENSION_LEVEL", 10);
+                this.prefs.putInteger("WIN_COUNT", 1);
+            }
         }
-    } */
+    }
 }
