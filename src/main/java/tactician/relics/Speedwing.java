@@ -12,9 +12,7 @@ import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.*;
-
 import java.util.ArrayList;
-
 import static tactician.TacticianMod.makeID;
 
 public class Speedwing extends BaseRelic {

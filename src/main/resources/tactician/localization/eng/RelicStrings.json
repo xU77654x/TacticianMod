@@ -43,7 +43,7 @@
     "NAME": "Talisman",
     "FLAVOR": "\"We're not pawns of some scripted fate. I believe we're more. Much more...\"",
     "DESCRIPTIONS": ["Whenever you #yExhaust a card other than Necronomicurse, gain #b",
-      " Temp HP."]
+      " #yTemporary #yHP."]
   },
   "${modID}:KillingEdge": {
     "NAME": "Killing Edge",

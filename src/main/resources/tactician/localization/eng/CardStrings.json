@@ -213,7 +213,7 @@
   },
   "${modID}:Nosferatu": {
     "NAME": "Nosferatu",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Gain Temp HP equal to unblocked damage. NL Exhaust.",
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Gain StSLib:Temporary_HP equal to unblocked damage. Exhaust.",
     "EXTENDED_DESCRIPTION": ["Nosferatu!"]
   },
   "${modID}:LevinSword": {
