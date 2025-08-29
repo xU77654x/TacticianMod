@@ -41,6 +41,7 @@ public class GrandmasterFormPower extends AbstractPower {
 		this.counter += stackAmount;
 	}
 
+	@SuppressWarnings("UnnecessaryReturnStatement")
 	@Override
 	public void onExhaust(AbstractCard card) {
 		if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
