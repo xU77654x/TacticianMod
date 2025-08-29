@@ -34,7 +34,6 @@ public class TacticianRobin extends CustomPlayer {
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 2;
 
-    // Strings
     private static final String ID = makeID("Tactician"); // This should match whatever you have in the CharacterStrings.json file
     private static String[] getNames() { return CardCrawlGame.languagePack.getCharacterString(ID).NAMES; }
     private static String[] getText() { return CardCrawlGame.languagePack.getCharacterString(ID).TEXT; }
@@ -164,7 +163,7 @@ public class TacticianRobin extends CustomPlayer {
         };
     }
 
-    private final Color cardRenderColor = Color.LIGHT_GRAY.cpy(); // Used for some vfx on moving cards (sometimes) (maybe)
+    private final Color cardRenderColor = Color.PURPLE.cpy(); // Used for some vfx on moving cards (sometimes) (maybe)
     private final Color cardTrailColor = Color.LIGHT_GRAY.cpy(); // Used for card trail vfx during gameplay.
     private final Color slashAttackColor = Color.LIGHT_GRAY.cpy(); // Used for a screen tint effect when you attack the heart.
 
@@ -187,7 +186,6 @@ public class TacticianRobin extends CustomPlayer {
 
     @Override
     public void doCharSelectScreenSelectEffect() {
-        // This occurs when you click the character's button in the character select screen.
         // See SoundMaster for a full list of existing sound effects, or look at BaseMod's wiki for adding custom audio.
         CardCrawlGame.sound.playA("tactician:TacticianSelect", MathUtils.random(0F, 0F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);

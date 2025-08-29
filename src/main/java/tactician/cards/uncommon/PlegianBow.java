@@ -25,8 +25,8 @@ import tactician.util.Wiz;
 
 import java.util.ArrayList;
 
-public class BeguilingBow extends TacticianCard {
-    public static final String ID = makeID(BeguilingBow.class.getSimpleName());
+public class PlegianBow extends TacticianCard {
+    public static final String ID = makeID(PlegianBow.class.getSimpleName());
     private static final CardStats info = new CardStats(
             TacticianRobin.Meta.CARD_COLOR,
             CardType.ATTACK,
@@ -36,7 +36,7 @@ public class BeguilingBow extends TacticianCard {
     );
     public int weapon;
 
-    public BeguilingBow() {
+    public PlegianBow() {
         super(ID, info);
         setDamage(14, 4);
         setMagic(3, 0);
@@ -53,21 +53,21 @@ public class BeguilingBow extends TacticianCard {
                 weapon = 4;
                 if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new PlaySoundAction("tactician:BeguilingBow", 1.00f));
+                addToBot(new PlaySoundAction("tactician:PlegianBow", 1.00f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             }));
             easyCardList.add(new Weapon8Dark(() ->  {
                 weapon = 8;
                 if (!p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new PlaySoundAction("tactician:BeguilingBow", 1.00f));
+                addToBot(new PlaySoundAction("tactician:PlegianBow", 1.00f));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SHIELD));
             }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
         else {
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-            addToBot(new PlaySoundAction("tactician:BeguilingBow", 1.00f));
+            addToBot(new PlaySoundAction("tactician:PlegianBow", 1.00f));
         }
         addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, this.magicNumber), this.magicNumber));
     }
@@ -88,5 +88,5 @@ public class BeguilingBow extends TacticianCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new BeguilingBow(); }
+    public AbstractCard makeCopy() { return new PlegianBow(); }
 }

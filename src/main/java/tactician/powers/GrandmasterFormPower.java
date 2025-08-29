@@ -20,12 +20,14 @@ public class GrandmasterFormPower extends AbstractPower {
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+	private int counter;
 
 	public GrandmasterFormPower(int amount) {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = AbstractDungeon.player;
 		this.amount = amount;
+		this.counter = amount;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
 		this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 96, 96);
@@ -34,12 +36,25 @@ public class GrandmasterFormPower extends AbstractPower {
 	}
 
 	@Override
+	public void stackPower(int stackAmount) {
+		super.stackPower(stackAmount);
+		this.counter += stackAmount;
+	}
+
+	@Override
 	public void onExhaust(AbstractCard card) {
 		if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-			flash();
-			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, this.amount), this.amount));
+			if (this.counter <= 0) { return; }
+			else {
+				flash();
+				addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, this.amount), this.amount));
+				this.counter--;
+			}
 		}
 	}
+
+	@Override
+	public void atStartOfTurn() { this.counter = this.amount; }
 
 	@Override
 	public void updateDescription() {

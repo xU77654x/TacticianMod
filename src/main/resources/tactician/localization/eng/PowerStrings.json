@@ -129,7 +129,7 @@
   },
   "${modID}:GrandmasterFormPower": {
     "NAME": "Grandmaster Form",
-    "DESCRIPTIONS": ["When you #yExhaust a card, gain #b",
+    "DESCRIPTIONS": ["The first time you #yExhaust a card each turn, gain #b",
       " #yArtifact."]
   },
   "${modID}:KillingEdgePower": {

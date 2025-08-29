@@ -204,8 +204,7 @@
   },
   "${modID}:DyingBlaze": {
     "NAME": "Dying Blaze",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage, increased by the size NL of your Exhaust pile. NL Exhaust !M! copies.",
-    "FLAVOR": "Exhausted copies don't trigger effects such as Dark Embrace."
+    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage, increased by the size NL of your Exhaust pile. NL Exhaust !M! copies."
   },
   "${modID}:Bolting": {
     "NAME": "Bolting",
@@ -231,8 +230,8 @@
     "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage. Add an Anathema to your hand. Exhaust a card.",
     "FLAVOR": "On Exhaust, add Wild Abandon and Cutting Gale to your hand."
   },
-  "${modID}:BeguilingBow": {
-    "NAME": "Beguiling Bow",
+  "${modID}:PlegianBow": {
+    "NAME": "Plegian Bow",
     "DESCRIPTION": "Select one of NL ${modID}:Bow or ${modID}:Dark. NL Deal !D! damage. NL Apply !M! Lock-On.",
     "FLAVOR": "On Exhaust, add a Waning Shot and Nosferatu to your hand."
   },
@@ -434,8 +433,8 @@
   },
   "${modID}:GrandmasterForm": {
     "NAME": "Grandmaster Form",
-    "DESCRIPTION": "Ethereal. NL Whenever you NL Exhaust a card, NL gain !M! Artifact.",
-    "UPGRADE_DESCRIPTION": "Whenever you NL Exhaust a card, NL gain !M! Artifact.",
+    "DESCRIPTION": "Ethereal. NL The first time you Exhaust a card each turn, gain !M! Artifact.",
+    "UPGRADE_DESCRIPTION": "Now and the first NL time you Exhaust a card each turn, NL gain !M! Artifact.",
     "EXTENDED_DESCRIPTION": ["The key to victory NL lies within."]
   },
 

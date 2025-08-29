@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
@@ -34,6 +35,7 @@ public class GrandmasterForm extends TacticianCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToTop(new PlaySoundAction("tactician:GrandmasterForm", 0.40f));
         AbstractDungeon.effectList.add(new PlayVoiceEffect("GrandmasterForm"));
+        if (this.upgraded) { addToBot(new ApplyPowerAction(p, p, new ArtifactPower(p, 1), 1)); }
         addToBot(new ApplyPowerAction(p, p, new GrandmasterFormPower(this.magicNumber), this.magicNumber));
     }
 

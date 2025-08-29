@@ -31,7 +31,6 @@ public class DisableWeaponTextPatch {
 						if (!(Arrays.asList(Weapon1SwordPower.POWER_ID, Weapon2LancePower.POWER_ID, Weapon3AxePower.POWER_ID, Weapon4BowPower.POWER_ID, Weapon5WindPower.POWER_ID, Weapon6FirePower.POWER_ID, Weapon7ThunderPower.POWER_ID, Weapon8DarkPower.POWER_ID, Weapon0NeutralPower.POWER_ID).contains(powerToRemove))) {
 							AbstractDungeon.effectList.add(new PowerExpireTextEffect(__inst.target.hb.cX - __inst.target.animX, __inst.target.hb.cY + __inst.target.hb.height / 2.0F, removeMe.name, removeMe.region128));
 						}
-						// if (Objects.equals(__inst.target.toString(), Lagavulin.ID)) { AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(__inst.target, __inst.target, "Metallicize", 8)); }
 						removeMe.onRemove();
 						__inst.target.powers.remove(removeMe);
 						AbstractDungeon.onModifyPower();

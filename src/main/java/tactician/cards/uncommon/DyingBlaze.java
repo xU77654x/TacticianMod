@@ -36,8 +36,6 @@ public class DyingBlaze extends Tactician6FireCard {
         setMagic(2, 1);
         tags.add(CustomTags.FIRE);
         tags.add(CustomTags.COMBAT_ART);
-        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
-        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override

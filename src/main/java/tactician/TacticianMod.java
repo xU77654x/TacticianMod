@@ -3,11 +3,14 @@ package tactician;
 import basemod.*;
 import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.beyond.Falling;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.events.exordium.GoldenWing;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.ui.FtueTip;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.jetbrains.annotations.NotNull;
 import tactician.cards.TacticianCard;
@@ -34,6 +37,7 @@ import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.floorNum;
@@ -61,12 +65,10 @@ public class TacticianMod implements
     // This is used to prefix the IDs of various objects like cards and relics, to avoid conflicts between different mods using the same name for things.
     public static String makeID(String id) { return modID + ":" + id; }
 
-    /*
     public static Properties defaultSettings = new Properties();
     public static final String SKIP_TUTORIALS_SETTING = "Skip Tutorial";
     public static Boolean skipTutorialsPlaceholder = true;
-    public static ModLabeledToggleButton skipTutorials; */
-    // private static final String defaultLanguage = "eng";
+    public static ModLabeledToggleButton skipTutorials;
 
     // This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
     public static void initialize() {
@@ -77,10 +79,17 @@ public class TacticianMod implements
     public TacticianMod() {
         BaseMod.subscribe(this); // This will make BaseMod trigger all the subscribers at their appropriate times.
 		logger.info("{} subscribed to BaseMod.", modID); // logger.info(modID + " subscribed to BaseMod.");
+        defaultSettings.setProperty("Skip Tutorial", "FALSE");
+        try {
+            SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
+            skipTutorialsPlaceholder = config.getBool("Skip Tutorial");
+        }
+        catch (IOException e) { e.printStackTrace(); }
     }
 
     @Override
     public void receivePostInitialize() {
+        ModPanel settingsPanel = new ModPanel();
         Texture badgeTexture = TextureLoader.getTexture(imagePath("TacticianBadge.png")); //  Load the icon image in the Mods submenu.
         // Set up the mod information displayed in the in-game mods menu. The information used is taken from your pom.xml file.
         // If you want to set up a config panel, that will be done here. The Mod Badges page has a basic example of this, but setting up config is overall a bit complex.
@@ -91,15 +100,27 @@ public class TacticianMod implements
         BaseMod.addEvent(new AddEventParams.Builder(FallingTactician.ID, FallingTactician.class).playerClass(TACTICIAN).overrideEvent(Falling.ID).create());
         registerPotions();
 
-        // ModPanel settingsPanel = new ModPanel();
-        // settingsPanel.addUIElement(skipTutorials);
-        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
+        skipTutorials = new ModLabeledToggleButton("Skip Tutorial", 350.0F, 750.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, skipTutorialsPlaceholder, settingsPanel, label -> {}, button -> {
+            skipTutorialsPlaceholder = button.enabled;
+            try {
+                SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
+                config.setBool("Skip Tutorial", skipTutorialsPlaceholder);
+                config.save();
+            }
+            catch (Exception e) { e.printStackTrace(); }
+        });
+        settingsPanel.addUIElement(skipTutorials);
+        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, settingsPanel);
 
     }
 
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
-        if (AbstractDungeon.ascensionLevel == 0 && floorNum == 1 && AbstractDungeon.player instanceof TacticianRobin) { AbstractDungeon.ftue = new TutorialTactician(); }
+        // if (AbstractDungeon.ascensionLevel == 0 && floorNum == 1 && AbstractDungeon.player instanceof TacticianRobin) { AbstractDungeon.ftue = new TutorialTactician(); }
+        if (!skipTutorials.toggle.enabled && AbstractDungeon.player instanceof TacticianRobin) {
+            AbstractDungeon.ftue = new TutorialTactician();
+            skipTutorials.toggle.toggle();
+        }
     }
 
     /*----------Localization----------*/
@@ -129,7 +150,6 @@ public class TacticianMod implements
 
     private void loadLocalization(String lang) {
         // While this does load every type of localization, most of these files are just outlines so that you can see how they're formatted.
-        // Feel free to comment out/delete any that you don't end up using.
         BaseMod.loadCustomStringsFile(CardStrings.class, localizationPath(lang, "CardStrings.json"));
         BaseMod.loadCustomStringsFile(CharacterStrings.class, localizationPath(lang, "CharacterStrings.json"));
         BaseMod.loadCustomStringsFile(EventStrings.class, localizationPath(lang, "EventStrings.json"));
@@ -293,7 +313,7 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:LevinSword", "tactician/audio/effect/LevinSword.ogg");
         BaseMod.addAudio("tactician:FlameLance", "tactician/audio/effect/FlameLance.ogg");
         BaseMod.addAudio("tactician:HurricaneAxe", "tactician/audio/effect/HurricaneAxe.ogg");
-        BaseMod.addAudio("tactician:BeguilingBow", "tactician/audio/effect/BeguilingBow.ogg");
+        BaseMod.addAudio("tactician:PlegianBow", "tactician/audio/effect/PlegianBow.ogg");
         BaseMod.addAudio("tactician:FlashSparrow", "tactician/audio/effect/FlashSparrow.ogg");
         BaseMod.addAudio("tactician:Relief", "tactician/audio/effect/Relief.ogg");
         BaseMod.addAudio("tactician:PaviseAegis", "tactician/audio/effect/PaviseAegis.ogg");
