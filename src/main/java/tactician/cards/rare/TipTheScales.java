@@ -1,6 +1,7 @@
 package tactician.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -8,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
+import tactician.cards.other.Anathema;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
 import tactician.util.CardStats;
@@ -24,7 +26,7 @@ public class TipTheScales extends TacticianCard {
 
     public TipTheScales() {
         super(ID, info);
-        setMagic(3, 1);
+        setMagic(2, 1);
         setSelfRetain(true);
     }
 
@@ -41,6 +43,7 @@ public class TipTheScales extends TacticianCard {
     public void triggerOnExhaust() {
         addToTop(new PlaySoundAction("tactician:TipTheScales", 1.33f));
         AbstractDungeon.effectList.add(new PlayVoiceEffect("TipTheScales"));
+        addToBot(new MakeTempCardInHandAction(new Anathema(), 1));
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, this.magicNumber), this.magicNumber));
     }
 

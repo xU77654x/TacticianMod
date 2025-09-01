@@ -4,6 +4,8 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician7ThunderCard;
+import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
 import tactician.powers.weapons.Weapon7ThunderPower;
@@ -44,16 +47,14 @@ public class Thoron extends Tactician7ThunderCard {
             addToBot(new VFXAction(p, new CleaveEffect(), 0.01F));
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
                 calculateCardDamage(mo);
-                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE));
-                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE));
+                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
                 // if (this.upgraded) { addToBot(new RemoveSpecificPowerAction(mo, mo, BarricadePower.POWER_ID)); }
             }
+            if (this.upgraded) { addToBot(new MakeTempCardInHandAction(new Hex(), 1)); }
+            else { addToBot(new MakeTempCardInDrawPileAction(new Hex(), 1, true, true)); }
         }
         addToBot(new PlaySoundAction("tactician:Thoron_Glint", 1.10f));
-        if (this.upgraded) {
-            (AbstractDungeon.player.orbs.get(0)).onStartOfTurn();
-            (AbstractDungeon.player.orbs.get(0)).onEndOfTurn();
-        }
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
     }
 

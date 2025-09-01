@@ -25,7 +25,7 @@ public class Solidarity extends TacticianCard {
 
     public Solidarity() {
         super(ID, info);
-        setMagic(9, 4);
+        setMagic(8, 4);
         this.cardsToPreview = new Hex();
     }
 

@@ -24,7 +24,7 @@ public class OutdoorFighter extends TacticianCard {
     public OutdoorFighter() {
         super(ID, info);
         setMagic(2, 1);
-        setCustomVar("magicDeflect", 5, 0);
+        setCustomVar("magicDeflect", 4, 0);
     }
 
     @Override

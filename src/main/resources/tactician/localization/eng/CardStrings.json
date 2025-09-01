@@ -381,8 +381,8 @@
   },
   "${modID}:Thoron": {
     "NAME": "Thoron",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose NL !D! HP twice.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL ALL enemies lose  NL !D! HP twice. NL Trigger the passive NL of your first Orb.",
+    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage to ALL enemies twice. Shuffle a Hex to the draw pile.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage to ALL enemies twice. Add a Hex to your hand.",
     "EXTENDED_DESCRIPTION": ["Thoron!"]
   },
   "${modID}:Goetia": {
@@ -405,7 +405,7 @@
   },
   "${modID}:TipTheScales": {
     "NAME": "Tip the Scales!",
-    "DESCRIPTION": "Unplayable. Retain. NL On Exhaust, gain NL !M! Artifact.",
+    "DESCRIPTION": "Unplayable. Retain. NL On Exhaust, add an Anathema to your hand and gain NL !M! Artifact.",
     "EXTENDED_DESCRIPTION": ["Time to tip the scales!",
       "I have to Exhaust this card to gain its effect."]
   },
