@@ -42,7 +42,6 @@ public class PlayVoiceEffect extends AbstractGameEffect {
 				case "TipTheScales": this.played = true; AbstractDungeon.actionManager.addToTop(new PlaySoundAction("tactician:Male_TipTheScales", 1.66f)); break;
 				case "QuickBurn": this.played = true; AbstractDungeon.actionManager.addToTop(new PlaySoundAction("tactician:Male_QuickBurn", 1.50f)); break;
 				case "GrandmasterForm": played = true; AbstractDungeon.actionManager.addToTop(new PlaySoundAction("tactician:Male_GrandmasterForm", 2.00f)); break;
-				case "RunicDome": this.played = true; AbstractDungeon.actionManager.addToTop(new PlaySoundAction("tactician:Male_RunicDome", 1.50f)); break;
 			}
 			played = true;
 			lastPlayTime = currentTime;
