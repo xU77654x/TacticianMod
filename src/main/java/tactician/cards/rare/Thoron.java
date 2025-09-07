@@ -34,9 +34,8 @@ public class Thoron extends Tactician7ThunderCard {
 
     public Thoron() {
         super(ID, info);
-        setDamage(10, 4);
+        setDamage(10, 3);
         tags.add(CustomTags.THUNDER);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

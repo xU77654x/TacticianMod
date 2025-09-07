@@ -44,7 +44,6 @@ public class Veteran extends Tactician9CopyCard {
         setBlock(0, 0);
         setMagic(0, 0);
         tags.add(CustomTags.COPY);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

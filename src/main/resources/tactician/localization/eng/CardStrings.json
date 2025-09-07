@@ -66,23 +66,23 @@
 
   "${modID}:Veteran": {
     "NAME": "Veteran",
-    "DESCRIPTION": "This card is a copy of the Common ${modID}:Combat_Art of your equipped weapon.",
-    "UPGRADE_DESCRIPTION": "This card is a copy of the upgraded Common ${modID}:Combat_Art of your equipped weapon.",
+    "DESCRIPTION": "This card is a copy of the Common Attack of your equipped weapon.",
+    "UPGRADE_DESCRIPTION": "This card is a copy of the upgraded Common Attack of your equipped weapon.",
     "EXTENDED_DESCRIPTION": [
       "I don't have a weapon type. NL How did this even happen!?",
-      "This card copies the Common Combat Art of your weapon.",
-      "This card copies the upgraded Common Combat Art of your equipped weapon.",
+      "This card copies the Common Attack of your weapon.",
+      "This card copies the upgraded Common Attack of your equipped weapon.",
       "Elwind!",
       "Arcfire!",
       "Thunder!",
-      "${modID}:Combat_Art. NL Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect.",
-      "${modID}:Combat_Art. NL Deal !D! damage. NL Shuffle an Anathema to your draw pile.",
-      "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Strength.",
-      "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable.",
-      "${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
-      "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Focus.",
-      "${modID}:Combat_Art. NL Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
-      "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage.",
+      "Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect.",
+      "Deal !D! damage. NL Shuffle an Anathema to your draw pile.",
+      "Deal !D! damage. NL Gain !M! temp. Strength.",
+      "Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable.",
+      "Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
+      "Deal !D! damage. NL Gain !M! temp. Focus.",
+      "Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
+      "Gain !B! Block. NL Deal !D! damage.",
       "Wrath Strike",
       "Tempest Lance",
       "Smash",
@@ -92,7 +92,7 @@
       "Thunder",
       "Flux",
       "I don't have a \"weapon type\"! NL Why do I even have this card?",
-      "${modID}:Combat_Art. NL Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}."
+      "Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}."
     ]
   },
   "${modID}:Solidarity": {
@@ -106,39 +106,39 @@
 
   "${modID}:WrathStrike": {
     "NAME": "Wrath Strike",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect."
+    "DESCRIPTION": "Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect."
   },
   "${modID}:TempestLance": {
     "NAME": "Tempest Lance",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Shuffle an Anathema to your draw pile."
+    "DESCRIPTION": "Deal !D! damage. NL Shuffle an Anathema to your draw pile."
   },
   "${modID}:Smash": {
     "NAME": "Smash",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Strength."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! temp. Strength."
   },
   "${modID}:CurvedShot": {
     "NAME": "Curved Shot",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable."
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable."
   },
   "${modID}:Elwind": {
     "NAME": "Elwind",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
+    "DESCRIPTION": "Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": ["Elwind!"]
   },
   "${modID}:Arcfire": {
     "NAME": "Arcfire",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! temp. Focus.",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! temp. Focus.",
     "EXTENDED_DESCRIPTION": ["Arcfire!"]
   },
   "${modID}:Thunder": {
     "NAME": "Thunder",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
-    "UPGRADE_DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}.",
+    "DESCRIPTION": "Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": ["Thunder!"]
   },
   "${modID}:Flux": {
     "NAME": "Flux",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage."
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage."
   },
   "${modID}:Shove": {
     "NAME": "Shove",
@@ -183,57 +183,53 @@
 
   "${modID}:CrosswiseCut": {
     "NAME": "Crosswise Cut",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage twice. NL Gain !M! ${modID}:Deflect."
+    "DESCRIPTION": "Deal !D! damage twice. NL Gain !M! ${modID}:Deflect."
   },
   "${modID}:FrozenLance": {
     "NAME": "Frozen Lance",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Gain !B! Block. NL Deal !D! damage. NL Dexterity affects NL this damage !M! times."
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL Dexterity affects NL this damage !M! times."
   },
   "${modID}:WildAbandon": {
     "NAME": "Wild Abandon",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage NL to ALL enemies. NL Exhaust a card."
+    "DESCRIPTION": "Deal !D! damage NL to ALL enemies. NL Exhaust a card."
   },
   "${modID}:WaningShot": {
     "NAME": "Waning Shot",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Apply !M! Weak. NL Consume 4 ${modID}:Deflect to apply -1 Strength."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL Consume 4 ${modID}:Deflect to apply -1 Strength."
   },
   "${modID}:CuttingGale": {
     "NAME": "Cutting Gale",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Exhume a random non-Status/Heal card. NL Exhaust a card.",
-    "UPGRADE_DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Exhume a random non-Status/Heal card. NL Exhaust up to 1 card."
+    "DESCRIPTION": "Deal !D! damage. NL Exhume a random non-Status/Heal card. NL Exhaust a card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Exhume a random non-Status/Heal card. NL Exhaust up to 1 card."
   },
   "${modID}:DyingBlaze": {
     "NAME": "Dying Blaze",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage, increased by the size NL of your Exhaust pile. NL Exhaust !M! copies."
+    "DESCRIPTION": "Deal !D! damage, increased by the size NL of your Exhaust pile. NL Exhaust !M! copies NL of this card."
   },
   "${modID}:Bolting": {
     "NAME": "Bolting",
-    "DESCRIPTION": "${modID}:Combat_Art. Innate. NL Deal !D! damage. NL Your Lightning Orbs target ALL enemies. Exhaust."
+    "DESCRIPTION": "Innate. NL Deal !D! damage. NL Your Lightning Orbs target ALL enemies. Exhaust."
   },
   "${modID}:Nosferatu": {
     "NAME": "Nosferatu",
-    "DESCRIPTION": "${modID}:Combat_Art. NL Deal !D! damage. NL Gain StSLib:Temporary_HP equal to unblocked damage. Exhaust.",
+    "DESCRIPTION": "Deal !D! damage. NL Gain StSLib:Temporary_HP equal to unblocked damage. Exhaust.",
     "EXTENDED_DESCRIPTION": ["Nosferatu!"]
   },
   "${modID}:LevinSword": {
     "NAME": "Levin Sword",
-    "DESCRIPTION": "Select one of NL ${modID}:Sword or ${modID}:Thunder. NL Deal !D! damage. NL Add a Hex to your hand. Gain !M! Deflect.",
-    "FLAVOR": "On Exhaust, add Crosswise Cut and Bolting to your hand."
+    "DESCRIPTION": "Select one of NL ${modID}:Sword or ${modID}:Thunder. NL Deal !D! damage. NL Add a Hex to your hand. Gain !M! Deflect."
   },
   "${modID}:FlameLance": {
     "NAME": "Flame Lance",
-    "DESCRIPTION": "Select one of NL ${modID}:Lance or ${modID}:Fire. NL Deal !D! damage. NL Gain an Orb Slot NL for !M! turns.",
-    "FLAVOR": "On Exhaust, add Frozen Lance and Dying Blaze to your hand."
+    "DESCRIPTION": "Select one of NL ${modID}:Lance or ${modID}:Fire. NL Deal !D! damage. NL Gain an Orb Slot NL for !M! turns."
   },
   "${modID}:HurricaneAxe": {
     "NAME": "Hurricane Axe",
-    "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage. Add an Anathema to your hand. Exhaust a card.",
-    "FLAVOR": "On Exhaust, add Wild Abandon and Cutting Gale to your hand."
+    "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage. Add an Anathema to your hand. Exhaust a card."
   },
   "${modID}:PlegianBow": {
     "NAME": "Plegian Bow",
-    "DESCRIPTION": "Select one of NL ${modID}:Bow or ${modID}:Dark. NL Deal !D! damage. NL Apply !M! Lock-On.",
-    "FLAVOR": "On Exhaust, add a Waning Shot and Nosferatu to your hand."
+    "DESCRIPTION": "Select one of NL ${modID}:Bow or ${modID}:Dark. NL Deal !D! damage. NL Apply !M! Lock-On."
   },
   "${modID}:FlashSparrow": {
     "NAME": "Flash Sparrow",
@@ -241,15 +237,15 @@
   },
   "${modID}:Relief": {
     "NAME": "Relief",
-    "DESCRIPTION": "Gain !B! Block. NL On Exhaust, add a copy of this card to your hand. Exhaust."
+    "DESCRIPTION": "Gain !B! Block. NL On Exhaust, add a NL copy of this card to NL your hand. Exhaust."
   },
   "${modID}:Pavise": {
     "NAME": "Pavise",
-    "DESCRIPTION": "Costs 1 less if using an ${modID}:Arm. Otherwise, select an ${modID}:Arm to equip. NL Gain !B! Block twice."
+    "DESCRIPTION": "Costs 1 less if using an ${modID}:Arm. Otherwise, select an ${modID}:Arm to equip. NL Gain !B! Block."
   },
   "${modID}:Aegis": {
     "NAME": "Aegis",
-    "DESCRIPTION": "Costs 1 less if using a ${modID}:Tome. Otherwise, select a ${modID}:Tome to equip. NL Gain !B! Block twice."
+    "DESCRIPTION": "Costs 1 less if using a ${modID}:Tome. Otherwise, select a ${modID}:Tome to equip. NL Gain !B! Block."
   },
   "${modID}:Charm": {
     "NAME": "Charm",
@@ -261,11 +257,11 @@
   },
   "${modID}:EvenOddRhythm": {
     "NAME": "Even/Odd Rhythm",
-    "DESCRIPTION": "Even Turn: Gain !B! Block and a Hex. NL Odd Turn: Gain !M! ${modID}:Deflect and an Anathema.",
+    "DESCRIPTION": "Retain. Gain !B! Block. NL Add a Curse card NL to your hand. NL Even Turn: Hex. NL Odd Turn: Anathema.",
     "EXTENDED_DESCRIPTION": ["Even Rhythm",
-    "Gain !B! Block. NL Add a Hex NL to your hand.",
+    "Retain. NL Gain !B! Block. NL Add a Hex to your hand.",
     "Odd Rhythm",
-    "Gain !M! ${modID}:Deflect. NL Add an Anathema NL to your hand."]
+    "Retain. NL Gain !B! Block. NL Add an Anathema NL to your hand."]
   },
   "${modID}:SurpriseAttack": {
     "NAME": "Surprise Attack",
@@ -277,12 +273,14 @@
   },
   "${modID}:Locktouch": {
     "NAME": "Locktouch",
-    "DESCRIPTION": "Exhaust your held NL Statuses and Curses. NL Add an Anathema and a Hex to your hand.",
-    "UPGRADE_DESCRIPTION": "{@@}Draw !M! card{!M!|1=|@=s}. NL Exhaust your held Statuses and Curses. NL Add an Anathema and a Hex to your hand."
+    "DESCRIPTION": "Add an Anathema and a Hex to your hand.",
+    "UPGRADE_DESCRIPTION": "Exhaust your held Statuses and Curses. NL Add an Anathema and a Hex to your hand."
   },
   "${modID}:Gamble": {
     "NAME": "Gamble",
-    "DESCRIPTION": "Exhaust. NL On Exhaust, add a random ${modID}:Combat_Art to your hand; NL it costs 0 this turn."
+    "DESCRIPTION": "Unplayable. When drawn, draw 1 card. NL On Exhaust, select a weapon type to equip.",
+    "UPGRADE_DESCRIPTION": "When drawn, draw 1 card. On Exhaust, NL select a weapon type NL to equip. Exhaust.",
+    "EXTENDED_DESCRIPTION": ["I have to #rExhaust this card to gain its effect."]
   },
   "${modID}:RallySpectrum": {
     "NAME": "Rally Spectrum",
@@ -308,7 +306,11 @@
   },
   "${modID}:MastersTactics": {
     "NAME": "Master's Tactics",
-    "DESCRIPTION": "Increase your hand size by !M! for the rest of combat. NL {@@}Draw !M! card{!M!|1=|@=s}."
+    "DESCRIPTION": "Increase your hand size by !M! for the rest of combat. NL {@@}Draw !M! card{!M!|1=|@=s}.",
+    "EXTENDED_DESCRIPTION": [
+      "Max Hand Size Up",
+      "Increase your hand size NL for the rest of combat."
+    ]
   },
   "${modID}:Prescience": {
     "NAME": "Prescience",
@@ -350,48 +352,44 @@
 
   "${modID}:Astra": {
     "NAME": "Astra",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage 5 times."
+    "DESCRIPTION": "${modID}:Favor. NL Deal !D! damage 5 times. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. NL Deal !D! damage 5 times."
   },
   "${modID}:SwiftStrikes": {
     "NAME": "Swift Strikes",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Gain !B! Block, increased by your ${modID}:Deflect. NL Deal !D! damage twice."
+    "DESCRIPTION": "${modID}:Favor. Gain !B! Block, increased by your ${modID}:Deflect. NL Deal !D! damage twice."
   },
   "${modID}:ExhaustiveStrike": {
     "NAME": "Exhaustive Strike",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage twice. NL {@@}Exhaust up to !M! card{!M!|1=|@=s}.",
-    "FLAVOR": "If weapon-strong, Exhaust up to 3 additional cards."
+    "DESCRIPTION": "${modID}:Favor. NL Deal !D! damage twice. NL {@@}Exhaust up to !M! card{!M!|1=|@=s}. NL If weapon-strong, increase this by 3."
   },
   "${modID}:HuntersVolley": {
     "NAME": "Hunter's Volley",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage twice. NL Consume !M! ${modID}:Deflect NL to Retain your hand NL for 2 turns.",
-    "FLAVOR": "If weapon-strong, Retain your hand for 1 (additional) turn."
+    "DESCRIPTION": "${modID}:Favor. NL Deal !D! damage twice. NL Consume !M! ${modID}:Deflect NL to Retain your hand NL for 2 turns."
   },
   "${modID}:Excalibur": {
     "NAME": "Excalibur",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}At the start of your NL turn, draw !M! card{!M!|1=|@=s}.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL {@@}At the start of your NL turn, and again next NL turn, draw !M! card{!M!|1=|@=s}.",
-    "FLAVOR": "If weapon-strong, increase your hand size by 3."
+    "DESCRIPTION": "${modID}:Favor. Deal !D! damage. NL {@@}At the start of your NL turn, draw 1 card. NL If weapon-strong, gain NL !M! ${modID}:Max_Hand_Size."
   },
   "${modID}:Bolganone": {
     "NAME": "Bolganone",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! Deflect. NL Double your ${modID}:Deflect.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage. NL Gain !M! ${modID}:Deflect. NL Triple your ${modID}:Deflect.",
-    "EXTENDED_DESCRIPTION": ["Bolganone!"],
-    "FLAVOR": "If weapon-strong, gain 3 Deflect before it is multiplied."
+    "DESCRIPTION": "${modID}:Favor. Deal !D! damage. NL If weapon-strong, NL gain !M! Deflect. NL Double your ${modID}:Deflect.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. Deal !D! damage. NL If weapon-strong, NL gain !M! ${modID}:Deflect. NL Triple your ${modID}:Deflect.",
+    "EXTENDED_DESCRIPTION": ["Bolganone!"]
   },
   "${modID}:Thoron": {
     "NAME": "Thoron",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage to ALL enemies twice. Shuffle a Hex to the draw pile.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Deal !D! damage to ALL enemies twice. Add a Hex to your hand.",
+    "DESCRIPTION": "${modID}:Favor. Deal !D! damage NL to ALL enemies twice. NL Shuffle a Hex to NL your draw pile.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. Deal !D! damage NL to ALL enemies twice. Add a Hex to NL your hand.",
     "EXTENDED_DESCRIPTION": ["Thoron!"]
   },
   "${modID}:Goetia": {
     "NAME": "Goetia",
-    "DESCRIPTION": "${modID}:Favor. ${modID}:Combat_Art. NL Gain !B! Block twice. NL Deal !D! damage."
+    "DESCRIPTION": "${modID}:Favor. NL Gain !B! Block twice. NL Deal !D! damage."
   },
   "${modID}:Luna": {
     "NAME": "Luna",
-    "DESCRIPTION": "Your next ${modID}:Combat_Art NL is played twice.",
+    "DESCRIPTION": "{@@}Whenever you play an Attack for !M! turn{!M!|1=|@=s}, trigger the passive effect of your next Orb.",
     "EXTENDED_DESCRIPTION": ["Here's how it's done!"]
   },
   "${modID}:Ignis": {
@@ -401,13 +399,13 @@
   },
   "${modID}:SealAtk4": {
     "NAME": "Seal Atk 4",
-    "DESCRIPTION": "The enemy NL loses !M! Strength. NL You lose 1 Strength. NL Exhaust."
+    "DESCRIPTION": "Ethereal. The enemy NL loses !M! Strength. NL You lose 1 Strength. NL Exhaust."
   },
   "${modID}:TipTheScales": {
     "NAME": "Tip the Scales!",
     "DESCRIPTION": "Unplayable. Retain. NL On Exhaust, add an Anathema to your hand and gain NL !M! Artifact.",
     "EXTENDED_DESCRIPTION": ["Time to tip the scales!",
-      "I have to Exhaust this card to gain its effect."]
+      "I have to #rExhaust this card to gain its effect."]
   },
   "${modID}:Despoil": {
     "NAME": "Despoil",

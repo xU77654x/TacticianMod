@@ -33,7 +33,6 @@ public class Elwind extends Tactician5WindCard {
         setDamage(7, 2);
         setMagic(2, 1);
         tags.add(CustomTags.WIND);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

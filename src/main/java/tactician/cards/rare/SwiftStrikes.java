@@ -30,10 +30,9 @@ public class SwiftStrikes extends Tactician2LanceCard {
     );
     public SwiftStrikes() {
         super(ID, info);
-        setDamage(10, 4);
-        setBlock(4, 1);
+        setDamage(10, 3);
+        setBlock(4, 2);
         tags.add(CustomTags.LANCE);
-        tags.add(CustomTags.COMBAT_ART);
         tags.add(CardTags.STRIKE);
     }
 

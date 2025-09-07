@@ -1,7 +1,5 @@
 package tactician.cards.uncommon;
 
-import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -41,8 +39,6 @@ public class LevinSword extends TacticianCard {
         setDamage(14, 4);
         setMagic(4, 0);
         this.cardsToPreview = new Hex();
-        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
-        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
@@ -73,12 +69,6 @@ public class LevinSword extends TacticianCard {
 
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         addToBot(new MakeTempCardInHandAction(new Hex(), 1));
-    }
-
-    @Override
-    public void triggerOnExhaust() {
-        addToBot(new MakeTempCardInHandAction(new CrosswiseCut()));
-        addToBot(new MakeTempCardInHandAction(new Bolting()));
     }
 
     @Override

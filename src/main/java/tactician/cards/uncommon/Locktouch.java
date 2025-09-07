@@ -1,6 +1,5 @@
 package tactician.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -26,16 +25,16 @@ public class Locktouch extends TacticianCard {
 
 	public Locktouch() {
 		super(ID, info);
-		setMagic(0, 1);
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		addToBot(new PlaySoundAction("tactician:Locktouch", 2.25f));
-		if (this.upgraded) { addToBot(new DrawCardAction(this.magicNumber)); }
-		for (AbstractCard c : AbstractDungeon.player.hand.group) {
-			if (c.type == AbstractCard.CardType.CURSE || c.type == AbstractCard.CardType.STATUS) {
-				addToBot(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
+		if (this.upgraded) {
+			for (AbstractCard c : AbstractDungeon.player.hand.group) {
+				if (c.type == AbstractCard.CardType.CURSE || c.type == AbstractCard.CardType.STATUS) {
+					addToBot(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
+				}
 			}
 		}
 		addToBot(new MakeTempCardInHandAction(new Anathema(), 1));

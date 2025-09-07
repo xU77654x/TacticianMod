@@ -33,7 +33,6 @@ public class TempestLance extends Tactician2LanceCard {
         super(ID, info);
         setDamage(12, 4);
         tags.add(CustomTags.LANCE);
-        tags.add(CustomTags.COMBAT_ART);
         this.cardsToPreview = new Anathema();
     }
 

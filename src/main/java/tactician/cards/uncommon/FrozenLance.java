@@ -39,7 +39,6 @@ public class FrozenLance extends Tactician2LanceCard {
         setMagic(3, 2);
         this.p = AbstractDungeon.player;
         tags.add(CustomTags.LANCE);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

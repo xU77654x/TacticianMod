@@ -30,7 +30,7 @@ public class Pavise extends Tactician9CopyCard {
 
     public Pavise() {
         super(ID, info);
-        setBlock(5, 2);
+        setBlock(10, 4);
         tags.add(CustomTags.COPY);
     }
 
@@ -41,28 +41,28 @@ public class Pavise extends Tactician9CopyCard {
             easyCardList.add(new Weapon1Sword(() ->  {
                 weapon = 1; addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); calculateCardDamage(m);
                 addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+                addToBot(new GainBlockAction(p, p, this.block));
             }));
             easyCardList.add(new Weapon2Lance(() ->  {
                 weapon = 2; addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); calculateCardDamage(m);
                 addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+                addToBot(new GainBlockAction(p, p, this.block));
             }));
             easyCardList.add(new Weapon3Axe(() ->  {
                 weapon = 3; addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); calculateCardDamage(m);
                 addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+                addToBot(new GainBlockAction(p, p, this.block));
             }));
             easyCardList.add(new Weapon4Bow(() ->  {
                 weapon = 4; addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); calculateCardDamage(m);
                 addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+                addToBot(new GainBlockAction(p, p, this.block));
             }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
         else { weapon = 9; calculateCardDamage(m);
             addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-            addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+            addToBot(new GainBlockAction(p, p, this.block));
         }
     }
 
@@ -71,16 +71,15 @@ public class Pavise extends Tactician9CopyCard {
         boolean favor = Boolean.TRUE.equals(AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID) || AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID));
         if (!this.freeToPlayOnce && this.costForTurn != 0) {
             this.costForTurn = 2;
-            if (favor) { this.costForTurn = 1; }
+            if (favor || !(AbstractDungeon.player instanceof TacticianRobin)) { this.costForTurn = 1; }
         }
-        // This is what lets a Favored card reduce Energy cost.
+        // Pavise costs 1 less if use off-class.
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {
         int realBlock = baseBlock;
-        if (AbstractDungeon.player instanceof TacticianRobin) { baseBlock += Wiz.playerWeaponCalc(m, weapon); }
-        else { baseBlock += 3; } // Pavise grants +3 Block if used off-class.
+        baseBlock += Wiz.playerWeaponCalc(m, weapon);
         super.calculateCardDamage(m);
         baseBlock = realBlock;
         this.isBlockModified = (block != baseBlock);

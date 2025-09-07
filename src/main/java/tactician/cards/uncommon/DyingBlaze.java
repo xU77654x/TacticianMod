@@ -33,7 +33,6 @@ public class DyingBlaze extends Tactician6FireCard {
         setDamage(4, 2);
         setMagic(2, 1);
         tags.add(CustomTags.FIRE);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package tactician.cards.uncommon;
 
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,6 +11,9 @@ import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.MaxHandSizePower;
 import tactician.util.CardStats;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MastersTactics extends TacticianCard {
     public static final String ID = makeID(MastersTactics.class.getSimpleName());
@@ -31,6 +35,12 @@ public class MastersTactics extends TacticianCard {
         addToBot(new PlaySoundAction("tactician:MastersTactics", 1.00f));
         addToBot(new ApplyPowerAction(p, p, new MaxHandSizePower(this.magicNumber), this.magicNumber));
         addToBot(new DrawCardAction(this.magicNumber));
+    }
+
+    public List<TooltipInfo> getCustomTooltips() {
+        ArrayList<TooltipInfo> toolTipList = new ArrayList<>();
+        toolTipList.add(new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[0], cardStrings.EXTENDED_DESCRIPTION[1]));
+        return toolTipList;
     }
 
     @Override

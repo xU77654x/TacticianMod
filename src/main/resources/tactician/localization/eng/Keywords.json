@@ -67,17 +67,6 @@
   },
 
   {
-    "ID": "combat_art",
-    "PROPER_NAME": "Combat Art",
-    "NAMES":[
-      "combat art",
-      "combat_art",
-      "combat_arts"
-    ],
-    "DESCRIPTION": "This card activates effects that relate to Combat Arts."
-  },
-
-  {
     "ID": "copy_weapon",
     "PROPER_NAME": "Copy Weapon",
     "NAMES":[
@@ -99,6 +88,16 @@
     "PROPER_NAME": "Deflect",
     "NAMES": ["Deflect"],
     "DESCRIPTION": "The next time you take Attack damage, deal X damage back. NL A weapon-weak Attack only halves your Deflect."
+  },
+
+  {
+    "ID": "maxhandsizeup",
+    "PROPER_NAME": "Max Hand Size Up",
+    "NAMES": [
+      "Max Hand Size",
+      "Max_Hand_Size"
+    ],
+    "DESCRIPTION": "Increase your hand size NL for the rest of combat."
   },
 
   {

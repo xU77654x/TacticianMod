@@ -30,9 +30,8 @@ public class Bolting extends Tactician7ThunderCard {
 
     public Bolting() {
         super(ID, info);
-        setDamage(15, 5);
+        setDamage(13, 5);
         tags.add(CustomTags.THUNDER);
-        tags.add(CustomTags.COMBAT_ART);
         this.isInnate = true;
         this.exhaust = true;
     }

@@ -32,7 +32,6 @@ public class CrosswiseCut extends Tactician1SwordCard {
         setDamage(4, 1);
         setMagic(4, 2);
         tags.add(CustomTags.SWORD);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

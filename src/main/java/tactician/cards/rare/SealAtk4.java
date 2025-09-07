@@ -25,6 +25,7 @@ public class SealAtk4 extends TacticianCard {
         super(ID, info);
         setMagic(4, 0);
         setExhaust(true);
+        setEthereal(true);
         setCostUpgrade(0);
     }
 

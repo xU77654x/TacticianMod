@@ -25,8 +25,7 @@ public class Luna extends TacticianCard {
 
     public Luna() {
         super(ID, info);
-        setMagic(1, 0);
-        setCostUpgrade(0);
+        setMagic(2, 1);
     }
 
     @Override
@@ -35,7 +34,6 @@ public class Luna extends TacticianCard {
         addToBot(new ApplyPowerAction(p, p, new LunaPower(this.magicNumber), this.magicNumber));
         addToBot(new WaitAction(1.00F));
         AbstractDungeon.effectList.add(new PlayVoiceEffect("Luna"));
-        // addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 1.0F));
     }
 
     @Override

@@ -33,7 +33,6 @@ public class CuttingGale extends Tactician5WindCard {
         super(ID, info);
         setDamage(10, 3);
         tags.add(CustomTags.WIND);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

@@ -1,11 +1,8 @@
 package tactician.cards.uncommon;
 
-import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -40,8 +37,6 @@ public class FlameLance extends TacticianCard {
         super(ID, info);
         setDamage(14, 4);
         setMagic(3, 0);
-        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
-        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
@@ -79,12 +74,6 @@ public class FlameLance extends TacticianCard {
         super.calculateCardDamage(m);
         baseDamage = realDamage;
         this.isDamageModified = (damage != baseDamage);
-    }
-
-    @Override
-    public void triggerOnExhaust() {
-        addToBot(new MakeTempCardInHandAction(new FrozenLance()));
-        addToBot(new MakeTempCardInHandAction(new DyingBlaze()));
     }
 
     @Override

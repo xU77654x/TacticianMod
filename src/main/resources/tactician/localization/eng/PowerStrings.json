@@ -114,9 +114,10 @@
   },
   "${modID}:LunaPower": {
     "NAME": "Luna",
-    "DESCRIPTIONS": ["Your next ",
-      " Combat Arts play twice.",
-      "Your next Combat Art plays twice."]
+    "DESCRIPTIONS": ["Whenever you play an Attack this turn, ",
+      "trigger the passive ability of your first Orb.",
+      "Whenever you play an Attack for #b",
+      "turns."]
   },
   "${modID}:ChaosStylePower": {
     "NAME": "Chaos Style",

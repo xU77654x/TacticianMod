@@ -35,12 +35,9 @@ public class HuntersVolley extends Tactician4BowCard {
 
     public HuntersVolley() {
         super(ID, info);
-        setDamage(10, 4);
+        setDamage(10, 3);
         setMagic(4, -3);
         tags.add(CustomTags.BOW);
-        tags.add(CustomTags.COMBAT_ART);
-        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
-        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
@@ -57,7 +54,7 @@ public class HuntersVolley extends Tactician4BowCard {
             addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, 2)));
         }
-        if (Wiz.playerWeaponCalc(m, 9) > 0) { addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, 1))); }
+        // if (Wiz.playerWeaponCalc(m, 9) > 0) { addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, 1))); }
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
     }
 

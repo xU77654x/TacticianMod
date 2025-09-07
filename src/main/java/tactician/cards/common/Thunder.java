@@ -34,7 +34,6 @@ public class Thunder extends Tactician7ThunderCard {
         setMagic(1, 1);
         this.cardsToPreview = new Hex();
         tags.add(CustomTags.THUNDER);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

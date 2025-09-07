@@ -35,7 +35,6 @@ public class Flux extends Tactician8DarkCard {
         setDamage(4, 2);
         setBlock(6, 2);
         tags.add(CustomTags.DARK);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

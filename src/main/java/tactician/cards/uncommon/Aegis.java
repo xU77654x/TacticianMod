@@ -31,7 +31,7 @@ public class Aegis extends Tactician9CopyCard {
 
 	public Aegis() {
         super(ID, info);
-        setBlock(5, 2);
+        setBlock(10, 4);
         tags.add(CustomTags.COPY);
     }
 
@@ -42,28 +42,28 @@ public class Aegis extends Tactician9CopyCard {
             easyCardList.add(new Weapon5Wind(() ->  {
                 weapon = 5; addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); calculateCardDamage(m);
                 addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+                addToBot(new GainBlockAction(p, p, this.block));
             }));
             easyCardList.add(new Weapon6Fire(() ->  {
                 weapon = 6; addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); calculateCardDamage(m);
                 addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+                addToBot(new GainBlockAction(p, p, this.block));
             }));
             easyCardList.add(new Weapon7Thunder(() ->  {
                 weapon = 7; addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); calculateCardDamage(m);
                 addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+                addToBot(new GainBlockAction(p, p, this.block));
             }));
             easyCardList.add(new Weapon8Dark(() ->  {
                 weapon = 8; addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); calculateCardDamage(m);
                 addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-                addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+                addToBot(new GainBlockAction(p, p, this.block));
             }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
         else { weapon = 9; calculateCardDamage(m);
             addToBot(new PlaySoundAction("tactician:PaviseAegis", 0.90f));
-            addToBot(new GainBlockAction(p, p, this.block)); addToBot(new GainBlockAction(p, p, this.block));
+            addToBot(new GainBlockAction(p, p, this.block));
         }
     }
 
@@ -74,7 +74,6 @@ public class Aegis extends Tactician9CopyCard {
             this.costForTurn = 2;
             if (favor || !(AbstractDungeon.player instanceof TacticianRobin)) { this.costForTurn = 1; }
         }
-
         // Aegis costs 1 less if used off-class.
     }
 

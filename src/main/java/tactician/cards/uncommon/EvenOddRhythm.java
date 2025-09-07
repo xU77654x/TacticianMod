@@ -27,20 +27,19 @@ public class EvenOddRhythm extends TacticianCard {
 
     public EvenOddRhythm() {
         super(ID, info);
-        setBlock(14, 4);
-        setMagic(14,4);
+        setBlock(12, 4);
+        this.selfRetain = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new GainBlockAction(p, p, this.block));
         if (GameActionManager.turn % 2 == 0) {
             addToTop(new PlaySoundAction("tactician:EvenRhythm", 1.00f));
-            addToBot(new GainBlockAction(p, p, this.block));
             addToBot(new MakeTempCardInHandAction(new Hex(), 1));
         }
         else {
             addToTop(new PlaySoundAction("tactician:OddRhythm", 1.00f));
-            addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
             addToBot(new MakeTempCardInHandAction(new Anathema(), 1));
         }
     }

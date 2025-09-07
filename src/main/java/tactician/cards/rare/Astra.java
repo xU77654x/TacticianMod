@@ -29,9 +29,9 @@ public class Astra extends Tactician1SwordCard {
 
     public Astra() {
         super(ID, info);
-        setDamage(3, 2);
+        setDamage(3, 0);
+        setExhaust(true, false);
         tags.add(CustomTags.SWORD);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

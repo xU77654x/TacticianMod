@@ -1,7 +1,5 @@
 package tactician.cards.rare;
 
-import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -11,7 +9,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.DrawPower;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician5WindCard;
@@ -22,7 +19,6 @@ import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
-
 import static java.lang.Math.max;
 
 public class Excalibur extends Tactician5WindCard {
@@ -37,12 +33,9 @@ public class Excalibur extends Tactician5WindCard {
 
     public Excalibur() {
         super(ID, info);
-        setDamage(10, 4);
-        setMagic(1, 0);
+        setDamage(10, 3);
+        setMagic(1, 2);
         tags.add(CustomTags.WIND);
-        tags.add(CustomTags.COMBAT_ART);
-        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
-        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
@@ -54,8 +47,8 @@ public class Excalibur extends Tactician5WindCard {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
         addToBot(new PlaySoundAction("tactician:Excalibur_Hit", 1.25f));
         addToBot(new ApplyPowerAction(p, p, new DrawPower(p, 1), 1));
-        addToBot(new ApplyPowerAction(p, p, new MaxHandSizePower(this.magicNumber), this.magicNumber));
-        if (this.upgraded) { addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber)); }
+        if (Wiz.playerWeaponCalc(m, 9) > 0) { addToBot(new ApplyPowerAction(p, p, new MaxHandSizePower(this.magicNumber), this.magicNumber)); }
+        // if (this.upgraded) { addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber)); }
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
 
     }
@@ -63,13 +56,10 @@ public class Excalibur extends Tactician5WindCard {
     @Override
     public void calculateCardDamage(AbstractMonster m) {
         int realDamage = baseDamage;
-        int weaponCalc = Wiz.playerWeaponCalc(m, 9);
-        baseDamage += weaponCalc;
-        magicNumber = baseMagicNumber + max(0, weaponCalc);
+        baseDamage += Wiz.playerWeaponCalc(m, 9);
         super.calculateCardDamage(m);
         baseDamage = realDamage;
         this.isDamageModified = (damage != baseDamage);
-        this.isMagicNumberModified = (magicNumber != baseMagicNumber);
     }
 
     @Override

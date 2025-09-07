@@ -34,13 +34,10 @@ public class ExhaustiveStrike extends Tactician3AxeCard {
 
     public ExhaustiveStrike() {
         super(ID, info);
-        setDamage(10, 4);
+        setDamage(10, 3);
         setMagic(1, 1);
         tags.add(CardTags.STRIKE);
         tags.add(CustomTags.AXE);
-        tags.add(CustomTags.COMBAT_ART);
-        FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
-        FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
     }
 
     @Override
@@ -51,7 +48,9 @@ public class ExhaustiveStrike extends Tactician3AxeCard {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         addToBot(new PlaySoundAction("tactician:ExhaustiveStrike_Hit2", 1.25f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        addToBot(new ExhaustAction(this.magicNumber, false, true, true));
+        int exhaustAmount = magicNumber;
+        if (Wiz.playerWeaponCalc(m, 9) > 0) { exhaustAmount += 3; }
+        addToBot(new ExhaustAction(exhaustAmount, false, true, true));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
     }
 
@@ -59,13 +58,10 @@ public class ExhaustiveStrike extends Tactician3AxeCard {
     public void calculateCardDamage(AbstractMonster m) {
         if (m != null) {
             int realDamage = baseDamage;
-            int weaponCalc = Wiz.playerWeaponCalc(m, 9);
-            baseDamage += weaponCalc;
-            magicNumber = baseMagicNumber + max(0, weaponCalc);
+            baseDamage += Wiz.playerWeaponCalc(m, 9);
             super.calculateCardDamage(m);
             baseDamage = realDamage;
             this.isDamageModified = (damage != baseDamage);
-            this.isMagicNumberModified = (magicNumber != baseMagicNumber);
         }
     }
 

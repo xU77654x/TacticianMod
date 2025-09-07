@@ -38,8 +38,6 @@ public class ShovePower extends AbstractPower implements CloneablePowerInterface
 		else { addToBot(new ReducePowerAction(this.owner, this.owner, ShovePower.POWER_ID, 1)); }
 	}
 
-	// TODO: Having ShovePower prevents you from receiving SealAtkPower.
-
 	public void updateDescription() {
 		if (this.amount == 1) { this.description = DESCRIPTIONS[0] + DESCRIPTIONS[1]; }
 		else { this.description = DESCRIPTIONS[0] + DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3]; }

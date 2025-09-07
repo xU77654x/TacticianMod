@@ -34,7 +34,6 @@ public class WrathStrike extends Tactician1SwordCard {
         setMagic(4, 2);
         tags.add(CardTags.STRIKE);
         tags.add(CustomTags.SWORD);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

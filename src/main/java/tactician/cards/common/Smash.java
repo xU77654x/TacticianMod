@@ -34,7 +34,6 @@ public class Smash extends Tactician3AxeCard {
         setDamage(8, 2);
         setMagic(2, 1);
         tags.add(CustomTags.AXE);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override

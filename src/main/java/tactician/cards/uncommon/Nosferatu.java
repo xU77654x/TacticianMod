@@ -30,7 +30,6 @@ public class Nosferatu extends Tactician8DarkCard {
         super(ID, info);
         setDamage(5, 2);
         tags.add(CustomTags.DARK);
-        tags.add(CustomTags.COMBAT_ART);
         this.exhaust = true;
     }
 

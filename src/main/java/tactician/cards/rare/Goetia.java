@@ -32,10 +32,9 @@ public class Goetia extends Tactician8DarkCard {
 
     public Goetia() {
         super(ID, info);
-        setDamage(10, 4);
-        setBlock(7, 3);
+        setDamage(10, 3);
+        setBlock(6, 2);
         tags.add(CustomTags.DARK);
-        tags.add(CustomTags.COMBAT_ART);
     }
 
     @Override
