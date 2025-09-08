@@ -30,7 +30,7 @@ public class Pavise extends Tactician9CopyCard {
 
     public Pavise() {
         super(ID, info);
-        setBlock(10, 4);
+        setBlock(11, 4);
         tags.add(CustomTags.COPY);
     }
 
@@ -73,7 +73,7 @@ public class Pavise extends Tactician9CopyCard {
             this.costForTurn = 2;
             if (favor || !(AbstractDungeon.player instanceof TacticianRobin)) { this.costForTurn = 1; }
         }
-        // Pavise costs 1 less if use off-class.
+        // Pavise costs 1 less if used off-class.
     }
 
     @Override

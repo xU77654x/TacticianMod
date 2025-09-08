@@ -31,7 +31,7 @@ public class Aegis extends Tactician9CopyCard {
 
 	public Aegis() {
         super(ID, info);
-        setBlock(10, 4);
+        setBlock(11, 4);
         tags.add(CustomTags.COPY);
     }
 
