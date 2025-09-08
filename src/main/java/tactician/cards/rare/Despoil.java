@@ -30,6 +30,7 @@ public class Despoil extends TacticianCard {
         super(ID, info);
         setCostUpgrade(0);
         setExhaust(true);
+        tags.add(CardTags.HEALING);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package tactician.cards.rare;
 
-import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -19,8 +17,6 @@ import tactician.powers.weapons.Weapon3AxePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
-
-import static java.lang.Math.max;
 
 public class ExhaustiveStrike extends Tactician3AxeCard {
     public static final String ID = makeID(ExhaustiveStrike.class.getSimpleName());

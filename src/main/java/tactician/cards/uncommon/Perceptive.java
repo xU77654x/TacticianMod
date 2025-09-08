@@ -15,8 +15,8 @@ import tactician.powers.weapons.*;
 import tactician.util.CardStats;
 import java.util.ArrayList;
 
-public class Gamble extends TacticianCard {
-    public static final String ID = makeID(Gamble.class.getSimpleName());
+public class Perceptive extends TacticianCard {
+    public static final String ID = makeID(Perceptive.class.getSimpleName());
     private static final CardStats info = new CardStats(
             TacticianRobin.Meta.CARD_COLOR,
             CardType.SKILL,
@@ -25,7 +25,7 @@ public class Gamble extends TacticianCard {
             -2
     );
 
-    public Gamble() {
+    public Perceptive() {
         super(ID, info);
         setMagic(1, 0);
         setExhaust(false, true);
@@ -40,7 +40,7 @@ public class Gamble extends TacticianCard {
 
     @Override
     public void triggerOnExhaust() {
-        addToBot(new PlaySoundAction("tactician:Gamble", 1.10f));
+        addToBot(new PlaySoundAction("tactician:Perceptive", 1.10f));
         AbstractPlayer p = AbstractDungeon.player;
         if (AbstractDungeon.player instanceof TacticianRobin) {
             ArrayList<AbstractCard> easyCardList = new ArrayList<>();
@@ -68,5 +68,5 @@ public class Gamble extends TacticianCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new Gamble(); }
+    public AbstractCard makeCopy() { return new Perceptive(); }
 } // TODO: Rename to Perceptive.

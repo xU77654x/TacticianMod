@@ -1,7 +1,6 @@
 package tactician.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,7 +11,6 @@ import tactician.cards.TacticianCard;
 import tactician.cards.other.Anathema;
 import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
-import tactician.powers.DeflectPower;
 import tactician.util.CardStats;
 
 public class EvenOddRhythm extends TacticianCard {

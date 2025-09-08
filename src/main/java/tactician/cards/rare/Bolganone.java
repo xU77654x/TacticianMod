@@ -18,8 +18,6 @@ import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 
-import static java.lang.Math.max;
-
 public class Bolganone extends Tactician6FireCard {
     public static final String ID = makeID(Bolganone.class.getSimpleName());
     private static final CardStats info = new CardStats(

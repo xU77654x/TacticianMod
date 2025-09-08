@@ -276,15 +276,15 @@
     "DESCRIPTION": "Add an Anathema and a Hex to your hand.",
     "UPGRADE_DESCRIPTION": "Exhaust your held Statuses and Curses. NL Add an Anathema and a Hex to your hand."
   },
-  "${modID}:Gamble": {
-    "NAME": "Gamble",
+  "${modID}:Perceptive": {
+    "NAME": "Perceptive",
     "DESCRIPTION": "Unplayable. When drawn, draw 1 card. NL On Exhaust, select a weapon type to equip.",
     "UPGRADE_DESCRIPTION": "When drawn, draw 1 card. On Exhaust, NL select a weapon type NL to equip. Exhaust.",
     "EXTENDED_DESCRIPTION": ["I have to #rExhaust this card to gain its effect."]
   },
   "${modID}:RallySpectrum": {
     "NAME": "Rally Spectrum",
-    "DESCRIPTION": "Gain !M! temp. Strength, Focus, and Dexterity. Choose the order they are gained.",
+    "DESCRIPTION": "Gain !M! temp. Strength, Focus, and Dexterity. Choose the order NL these are gained.",
     "EXTENDED_DESCRIPTION": ["Gain temp. Strength.",
       "Gain temp. Focus.",
       "Gain temp. Dexterity."]

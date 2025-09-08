@@ -41,9 +41,6 @@ public class Reposition extends Tactician9CopyCard {
         if (p.hasPower(DexterityPower.POWER_ID)) {
             int dex = p.getPower(DexterityPower.POWER_ID).amount;
             if (dex > 0) { addToBot(new ApplyPowerAction(p, p, new DeflectPower(dex), dex)); }
-            else if (dex < 0 && p.hasPower(DeflectPower.POWER_ID)) {
-                addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), -dex));
-            }
         }
     }
 

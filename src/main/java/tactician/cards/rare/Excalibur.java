@@ -19,7 +19,6 @@ import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
-import static java.lang.Math.max;
 
 public class Excalibur extends Tactician5WindCard {
     public static final String ID = makeID(Excalibur.class.getSimpleName());
