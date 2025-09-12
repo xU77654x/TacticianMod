@@ -24,7 +24,7 @@ public class Healtouch extends TacticianCard {
 
     public Healtouch() {
         super(ID, info);
-        setBlock(5, 2);
+        setBlock(4, 2);
         setMagic(3, 0);
     }
 

@@ -18,7 +18,7 @@
   "${modID}:GoldenWingTactician": {
     "NAME": "Winged Statue",
     "DESCRIPTIONS": [ "With a focus on the angle of your strike rather than its brute force, you chip off a quality fragment for use as a relic." ],
-    "OPTIONS": [ "[Salvage] #gIncrease #gyour #gmaximum #ghand #gsize #gby #g3." ]
+    "OPTIONS": [ "[Salvage] #gAt #gthe #gstart #gof #gcombat, #gadd #ga #gTactical #gAdvice #gto #gyour #ghand." ]
   },
   "${modID}:FallingTactician": {
     "NAME": "Falling",

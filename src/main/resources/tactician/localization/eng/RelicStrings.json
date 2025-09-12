@@ -32,7 +32,7 @@
   "${modID}:StatueFragment": {
     "NAME": "Statue Fragment",
     "FLAVOR": "\"Not even the finest treasures is worth getting a comrade killed...\"",
-    "DESCRIPTIONS": ["Increase your maximum hand size by #b"]
+    "DESCRIPTIONS": ["At the start of combat, add a Tactical Advice to your hand."]
   },
   "${modID}:EnergyDrop": {
     "NAME": "Energy Drop",

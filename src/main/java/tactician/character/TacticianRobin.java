@@ -127,9 +127,8 @@ public class TacticianRobin extends CustomPlayer {
         retVal.add(Defend6Fire.ID);
         retVal.add(Defend7Thunder.ID);
         retVal.add(Defend8Dark.ID);
-        retVal.add(Veteran.ID);
         retVal.add(Solidarity.ID);
-        retVal.add(Vulnerary.ID);
+        retVal.add(Veteran.ID);
         return retVal;
     }
 

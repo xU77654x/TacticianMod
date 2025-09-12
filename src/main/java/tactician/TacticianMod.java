@@ -273,7 +273,7 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:Defend_Neutral", "tactician/audio/effect/Defend_Neutral.ogg");
         BaseMod.addAudio("tactician:Defend_Weak", "tactician/audio/effect/Defend_Weak.ogg");
         BaseMod.addAudio("tactician:Solidarity", "tactician/audio/effect/Solidarity.ogg");
-        BaseMod.addAudio("tactician:Vulnerary", "tactician/audio/effect/Vulnerary.ogg");
+        BaseMod.addAudio("tactician:Veteran", "tactician/audio/effect/Veteran.ogg");
 
         // Common Cards
         BaseMod.addAudio("tactician:WrathStrike", "tactician/audio/effect/WrathStrike.ogg");

@@ -64,44 +64,15 @@
     "DESCRIPTION": "Gain !B! Block. NL On right-click, this NL becomes a Strike for NL the rest of combat."
   },
 
-  "${modID}:Veteran": {
-    "NAME": "Veteran",
-    "DESCRIPTION": "This card is a copy of the Common Attack of your equipped weapon.",
-    "UPGRADE_DESCRIPTION": "This card is a copy of the upgraded Common Attack of your equipped weapon.",
-    "EXTENDED_DESCRIPTION": [
-      "I don't have a weapon type. NL How did this even happen!?",
-      "This card copies the Common Attack of your weapon.",
-      "This card copies the upgraded Common Attack of your equipped weapon.",
-      "Elwind!",
-      "Arcfire!",
-      "Thunder!",
-      "Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect.",
-      "Deal !D! damage. NL Shuffle an Anathema to your draw pile.",
-      "Deal !D! damage. NL Gain !M! temp. Strength.",
-      "Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable.",
-      "Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
-      "Deal !D! damage. NL Gain !M! temp. Focus.",
-      "Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
-      "Gain !B! Block. NL Deal !D! damage.",
-      "Wrath Strike",
-      "Tempest Lance",
-      "Smash",
-      "Curved Shot",
-      "Elwind",
-      "Arcfire",
-      "Thunder",
-      "Flux",
-      "I don't have a \"weapon type\"! NL Why do I even have this card?",
-      "Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}."
-    ]
-  },
   "${modID}:Solidarity": {
     "NAME": "Solidarity",
     "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Draw 2 cards. Add NL a Hex to your hand."
   },
-  "${modID}:Vulnerary": {
-    "NAME": "Vulnerary",
-    "DESCRIPTION": "Heal !M! HP. NL Exhaust a card. NL Exhaust."
+  "${modID}:Veteran": {
+    "NAME": "Veteran",
+    "DESCRIPTION": "Exhaust a card. If you don't Exhaust a Curse, NL gain !M! temp. Strength. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Exhaust a card. NL Gain !M! temp. Strength. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": ["Exhaust"]
   },
 
   "${modID}:WrathStrike": {
@@ -284,7 +255,7 @@
   },
   "${modID}:RallySpectrum": {
     "NAME": "Rally Spectrum",
-    "DESCRIPTION": "Gain !M! temp. Strength, Focus, and Dexterity. Choose the order NL these are gained.",
+    "DESCRIPTION": "Draw 1 card. NL Gain !M! temp. Strength, Focus, and Dexterity. Choose the order NL these are gained.",
     "EXTENDED_DESCRIPTION": ["Gain temp. Strength.",
       "Gain temp. Focus.",
       "Gain temp. Dexterity."]
@@ -438,17 +409,42 @@
 
   "${modID}:Hex": {
     "NAME": "Hex",
-    "DESCRIPTION": "Retain. NL Lose !M! ${modID}:Deflect or 1 Strength next turn. NL Exhaust. On Exhaust, Channel 1 Lightning.",
-    "FLAVOR": "If you have Strength Down, NL you don't lose Strength."
+    "DESCRIPTION": "Retain. NL Lose !M! ${modID}:Deflect or 1 Strength next turn. NL Exhaust. On Exhaust, Channel 1 Lightning."
   },
   "${modID}:Anathema": {
     "NAME": "Anathema",
-    "DESCRIPTION": "Retain. NL Lose !M! ${modID}:Deflect or 1 Dexterity next turn. NL Exhaust. On Exhaust, Channel 1 Frost.",
-    "FLAVOR": "If you have Dexterity Down, NL you don't lose Dexterity."
+    "DESCRIPTION": "Retain. NL Lose !M! ${modID}:Deflect or 1 Dexterity next turn. NL Exhaust. On Exhaust, Channel 1 Frost."
   },
-  "${modID}:SoftReset": {
-    "NAME": "Soft Reset",
-    "DESCRIPTION": "Retain. Die."
+  "${modID}:TacticalAdvice": {
+    "NAME": "Tactical Advice",
+    "DESCRIPTION": "Retain. Exhaust. NL This card is a copy of the Common Attack of your equipped weapon.",
+    "UPGRADE_DESCRIPTION": "Retain. Exhaust. NL This card is a copy of the upgraded Common Attack of your equipped weapon.",
+    "EXTENDED_DESCRIPTION": [
+      "I don't have a weapon type. NL How did this even happen!?",
+      "This card copies the Common Attack of your weapon.",
+      "This card copies the upgraded Common Attack of your equipped weapon.",
+      "Elwind!",
+      "Arcfire!",
+      "Thunder!",
+      "Retain. Exhaust. NL Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect.",
+      "Retain. Exhaust. NL Deal !D! damage. NL Shuffle an Anathema to your draw pile.",
+      "Retain. Exhaust. NL Deal !D! damage. NL Gain !M! temp. Strength.",
+      "Retain. Exhaust. NL Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable.",
+      "Retain. Exhaust. NL Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
+      "Retain. Exhaust. NL Deal !D! damage. NL Gain !M! temp. Focus.",
+      "Retain. Exhaust. NL Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
+      "Retain. Exhaust. NL Gain !B! Block. NL Deal !D! damage.",
+      "Wrath Strike",
+      "Tempest Lance",
+      "Smash",
+      "Curved Shot",
+      "Elwind",
+      "Arcfire",
+      "Thunder",
+      "Flux",
+      "I don't have a \"weapon type\"! NL Why do I even have this card?",
+      "Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}."
+    ]
   },
   "${modID}:DebugWeapon": {
     "NAME": "Debug Weapon",

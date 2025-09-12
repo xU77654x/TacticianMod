@@ -40,8 +40,8 @@ public class Hex extends TacticianCard {
 		setSelfRetain(true);
 		setExhaust(true);
 		setBackgroundTexture("tactician/images/character/cardback/bg_curse.png", "tactician/images/character/cardback/bg_curse_p.png");
-		FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
-		FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
+		// FlavorText.AbstractCardFlavorFields.boxColor.set(this, Color.PURPLE.cpy());
+		// FlavorText.AbstractCardFlavorFields.textColor.set(this, Color.WHITE.cpy());
 	}
 
 	@Override
@@ -52,8 +52,7 @@ public class Hex extends TacticianCard {
 			addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, val, false), val, true, AbstractGameAction.AttackEffect.NONE));
 		}
 		if (Boolean.TRUE.equals(p.hasRelic(BlueCandle.ID) && p.hasPower(ShovePower.POWER_ID))) { addToTop(new AddTemporaryHPAction(p, p, 1)); } // Blue Candle won't make the player lose HP if they have ShovePower.
-		else if (Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID) || p.hasPower(ShovePower.POWER_ID) || p.hasPower(LoseStrengthPower.POWER_ID))) { // No Deflect is consumed or stats lost if the player has LoseStrengthPower or ShovePower.
-			/* if (p.hasPower(ShovePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, 1), 1)); } */
+		else if (Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID) || p.hasPower(ShovePower.POWER_ID) /* || p.hasPower(LoseStrengthPower.POWER_ID) */ )) { // No Deflect is consumed or stats lost if the player has LoseStrengthPower or ShovePower.
 			if (Boolean.TRUE.equals(p.hasPower(DeflectPower.POWER_ID)) && (p.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {
 				addToBot(new ReducePowerAction(p, p, p.getPower(DeflectPower.POWER_ID), this.magicNumber));
 			}

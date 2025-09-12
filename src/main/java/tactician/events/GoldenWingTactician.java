@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.relics.Circlet;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import tactician.cards.other.TacticalAdvice;
 import tactician.relics.StatueFragment;
 import static tactician.TacticianMod.makeID;
 
@@ -47,7 +48,7 @@ public class GoldenWingTactician extends AbstractImageEvent {
 		this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[0] + this.damage + vanilla_ES.OPTIONS[1]);
 		if (this.canAttack) { this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[2] + MIN_GOLD + vanilla_ES.OPTIONS[3] + MAX_GOLD + vanilla_ES.OPTIONS[4]); }
 		else { this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[5] + REQUIRED_DAMAGE + vanilla_ES.OPTIONS[6] , true); }
-		this.imageEventText.setDialogOption(custom_ES.OPTIONS[0]);
+		this.imageEventText.setDialogOption(custom_ES.OPTIONS[0], new TacticalAdvice());
 		this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[7]);
 	}
 

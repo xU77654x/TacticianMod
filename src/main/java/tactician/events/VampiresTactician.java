@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.events.city.Vampires;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.BloodVial;
 import com.megacrit.cardcrawl.relics.Vajra;
@@ -33,8 +34,8 @@ public class VampiresTactician extends AbstractImageEvent {
 	public VampiresTactician() {
 		super(NAME, vanilla_ES.DESCRIPTIONS[0], "images/events/vampires.jpg");
 		this.body = AbstractDungeon.player.getVampireText();
-		this.imageEventText.setDialogOption(custom_ES.OPTIONS[0] + hpHeal + custom_ES.OPTIONS[1]);
-		this.imageEventText.setDialogOption(custom_ES.OPTIONS[2] + hpLose + custom_ES.OPTIONS[3]);
+		this.imageEventText.setDialogOption(custom_ES.OPTIONS[0] + hpHeal + custom_ES.OPTIONS[1], new Hex());
+		this.imageEventText.setDialogOption(custom_ES.OPTIONS[2] + hpLose + custom_ES.OPTIONS[3], new Anathema());
 		if (AbstractDungeon.player.hasRelic(BloodVial.ID)) { this.imageEventText.setDialogOption(custom_ES.OPTIONS[4], new Vajra()); } // Remove the "new Vajra()"?
 		else { this.imageEventText.setDialogOption(custom_ES.OPTIONS[5], true); }
 		this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[2]);
