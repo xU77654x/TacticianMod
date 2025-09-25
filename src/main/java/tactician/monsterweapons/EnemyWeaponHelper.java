@@ -273,7 +273,7 @@ public class EnemyWeaponHelper {
 				pow = new Weapon3AxePower(m); break;
 			case "downfall:FleeingMerchant":
 				if (intent == DEFEND) { pow = new Weapon4BowPower(m); }
-				if (intent == ATTACK) { pow = new Weapon0NeutralPower(m); }
+				if (intent == ATTACK) { pow = new Weapon7ThunderPower(m); }
 				if (intent == BUFF) { pow = new Weapon8DarkPower(m); }
 				if (intent == ESCAPE) { pow = new Weapon0NeutralPower(m); } break;
 			case "downfall:MushroomRed": pow = new Weapon2LancePower(m); break;
