@@ -4,11 +4,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.megacrit.cardcrawl.characters.Ironclad;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import tactician.util.TextureLoader;
-import static tactician.TacticianMod.powerPath;
+import static tactician.TacticianMod.*;
+import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
 public class LoseStrIconPatch {
 	private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/LoseStrengthCustom_Large.png"));
@@ -18,7 +18,7 @@ public class LoseStrIconPatch {
 	public static class replaceTexture {
 		@SpirePostfixPatch
 		public static void OverwriteLoseStrIcon(LoseStrengthPower _inst) {
-			if (!(AbstractDungeon.player instanceof Ironclad)) {
+			if (tempStatPatch.toggle.enabled || AbstractDungeon.player.chosenClass == TACTICIAN) {
 				_inst.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 90, 90);
 				_inst.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 			}

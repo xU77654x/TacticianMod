@@ -30,12 +30,25 @@ public class SecretBook extends BaseRelic {
 	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
 
 	@Override
-	public void atBattleStart() {
-		flash();
+	public void atBattleStart() { this.counter = 0; }
+
+	@Override
+	public void atTurnStart() {
 		this.p = AbstractDungeon.player;
-		addToTop(new ApplyPowerAction(p, p, new FocusPower(p, 1), 1));
-		addToTop(new MakeTempCardInHandAction(new Anathema(), 1));
-		addToTop(new RelicAboveCreatureAction(p, this));
+		if (!this.grayscale) { this.counter++; }
+		if (this.counter == 2) {
+			flash();
+			addToTop(new ApplyPowerAction(p, p, new FocusPower(p, 1), 1));
+			addToTop(new MakeTempCardInHandAction(new Anathema(), 1));
+			addToTop(new RelicAboveCreatureAction(p, this));
+			this.counter = -1;
+			this.grayscale = true;
+		}
+	}
+
+	public void onVictory() {
+		this.counter = -1;
+		this.grayscale = false;
 	}
 
 	@Override

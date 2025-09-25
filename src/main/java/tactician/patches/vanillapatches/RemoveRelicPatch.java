@@ -7,16 +7,28 @@ import com.megacrit.cardcrawl.relics.BlueCandle;
 import com.megacrit.cardcrawl.relics.RunicDome;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
+import tactician.relics.Dracoshield;
+import tactician.relics.EnergyDrop;
+import tactician.relics.KillingEdge;
+import tactician.relics.SeraphRobe;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static tactician.TacticianMod.globalRelics;
 import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
 @SpirePatch2(clz = AbstractDungeon.class, method = "initializeRelicList")
 public class RemoveRelicPatch {
 	@SpireInsertPatch(locator = Locator.class)
 	public static void Insert() {
+		if (!globalRelics.toggle.enabled && AbstractDungeon.player.chosenClass != TACTICIAN) {
+			AbstractDungeon.relicsToRemoveOnStart.add(SeraphRobe.ID);
+			AbstractDungeon.relicsToRemoveOnStart.add(Dracoshield.ID);
+			AbstractDungeon.relicsToRemoveOnStart.add(EnergyDrop.ID);
+			AbstractDungeon.relicsToRemoveOnStart.add(KillingEdge.ID);
+		}
+
 		if (AbstractDungeon.player.chosenClass == TACTICIAN) {
 			AbstractDungeon.relicsToRemoveOnStart.add(BlueCandle.ID); // Blue Candle has a downside of losing HP with Hex / Anathemas; use Expiration for the choice instead.
 			AbstractDungeon.relicsToRemoveOnStart.add(RunicDome.ID); // Take a wild guess.
@@ -24,30 +36,30 @@ public class RemoveRelicPatch {
 			AbstractDungeon.relicsToRemoveOnStart.add("reliquary:ElizabethanCollar"); // Vampires event guarantees an Injury.
 			AbstractDungeon.relicsToRemoveOnStart.add("reliquary:FishingReel"); // Applies a *debuff* to prevent infinite energy.
 			AbstractDungeon.relicsToRemoveOnStart.add("HugYouRelics:RunicBlindfold"); // Same reason as Runic Dome.
+		}
 
-			for (String remove : AbstractDungeon.relicsToRemoveOnStart) {
-				Iterator<String> s;
+		for (String remove : AbstractDungeon.relicsToRemoveOnStart) {
+			Iterator<String> s;
 
-				for (s = AbstractDungeon.commonRelicPool.iterator(); s.hasNext(); ) {
-					String common = s.next();
-					if (common.equals(remove)) { s.remove(); }
-				}
-				for (s = AbstractDungeon.uncommonRelicPool.iterator(); s.hasNext(); ) {
-					String uncommon = s.next();
-					if (uncommon.equals(remove)) { s.remove(); }
-				}
-				for (s = AbstractDungeon.rareRelicPool.iterator(); s.hasNext(); ) {
-					String rare = s.next();
-					if (rare.equals(remove)) { s.remove(); }
-				}
-				for (s = AbstractDungeon.shopRelicPool.iterator(); s.hasNext(); ) {
-					String boss = s.next();
-					if (boss.equals(remove))  s.remove();
-				}
-				for (s = AbstractDungeon.bossRelicPool.iterator(); s.hasNext(); ) {
-					String shop = s.next();
-					if (shop.equals(remove)) { s.remove(); }
-				}
+			for (s = AbstractDungeon.commonRelicPool.iterator(); s.hasNext(); ) {
+				String common = s.next();
+				if (common.equals(remove)) { s.remove(); }
+			}
+			for (s = AbstractDungeon.uncommonRelicPool.iterator(); s.hasNext(); ) {
+				String uncommon = s.next();
+				if (uncommon.equals(remove)) { s.remove(); }
+			}
+			for (s = AbstractDungeon.rareRelicPool.iterator(); s.hasNext(); ) {
+				String rare = s.next();
+				if (rare.equals(remove)) { s.remove(); }
+			}
+			for (s = AbstractDungeon.shopRelicPool.iterator(); s.hasNext(); ) {
+				String boss = s.next();
+				if (boss.equals(remove))  s.remove();
+			}
+			for (s = AbstractDungeon.bossRelicPool.iterator(); s.hasNext(); ) {
+				String shop = s.next();
+				if (shop.equals(remove)) { s.remove(); }
 			}
 		}
 	}

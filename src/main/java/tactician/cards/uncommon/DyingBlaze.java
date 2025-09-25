@@ -30,7 +30,7 @@ public class DyingBlaze extends Tactician6FireCard {
 
     public DyingBlaze() {
         super(ID, info);
-        setDamage(4, 2);
+        setDamage(3, 2);
         setMagic(2, 1);
         tags.add(CustomTags.FIRE);
     }

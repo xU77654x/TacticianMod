@@ -5,6 +5,8 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.blue.Leap;
+import com.megacrit.cardcrawl.cards.red.Anger;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
@@ -14,6 +16,8 @@ import tactician.cards.basic.strikes.*;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
 import java.util.Objects;
+
+import static basemod.helpers.CardModifierManager.copyModifiers;
 
 public class RightClickPatch {
 
@@ -39,7 +43,7 @@ public class RightClickPatch {
 		}
 	}
 
-	public static void onRightClick() { if (RightClickPatch.action == null && card.hasTag(CustomTags.MUTATE)) {
+	public static void onRightClick() { if (RightClickPatch.action == null && card.hasTag(CustomTags.MUTATE )) {
 		boolean upgraded = card.upgraded;
 		if (Objects.equals(card.cardID, Strike1Sword.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend1Sword(), upgraded)); }
 		if (Objects.equals(card.cardID, Strike2Lance.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend2Lance(), upgraded)); }

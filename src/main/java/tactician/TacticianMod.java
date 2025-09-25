@@ -66,7 +66,12 @@ public class TacticianMod implements
     public static Properties defaultSettings = new Properties();
     public static final String SKIP_TUTORIALS_SETTING = "Skip Tutorial";
     public static Boolean skipTutorialsPlaceholder = true;
+    public static Boolean globalRelicsPlaceholder = true;
+    public static Boolean tempStatPatchPlaceholder = true;
     public static ModLabeledToggleButton skipTutorials;
+    public static ModLabeledToggleButton globalRelics;
+    public static ModLabeledToggleButton tempStatPatch;
+    public static SpireConfig modConfig = null;
 
     // This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
     public static void initialize() {
@@ -81,6 +86,18 @@ public class TacticianMod implements
         try {
             SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
             skipTutorialsPlaceholder = config.getBool("Skip Tutorial");
+        }
+        catch (IOException e) { e.printStackTrace(); }
+        defaultSettings.setProperty("Global Relics", "TRUE");
+        try {
+            SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
+            globalRelicsPlaceholder = config.getBool("Global Relics");
+        }
+        catch (IOException e) { e.printStackTrace(); }
+        defaultSettings.setProperty("Temp Stat Patch", "TRUE");
+        try {
+            SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
+            tempStatPatchPlaceholder = config.getBool("Temp Stat Patch");
         }
         catch (IOException e) { e.printStackTrace(); }
     }
@@ -98,7 +115,7 @@ public class TacticianMod implements
         BaseMod.addEvent(new AddEventParams.Builder(FallingTactician.ID, FallingTactician.class).playerClass(TACTICIAN).overrideEvent(Falling.ID).create());
         registerPotions();
 
-        skipTutorials = new ModLabeledToggleButton("Skip Tutorial", 350.0F, 750.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, skipTutorialsPlaceholder, settingsPanel, label -> {}, button -> {
+        skipTutorials = new ModLabeledToggleButton("Disable the Tutorial", 350.0F, 750.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, skipTutorialsPlaceholder, settingsPanel, label -> {}, button -> {
             skipTutorialsPlaceholder = button.enabled;
             try {
                 SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
@@ -108,8 +125,30 @@ public class TacticianMod implements
             catch (Exception e) { e.printStackTrace(); }
         });
         settingsPanel.addUIElement(skipTutorials);
-        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, settingsPanel);
 
+        globalRelics = new ModLabeledToggleButton("All characters can obtain global relics. (Applies to current run; does not require title restart.)", 350.0F, 700.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, globalRelicsPlaceholder, settingsPanel, label -> {}, button -> {
+            globalRelicsPlaceholder = button.enabled;
+            try {
+                SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
+                config.setBool("Global Relics", globalRelicsPlaceholder);
+                config.save();
+            }
+            catch (Exception e) { e.printStackTrace(); }
+        });
+        settingsPanel.addUIElement(globalRelics);
+
+        tempStatPatch = new ModLabeledToggleButton("Enable custom sprites for temp. Strength / Dexterity on all characters.", 350.0F, 650.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, globalRelicsPlaceholder, settingsPanel, label -> {}, button -> {
+            tempStatPatchPlaceholder = button.enabled;
+            try {
+                SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
+                config.setBool("Temp Stat Patch", tempStatPatchPlaceholder);
+                config.save();
+            }
+            catch (Exception e) { e.printStackTrace(); }
+        });
+        settingsPanel.addUIElement(tempStatPatch);
+
+        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, settingsPanel);
     }
 
     @Override
@@ -255,7 +294,7 @@ public class TacticianMod implements
     public void receiveEditRelics() {
         new AutoAdd(modID).any(BaseRelic.class, (info, relic) -> { // Loads files from this mod. Run this code for any classes that extend this class.
             if (relic.pool != null) { BaseMod.addRelicToCustomPool(relic, relic.pool); } // Register a custom character specific relic
-            else { BaseMod.addRelic(relic, relic.relicType); } // Register a shared or base game character specific relic
+            else { BaseMod.addRelic(relic, relic.relicType); } // Register a shared or base game character specific relic.
             UnlockTracker.markRelicAsSeen(relic.relicId);
             // If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
         });
@@ -369,6 +408,7 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:Hex", "tactician/audio/effect/Hex.ogg");
         BaseMod.addAudio("tactician:Anathema", "tactician/audio/effect/Anathema.ogg");
         BaseMod.addAudio("tactician:TacticianSelect", "tactician/audio/effect/Tactician_Select.ogg");
+        BaseMod.addAudio("tactician:TacticianEnding", "tactician/audio/effect/Tactician_Ending.ogg");
         BaseMod.addAudio("tactician:LevelUpFE8", "tactician/audio/effect/LevelUpFE8.ogg");
         BaseMod.addAudio("tactician:CriticalHitFE8", "tactician/audio/effect/CriticalHitFE8.ogg");
         BaseMod.addAudio("tactician:DeflectReceiveHit", "tactician/audio/effect/DeflectReceiveHit.ogg");

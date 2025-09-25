@@ -2,7 +2,7 @@
   "${modID}:SecretBook": {
     "NAME": "Secret Book",
     "FLAVOR": "\"I reviewed some historical battle texts. One can glean many tactics from the past.\"",
-    "DESCRIPTIONS": ["At the start of combat, gain #b1 #y${modID}:Focus and add an Anathema to your hand."]
+    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b1 #y${modID}:Focus and add an Anathema to your hand."]
   },
   "${modID}:Speedwing": {
     "NAME": "Speedwing",
@@ -27,7 +27,7 @@
   "${modID}:BookOfNaga": {
     "NAME": "Book of Naga",
     "FLAVOR": "\"What's this? Hmm... Perhaps we could use it...\"",
-    "DESCRIPTIONS": ["At the start of combat, gain #b1 #y${modID}:Focus and add a Hex to your hand."]
+    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b1 #y${modID}:Focus and add a Hex to your hand."]
   },
   "${modID}:StatueFragment": {
     "NAME": "Statue Fragment",
